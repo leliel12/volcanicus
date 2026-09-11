@@ -1,0 +1,12 @@
+include LICENSE.txt
+include README.md
+
+recursive-include volcanicus *.py
+recursive-include volcanicus *.csv
+
+exclude tox.ini
+exclude .header-template
+exclude requirements_dev.txt
+
+recursive-exclude tests *
+recursive-exclude docs *

@@ -1,0 +1,61 @@
+[tool.black]
+line-length = 79
+target-version = ["py311", "py312", "py313", "py314"]
+
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+
+# =============================================================================
+# PACKAGING
+# =============================================================================
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "volcanicus"
+version = "0.1.0dev0"
+authors = [
+    {name = "Hernán Rosenfeld"},
+    {name = "Juan B Cabral", email = "jbcabral@unc.edu.ar"},
+]
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+description = "Volcanicus is a small toolkit to load, normalize and plot volcano deformation/residual measurements."
+keywords = [
+    "volcano",
+    "deformation",
+    "residual",
+    "geophysics",
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering",
+]
+# Dependencies are pinned to the first minor version and limited to the next major version
+dependencies = [
+    "pandas>=2.0.0,<3",
+    "matplotlib>=3.7.0,<4",
+    "seaborn>=0.13,<0.14",
+    "methodtools>=0.4,<1",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["volcanicus", "volcanicus.*"]
+namespaces = false

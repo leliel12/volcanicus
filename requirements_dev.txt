@@ -1,0 +1,20 @@
+-e .
+
+tox
+
+black
+
+flake8
+flake8-import-order
+flake8-black
+flake8-builtins
+
+pydocstyle
+toml
+
+check-manifest
+
+https://github.com/quatrope/qafan/archive/refs/heads/master.zip
+
+jupyter
+nbclient
