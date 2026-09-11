@@ -9,7 +9,7 @@
 # =============================================================================
 
 """Accessors for :class:`~volcanicus.core.Volcano` instances (e.g. \
-``volcano.plots``)."""
+``volcano.plot``)."""
 
 # =============================================================================
 # IMPORTS
@@ -37,9 +37,9 @@ _NON_DISTANCE_COLUMNS = ("date", "center_lat", "center_long", "direction")
 
 class PlotAccessor(AccessorABC):
     """Plotting accessor for a :class:`~volcanicus.core.Volcano` instance \
-    (used as ``volcano.plots``).
+    (used as ``volcano.plot``).
 
-    Instances are callable: ``volcano.plots(kind, **kwargs)`` dispatches to
+    Instances are callable: ``volcano.plot(kind, **kwargs)`` dispatches to
     the method named ``kind`` (``"radial_profile"`` by default, see
     :attr:`_default_kind`).
 

@@ -121,7 +121,7 @@ class Volcano:
         Read-only copy of the normalized measurements.
     name : str
         Name of the volcano.
-    plots : PlotAccessor
+    plot : PlotAccessor
         Plotting accessor, created lazily on first access.
     stats : StatsAccessor
         Statistics accessor, created lazily on first access.
@@ -163,7 +163,7 @@ class Volcano:
 
     @methodtools.lru_cache(maxsize=None)
     @property
-    def plots(self):
+    def plot(self):
         """Plotting accessor for this instance.
 
         Returns

@@ -49,7 +49,7 @@ volcano.dataframe
 volcano.radial_profile()
 
 # residual vs. distance, one line per direction, with an aggregate median line
-volcano.plots.radial_profile()
+volcano.plot.radial_profile()
 ```
 
 ### Bundled datasets
