@@ -22,11 +22,18 @@ From the project root (this directory):
 pip install -e .
 ```
 
-From GitHub:
+### From GitHub:
 
 ```bash
 pip install https://github.com/leliel12/volcanicus/archive/refs/heads/master.zip
 ```
+
+### Development dependencies
+
+```bash
+pip install -r requirements-dev.txt
+```
+
 
 ## 🚀 Usage
 
@@ -73,4 +80,4 @@ maintained.
 
 ## 💬 Contact
 
-**You can contact me at:** <jbcabral@unc.edu.ar>
+**You can contact me at:** <hrosenfeld@gl.fcen.uba.ar>

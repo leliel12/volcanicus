@@ -36,6 +36,10 @@ from .accessors import PlotAccessor, StatsAccessor
 #: Columns in the source CSV that are not distance bins.
 NON_DISTANCE_COLUMNS = ("date", "center_lat", "center_long", "direction")
 
+#: Compass directions in clockwise order, used by :meth:`Volcano.impute` to
+#: find the two directions adjacent to a fully-missing one.
+_DIRECTION_ORDER = ("N", "NE", "E", "SE", "S", "SO", "O", "NO")
+
 # =============================================================================
 # FUNCTIONS
 # =============================================================================
@@ -294,19 +298,91 @@ class Volcano:
             }
         )
 
+    def impute(self):
+        """Fill missing distance-bin measurements.
+
+        Two-step strategy:
+
+        1. Within each date/direction row, linearly interpolate missing
+           distance bins from their neighboring distance bins (interior
+           gaps only). The residual decays continuously with distance at a
+           fixed point in time, so this is the most defensible fill.
+        2. If a row is still entirely missing after step 1 (no distance bin
+           left to interpolate from), fill it by averaging the same date's
+           two compass-adjacent directions — e.g. a fully-missing ``"N"``
+           row is filled from ``"NO"`` and ``"NE"`` on that date. Rows that
+           can't be filled this way (e.g. both neighbors also missing) are
+           left as ``NaN``.
+
+        Returns
+        -------
+        Volcano
+            A new instance with missing values imputed where possible.
+
+        """
+        df = self._dataframe
+        distance_columns = [
+            c for c in df.columns if c not in NON_DISTANCE_COLUMNS
+        ]
+
+        df[distance_columns] = df[distance_columns].interpolate(
+            axis=1, limit_area="inside"
+        )
+
+        still_missing = df[distance_columns].isna().all(axis=1)
+        for idx in df.index[still_missing]:
+            date = df.loc[idx, "date"]
+            direction = df.loc[idx, "direction"]
+            pos = _DIRECTION_ORDER.index(direction)
+            neighbors = (
+                _DIRECTION_ORDER[pos - 1],
+                _DIRECTION_ORDER[(pos + 1) % len(_DIRECTION_ORDER)],
+            )
+            same_date = df[df["date"] == date]
+            neighbor_rows = same_date[same_date["direction"].isin(neighbors)]
+            df.loc[idx, distance_columns] = neighbor_rows[
+                distance_columns
+            ].mean()
+
+        return Volcano(df, self._name)
+
     # MAGIC ===================================================================
 
-    def __repr__(self):
+    def _summary_fields(self):
         distance_columns = [
             c for c in self._dataframe.columns if c not in NON_DISTANCE_COLUMNS
         ]
-        n_dates = self._dataframe["date"].nunique()
-        n_missing = int(self._dataframe[distance_columns].isna().sum().sum())
-        registers = len(self._dataframe)
+        return {
+            "name": self._name.title(),
+            "dates": self._dataframe["date"].nunique(),
+            "missing": int(
+                self._dataframe[distance_columns].isna().sum().sum()
+            ),
+            "registers": len(self._dataframe),
+        }
+
+    def __repr__(self):
+        f = self._summary_fields()
         return (
-            f"Volcano(name={self._name!r}, dates={n_dates}, "
-            f"missing={n_missing}, "
-            f"registers={registers})"
+            f"Volcano(name={f['name']!r}, dates={f['dates']}, "
+            f"missing={f['missing']}, registers={f['registers']})"
+        )
+
+    def _repr_html_(self):
+        f = self._summary_fields()
+        rows = "".join(
+            f"<tr><td>{label}</td><td>{f[key]}</td></tr>"
+            for label, key in [
+                ("dates", "dates"),
+                ("missing", "missing"),
+                ("registers", "registers"),
+            ]
+        )
+        return (
+            "<table>"
+            f"<caption>🌋 <b>{f['name']}</b></caption>"
+            f"{rows}"
+            "</table>"
         )
 
 

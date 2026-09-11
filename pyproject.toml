@@ -20,7 +20,7 @@ build-backend = "setuptools.build_meta"
 name = "volcanicus"
 version = "0.1.0dev0"
 authors = [
-    {name = "Hernán Rosenfeld"},
+    {name = "Hernán Rosenfeld", email = "hrosenfeld@gl.fcen.uba.ar"},
     {name = "Juan B Cabral", email = "jbcabral@unc.edu.ar"},
 ]
 readme = "README.md"
