@@ -106,6 +106,8 @@ class PlotAccessor(AccessorABC):
         mean = kwargs.get("mean", True)
         std = kwargs.get("std", False)
 
+        # Fill in this method's own defaults for whatever the caller didn't
+        # already set explicitly via direction_kwds/mean_kwds.
         direction_kwds = {} if direction_kwds is None else direction_kwds
         direction_kwds.setdefault("alpha", .5 if mean else 1)
         direction_kwds.setdefault("hue", "direction")
@@ -119,6 +121,10 @@ class PlotAccessor(AccessorABC):
         mean_kwds.setdefault("estimator", "median")
         mean_kwds.setdefault("label", "Median")
 
+        # Reshape from one-column-per-distance-bin (wide) to one row per
+        # (direction, distance, residual) observation (long), which is what
+        # seaborn's lineplot expects for it to compute per-direction error
+        # bars across the repeated (raw, non-averaged) observations.
         df = self._volcano.dataframe
         distance_columns = [
             c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
@@ -132,16 +138,18 @@ class PlotAccessor(AccessorABC):
 
         ax = plt.gca() if ax is None else ax
 
+        # Layer 1: one line per direction, drawn from the raw data above.
         sns.lineplot(
             data=long_df, x="distance", y="residual", ax=ax, **direction_kwds
         )
 
         if mean:
-            # Volcano.radial_profile() already reduces to one row per
-            # direction; the median line's errorbar then reflects spread
-            # *between directions*, not between raw dates. Median (not mean)
-            # because there are only 8 directions, so it's more robust to
-            # any single outlying direction.
+            # Layer 2 (optional): a single aggregate line summarizing all
+            # directions. Volcano.radial_profile() already reduces to one
+            # row per direction; the median line's errorbar then reflects
+            # spread *between directions*, not between raw dates. Median
+            # (not mean) because there are only 8 directions, so it's more
+            # robust to any single outlying direction.
             by_direction = self._volcano.radial_profile().reset_index()
             mean_long_df = by_direction.melt(
                 id_vars="direction", var_name="distance", value_name="residual"
@@ -199,6 +207,8 @@ class PlotAccessor(AccessorABC):
         mean = kwargs.get("mean", True)
         std = kwargs.get("std", False)
 
+        # Fill in this method's own defaults for whatever the caller didn't
+        # already set explicitly via direction_kwds/mean_kwds.
         direction_kwds = {} if direction_kwds is None else direction_kwds
         direction_kwds.setdefault("alpha", .5 if mean else 1)
         direction_kwds.setdefault("hue", "direction")
@@ -212,6 +222,11 @@ class PlotAccessor(AccessorABC):
         mean_kwds.setdefault("estimator", "median")
         mean_kwds.setdefault("label", "Median")
 
+        # Reshape from one-column-per-distance-bin (wide) to one row per
+        # (date, direction, distance, residual) observation (long); this
+        # time keeping date/direction so seaborn can compute, per direction
+        # and date, error bars across the repeated distance-bin
+        # observations (the temporal mirror of radial_profile's melt).
         df = self._volcano.dataframe
         distance_columns = [
             c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
@@ -225,13 +240,15 @@ class PlotAccessor(AccessorABC):
 
         ax = plt.gca() if ax is None else ax
 
+        # Layer 1: one line per direction, drawn from the raw data above.
         sns.lineplot(
             data=long_df, x="date", y="residual", ax=ax, **direction_kwds
         )
 
         if mean:
-            # Volcano.temporal_profile() already reduces to one row per
-            # date; the median line's errorbar then reflects spread
+            # Layer 2 (optional): a single aggregate line summarizing all
+            # directions. Volcano.temporal_profile() already reduces to one
+            # row per date; the median line's errorbar then reflects spread
             # *between directions*, not between raw distance bins. Median
             # (not mean) because there are only 8 directions, so it's more
             # robust to any single outlying direction.
@@ -318,6 +335,8 @@ class StatsAccessor(AccessorABC):
         self._volcano = volcano
 
     def _grouped(self, groupby):
+        # Reject anything but "date"/"direction" up front, before doing any
+        # work, so every stat method gets the same clear error for free.
         if groupby not in self._GROUPBY_WHITELIST:
             raise ValueError(
                 f"'groupby' must be one of {self._GROUPBY_WHITELIST}, "
@@ -327,6 +346,8 @@ class StatsAccessor(AccessorABC):
         distance_columns = [
             c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
         ]
+        # Pre-select the distance columns so callers' pandas method calls
+        # (mean, describe, ...) never see date/direction/lat/long.
         return df.groupby(groupby, observed=True)[distance_columns]
 
     def __getattr__(self, a):

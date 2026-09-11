@@ -28,6 +28,7 @@ import methodtools
 import pandas as pd
 
 from .accessors import PlotAccessor, StatsAccessor
+from .utils import Bunch
 
 # =============================================================================
 # CONSTANTS
@@ -67,20 +68,28 @@ def normalize_dataframe(df):
         returned so calls can be chained if desired.
 
     """
+    # Parse the date column, if present; anything unparseable becomes NaT
+    # instead of raising, since the source CSVs are hand-curated.
     if "date" in df.columns:
         df["date"] = pd.to_datetime(df["date"], errors="coerce")
 
+    # Coordinates come in as text in some CSVs; coerce them to numeric.
     for col in ("center_lat", "center_long"):
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
+    # direction has a small, fixed set of values, so category is cheaper
+    # to store and lets pandas/seaborn treat it as such (e.g. for hue).
     if "direction" in df.columns:
         df["direction"] = df["direction"].astype("category")
 
+    # Every remaining column is a distance bin holding a numeric residual.
     distance_columns = [c for c in df.columns if c not in NON_DISTANCE_COLUMNS]
     for col in distance_columns:
         df[col] = pd.to_numeric(df[col], errors="coerce")
 
+    # Rows may have come from a concatenation of multiple CSVs upstream;
+    # renumber them so the index is a clean 0..n-1 range.
     df.reset_index(drop=True, inplace=True)
     return df
 
@@ -101,6 +110,10 @@ class Volcano:
         DataFrame passed in is not modified.
     name : str
         Name of the volcano.
+    metadata : dict, optional
+        Free-form annotations about this instance (e.g. whether it was
+        imputed). Stored as a read-only :class:`~volcanicus.utils.Bunch`;
+        defaults to an empty one.
 
     Attributes
     ----------
@@ -114,12 +127,15 @@ class Volcano:
         Statistics accessor, created lazily on first access.
     has_missing : bool
         Whether any distance-bin measurement is missing.
+    metadata : Bunch
+        Free-form annotations about this instance.
 
     """
 
-    def __init__(self, df, name):
+    def __init__(self, df, name, metadata=None):
         self._dataframe = normalize_dataframe(df)
         self._name = name
+        self._metadata = Bunch("metadata", metadata or {})
 
     # ALTERNATIVE CONSTRUCTORS ================================================
 
@@ -210,6 +226,19 @@ class Volcano:
         ]
         return bool(self._dataframe[distance_columns].isna().any().any())
 
+    @property
+    def metadata(self):
+        """Free-form annotations about this instance.
+
+        Returns
+        -------
+        Bunch
+            Read-only mapping; values are readable by key or attribute
+            (``volcano.metadata["imputed"]`` or ``volcano.metadata.imputed``).
+
+        """
+        return self._metadata
+
     # METHODS =================================================================
 
     def radial_profile(self):
@@ -252,10 +281,18 @@ class Volcano:
         distance_columns = [
             c for c in self._dataframe.columns if c not in NON_DISTANCE_COLUMNS
         ]
+        # Collapse the distance axis first: one residual value per
+        # date/direction row, averaged across every distance bin.
         row_mean = self._dataframe[distance_columns].mean(axis=1)
+
+        # date/direction are already one-per-row, so pair each row's mean
+        # with its date and direction...
         long = self._dataframe[["date", "direction"]].assign(
             residual=row_mean
         )
+        # ...then pivot direction out of the rows and into columns, since
+        # (unlike distance bins) it isn't already columnar in the source
+        # data.
         return long.pivot_table(
             index="date",
             columns="direction",
@@ -281,7 +318,10 @@ class Volcano:
         distance_columns = [
             c for c in self._dataframe.columns if c not in NON_DISTANCE_COLUMNS
         ]
+        # Count NaNs per row first (one row = one date/direction)...
         missing_per_row = self._dataframe[distance_columns].isna().sum(axis=1)
+        # ...then sum those per-row counts across directions, so we get one
+        # total per date regardless of how many directions it has.
         missing_per_date = missing_per_row.groupby(
             self._dataframe["date"]
         ).sum()
@@ -298,10 +338,10 @@ class Volcano:
             }
         )
 
-    def impute(self):
+    def impute(self, fallback_to_mean=True):
         """Fill missing distance-bin measurements.
 
-        Two-step strategy:
+        Three-step strategy:
 
         1. Within each date/direction row, linearly interpolate missing
            distance bins from their neighboring distance bins (interior
@@ -310,9 +350,19 @@ class Volcano:
         2. If a row is still entirely missing after step 1 (no distance bin
            left to interpolate from), fill it by averaging the same date's
            two compass-adjacent directions — e.g. a fully-missing ``"N"``
-           row is filled from ``"NO"`` and ``"NE"`` on that date. Rows that
-           can't be filled this way (e.g. both neighbors also missing) are
-           left as ``NaN``.
+           row is filled from ``"NO"`` and ``"NE"`` on that date.
+        3. If ``fallback_to_mean`` is true, anything still missing after
+           steps 1-2 (e.g. both compass neighbors were also missing) is
+           filled with the global mean of the *original*, unimputed
+           measurements. That mean is computed once, up front, from the raw
+           data only, so it isn't biased by values steps 1-2 already
+           filled in.
+
+        Parameters
+        ----------
+        fallback_to_mean : bool, default True
+            Whether to apply step 3. If False, values steps 1-2 couldn't
+            fill are left as ``NaN``.
 
         Returns
         -------
@@ -320,19 +370,34 @@ class Volcano:
             A new instance with missing values imputed where possible.
 
         """
-        df = self._dataframe
+        # .copy() matters here: without it we'd be writing through to
+        # self._dataframe and silently mutating this Volcano too.
+        df = self._dataframe.copy()
         distance_columns = [
             c for c in df.columns if c not in NON_DISTANCE_COLUMNS
         ]
 
+        # Snapshot the grand mean of the *raw* values before step 1 touches
+        # anything, so step 3's fallback isn't computed from data that
+        # steps 1-2 already filled in.
+        global_mean = df[distance_columns].stack().mean()
+
+        # Step 1: interior-gap interpolation along each row's distance
+        # bins. limit_area="inside" is what keeps this from extrapolating
+        # past the first/last known value in a row.
         df[distance_columns] = df[distance_columns].interpolate(
             axis=1, limit_area="inside"
         )
 
+        # Step 2: rows step 1 couldn't touch at all (every distance bin
+        # NaN) get filled from their compass neighbors on the same date.
         still_missing = df[distance_columns].isna().all(axis=1)
         for idx in df.index[still_missing]:
             date = df.loc[idx, "date"]
             direction = df.loc[idx, "direction"]
+            # Look up direction's position in the compass ring so we can
+            # grab the direction immediately before and after it (with
+            # wraparound, e.g. "N"'s predecessor is "NO").
             pos = _DIRECTION_ORDER.index(direction)
             neighbors = (
                 _DIRECTION_ORDER[pos - 1],
@@ -340,11 +405,25 @@ class Volcano:
             )
             same_date = df[df["date"] == date]
             neighbor_rows = same_date[same_date["direction"].isin(neighbors)]
+            # neighbor_rows has at most 2 rows (one per neighbor, fewer if
+            # one is missing from the data entirely); average whatever is
+            # there. If both neighbors are also NaN this is a no-op and
+            # the row stays missing, to be picked up by step 3 below.
             df.loc[idx, distance_columns] = neighbor_rows[
                 distance_columns
             ].mean()
 
-        return Volcano(df, self._name)
+        # Step 3: anything steps 1-2 still couldn't reach falls back to
+        # the pre-computed grand mean, if the caller opted into it.
+        if fallback_to_mean:
+            df[distance_columns] = df[distance_columns].fillna(global_mean)
+
+        metadata = {
+            **self._metadata,
+            "imputed": True,
+            "impute_fallback_to_mean": fallback_to_mean,
+        }
+        return Volcano(df, self._name, metadata=metadata)
 
     # MAGIC ===================================================================
 
