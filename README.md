@@ -1,6 +1,6 @@
 # Volcanicus
 
-<img src="res/cover.jpg" alt="Volcanicus" width="35%">
+<img src="res/cover.jpg" alt="Volcanicus" width="50%">
 
 **A small toolkit to load, normalize and plot volcano deformation/residual measurements**
 
