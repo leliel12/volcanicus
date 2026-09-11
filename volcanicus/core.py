@@ -271,6 +271,7 @@ class Volcano:
               value (in any direction/distance bin that day).
             - ``missing_per_date_min``/``_max``/``_mean``: statistics of
               the number of missing values per date.
+            - ``worst_date``: the date with the most missing values.
 
         """
         distance_columns = [
@@ -289,6 +290,7 @@ class Volcano:
                 "missing_per_date_min": missing_per_date.min(),
                 "missing_per_date_max": missing_per_date.max(),
                 "missing_per_date_mean": missing_per_date.mean(),
+                "worst_date": missing_per_date.idxmax(),
             }
         )
 
@@ -300,9 +302,11 @@ class Volcano:
         ]
         n_dates = self._dataframe["date"].nunique()
         n_missing = int(self._dataframe[distance_columns].isna().sum().sum())
+        registers = len(self._dataframe)
         return (
             f"Volcano(name={self._name!r}, dates={n_dates}, "
-            f"missing={n_missing})"
+            f"missing={n_missing}, "
+            f"registers={registers})"
         )
 
 

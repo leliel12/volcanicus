@@ -107,6 +107,7 @@ class PlotAccessor(AccessorABC):
         std = kwargs.get("std", False)
 
         direction_kwds = {} if direction_kwds is None else direction_kwds
+        direction_kwds.setdefault("alpha", .5 if mean else 1)
         direction_kwds.setdefault("hue", "direction")
         direction_kwds.setdefault("errorbar", "sd" if std else None)
         direction_kwds.setdefault("err_style", "bars")
@@ -199,6 +200,7 @@ class PlotAccessor(AccessorABC):
         std = kwargs.get("std", False)
 
         direction_kwds = {} if direction_kwds is None else direction_kwds
+        direction_kwds.setdefault("alpha", .5 if mean else 1)
         direction_kwds.setdefault("hue", "direction")
         direction_kwds.setdefault("errorbar", "sd" if std else None)
         direction_kwds.setdefault("err_style", "bars")
@@ -258,14 +260,10 @@ class StatsAccessor(AccessorABC):
 
     Kind of statistic to produce:
 
-    - 'corr' : Compute pairwise correlation of distance-bin columns,
-      excluding NA/null values.
     - 'cov' : Compute pairwise covariance of distance-bin columns,
       excluding NA/null values.
     - 'describe' : Generate descriptive statistics.
     - 'kurtosis' : Return unbiased kurtosis over requested axis.
-    - 'mad' : Return the mean absolute deviation of the values over the
-      requested axis.
     - 'max' : Return the maximum of the values over the requested axis.
     - 'mean' : Return the mean of the values over the requested axis.
     - 'median' : Return the median of the values over the requested
@@ -345,62 +343,4 @@ class StatsAccessor(AccessorABC):
     def __dir__(self):
         """x.__dir__() <==> dir(x)."""
         return super().__dir__() + list(self._DF_WHITELIST)
-
-    def corr(self, groupby, method="pearson", **kwargs):
-        """Compute, per group, the pairwise correlation of distance-bin \
-        columns.
-
-        Parameters
-        ----------
-        groupby : {"date", "direction"}
-            Column to group the measurements by before computing the
-            correlation.
-        method : str or callable, default ``"pearson"``
-            Method of correlation. Accepted values are ``"pearson"``,
-            ``"kendall"``, ``"spearman"``, or a callable with signature
-            ``(Series, Series) -> float``. See ``pandas.DataFrame.corr()``
-            for details.
-        kwargs:
-            Other keyword arguments are passed to the underlying
-            ``pandas.DataFrame.corr()`` method.
-
-        Returns
-        -------
-        pandas.DataFrame
-            One ``(n_distances, n_distances)`` correlation matrix per group,
-            indexed by ``(groupby, distance)``.
-
-        See Also
-        --------
-        StatsAccessor.cov : Pairwise covariance of distance bins.
-
-        """
-        grouped = self._grouped(groupby)
-        return grouped.apply(lambda g: g.corr(method=method, **kwargs))
-
-    def mad(self, groupby, axis=0, skipna=True):
-        """Return, per group, the mean absolute deviation of the values \
-        over a given axis.
-
-        Parameters
-        ----------
-        groupby : {"date", "direction"}
-            Column to group the measurements by before computing the mean
-            absolute deviation.
-        axis : int
-            Axis for the function to be applied on.
-        skipna : bool, default True
-            Exclude NA/null values when computing the result.
-
-        """
-        grouped = self._grouped(groupby)
-
-        def _mad(g):
-            return (
-                (g - g.mean(axis=axis, skipna=skipna))
-                .abs()
-                .mean(axis=axis, skipna=skipna)
-            )
-
-        return grouped.apply(_mad)
 
