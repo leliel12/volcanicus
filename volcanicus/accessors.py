@@ -57,7 +57,13 @@ class PlotAccessor(AccessorABC):
         self._volcano = volcano
 
     def radial_profile(
-        self, ax=None, direction_kwds=None, mean_kwds=None, **kwargs
+        self,
+        ax=None,
+        direction_kwds=None,
+        median_kwds=None,
+        directions=True,
+        median=True,
+        std=False,
     ):
         """Plot residual values against distance, one line per direction.
 
@@ -68,7 +74,7 @@ class PlotAccessor(AccessorABC):
         direction. To keep the plot simple and easy to read at a glance, the
         median line never shows error bars — only ``std`` for the
         per-direction lines is configurable. Instead of hard-coding their
-        keyword arguments, ``direction_kwds`` and ``mean_kwds`` let the
+        keyword arguments, ``direction_kwds`` and ``median_kwds`` let the
         caller override or extend what each ``sns.lineplot`` call receives;
         anything not explicitly provided falls back to this method's own
         defaults (``errorbar="sd"``/``err_style="bars"`` for the
@@ -87,15 +93,21 @@ class PlotAccessor(AccessorABC):
         direction_kwds : dict, optional
             Keyword arguments forwarded to the per-direction ``sns.lineplot``
             call, on top of this method's own defaults.
-        mean_kwds : dict, optional
+        median_kwds : dict, optional
             Keyword arguments forwarded to the aggregate ``sns.lineplot``
             call, on top of this method's own defaults.
-        **kwargs
-            ``mean`` : bool, default True. Whether to draw the aggregate
-            (median) line at all. ``std`` : bool, default False. Whether
-            error bars are shown on the per-direction lines (the median line
-            never shows error bars); ignored if ``errorbar`` is set
-            explicitly via ``direction_kwds``.
+        directions : bool, default True
+            Whether to draw the per-direction lines at all — turn this off
+            (with ``median=True``) to get just the aggregate line, e.g. to
+            overlay several volcanoes' median curves on the same axes for
+            comparison. This is a plotting-only switch: it has no
+            equivalent on :meth:`Volcano.radial_profile`.
+        median : bool, default True
+            Whether to draw the aggregate (median) line at all.
+        std : bool, default False
+            Whether error bars are shown on the per-direction lines (the
+            median line never shows error bars); ignored if ``errorbar`` is
+            set explicitly via ``direction_kwds``.
 
         Returns
         -------
@@ -103,47 +115,49 @@ class PlotAccessor(AccessorABC):
             The axes the plot was drawn on.
 
         """
-        mean = kwargs.get("mean", True)
-        std = kwargs.get("std", False)
-
         # Fill in this method's own defaults for whatever the caller didn't
-        # already set explicitly via direction_kwds/mean_kwds.
+        # already set explicitly via direction_kwds/median_kwds.
         direction_kwds = {} if direction_kwds is None else direction_kwds
-        direction_kwds.setdefault("alpha", .5 if mean else 1)
+        direction_kwds.setdefault("alpha", .5 if median else 1)
         direction_kwds.setdefault("hue", "direction")
         direction_kwds.setdefault("errorbar", "sd" if std else None)
         direction_kwds.setdefault("err_style", "bars")
 
-        mean_kwds = {} if mean_kwds is None else mean_kwds
-        mean_kwds.setdefault("color", "black")
-        mean_kwds.setdefault("linewidth", 2)
-        mean_kwds.setdefault("errorbar", None)
-        mean_kwds.setdefault("estimator", "median")
-        mean_kwds.setdefault("label", "Median")
-
-        # Reshape from one-column-per-distance-bin (wide) to one row per
-        # (direction, distance, residual) observation (long), which is what
-        # seaborn's lineplot expects for it to compute per-direction error
-        # bars across the repeated (raw, non-averaged) observations.
-        df = self._volcano.dataframe
-        distance_columns = [
-            c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
-        ]
-        long_df = df.melt(
-            id_vars="direction",
-            value_vars=distance_columns,
-            var_name="distance",
-            value_name="residual",
-        )
+        median_kwds = {} if median_kwds is None else median_kwds
+        median_kwds.setdefault("color", "black")
+        median_kwds.setdefault("linewidth", 2)
+        median_kwds.setdefault("errorbar", None)
+        median_kwds.setdefault("estimator", "median")
+        median_kwds.setdefault("label", "Median")
 
         ax = plt.gca() if ax is None else ax
 
-        # Layer 1: one line per direction, drawn from the raw data above.
-        sns.lineplot(
-            data=long_df, x="distance", y="residual", ax=ax, **direction_kwds
-        )
+        if directions:
+            # Layer 1 (optional): one line per direction. Reshape from
+            # one-column-per-distance-bin (wide) to one row per (direction,
+            # distance, residual) observation (long), which is what
+            # seaborn's lineplot expects for it to compute per-direction
+            # error bars across the repeated (raw, non-averaged)
+            # observations.
+            df = self._volcano.dataframe
+            distance_columns = [
+                c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
+            ]
+            long_df = df.melt(
+                id_vars="direction",
+                value_vars=distance_columns,
+                var_name="distance",
+                value_name="residual",
+            )
+            sns.lineplot(
+                data=long_df,
+                x="distance",
+                y="residual",
+                ax=ax,
+                **direction_kwds,
+            )
 
-        if mean:
+        if median:
             # Layer 2 (optional): a single aggregate line summarizing all
             # directions. Volcano.radial_profile() already reduces to one
             # row per direction; the median line's errorbar then reflects
@@ -151,15 +165,15 @@ class PlotAccessor(AccessorABC):
             # (not mean) because there are only 8 directions, so it's more
             # robust to any single outlying direction.
             by_direction = self._volcano.radial_profile().reset_index()
-            mean_long_df = by_direction.melt(
+            median_long_df = by_direction.melt(
                 id_vars="direction", var_name="distance", value_name="residual"
             )
             sns.lineplot(
-                data=mean_long_df,
+                data=median_long_df,
                 x="distance",
                 y="residual",
                 ax=ax,
-                **mean_kwds,
+                **median_kwds,
             )
 
         ax.set_xlabel("Distance (m)")
@@ -171,7 +185,13 @@ class PlotAccessor(AccessorABC):
         return ax
 
     def temporal_profile(
-        self, ax=None, direction_kwds=None, mean_kwds=None, **kwargs
+        self,
+        ax=None,
+        direction_kwds=None,
+        median_kwds=None,
+        directions=True,
+        median=True,
+        std=False,
     ):
         """Plot residual values against date, one line per direction.
 
@@ -188,15 +208,21 @@ class PlotAccessor(AccessorABC):
         direction_kwds : dict, optional
             Keyword arguments forwarded to the per-direction ``sns.lineplot``
             call, on top of this method's own defaults.
-        mean_kwds : dict, optional
+        median_kwds : dict, optional
             Keyword arguments forwarded to the aggregate ``sns.lineplot``
             call, on top of this method's own defaults.
-        **kwargs
-            ``mean`` : bool, default True. Whether to draw the aggregate
-            (median) line at all. ``std`` : bool, default False. Whether
-            error bars are shown on the per-direction lines (the median line
-            never shows error bars); ignored if ``errorbar`` is set
-            explicitly via ``direction_kwds``.
+        directions : bool, default True
+            Whether to draw the per-direction lines at all — turn this off
+            (with ``median=True``) to get just the aggregate line, e.g. to
+            overlay several volcanoes' median curves on the same axes for
+            comparison. This is a plotting-only switch: it has no
+            equivalent on :meth:`Volcano.temporal_profile`.
+        median : bool, default True
+            Whether to draw the aggregate (median) line at all.
+        std : bool, default False
+            Whether error bars are shown on the per-direction lines (the
+            median line never shows error bars); ignored if ``errorbar`` is
+            set explicitly via ``direction_kwds``.
 
         Returns
         -------
@@ -204,48 +230,45 @@ class PlotAccessor(AccessorABC):
             The axes the plot was drawn on.
 
         """
-        mean = kwargs.get("mean", True)
-        std = kwargs.get("std", False)
-
         # Fill in this method's own defaults for whatever the caller didn't
-        # already set explicitly via direction_kwds/mean_kwds.
+        # already set explicitly via direction_kwds/median_kwds.
         direction_kwds = {} if direction_kwds is None else direction_kwds
-        direction_kwds.setdefault("alpha", .5 if mean else 1)
+        direction_kwds.setdefault("alpha", .5 if median else 1)
         direction_kwds.setdefault("hue", "direction")
         direction_kwds.setdefault("errorbar", "sd" if std else None)
         direction_kwds.setdefault("err_style", "bars")
 
-        mean_kwds = {} if mean_kwds is None else mean_kwds
-        mean_kwds.setdefault("color", "black")
-        mean_kwds.setdefault("linewidth", 2)
-        mean_kwds.setdefault("errorbar", None)
-        mean_kwds.setdefault("estimator", "median")
-        mean_kwds.setdefault("label", "Median")
-
-        # Reshape from one-column-per-distance-bin (wide) to one row per
-        # (date, direction, distance, residual) observation (long); this
-        # time keeping date/direction so seaborn can compute, per direction
-        # and date, error bars across the repeated distance-bin
-        # observations (the temporal mirror of radial_profile's melt).
-        df = self._volcano.dataframe
-        distance_columns = [
-            c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
-        ]
-        long_df = df.melt(
-            id_vars=["date", "direction"],
-            value_vars=distance_columns,
-            var_name="distance",
-            value_name="residual",
-        )
+        median_kwds = {} if median_kwds is None else median_kwds
+        median_kwds.setdefault("color", "black")
+        median_kwds.setdefault("linewidth", 2)
+        median_kwds.setdefault("errorbar", None)
+        median_kwds.setdefault("estimator", "median")
+        median_kwds.setdefault("label", "Median")
 
         ax = plt.gca() if ax is None else ax
 
-        # Layer 1: one line per direction, drawn from the raw data above.
-        sns.lineplot(
-            data=long_df, x="date", y="residual", ax=ax, **direction_kwds
-        )
+        if directions:
+            # Layer 1 (optional): one line per direction. Reshape from
+            # one-column-per-distance-bin (wide) to one row per (date,
+            # direction, distance, residual) observation (long); this time
+            # keeping date/direction so seaborn can compute, per direction
+            # and date, error bars across the repeated distance-bin
+            # observations (the temporal mirror of radial_profile's melt).
+            df = self._volcano.dataframe
+            distance_columns = [
+                c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
+            ]
+            long_df = df.melt(
+                id_vars=["date", "direction"],
+                value_vars=distance_columns,
+                var_name="distance",
+                value_name="residual",
+            )
+            sns.lineplot(
+                data=long_df, x="date", y="residual", ax=ax, **direction_kwds
+            )
 
-        if mean:
+        if median:
             # Layer 2 (optional): a single aggregate line summarizing all
             # directions. Volcano.temporal_profile() already reduces to one
             # row per date; the median line's errorbar then reflects spread
@@ -253,15 +276,15 @@ class PlotAccessor(AccessorABC):
             # (not mean) because there are only 8 directions, so it's more
             # robust to any single outlying direction.
             by_date = self._volcano.temporal_profile().reset_index()
-            mean_long_df = by_date.melt(
+            median_long_df = by_date.melt(
                 id_vars="date", var_name="direction", value_name="residual"
             )
             sns.lineplot(
-                data=mean_long_df,
+                data=median_long_df,
                 x="date",
                 y="residual",
                 ax=ax,
-                **mean_kwds,
+                **median_kwds,
             )
 
         ax.set_xlabel("Date")

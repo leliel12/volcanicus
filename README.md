@@ -1,6 +1,6 @@
 # Volcanicus
 
-<img src="res/cover.jpg" alt="Volcanicus" width="320">
+<img src="res/cover.jpg" alt="Volcanicus" width="35%">
 
 **A small toolkit to load, normalize and plot volcano deformation/residual measurements**
 
@@ -31,7 +31,7 @@ pip install https://github.com/leliel12/volcanicus/archive/refs/heads/master.zip
 ### Development dependencies
 
 ```bash
-pip install -r requirements-dev.txt
+pip install -r requirements_dev.txt
 ```
 
 
@@ -59,15 +59,17 @@ Volcanicus ships a few example datasets, loadable by name:
 ```python
 from volcanicus import datasets
 
-datasets.available()  # ["etna"]
+datasets.available()  # ["copahue", "etna", "stromboli"]
 etna = datasets.load("etna")
 ```
 
-## 📓 Tutorial
+## 📓 Tutorials
 
-See [notebooks/tutorial.ipynb](notebooks/tutorial.ipynb) for a full walkthrough:
-loading datasets, plotting, the `.stats` accessor, and missing-value
-reporting.
+- [notebooks/tutorial.ipynb](notebooks/tutorial.ipynb) — full `Volcano` API
+  walkthrough: loading datasets, plotting, the `.stats` accessor,
+  missing-value reporting and imputation.
+- [notebooks/comparison.ipynb](notebooks/comparison.ipynb) — compares all
+  the bundled volcanoes side by side (and overlaid).
 
 ## 📜 License
 
