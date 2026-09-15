@@ -139,7 +139,7 @@ class PlotAccessor(AccessorABC):
             # seaborn's lineplot expects for it to compute per-direction
             # error bars across the repeated (raw, non-averaged)
             # observations.
-            df = self._volcano.dataframe
+            df = self._volcano.to_dataframe()
             distance_columns = [
                 c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
             ]
@@ -254,7 +254,7 @@ class PlotAccessor(AccessorABC):
             # keeping date/direction so seaborn can compute, per direction
             # and date, error bars across the repeated distance-bin
             # observations (the temporal mirror of radial_profile's melt).
-            df = self._volcano.dataframe
+            df = self._volcano.to_dataframe()
             distance_columns = [
                 c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
             ]
@@ -365,7 +365,7 @@ class StatsAccessor(AccessorABC):
                 f"'groupby' must be one of {self._GROUPBY_WHITELIST}, "
                 f"found {groupby!r}"
             )
-        df = self._volcano.dataframe
+        df = self._volcano.to_dataframe()
         distance_columns = [
             c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
         ]

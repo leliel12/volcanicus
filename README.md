@@ -43,7 +43,7 @@ from volcanicus import Volcano, read_csv
 volcano = read_csv("measurements.csv", volcano_name="Copahue")
 
 # normalized, read-only copy of the measurements
-volcano.dataframe
+volcano.to_dataframe()
 
 # mean residual per distance bin, per direction
 volcano.radial_profile()

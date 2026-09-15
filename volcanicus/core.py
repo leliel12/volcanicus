@@ -117,8 +117,6 @@ class Volcano:
 
     Attributes
     ----------
-    df : pandas.DataFrame
-        Read-only copy of the normalized measurements.
     name : str
         Name of the volcano.
     plot : PlotAccessor
@@ -201,18 +199,6 @@ class Volcano:
         return self._name
 
     @property
-    def dataframe(self):
-        """Copy of the internal, normalized DataFrame.
-
-        Returns
-        -------
-        pandas.DataFrame
-            A copy, so the internal state cannot be mutated from the outside.
-
-        """
-        return self._dataframe.copy()
-
-    @property
     def has_missing(self):
         """Whether any distance-bin measurement is missing (``NaN``).
 
@@ -240,6 +226,17 @@ class Volcano:
         return self._metadata
 
     # METHODS =================================================================
+
+    def to_dataframe(self):
+        """Copy of the internal, normalized DataFrame.
+
+        Returns
+        -------
+        pandas.DataFrame
+            A copy, so the internal state cannot be mutated from the outside.
+
+        """
+        return self._dataframe.copy()
 
     def radial_profile(self):
         """Average the measurements over dates, per direction.
