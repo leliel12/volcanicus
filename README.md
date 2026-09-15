@@ -38,9 +38,9 @@ pip install -r requirements_dev.txt
 ## 🚀 Usage
 
 ```python
-from volcanicus import Volcano
+from volcanicus import Volcano, read_csv
 
-volcano = Volcano.from_csv("measurements.csv", volcano_name="Copahue")
+volcano = read_csv("measurements.csv", volcano_name="Copahue")
 
 # normalized, read-only copy of the measurements
 volcano.dataframe
