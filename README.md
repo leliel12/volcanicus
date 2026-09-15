@@ -50,16 +50,25 @@ volcano.radial_profile()
 
 # residual vs. distance, one line per direction, with an aggregate median line
 volcano.plot.radial_profile()
+
+# how the missing values are spread across dates (a read-only Bunch: values
+# are reachable by key or by attribute)
+report = volcano.missing_report()
+report.n_missing, report["worst_date"]
+
+# fill the gaps; the new instance records what was done in its metadata
+imputed = volcano.impute()
+imputed.metadata.imputed  # True  (`.m` is a shorthand for `.metadata`)
 ```
 
 ### Bundled datasets
 
-Volcanicus ships a few example datasets, loadable by name:
+Volcanicus ships ~200 example datasets, loadable by name:
 
 ```python
 from volcanicus import datasets
 
-datasets.available()  # ["copahue", "etna", "stromboli"]
+datasets.available()  # ["agung", "aira", "akan", "alaid", ..., "zubair group"]
 etna = datasets.load("etna")
 ```
 
@@ -68,8 +77,8 @@ etna = datasets.load("etna")
 - [notebooks/tutorial.ipynb](notebooks/tutorial.ipynb) — full `Volcano` API
   walkthrough: loading datasets, plotting, the `.stats` accessor,
   missing-value reporting and imputation.
-- [notebooks/comparison.ipynb](notebooks/comparison.ipynb) — compares all
-  the bundled volcanoes side by side (and overlaid).
+- [notebooks/comparison.ipynb](notebooks/comparison.ipynb) — compares
+  several bundled volcanoes side by side (and overlaid).
 
 ## 📜 License
 

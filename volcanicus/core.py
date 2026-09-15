@@ -127,6 +127,8 @@ class Volcano:
         Whether any distance-bin measurement is missing.
     metadata : Bunch
         Free-form annotations about this instance.
+    m : Bunch
+        Shorthand alias of ``metadata``.
 
     """
 
@@ -222,8 +224,16 @@ class Volcano:
             Read-only mapping; values are readable by key or attribute
             (``volcano.metadata["imputed"]`` or ``volcano.metadata.imputed``).
 
+        See Also
+        --------
+        m : Shorthand alias of this property.
+
         """
         return self._metadata
+
+    #: Shorthand alias of :attr:`metadata`, for interactive use
+    #: (``volcano.m.imputed``).
+    m = metadata
 
     # METHODS =================================================================
 
@@ -284,9 +294,7 @@ class Volcano:
 
         # date/direction are already one-per-row, so pair each row's mean
         # with its date and direction...
-        long = self._dataframe[["date", "direction"]].assign(
-            residual=row_mean
-        )
+        long = self._dataframe[["date", "direction"]].assign(residual=row_mean)
         # ...then pivot direction out of the rows and into columns, since
         # (unlike distance bins) it isn't already columnar in the source
         # data.
@@ -302,7 +310,12 @@ class Volcano:
 
         Returns
         -------
-        pandas.Series
+        Bunch
+            Read-only mapping named ``missing_report``; values are readable
+            by key or attribute (``report["n_missing"]`` or
+            ``report.n_missing``), and ``report.to_dict()`` gives a plain
+            ``dict`` (useful to feed it back to pandas).
+
             - ``n_missing``: total number of missing measurement values.
             - ``n_dates``: number of distinct dates in the measurements.
             - ``n_dates_with_missing``: dates with at least one missing
@@ -323,7 +336,8 @@ class Volcano:
             self._dataframe["date"]
         ).sum()
 
-        return pd.Series(
+        return Bunch(
+            "missing_report",
             {
                 "n_missing": int(missing_per_row.sum()),
                 "n_dates": self._dataframe["date"].nunique(),
@@ -332,7 +346,7 @@ class Volcano:
                 "missing_per_date_max": missing_per_date.max(),
                 "missing_per_date_mean": missing_per_date.mean(),
                 "worst_date": missing_per_date.idxmax(),
-            }
+            },
         )
 
     def impute(self, fallback_to_mean=True):
