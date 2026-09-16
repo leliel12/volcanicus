@@ -118,7 +118,7 @@ class PlotAccessor(AccessorABC):
         # Fill in this method's own defaults for whatever the caller didn't
         # already set explicitly via direction_kwds/median_kwds.
         direction_kwds = {} if direction_kwds is None else direction_kwds
-        direction_kwds.setdefault("alpha", .5 if median else 1)
+        direction_kwds.setdefault("alpha", 0.5 if median else 1)
         direction_kwds.setdefault("hue", "direction")
         direction_kwds.setdefault("errorbar", "sd" if std else None)
         direction_kwds.setdefault("err_style", "bars")
@@ -233,7 +233,7 @@ class PlotAccessor(AccessorABC):
         # Fill in this method's own defaults for whatever the caller didn't
         # already set explicitly via direction_kwds/median_kwds.
         direction_kwds = {} if direction_kwds is None else direction_kwds
-        direction_kwds.setdefault("alpha", .5 if median else 1)
+        direction_kwds.setdefault("alpha", 0.5 if median else 1)
         direction_kwds.setdefault("hue", "direction")
         direction_kwds.setdefault("errorbar", "sd" if std else None)
         direction_kwds.setdefault("err_style", "bars")
@@ -387,4 +387,3 @@ class StatsAccessor(AccessorABC):
     def __dir__(self):
         """x.__dir__() <==> dir(x)."""
         return super().__dir__() + list(self._DF_WHITELIST)
-
