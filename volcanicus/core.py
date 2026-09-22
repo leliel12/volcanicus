@@ -28,18 +28,8 @@ import methodtools
 import pandas as pd
 
 from .accessors import PlotAccessor, StatsAccessor
+from .constants import DIRECTION_ORDER, GROUPBY_WHITELIST, NON_DISTANCE_COLUMNS
 from .utils import Bunch
-
-# =============================================================================
-# CONSTANTS
-# =============================================================================
-
-#: Columns in the source CSV that are not distance bins.
-NON_DISTANCE_COLUMNS = ("date", "center_lat", "center_long", "direction")
-
-#: Compass directions in clockwise order, used by :meth:`Volcano.impute` to
-#: find the two directions adjacent to a fully-missing one.
-_DIRECTION_ORDER = ("N", "NE", "E", "SE", "S", "SO", "O", "NO")
 
 # =============================================================================
 # FUNCTIONS
@@ -305,49 +295,68 @@ class Volcano:
             observed=True,
         )
 
-    def missing_report(self):
-        """Summarize missing (``NaN``) distance-bin measurements, by date.
+    #: Columns ``describe`` is allowed to group the measurements by.
+    _DESCRIBE_BY_WHITELIST = GROUPBY_WHITELIST
+
+    def describe(self, by="direction"):
+        """Summarize missing (``NaN``) distance-bin measurements.
+
+        Parameters
+        ----------
+        by : str, default "direction"
+            Column to group the measurements by before counting: either
+            ``"date"`` or ``"direction"``.
 
         Returns
         -------
-        Bunch
-            Read-only mapping named ``missing_report``; values are readable
-            by key or attribute (``report["n_missing"]`` or
-            ``report.n_missing``), and ``report.to_dict()`` gives a plain
-            ``dict`` (useful to feed it back to pandas).
+        pandas.DataFrame
+            One row per distinct value of `by`, plus a trailing
+            ``"TOTAL"`` row summarizing everything, with three columns:
 
-            - ``n_missing``: total number of missing measurement values.
-            - ``n_dates``: number of distinct dates in the measurements.
-            - ``n_dates_with_missing``: dates with at least one missing
-              value (in any direction/distance bin that day).
-            - ``missing_per_date_min``/``_max``/``_mean``: statistics of
-              the number of missing values per date.
-            - ``worst_date``: the date with the most missing values.
+            - ``total``: number of measurements possible for that
+              row, across every distance bin (``int``).
+            - ``n_missing``: number of those that are missing (``int``).
+            - ``proportion``: ``n_missing / total``, i.e. the fraction
+              missing (``float`` in ``[0, 1]``).
 
         """
+        if by not in self._DESCRIBE_BY_WHITELIST:
+            raise ValueError(
+                f"'by' must be one of {self._DESCRIBE_BY_WHITELIST}, "
+                f"found {by!r}"
+            )
+
         distance_columns = [
             c for c in self._dataframe.columns if c not in NON_DISTANCE_COLUMNS
         ]
-        # Count NaNs per row first (one row = one date/direction)...
+        # Count NaNs per row first (one row = one date/direction), then
+        # aggregate those per-row counts by the requested grouping key.
         missing_per_row = self._dataframe[distance_columns].isna().sum(axis=1)
-        # ...then sum those per-row counts across directions, so we get one
-        # total per date regardless of how many directions it has.
-        missing_per_date = missing_per_row.groupby(
-            self._dataframe["date"]
-        ).sum()
+        grouped = missing_per_row.groupby(self._dataframe[by], observed=True)
+        n_missing = grouped.sum().astype(int)
+        total = (grouped.count() * len(distance_columns)).astype(int)
 
-        return Bunch(
-            "missing_report",
+        table = pd.DataFrame(
             {
-                "n_missing": int(missing_per_row.sum()),
-                "n_dates": self._dataframe["date"].nunique(),
-                "n_dates_with_missing": int((missing_per_date > 0).sum()),
-                "missing_per_date_min": missing_per_date.min(),
-                "missing_per_date_max": missing_per_date.max(),
-                "missing_per_date_mean": missing_per_date.mean(),
-                "worst_date": missing_per_date.idxmax(),
-            },
+                "total": total,
+                "n_missing": n_missing,
+                "proportion": n_missing / total,
+            }
         )
+        # Appended as its own row (rather than via `.loc["TOTAL"] = [...]`)
+        # so the int columns don't get upcast to float to accommodate the
+        # mixed-dtype assignment.
+        overall = pd.DataFrame(
+            {
+                "total": [table["total"].sum()],
+                "n_missing": [table["n_missing"].sum()],
+                "proportion": [
+                    table["n_missing"].sum() / table["total"].sum()
+                ],
+            },
+            index=["TOTAL"],
+        )
+        return pd.concat([table, overall])
 
     def impute(self, fallback_to_mean=True):
         """Fill missing distance-bin measurements.
@@ -409,10 +418,10 @@ class Volcano:
             # Look up direction's position in the compass ring so we can
             # grab the direction immediately before and after it (with
             # wraparound, e.g. "N"'s predecessor is "NO").
-            pos = _DIRECTION_ORDER.index(direction)
+            pos = DIRECTION_ORDER.index(direction)
             neighbors = (
-                _DIRECTION_ORDER[pos - 1],
-                _DIRECTION_ORDER[(pos + 1) % len(_DIRECTION_ORDER)],
+                DIRECTION_ORDER[pos - 1],
+                DIRECTION_ORDER[(pos + 1) % len(DIRECTION_ORDER)],
             )
             same_date = df[df["date"] == date]
             neighbor_rows = same_date[same_date["direction"].isin(neighbors)]
@@ -439,6 +448,7 @@ class Volcano:
     # MAGIC ===================================================================
 
     def _summary_fields(self):
+        """Fields shared by :meth:`__repr__` and :meth:`_repr_html_`."""
         distance_columns = [
             c for c in self._dataframe.columns if c not in NON_DISTANCE_COLUMNS
         ]
@@ -452,6 +462,7 @@ class Volcano:
         }
 
     def __repr__(self):
+        """x.__repr__() <==> repr(x)"""
         f = self._summary_fields()
         return (
             f"Volcano(name={f['name']!r}, dates={f['dates']}, "
@@ -459,6 +470,7 @@ class Volcano:
         )
 
     def _repr_html_(self):
+        """Rich HTML repr, used by Jupyter/IPython instead of __repr__."""
         f = self._summary_fields()
         rows = "".join(
             f"<tr><td>{label}</td><td>{f[key]}</td></tr>"

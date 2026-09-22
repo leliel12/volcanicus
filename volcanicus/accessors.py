@@ -18,17 +18,11 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from .constants import (
+    GROUPBY_WHITELIST,
+    NON_DISTANCE_COLUMNS as _NON_DISTANCE_COLUMNS,
+)
 from .utils import AccessorABC
-
-# =============================================================================
-# CONSTANTS
-# =============================================================================
-
-#: Columns in the source CSV that are not distance bins.
-#:
-#: Duplicated from ``volcanicus.core`` (instead of imported) to avoid a
-#: circular import: ``core`` imports :class:`PlotAccessor` from this module.
-_NON_DISTANCE_COLUMNS = ("date", "center_lat", "center_long", "direction")
 
 # =============================================================================
 # CLASSES
@@ -348,21 +342,18 @@ class StatsAccessor(AccessorABC):
         "std",
         "var",
     )
-
-    #: Columns ``groupby`` is allowed to group the measurements by.
-    _GROUPBY_WHITELIST = ("date", "direction")
-
     _default_kind = "describe"
 
     def __init__(self, volcano):
         self._volcano = volcano
 
     def _grouped(self, groupby):
+        """Distance-bin columns of the volcano's DataFrame, grouped."""
         # Reject anything but "date"/"direction" up front, before doing any
         # work, so every stat method gets the same clear error for free.
-        if groupby not in self._GROUPBY_WHITELIST:
+        if groupby not in GROUPBY_WHITELIST:
             raise ValueError(
-                f"'groupby' must be one of {self._GROUPBY_WHITELIST}, "
+                f"'groupby' must be one of {GROUPBY_WHITELIST}, "
                 f"found {groupby!r}"
             )
         df = self._volcano.to_dataframe()

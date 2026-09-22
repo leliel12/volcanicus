@@ -51,10 +51,11 @@ volcano.radial_profile()
 # residual vs. distance, one line per direction, with an aggregate median line
 volcano.plot.radial_profile()
 
-# how the missing values are spread across dates (a read-only Bunch: values
-# are reachable by key or by attribute)
-report = volcano.missing_report()
-report.n_missing, report["worst_date"]
+# how the missing values are spread across directions (default) or
+# dates: a DataFrame with `total`/`n_missing`/`proportion` columns and
+# a trailing "TOTAL" row
+volcano.describe()
+volcano.describe(by="date")
 
 # fill the gaps; the new instance records what was done in its metadata
 imputed = volcano.impute()
