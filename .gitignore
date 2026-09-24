@@ -70,3 +70,4 @@ docs/source/_dynamic/*.rst
 CLAUDE.md
 .claude/*
 .virtual_documents/*
+residuo_outliers.csv
