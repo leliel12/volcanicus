@@ -106,7 +106,7 @@
 - date: '2000-05-01'
   center_lat: -8.1956
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0359
     45m: 0.0558
@@ -386,7 +386,7 @@
 - date: '2000-07-20'
   center_lat: -8.1956
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.101
     45m: 0.0854
@@ -666,7 +666,7 @@
 - date: '2000-09-06'
   center_lat: -8.1956
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0532
     45m: 0.0352
@@ -840,7 +840,7 @@
     885m: 0.0047
 - date: '2001-04-18'
   center_lat: -8.1959
-  center_long: 119.0704
+  center_long: 119.0705
   direction: E
   values:
     15m:
@@ -875,7 +875,7 @@
     885m: 0.0209
 - date: '2001-04-18'
   center_lat: -8.1959
-  center_long: 119.0704
+  center_long: 119.0705
   direction: N
   values:
     15m:
@@ -910,7 +910,7 @@
     885m: -0.0253
 - date: '2001-04-18'
   center_lat: -8.1959
-  center_long: 119.0704
+  center_long: 119.0705
   direction: NE
   values:
     15m: 0.088
@@ -945,8 +945,8 @@
     885m: -0.0855
 - date: '2001-04-18'
   center_lat: -8.1959
-  center_long: 119.0704
-  direction: 'NO'
+  center_long: 119.0705
+  direction: NO
   values:
     15m: 0.0642
     45m: 0.072
@@ -980,7 +980,7 @@
     885m: 0.0178
 - date: '2001-04-18'
   center_lat: -8.1959
-  center_long: 119.0704
+  center_long: 119.0705
   direction: O
   values:
     15m:
@@ -1015,7 +1015,7 @@
     885m: -0.0108
 - date: '2001-04-18'
   center_lat: -8.1959
-  center_long: 119.0704
+  center_long: 119.0705
   direction: S
   values:
     15m:
@@ -1050,7 +1050,7 @@
     885m: 0.0139
 - date: '2001-04-18'
   center_lat: -8.1959
-  center_long: 119.0704
+  center_long: 119.0705
   direction: SE
   values:
     15m: 0.1187
@@ -1085,7 +1085,7 @@
     885m: -0.0408
 - date: '2001-04-18'
   center_lat: -8.1959
-  center_long: 119.0704
+  center_long: 119.0705
   direction: SO
   values:
     15m: 0.1067
@@ -1120,7 +1120,7 @@
     885m: -0.0024
 - date: '2001-09-09'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: E
   values:
     15m:
@@ -1155,7 +1155,7 @@
     885m: 0.0002
 - date: '2001-09-09'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: N
   values:
     15m:
@@ -1190,7 +1190,7 @@
     885m: -0.0885
 - date: '2001-09-09'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: NE
   values:
     15m: 0.0177
@@ -1225,8 +1225,8 @@
     885m: -0.0402
 - date: '2001-09-09'
   center_lat: -8.1972
-  center_long: 119.0716
-  direction: 'NO'
+  center_long: 119.0715
+  direction: NO
   values:
     15m: 0.1696
     45m: 0.1456
@@ -1260,7 +1260,7 @@
     885m: -0.0224
 - date: '2001-09-09'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: O
   values:
     15m:
@@ -1295,7 +1295,7 @@
     885m: 0.0376
 - date: '2001-09-09'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: S
   values:
     15m:
@@ -1330,7 +1330,7 @@
     885m: 0.0073
 - date: '2001-09-09'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SE
   values:
     15m: 0.1031
@@ -1365,7 +1365,7 @@
     885m: -0.0083
 - date: '2001-09-09'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SO
   values:
     15m: 0.1498
@@ -1506,7 +1506,7 @@
 - date: '2002-04-21'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.143
     45m: 0.131
@@ -1680,7 +1680,7 @@
     885m: 0.0099
 - date: '2002-09-28'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: E
   values:
     15m:
@@ -1715,7 +1715,7 @@
     885m: -0.0281
 - date: '2002-09-28'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: N
   values:
     15m:
@@ -1750,7 +1750,7 @@
     885m: -0.0701
 - date: '2002-09-28'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: NE
   values:
     15m: 0.0454
@@ -1785,8 +1785,8 @@
     885m: -0.036
 - date: '2002-09-28'
   center_lat: -8.1972
-  center_long: 119.0716
-  direction: 'NO'
+  center_long: 119.0715
+  direction: NO
   values:
     15m: 0.1089
     45m: 0.0992
@@ -1820,7 +1820,7 @@
     885m: -0.0108
 - date: '2002-09-28'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: O
   values:
     15m:
@@ -1855,7 +1855,7 @@
     885m: 0.028
 - date: '2002-09-28'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: S
   values:
     15m:
@@ -1890,7 +1890,7 @@
     885m: -0.0005
 - date: '2002-09-28'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SE
   values:
     15m: 0.0882
@@ -1925,7 +1925,7 @@
     885m: 0.003
 - date: '2002-09-28'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SO
   values:
     15m: 0.1296
@@ -2066,7 +2066,7 @@
 - date: '2003-05-26'
   center_lat: -8.1956
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0473
     45m: 0.0562
@@ -2240,7 +2240,7 @@
     885m: -0.006
 - date: '2003-10-17'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: E
   values:
     15m:
@@ -2275,7 +2275,7 @@
     885m: -0.023
 - date: '2003-10-17'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: N
   values:
     15m:
@@ -2310,7 +2310,7 @@
     885m: -0.0777
 - date: '2003-10-17'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: NE
   values:
     15m: 0.0588
@@ -2345,8 +2345,8 @@
     885m: -0.0278
 - date: '2003-10-17'
   center_lat: -8.1972
-  center_long: 119.0716
-  direction: 'NO'
+  center_long: 119.0715
+  direction: NO
   values:
     15m: 0.1371
     45m: 0.1152
@@ -2380,7 +2380,7 @@
     885m: -0.0326
 - date: '2003-10-17'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: O
   values:
     15m:
@@ -2415,7 +2415,7 @@
     885m: 0.0397
 - date: '2003-10-17'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: S
   values:
     15m:
@@ -2450,7 +2450,7 @@
     885m: -0.0017
 - date: '2003-10-17'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SE
   values:
     15m: 0.1481
@@ -2485,7 +2485,7 @@
     885m: 0.0026
 - date: '2003-10-17'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SO
   values:
     15m: 0.1421
@@ -2520,7 +2520,7 @@
     885m: 0.0069
 - date: '2003-11-02'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: E
   values:
     15m:
@@ -2555,7 +2555,7 @@
     885m: -0.0108
 - date: '2003-11-02'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: N
   values:
     15m:
@@ -2590,7 +2590,7 @@
     885m: -0.0901
 - date: '2003-11-02'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: NE
   values:
     15m: 0.1043
@@ -2625,8 +2625,8 @@
     885m: -0.0298
 - date: '2003-11-02'
   center_lat: -8.1972
-  center_long: 119.0716
-  direction: 'NO'
+  center_long: 119.0715
+  direction: NO
   values:
     15m: 0.1506
     45m: 0.1464
@@ -2660,7 +2660,7 @@
     885m: -0.0497
 - date: '2003-11-02'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: O
   values:
     15m:
@@ -2695,7 +2695,7 @@
     885m: 0.037
 - date: '2003-11-02'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: S
   values:
     15m:
@@ -2730,7 +2730,7 @@
     885m: -0.0047
 - date: '2003-11-02'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SE
   values:
     15m: 0.1198
@@ -2765,7 +2765,7 @@
     885m: -0.0086
 - date: '2003-11-02'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SO
   values:
     15m: 0.1479
@@ -2906,7 +2906,7 @@
 - date: '2004-11-04'
   center_lat: -8.2008
   center_long: 119.0716
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0185
     45m: -0.044
@@ -3186,7 +3186,7 @@
 - date: '2005-05-15'
   center_lat: -8.1956
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1109
     45m: 0.1065
@@ -3466,7 +3466,7 @@
 - date: '2005-08-19'
   center_lat: -8.1964
   center_long: 119.0705
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.058
     45m: 0.0541
@@ -3746,7 +3746,7 @@
 - date: '2005-11-07'
   center_lat: -8.2005
   center_long: 119.0713
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1938
     45m: 0.1923
@@ -4026,7 +4026,7 @@
 - date: '2006-08-22'
   center_lat: -8.1964
   center_long: 119.0705
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0877
     45m: 0.0801
@@ -4306,7 +4306,7 @@
 - date: '2006-09-23'
   center_lat: -8.1972
   center_long: 119.0713
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1317
     45m: 0.1155
@@ -4586,7 +4586,7 @@
 - date: '2006-10-09'
   center_lat: -8.1972
   center_long: 119.0721
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.105
     45m: 0.0861
@@ -4866,7 +4866,7 @@
 - date: '2006-11-10'
   center_lat: -8.1972
   center_long: 119.0713
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1162
     45m: 0.1033
@@ -5146,7 +5146,7 @@
 - date: '2006-11-26'
   center_lat: -8.1972
   center_long: 119.0713
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1302
     45m: 0.1171
@@ -5426,7 +5426,7 @@
 - date: '2007-01-13'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0944
     45m: 0.0885
@@ -5706,7 +5706,7 @@
 - date: '2007-08-25'
   center_lat: -8.1961
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1168
     45m: 0.1006
@@ -5880,7 +5880,7 @@
     885m: -0.0162
 - date: '2007-11-29'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: E
   values:
     15m:
@@ -5915,7 +5915,7 @@
     885m: -0.0136
 - date: '2007-11-29'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: N
   values:
     15m:
@@ -5950,7 +5950,7 @@
     885m: -0.1065
 - date: '2007-11-29'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: NE
   values:
     15m: 0.0925
@@ -5985,8 +5985,8 @@
     885m: -0.0281
 - date: '2007-11-29'
   center_lat: -8.1972
-  center_long: 119.0716
-  direction: 'NO'
+  center_long: 119.0715
+  direction: NO
   values:
     15m: 0.1171
     45m: 0.0884
@@ -6020,7 +6020,7 @@
     885m: -0.0654
 - date: '2007-11-29'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: O
   values:
     15m:
@@ -6055,7 +6055,7 @@
     885m: 0.0344
 - date: '2007-11-29'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: S
   values:
     15m:
@@ -6090,7 +6090,7 @@
     885m: 0.0079
 - date: '2007-11-29'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SE
   values:
     15m: 0.2338
@@ -6125,7 +6125,7 @@
     885m: 0.0057
 - date: '2007-11-29'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SO
   values:
     15m: 0.1204
@@ -6160,7 +6160,7 @@
     885m: -0.0023
 - date: '2008-09-12'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: E
   values:
     15m:
@@ -6195,7 +6195,7 @@
     885m: -0.0198
 - date: '2008-09-12'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: N
   values:
     15m:
@@ -6230,7 +6230,7 @@
     885m: -0.1072
 - date: '2008-09-12'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: NE
   values:
     15m: -0.0119
@@ -6265,8 +6265,8 @@
     885m: -0.0258
 - date: '2008-09-12'
   center_lat: -8.1972
-  center_long: 119.0716
-  direction: 'NO'
+  center_long: 119.0715
+  direction: NO
   values:
     15m: 0.127
     45m: 0.1059
@@ -6300,7 +6300,7 @@
     885m: -0.033
 - date: '2008-09-12'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: O
   values:
     15m:
@@ -6335,7 +6335,7 @@
     885m: 0.0252
 - date: '2008-09-12'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: S
   values:
     15m:
@@ -6370,7 +6370,7 @@
     885m:
 - date: '2008-09-12'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SE
   values:
     15m: 0.085
@@ -6405,7 +6405,7 @@
     885m: -0.0143
 - date: '2008-09-12'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SO
   values:
     15m: 0.1034
@@ -6546,7 +6546,7 @@
 - date: '2008-10-14'
   center_lat: -8.1972
   center_long: 119.0721
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.132
     45m: 0.103
@@ -6826,7 +6826,7 @@
 - date: '2009-04-08'
   center_lat: -8.1961
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0917
     45m: 0.082
@@ -7106,7 +7106,7 @@
 - date: '2009-07-29'
   center_lat: -8.1956
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0805
     45m: 0.0645
@@ -7386,7 +7386,7 @@
 - date: '2009-10-17'
   center_lat: -8.1972
   center_long: 119.0721
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1692
     45m: 0.1484
@@ -7666,7 +7666,7 @@
 - date: '2010-04-27'
   center_lat: -8.1964
   center_long: 119.0705
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0871
     45m: 0.0881
@@ -7946,7 +7946,7 @@
 - date: '2010-08-01'
   center_lat: -8.1956
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0823
     45m: 0.0769
@@ -8226,7 +8226,7 @@
 - date: '2010-08-17'
   center_lat: -8.1956
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0718
     45m: 0.0713
@@ -8506,7 +8506,7 @@
 - date: '2010-11-21'
   center_lat: -8.2016
   center_long: 119.0672
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.0481
@@ -8786,7 +8786,7 @@
 - date: '2011-09-21'
   center_lat: -8.1972
   center_long: 119.0713
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1299
     45m: 0.1207
@@ -9066,7 +9066,7 @@
 - date: '2012-07-21'
   center_lat: -8.1959
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0814
     45m: 0.0717
@@ -9240,7 +9240,7 @@
     885m: 0.0005
 - date: '2012-10-09'
   center_lat: -8.204
-  center_long: 119.0718
+  center_long: 119.0719
   direction: E
   values:
     15m:
@@ -9275,7 +9275,7 @@
     885m: -0.0214
 - date: '2012-10-09'
   center_lat: -8.204
-  center_long: 119.0718
+  center_long: 119.0719
   direction: N
   values:
     15m:
@@ -9310,7 +9310,7 @@
     885m: 0.0709
 - date: '2012-10-09'
   center_lat: -8.204
-  center_long: 119.0718
+  center_long: 119.0719
   direction: NE
   values:
     15m: 0.156
@@ -9345,8 +9345,8 @@
     885m: 0.0993
 - date: '2012-10-09'
   center_lat: -8.204
-  center_long: 119.0718
-  direction: 'NO'
+  center_long: 119.0719
+  direction: NO
   values:
     15m: 0.1014
     45m: 0.1143
@@ -9380,7 +9380,7 @@
     885m: -0.0612
 - date: '2012-10-09'
   center_lat: -8.204
-  center_long: 119.0718
+  center_long: 119.0719
   direction: O
   values:
     15m:
@@ -9415,7 +9415,7 @@
     885m: -0.0129
 - date: '2012-10-09'
   center_lat: -8.204
-  center_long: 119.0718
+  center_long: 119.0719
   direction: S
   values:
     15m:
@@ -9450,7 +9450,7 @@
     885m: 0.0259
 - date: '2012-10-09'
   center_lat: -8.204
-  center_long: 119.0718
+  center_long: 119.0719
   direction: SE
   values:
     15m: 0.1562
@@ -9485,7 +9485,7 @@
     885m: -0.0206
 - date: '2012-10-09'
   center_lat: -8.204
-  center_long: 119.0718
+  center_long: 119.0719
   direction: SO
   values:
     15m: 0.0898
@@ -9626,7 +9626,7 @@
 - date: '2013-04-27'
   center_lat: -8.1959
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0932
     45m: 0.0804
@@ -9906,7 +9906,7 @@
 - date: '2013-07-08'
   center_lat: -8.1956
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0675
     45m: 0.0578
@@ -10186,7 +10186,7 @@
 - date: '2013-09-18'
   center_lat: -8.1961
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.128
     45m: 0.1189
@@ -10466,7 +10466,7 @@
 - date: '2013-09-26'
   center_lat: -8.1972
   center_long: 119.0713
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0902
     45m: 0.0708
@@ -10640,7 +10640,7 @@
     885m: 0.0041
 - date: '2013-10-04'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: E
   values:
     15m:
@@ -10675,7 +10675,7 @@
     885m: -0.0145
 - date: '2013-10-04'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: N
   values:
     15m:
@@ -10710,7 +10710,7 @@
     885m: -0.0843
 - date: '2013-10-04'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: NE
   values:
     15m: 0.0136
@@ -10745,8 +10745,8 @@
     885m: -0.048
 - date: '2013-10-04'
   center_lat: -8.1972
-  center_long: 119.0716
-  direction: 'NO'
+  center_long: 119.0715
+  direction: NO
   values:
     15m: 0.1389
     45m: 0.1217
@@ -10780,7 +10780,7 @@
     885m: -0.0503
 - date: '2013-10-04'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: O
   values:
     15m:
@@ -10815,7 +10815,7 @@
     885m: 0.0428
 - date: '2013-10-04'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: S
   values:
     15m:
@@ -10850,7 +10850,7 @@
     885m: 0.0016
 - date: '2013-10-04'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SE
   values:
     15m: 0.1001
@@ -10885,7 +10885,7 @@
     885m: 0.011
 - date: '2013-10-04'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SO
   values:
     15m: 0.1365
@@ -11026,7 +11026,7 @@
 - date: '2013-10-12'
   center_lat: -8.2005
   center_long: 119.0713
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1836
     45m: 0.1832
@@ -11200,7 +11200,7 @@
     885m: -0.0449
 - date: '2013-11-05'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: E
   values:
     15m:
@@ -11235,7 +11235,7 @@
     885m: -0.0268
 - date: '2013-11-05'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: N
   values:
     15m:
@@ -11270,7 +11270,7 @@
     885m: -0.0466
 - date: '2013-11-05'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: NE
   values:
     15m: 0.0821
@@ -11305,8 +11305,8 @@
     885m: -0.0369
 - date: '2013-11-05'
   center_lat: -8.1972
-  center_long: 119.0716
-  direction: 'NO'
+  center_long: 119.0715
+  direction: NO
   values:
     15m: 0.1157
     45m: 0.1032
@@ -11340,7 +11340,7 @@
     885m: -0.0797
 - date: '2013-11-05'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: O
   values:
     15m:
@@ -11375,7 +11375,7 @@
     885m: 0.0514
 - date: '2013-11-05'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: S
   values:
     15m:
@@ -11410,7 +11410,7 @@
     885m: -0.0047
 - date: '2013-11-05'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SE
   values:
     15m: 0.1542
@@ -11445,7 +11445,7 @@
     885m: 0.0105
 - date: '2013-11-05'
   center_lat: -8.1972
-  center_long: 119.0716
+  center_long: 119.0715
   direction: SO
   values:
     15m: 0.1027
@@ -11586,7 +11586,7 @@
 - date: '2014-09-13'
   center_lat: -8.1991
   center_long: 119.0721
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.3559
     45m: 0.6295
@@ -11866,7 +11866,7 @@
 - date: '2014-10-07'
   center_lat: -8.198
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.7284
     45m: 0.7464
@@ -12146,9 +12146,9 @@
 - date: '2014-10-15'
   center_lat: -8.1997
   center_long: 119.0724
-  direction: 'NO'
+  direction: NO
   values:
-    15m:
+    15m: 1.1097
     45m: 0.9897
     75m: 0.781
     105m: 0.4493
@@ -12254,9 +12254,9 @@
   direction: SE
   values:
     15m:
-    45m: 0.8725
-    75m: 0.8217
-    105m: 0.6955
+    45m: 1.0
+    75m: 1.0
+    105m: 0.799
     135m: 0.6504
     165m: 0.4469
     195m: 0.3932
@@ -12288,7 +12288,7 @@
   center_long: 119.0724
   direction: SO
   values:
-    15m: 0.8662
+    15m: 1.0
     45m: 0.4472
     75m: 0.1985
     105m: 0.2214
@@ -12324,7 +12324,7 @@
   direction: E
   values:
     15m:
-    45m: 0.8825
+    45m: 1.0
     75m: 0.7568
     105m: 0.6551
     135m: 0.3747
@@ -12359,8 +12359,8 @@
   direction: N
   values:
     15m:
-    45m: 0.962
-    75m: 0.9111
+    45m: 1.0
+    75m: 0.9338
     105m: 0.7385
     135m: 0.3248
     165m: 0.1594
@@ -12393,7 +12393,7 @@
   center_long: 119.0716
   direction: NE
   values:
-    15m: 0.8963
+    15m: 1.0
     45m: 0.8872
     75m: 0.7566
     105m: 0.4018
@@ -12426,12 +12426,12 @@
 - date: '2014-10-23'
   center_lat: -8.1986
   center_long: 119.0716
-  direction: 'NO'
+  direction: NO
   values:
-    15m: 0.7986
-    45m: 0.7921
-    75m: 0.7795
-    105m: 0.7564
+    15m: 1.0
+    45m: 1.0
+    75m: 1.0
+    105m: 1.0
     135m: 0.6264
     165m: 0.5193
     195m: 0.4892
@@ -12464,8 +12464,8 @@
   direction: O
   values:
     15m:
-    45m: 0.8901
-    75m: 0.893
+    45m: 1.0
+    75m: 1.0
     105m: 0.7662
     135m: 0.5847
     165m: 0.4111
@@ -12499,7 +12499,7 @@
   direction: S
   values:
     15m:
-    45m: 0.7443
+    45m: 1.0
     75m: 0.6733
     105m: 0.4869
     135m: 0.3307
@@ -12533,10 +12533,10 @@
   center_long: 119.0716
   direction: SE
   values:
-    15m: 0.8565
-    45m: 0.8432
-    75m: 0.8265
-    105m: 0.7492
+    15m: 1.0
+    45m: 1.0
+    75m: 1.0
+    105m: 0.8446
     135m: 0.7657
     165m: 0.5998
     195m: 0.5297
@@ -12568,8 +12568,8 @@
   center_long: 119.0716
   direction: SO
   values:
-    15m: 0.8754
-    45m: 0.8805
+    15m: 1.0
+    45m: 1.0
     75m: 0.7402
     105m: 0.5205
     135m: 0.2866
@@ -12706,7 +12706,7 @@
 - date: '2014-10-31'
   center_lat: -8.1986
   center_long: 119.0721
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0657
     45m:
@@ -12986,7 +12986,7 @@
 - date: '2015-06-28'
   center_lat: -8.198
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.6044
@@ -13266,7 +13266,7 @@
 - date: '2015-09-08'
   center_lat: -8.1972
   center_long: 119.0699
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.5992
     45m: 0.4703
@@ -13546,7 +13546,7 @@
 - date: '2015-09-24'
   center_lat: -8.1972
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.5424
     45m: 0.5772
@@ -13826,7 +13826,7 @@
 - date: '2015-10-18'
   center_lat: -8.1972
   center_long: 119.0699
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.6277
     45m: 0.3805
@@ -14106,7 +14106,7 @@
 - date: '2015-10-26'
   center_lat: -8.1972
   center_long: 119.0705
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.5654
     45m: 0.4663
@@ -14280,7 +14280,7 @@
     885m: 0.0135
 - date: '2016-09-10'
   center_lat: -8.2016
-  center_long: 119.0738
+  center_long: 119.0737
   direction: E
   values:
     15m:
@@ -14315,7 +14315,7 @@
     885m: -0.0044
 - date: '2016-09-10'
   center_lat: -8.2016
-  center_long: 119.0738
+  center_long: 119.0737
   direction: N
   values:
     15m:
@@ -14350,7 +14350,7 @@
     885m: -0.0272
 - date: '2016-09-10'
   center_lat: -8.2016
-  center_long: 119.0738
+  center_long: 119.0737
   direction: NE
   values:
     15m: 0.0504
@@ -14385,8 +14385,8 @@
     885m: -0.0689
 - date: '2016-09-10'
   center_lat: -8.2016
-  center_long: 119.0738
-  direction: 'NO'
+  center_long: 119.0737
+  direction: NO
   values:
     15m: 0.039
     45m:
@@ -14420,7 +14420,7 @@
     885m: -0.0406
 - date: '2016-09-10'
   center_lat: -8.2016
-  center_long: 119.0738
+  center_long: 119.0737
   direction: O
   values:
     15m:
@@ -14455,7 +14455,7 @@
     885m: 0.0125
 - date: '2016-09-10'
   center_lat: -8.2016
-  center_long: 119.0738
+  center_long: 119.0737
   direction: S
   values:
     15m:
@@ -14490,7 +14490,7 @@
     885m: -0.0096
 - date: '2016-09-10'
   center_lat: -8.2016
-  center_long: 119.0738
+  center_long: 119.0737
   direction: SE
   values:
     15m: 0.0413
@@ -14525,7 +14525,7 @@
     885m: -0.0438
 - date: '2016-09-10'
   center_lat: -8.2016
-  center_long: 119.0738
+  center_long: 119.0737
   direction: SO
   values:
     15m: 0.0697
@@ -14666,7 +14666,7 @@
 - date: '2017-05-24'
   center_lat: -8.1983
   center_long: 119.0705
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.3388
     45m: 0.347
@@ -14946,7 +14946,7 @@
 - date: '2017-09-13'
   center_lat: -8.198
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.6647
     45m: 0.6074
@@ -15053,7 +15053,7 @@
   center_long: 119.071
   direction: SE
   values:
-    15m: 0.8599
+    15m: 1.0
     45m: 0.7552
     75m: 0.5296
     105m: 0.4168
@@ -15088,7 +15088,7 @@
   center_long: 119.071
   direction: SO
   values:
-    15m: 0.8313
+    15m: 1.0
     45m: 0.7884
     75m: 0.6724
     105m: 0.4944
@@ -15226,7 +15226,7 @@
 - date: '2017-12-02'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0311
     45m: 0.0301
@@ -15506,7 +15506,7 @@
 - date: '2018-05-03'
   center_lat: -8.198
   center_long: 119.0716
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0278
     45m:
@@ -15786,7 +15786,7 @@
 - date: '2018-06-12'
   center_lat: -8.1978
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.8123
     45m: 0.7851
@@ -16066,7 +16066,7 @@
 - date: '2018-09-08'
   center_lat: -8.1978
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.3194
     45m: 0.4913
@@ -16346,9 +16346,9 @@
 - date: '2018-09-24'
   center_lat: -8.1988
   center_long: 119.0729
-  direction: 'NO'
+  direction: NO
   values:
-    15m: 0.409
+    15m: 1.0
     45m:
     75m: 0.3734
     105m: 0.2104
@@ -16386,7 +16386,7 @@
     15m:
     45m:
     75m:
-    105m: 0.7583
+    105m: 1.0
     135m: 0.5095
     165m: 0.2617
     195m: 0.042
@@ -16419,10 +16419,10 @@
   direction: S
   values:
     15m:
-    45m: 0.6962
+    45m: 1.0
     75m:
     105m:
-    135m: 0.6483
+    135m: 1.0
     165m: 0.3501
     195m: 0.1693
     225m: 0.0528
@@ -16456,7 +16456,7 @@
     15m: 0.7775
     45m:
     75m: 0.7828
-    105m: 0.6007
+    105m: 0.6567
     135m: 0.2025
     165m: 0.2873
     195m: 0.1539
@@ -16488,10 +16488,10 @@
   center_long: 119.0729
   direction: SO
   values:
-    15m: 0.8049
+    15m: 1.0
     45m:
-    75m: 0.7838
-    105m: 0.7979
+    75m: 1.0
+    105m: 1.0
     135m: 0.3513
     165m: 0.2024
     195m: 0.0931
@@ -16626,12 +16626,12 @@
 - date: '2018-10-10'
   center_lat: -8.1991
   center_long: 119.0726
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.6629
     45m: 0.5775
     75m: 0.6192
-    105m: 0.6076
+    105m: 0.7387
     135m: 0.6448
     165m: 0.4353
     195m: 0.1956
@@ -16768,7 +16768,7 @@
   center_long: 119.0726
   direction: SO
   values:
-    15m: 0.8732
+    15m: 1.0
     45m: 0.3258
     75m: 0.2346
     105m: 0.1527
@@ -16906,7 +16906,7 @@
 - date: '2018-10-18'
   center_lat: -8.198
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.3166
     45m: 0.2861
@@ -17186,7 +17186,7 @@
 - date: '2018-12-21'
   center_lat: -8.1978
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.3629
     45m: 0.3583
@@ -17364,7 +17364,7 @@
   direction: E
   values:
     15m:
-    45m: 0.8759
+    45m: 1.0
     75m: 0.3701
     105m: 0.2862
     135m: 0.1532
@@ -17466,7 +17466,7 @@
 - date: '2019-04-20'
   center_lat: -8.1986
   center_long: 119.0713
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1957
     45m: 0.1743
@@ -17608,7 +17608,7 @@
   center_long: 119.0713
   direction: SO
   values:
-    15m: 0.7617
+    15m: 1.0
     45m: 0.7579
     75m: 0.5063
     105m: 0.2987
@@ -17679,8 +17679,8 @@
   direction: N
   values:
     15m:
-    45m: 0.8509
-    75m: 0.8083
+    45m: 0.9218
+    75m: 0.8782
     105m: 0.7425
     135m: 0.3793
     165m: 0.2398
@@ -17713,7 +17713,7 @@
   center_long: 119.0702
   direction: NE
   values:
-    15m: 0.9308
+    15m: 1.0
     45m: 0.6748
     75m: 0.6151
     105m: 0.3368
@@ -17746,13 +17746,13 @@
 - date: '2019-06-15'
   center_lat: -8.1978
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
-    15m: 0.5743
-    45m: 0.5868
-    75m: 0.5932
-    105m: 0.6007
-    135m: 0.6073
+    15m: 1.0
+    45m: 1.0
+    75m: 1.0
+    105m: 1.0
+    135m: 1.0
     165m: 0.3465
     195m: 0.2073
     225m: 0.1293
@@ -17784,9 +17784,9 @@
   direction: O
   values:
     15m:
-    45m: 0.7548
-    75m: 0.786
-    105m: 0.8004
+    45m: 1.0
+    75m: 1.0
+    105m: 1.0
     135m: 0.7171
     165m: 0.5199
     195m: 0.338
@@ -17819,7 +17819,7 @@
   direction: S
   values:
     15m:
-    45m: 0.9376
+    45m: 1.0
     75m: 0.8292
     105m: 0.5714
     135m: 0.332
@@ -17853,7 +17853,7 @@
   center_long: 119.0702
   direction: SE
   values:
-    15m: 0.9005
+    15m: 1.0
     45m: 0.8803
     75m: 0.5136
     105m: 0.3178
@@ -17888,9 +17888,9 @@
   center_long: 119.0702
   direction: SO
   values:
-    15m: 0.8057
-    45m: 0.8521
-    75m: 0.873
+    15m: 1.0
+    45m: 1.0
+    75m: 1.0
     105m: 0.736
     135m: 0.5779
     165m: 0.3394
@@ -18026,7 +18026,7 @@
 - date: '2019-09-03'
   center_lat: -8.1978
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.5086
     45m: 0.4901
@@ -18306,7 +18306,7 @@
 - date: '2019-09-11'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.4662
     45m: 0.6494
@@ -18586,7 +18586,7 @@
 - date: '2019-09-27'
   center_lat: -8.198
   center_long: 119.0707
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.662
     45m: 0.6139
@@ -18728,7 +18728,7 @@
   center_long: 119.0707
   direction: SO
   values:
-    15m: 0.846
+    15m: 1.0
     45m: 0.4023
     75m: 0.212
     105m: 0.132
@@ -18866,7 +18866,7 @@
 - date: '2019-10-13'
   center_lat: -8.1978
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.5694
     45m: 0.7027
@@ -19008,7 +19008,7 @@
   center_long: 119.071
   direction: SO
   values:
-    15m: 0.8164
+    15m: 1.0
     45m:
     75m:
     105m: 0.4377
@@ -19146,7 +19146,7 @@
 - date: '2019-11-06'
   center_lat: -8.198
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.6184
     45m: 0.5884
@@ -19184,7 +19184,7 @@
   direction: O
   values:
     15m:
-    45m: 0.8441
+    45m: 1.0
     75m: 0.6411
     105m: 0.4402
     135m: 0.313
@@ -19219,8 +19219,8 @@
   direction: S
   values:
     15m:
-    45m: 0.7253
-    75m: 0.6999
+    45m: 1.0
+    75m: 0.8307
     105m: 0.6129
     135m: 0.5005
     165m: 0.3503
@@ -19253,8 +19253,8 @@
   center_long: 119.071
   direction: SE
   values:
-    15m: 0.8476
-    45m: 0.8361
+    15m: 1.0
+    45m: 1.0
     75m: 0.652
     105m: 0.5503
     135m: 0.3902
@@ -19288,8 +19288,8 @@
   center_long: 119.071
   direction: SO
   values:
-    15m: 0.7737
-    45m: 0.7824
+    15m: 1.0
+    45m: 1.0
     75m: 0.6509
     105m: 0.5507
     135m: 0.3138
@@ -19426,7 +19426,7 @@
 - date: '2019-11-14'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.5765
     45m: 0.7063
@@ -19502,7 +19502,7 @@
     45m:
     75m: 0.4862
     105m: 0.5317
-    135m: 0.3311
+    135m: 0.5205
     165m: 0.3661
     195m: 0.2755
     225m: 0.3668
@@ -19568,7 +19568,7 @@
   center_long: 119.071
   direction: SO
   values:
-    15m: 0.7472
+    15m: 1.0
     45m:
     75m:
     105m:
@@ -19639,9 +19639,9 @@
   direction: N
   values:
     15m:
-    45m: 0.7682
-    75m: 0.768
-    105m: 0.7678
+    45m: 1.0
+    75m: 1.0
+    105m: 1.0
     135m: 0.5664
     165m: 0.3704
     195m: 0.223
@@ -19673,7 +19673,7 @@
   center_long: 119.0702
   direction: NE
   values:
-    15m: 0.8524
+    15m: 1.0
     45m: 0.7514
     75m: 0.7063
     105m: 0.3725
@@ -19706,12 +19706,12 @@
 - date: '2019-12-08'
   center_lat: -8.1975
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
-    15m: 0.6307
-    45m: 0.6309
-    75m: 0.6362
-    105m: 0.6383
+    15m: 1.0
+    45m: 1.0
+    75m: 1.0
+    105m: 1.0
     135m: 0.5345
     165m: 0.3227
     195m: 0.1878
@@ -19744,9 +19744,9 @@
   direction: O
   values:
     15m:
-    45m: 0.8306
-    75m: 0.8241
-    105m: 0.8184
+    45m: 1.0
+    75m: 1.0
+    105m: 1.0
     135m: 0.63
     165m: 0.398
     195m: 0.2397
@@ -19779,7 +19779,7 @@
   direction: S
   values:
     15m:
-    45m: 0.8646
+    45m: 1.0
     75m: 0.5225
     105m: 0.3762
     135m: 0.2695
@@ -19813,7 +19813,7 @@
   center_long: 119.0702
   direction: SE
   values:
-    15m: 0.8978
+    15m: 1.0
     45m: 0.7907
     75m: 0.3825
     105m: 0.287
@@ -19848,9 +19848,9 @@
   center_long: 119.0702
   direction: SO
   values:
-    15m: 0.834
-    45m: 0.8387
-    75m: 0.7018
+    15m: 1.0
+    45m: 1.0
+    75m: 0.7834
     105m: 0.4523
     135m: 0.3349
     165m: 0.2264
@@ -19986,7 +19986,7 @@
 - date: '2020-04-30'
   center_lat: -8.198
   center_long: 119.0705
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.2648
     45m: 0.2243
@@ -20266,7 +20266,7 @@
 - date: '2020-08-04'
   center_lat: -8.1978
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.089
     45m: 0.0904
@@ -20546,7 +20546,7 @@
 - date: '2020-08-12'
   center_lat: -8.1978
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1875
     45m: 0.1333
@@ -20826,7 +20826,7 @@
 - date: '2020-09-05'
   center_lat: -8.1978
   center_long: 119.0705
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1112
     45m: 0.109
@@ -21106,7 +21106,7 @@
 - date: '2020-09-13'
   center_lat: -8.1978
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0851
     45m: 0.0389
@@ -21386,7 +21386,7 @@
 - date: '2020-11-16'
   center_lat: -8.198
   center_long: 119.0702
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0241
     45m: -0.0194
@@ -21666,7 +21666,7 @@
 - date: '2021-06-04'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0942
     45m: 0.0978
@@ -21946,7 +21946,7 @@
 - date: '2021-07-30'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0895
     45m: 0.0908
@@ -22226,7 +22226,7 @@
 - date: '2021-08-23'
   center_lat: -8.1972
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0392
     45m: 0.0409
@@ -22506,7 +22506,7 @@
 - date: '2021-08-31'
   center_lat: -8.1978
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0236
     45m: 0.0158
@@ -22786,7 +22786,7 @@
 - date: '2022-04-04'
   center_lat: -8.1972
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0344
     45m: 0.0359
@@ -23066,7 +23066,7 @@
 - date: '2022-04-20'
   center_lat: -8.1989
   center_long: 119.0661
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.0236
@@ -23346,7 +23346,7 @@
 - date: '2022-05-22'
   center_lat: -8.1972
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0925
     45m: 0.0918
@@ -23626,7 +23626,7 @@
 - date: '2022-09-19'
   center_lat: -8.2018
   center_long: 119.0738
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0974
     45m:
@@ -23800,7 +23800,7 @@
     885m: -0.067
 - date: '2022-09-27'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: E
   values:
     15m:
@@ -23835,7 +23835,7 @@
     885m: 0.0053
 - date: '2022-09-27'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: N
   values:
     15m:
@@ -23870,7 +23870,7 @@
     885m: 0.0194
 - date: '2022-09-27'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: NE
   values:
     15m: 0.0273
@@ -23905,8 +23905,8 @@
     885m: -0.0072
 - date: '2022-09-27'
   center_lat: -8.2032
-  center_long: 119.073
-  direction: 'NO'
+  center_long: 119.0729
+  direction: NO
   values:
     15m: 0.0583
     45m:
@@ -23940,7 +23940,7 @@
     885m: -0.0692
 - date: '2022-09-27'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: O
   values:
     15m:
@@ -23975,7 +23975,7 @@
     885m: -0.0055
 - date: '2022-09-27'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: S
   values:
     15m:
@@ -24010,7 +24010,7 @@
     885m: -0.0309
 - date: '2022-09-27'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: SE
   values:
     15m: 0.0935
@@ -24045,7 +24045,7 @@
     885m: -0.0245
 - date: '2022-09-27'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: SO
   values:
     15m: -0.0296
@@ -24080,7 +24080,7 @@
     885m: -0.0357
 - date: '2022-10-13'
   center_lat: -8.2037
-  center_long: 119.0718
+  center_long: 119.0719
   direction: E
   values:
     15m:
@@ -24115,7 +24115,7 @@
     885m: -0.0175
 - date: '2022-10-13'
   center_lat: -8.2037
-  center_long: 119.0718
+  center_long: 119.0719
   direction: N
   values:
     15m:
@@ -24150,7 +24150,7 @@
     885m: 0.0471
 - date: '2022-10-13'
   center_lat: -8.2037
-  center_long: 119.0718
+  center_long: 119.0719
   direction: NE
   values:
     15m: 0.105
@@ -24185,8 +24185,8 @@
     885m: -0.0166
 - date: '2022-10-13'
   center_lat: -8.2037
-  center_long: 119.0718
-  direction: 'NO'
+  center_long: 119.0719
+  direction: NO
   values:
     15m: 0.0935
     45m: 0.1269
@@ -24220,7 +24220,7 @@
     885m: -0.1235
 - date: '2022-10-13'
   center_lat: -8.2037
-  center_long: 119.0718
+  center_long: 119.0719
   direction: O
   values:
     15m:
@@ -24255,7 +24255,7 @@
     885m: 0.001
 - date: '2022-10-13'
   center_lat: -8.2037
-  center_long: 119.0718
+  center_long: 119.0719
   direction: S
   values:
     15m:
@@ -24290,7 +24290,7 @@
     885m: -0.0025
 - date: '2022-10-13'
   center_lat: -8.2037
-  center_long: 119.0718
+  center_long: 119.0719
   direction: SE
   values:
     15m: 0.1293
@@ -24325,7 +24325,7 @@
     885m: -0.0497
 - date: '2022-10-13'
   center_lat: -8.2037
-  center_long: 119.0718
+  center_long: 119.0719
   direction: SO
   values:
     15m: 0.0304
@@ -24359,42 +24359,7 @@
     855m: 0.0053
     885m: -0.004
 - date: '2022-12-08'
-  center_lat: -8.2037
-  center_long: 119.0718
-  direction: E
-  values:
-    15m:
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m: -0.0163
-    285m: -0.0153
-    315m:
-    345m:
-    375m:
-    405m:
-    435m:
-    465m:
-    495m: 0.0066
-    525m: 0.0093
-    555m: 0.0242
-    585m:
-    615m:
-    645m: 0.0146
-    675m:
-    705m:
-    735m:
-    765m:
-    795m: -0.0162
-    825m: -0.0096
-    855m: -0.0139
-    885m: -0.0188
-- date: '2022-12-08'
-  center_lat: -8.2014
+  center_lat: -8.2015
   center_long: 119.0722
   direction: E
   values:
@@ -24404,79 +24369,44 @@
     105m: 0.0412
     135m: 0.0358
     165m: 0.0254
-    195m:
-    225m:
-    255m:
-    285m:
-    315m: -0.0046
-    345m: -0.0018
-    375m:
-    405m: -0.0009
-    435m:
-    465m: 0.0055
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m: 0.0048
-    705m: -0.0024
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.1991
-  center_long: 119.0726
-  direction: E
-  values:
-    15m:
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
     195m: 0.0191
     225m: -0.0131
-    255m:
-    285m:
-    315m:
-    345m:
+    255m: -0.0163
+    285m: -0.0153
+    315m: -0.0046
+    345m: -0.0018
     375m: -0.0063
-    405m:
+    405m: -0.0009
     435m: -0.0027
-    465m:
-    495m:
-    525m:
-    555m:
+    465m: 0.0055
+    495m: 0.0066
+    525m: 0.0093
+    555m: 0.0242
     585m: 0.0234
     615m: 0.0146
-    645m:
-    675m:
-    705m:
+    645m: 0.0146
+    675m: 0.0048
+    705m: -0.0024
     735m: -0.0073
     765m: -0.0067
-    795m:
-    825m:
-    855m:
-    885m:
+    795m: -0.0162
+    825m: -0.0096
+    855m: -0.0139
+    885m: -0.0188
 - date: '2022-12-08'
-  center_lat: -8.2037
-  center_long: 119.0718
+  center_lat: -8.2017
+  center_long: 119.0722
   direction: N
   values:
     15m:
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
+    45m: 0.0365
+    75m: 0.0662
+    105m: 0.051
+    135m: 0.0256
+    165m: 0.0268
     195m: 0.026
     225m: 0.0181
-    255m:
+    255m: 0.0098
     285m: -0.0016
     315m: -0.0032
     345m: -0.0064
@@ -24499,186 +24429,46 @@
     855m: -0.0062
     885m: 0.0037
 - date: '2022-12-08'
-  center_lat: -8.2014
-  center_long: 119.0722
-  direction: N
-  values:
-    15m:
-    45m:
-    75m: 0.0662
-    105m: 0.051
-    135m: 0.0256
-    165m: 0.0268
-    195m:
-    225m:
-    255m: 0.0098
-    285m:
-    315m:
-    345m:
-    375m:
-    405m:
-    435m:
-    465m:
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.1991
-  center_long: 119.0726
-  direction: N
-  values:
-    15m:
-    45m: 0.0365
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m:
-    285m:
-    315m:
-    345m:
-    375m:
-    405m:
-    435m:
-    465m:
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.2037
-  center_long: 119.0718
-  direction: NE
-  values:
-    15m:
-    45m: 0.0714
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m: 0.0225
-    285m:
-    315m: 0.0278
-    345m:
-    375m:
-    405m: 0.0255
-    435m:
-    465m:
-    495m:
-    525m: 0.0208
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m:
-    735m: -0.0034
-    765m:
-    795m:
-    825m:
-    855m: -0.0284
-    885m: -0.0453
-- date: '2022-12-08'
-  center_lat: -8.2014
+  center_lat: -8.2015
   center_long: 119.0722
   direction: NE
   values:
     15m: 0.07
-    45m:
+    45m: 0.0714
     75m: 0.0726
     105m: 0.0738
     135m: 0.0535
     165m: 0.0343
     195m: 0.0309
-    225m:
-    255m:
-    285m:
-    315m:
+    225m: -0.0077
+    255m: 0.0225
+    285m: 0.014
+    315m: 0.0278
     345m: 0.0177
-    375m:
-    405m:
+    375m: 0.022
+    405m: 0.0255
     435m: 0.028
-    465m:
+    465m: 0.0071
     495m: 0.0257
-    525m:
+    525m: 0.0208
     555m: 0.0145
     585m: 0.0102
     615m: 0.0063
     645m: -0.0021
     675m: -0.0126
-    705m:
-    735m:
+    705m: -0.0054
+    735m: -0.0034
     765m: -0.0015
     795m: -0.018
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.1991
-  center_long: 119.0726
-  direction: NE
-  values:
-    15m:
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m: -0.0077
-    255m:
-    285m: 0.014
-    315m:
-    345m:
-    375m: 0.022
-    405m:
-    435m:
-    465m: 0.0071
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m: -0.0054
-    735m:
-    765m:
-    795m:
     825m: -0.0097
-    855m:
-    885m:
+    855m: -0.0284
+    885m: -0.0453
 - date: '2022-12-08'
-  center_lat: -8.2037
-  center_long: 119.0718
-  direction: 'NO'
+  center_lat: -8.202
+  center_long: 119.0722
+  direction: NO
   values:
-    15m:
+    15m: 0.0462
     45m: 0.0724
     75m: 0.0807
     105m: 0.1427
@@ -24690,97 +24480,27 @@
     285m: 0.0938
     315m: 0.0389
     345m: 0.0384
-    375m:
+    375m: 0.0238
     405m: 0.0282
-    435m:
-    465m:
+    435m: 0.0087
+    465m: 0.0266
     495m: 0.0278
     525m: 0.0287
     555m: -0.001
-    585m:
-    615m:
-    645m: 0.0079
-    675m:
-    705m:
-    735m:
-    765m: -0.0191
-    795m:
-    825m:
-    855m: -0.0633
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.2014
-  center_long: 119.0722
-  direction: 'NO'
-  values:
-    15m: 0.0462
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m:
-    285m:
-    315m:
-    345m:
-    375m: 0.0238
-    405m:
-    435m: 0.0087
-    465m: 0.0266
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m: -0.0091
-    735m:
-    765m:
-    795m:
-    825m: -0.0465
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.1991
-  center_long: 119.0726
-  direction: 'NO'
-  values:
-    15m:
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m:
-    285m:
-    315m:
-    345m:
-    375m:
-    405m:
-    435m:
-    465m:
-    495m:
-    525m:
-    555m:
     585m: -0.0167
     615m: -0.0014
-    645m:
+    645m: 0.0079
     675m: -0.0038
-    705m:
+    705m: -0.0091
     735m: -0.011
-    765m:
+    765m: -0.0191
     795m: -0.0205
-    825m:
-    855m:
+    825m: -0.0465
+    855m: -0.0633
     885m: -0.0625
 - date: '2022-12-08'
-  center_lat: -8.2037
-  center_long: 119.0718
+  center_lat: -8.2016
+  center_long: 119.0722
   direction: O
   values:
     15m:
@@ -24789,88 +24509,18 @@
     105m: 0.0932
     135m: 0.0914
     165m: 0.1159
-    195m:
-    225m:
-    255m: 0.1118
-    285m: 0.0599
-    315m:
-    345m:
-    375m:
-    405m:
-    435m: -0.008
-    465m:
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.2014
-  center_long: 119.0722
-  direction: O
-  values:
-    15m:
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
     195m: 0.0388
     225m: 0.0385
-    255m:
-    285m:
-    315m:
-    345m:
-    375m: 0.0066
-    405m: -0.0031
-    435m:
-    465m: -0.011
-    495m:
-    525m: -0.0119
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.1991
-  center_long: 119.0726
-  direction: O
-  values:
-    15m:
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m:
-    285m:
+    255m: 0.1118
+    285m: 0.0599
     315m: 0.0165
     345m: 0.0085
-    375m:
-    405m:
-    435m:
-    465m:
+    375m: 0.0066
+    405m: -0.0031
+    435m: -0.008
+    465m: -0.011
     495m: -0.001
-    525m:
+    525m: -0.0119
     555m: -0.0042
     585m: -0.0014
     615m: -0.0009
@@ -24884,13 +24534,13 @@
     855m: -0.0183
     885m: -0.0293
 - date: '2022-12-08'
-  center_lat: -8.2037
-  center_long: 119.0718
+  center_lat: -8.2011
+  center_long: 119.0723
   direction: S
   values:
     15m:
-    45m:
-    75m:
+    45m: 0.1073
+    75m: 0.0741
     105m: 0.0667
     135m: 0.04
     165m: 0.0377
@@ -24905,80 +24555,10 @@
     435m: 0.0877
     465m: 0.0188
     495m: 0.0108
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.2014
-  center_long: 119.0722
-  direction: S
-  values:
-    15m:
-    45m:
-    75m: 0.0741
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m:
-    285m:
-    315m:
-    345m:
-    375m:
-    405m:
-    435m:
-    465m:
-    495m:
     525m: 0.0049
-    555m:
-    585m:
-    615m: -0.0309
-    645m:
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.1991
-  center_long: 119.0726
-  direction: S
-  values:
-    15m:
-    45m: 0.1073
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m:
-    285m:
-    315m:
-    345m:
-    375m:
-    405m:
-    435m:
-    465m:
-    495m:
-    525m:
     555m: -0.0138
     585m: -0.0089
-    615m:
+    615m: -0.0309
     645m: -0.0392
     675m: -0.0309
     705m: -0.0206
@@ -24989,116 +24569,46 @@
     855m: 0.0071
     885m: -0.0078
 - date: '2022-12-08'
-  center_lat: -8.2037
-  center_long: 119.0718
-  direction: SE
-  values:
-    15m:
-    45m: 0.0972
-    75m:
-    105m: 0.0963
-    135m:
-    165m:
-    195m: 0.0508
-    225m:
-    255m:
-    285m:
-    315m:
-    345m:
-    375m: 0.0265
-    405m:
-    435m:
-    465m: 0.0141
-    495m:
-    525m: 0.0269
-    555m:
-    585m: -0.0009
-    615m: -0.0083
-    645m:
-    675m: -0.0087
-    705m:
-    735m: -0.0265
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.2014
+  center_lat: -8.2015
   center_long: 119.0722
   direction: SE
   values:
     15m: 0.1474
-    45m:
-    75m:
-    105m:
-    135m:
+    45m: 0.0972
+    75m: 0.1222
+    105m: 0.0963
+    135m: 0.084
     165m: 0.0682
-    195m:
+    195m: 0.0508
     225m: 0.0409
     255m: 0.0364
-    285m:
-    315m: 0.0313
-    345m:
-    375m:
-    405m: 0.0091
-    435m:
-    465m:
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m: -0.0094
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.1991
-  center_long: 119.0726
-  direction: SE
-  values:
-    15m:
-    45m:
-    75m: 0.1222
-    105m:
-    135m: 0.084
-    165m:
-    195m:
-    225m:
-    255m:
     285m: 0.0443
-    315m:
+    315m: 0.0313
     345m: 0.0204
-    375m:
-    405m:
+    375m: 0.0265
+    405m: 0.0091
     435m: 0.0129
-    465m:
+    465m: 0.0141
     495m: 0.0206
-    525m:
+    525m: 0.0269
     555m: 0.0105
-    585m:
-    615m:
-    645m:
-    675m:
+    585m: -0.0009
+    615m: -0.0083
+    645m: -0.0094
+    675m: -0.0087
     705m: -0.016
-    735m:
+    735m: -0.0265
     765m: -0.0166
     795m: -0.0077
     825m: 0.0086
     855m: -0.0126
     885m: -0.0216
 - date: '2022-12-08'
-  center_lat: -8.2037
-  center_long: 119.0718
+  center_lat: -8.201
+  center_long: 119.0723
   direction: SO
   values:
-    15m:
+    15m: -0.0128
     45m: -0.1172
     75m: -0.0991
     105m: -0.082
@@ -25107,82 +24617,12 @@
     195m: -0.0065
     225m: 0.0141
     255m: 0.0225
-    285m:
-    315m:
-    345m:
-    375m: 0.0322
-    405m:
-    435m:
-    465m:
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.2014
-  center_long: 119.0722
-  direction: SO
-  values:
-    15m: -0.0128
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m:
-    285m:
+    285m: 0.0241
     315m: 0.0349
     345m: 0.0236
-    375m:
-    405m:
-    435m: 0.0
-    465m:
-    495m:
-    525m:
-    555m:
-    585m:
-    615m:
-    645m:
-    675m:
-    705m:
-    735m:
-    765m:
-    795m:
-    825m:
-    855m:
-    885m:
-- date: '2022-12-08'
-  center_lat: -8.1991
-  center_long: 119.0726
-  direction: SO
-  values:
-    15m:
-    45m:
-    75m:
-    105m:
-    135m:
-    165m:
-    195m:
-    225m:
-    255m:
-    285m: 0.0241
-    315m:
-    345m:
-    375m:
+    375m: 0.0322
     405m: 0.0169
-    435m:
+    435m: 0.0
     465m: -0.0101
     495m: -0.0211
     525m: -0.0179
@@ -25306,7 +24746,7 @@
 - date: '2023-05-25'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0718
     45m: 0.075
@@ -25586,7 +25026,7 @@
 - date: '2023-06-18'
   center_lat: -8.1972
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0832
     45m: 0.0892
@@ -25866,7 +25306,7 @@
 - date: '2023-08-29'
   center_lat: -8.1972
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0711
     45m: 0.069
@@ -26146,7 +25586,7 @@
 - date: '2023-09-30'
   center_lat: -8.1988
   center_long: 119.0726
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0208
     45m: 0.0013
@@ -26426,7 +25866,7 @@
 - date: '2023-10-16'
   center_lat: -8.204
   center_long: 119.0683
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.1222
@@ -26706,7 +26146,7 @@
 - date: '2024-03-08'
   center_lat: -8.2029
   center_long: 119.0732
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0679
     45m:
@@ -26880,7 +26320,7 @@
     885m: -0.0081
 - date: '2024-09-16'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: E
   values:
     15m:
@@ -26915,7 +26355,7 @@
     885m: 0.0113
 - date: '2024-09-16'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: N
   values:
     15m:
@@ -26950,7 +26390,7 @@
     885m: 0.0151
 - date: '2024-09-16'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: NE
   values:
     15m: 0.0499
@@ -26985,8 +26425,8 @@
     885m: -0.0278
 - date: '2024-09-16'
   center_lat: -8.2032
-  center_long: 119.073
-  direction: 'NO'
+  center_long: 119.0729
+  direction: NO
   values:
     15m: 0.0559
     45m:
@@ -27020,7 +26460,7 @@
     885m: -0.0598
 - date: '2024-09-16'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: O
   values:
     15m:
@@ -27055,7 +26495,7 @@
     885m: -0.0141
 - date: '2024-09-16'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: S
   values:
     15m:
@@ -27090,7 +26530,7 @@
     885m: -0.0372
 - date: '2024-09-16'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: SE
   values:
     15m: 0.0712
@@ -27125,7 +26565,7 @@
     885m: -0.0405
 - date: '2024-09-16'
   center_lat: -8.2032
-  center_long: 119.073
+  center_long: 119.0729
   direction: SO
   values:
     15m: -0.0409
@@ -27266,7 +26706,7 @@
 - date: '2024-10-26'
   center_lat: -8.2043
   center_long: 119.0689
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.0325
@@ -27546,7 +26986,7 @@
 - date: '2025-04-28'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0314
     45m: 0.0325
@@ -27826,7 +27266,7 @@
 - date: '2025-07-17'
   center_lat: -8.1975
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0328
     45m: 0.0293
@@ -28106,7 +27546,7 @@
 - date: '2025-08-10'
   center_lat: -8.1972
   center_long: 119.071
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0689
     45m: 0.0721
@@ -28386,7 +27826,7 @@
 - date: '2025-09-03'
   center_lat: -8.2043
   center_long: 119.0689
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.0172
@@ -28666,7 +28106,7 @@
 - date: '2025-09-11'
   center_lat: -8.1999
   center_long: 119.0743
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.1436
     45m:
@@ -28859,7 +28299,7 @@
     activity_evidence: Eruption Observed
     activity_status: Historically active (eruption observed/recorded)
     thermal_regime_class: Magmatic, unbuffered - explosive, no crater lake
-    crater_lake_mentioned: 'No'
+    crater_lake_mentioned: No
     label_confidence: moderate
     thermal_proxy_set: P03
     morph_pc1: 0.6049
@@ -28875,8 +28315,5 @@
     morph_secondary_vents: 4
     morph_note_code: 4
     gee_vs_gvp_offset_km: 0.299
-    pyvolcans_analogues: Marapi (Indonesia, total_analogy=0.956); Lamongan (Indonesia,
-      total_analogy=0.954); Etna (Italy, total_analogy=0.952); Stromboli (Italy, total_analogy=0.946);
-      San Martin (Mexico, total_analogy=0.944)
+    pyvolcans_analogues: Marapi (Indonesia, total_analogy=0.956); Lamongan (Indonesia, total_analogy=0.954); Etna (Italy, total_analogy=0.952); Stromboli (Italy, total_analogy=0.946); San Martin (Mexico, total_analogy=0.944)
     pyvolcans_analogue_vnums: 261140;263320;211060;211040;341110
-    notes:

@@ -106,7 +106,7 @@
 - date: '2000-08-12'
   center_lat: 55.4151
   center_long: -161.8872
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.4772
     45m: 0.4772
@@ -386,7 +386,7 @@
 - date: '2000-08-19'
   center_lat: 55.4153
   center_long: -161.8878
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.2654
@@ -666,7 +666,7 @@
 - date: '2001-11-03'
   center_lat: 55.4162
   center_long: -161.8986
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0107
     45m:
@@ -946,7 +946,7 @@
 - date: '2008-08-02'
   center_lat: 55.4148
   center_long: -161.8886
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.3003
     45m: 0.2082
@@ -1226,7 +1226,7 @@
 - date: '2013-05-19'
   center_lat: 55.4212
   center_long: -161.8968
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.0372
@@ -1506,7 +1506,7 @@
 - date: '2014-06-23'
   center_lat: 55.4162
   center_long: -161.891
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0599
     45m: 0.0505
@@ -1786,7 +1786,7 @@
 - date: '2014-07-25'
   center_lat: 55.4164
   center_long: -161.8896
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0148
     45m: 0.0227
@@ -1960,7 +1960,7 @@
     885m: -0.0257
 - date: '2015-08-06'
   center_lat: 55.4167
-  center_long: -161.8902
+  center_long: -161.8901
   direction: E
   values:
     15m: 0.2197
@@ -1995,7 +1995,7 @@
     885m: 0.0202
 - date: '2015-08-06'
   center_lat: 55.4167
-  center_long: -161.8902
+  center_long: -161.8901
   direction: N
   values:
     15m:
@@ -2030,7 +2030,7 @@
     885m:
 - date: '2015-08-06'
   center_lat: 55.4167
-  center_long: -161.8902
+  center_long: -161.8901
   direction: NE
   values:
     15m: 0.2269
@@ -2065,8 +2065,8 @@
     885m: 0.0329
 - date: '2015-08-06'
   center_lat: 55.4167
-  center_long: -161.8902
-  direction: 'NO'
+  center_long: -161.8901
+  direction: NO
   values:
     15m: 0.7837
     45m: 0.7729
@@ -2100,7 +2100,7 @@
     885m: -0.0455
 - date: '2015-08-06'
   center_lat: 55.4167
-  center_long: -161.8902
+  center_long: -161.8901
   direction: O
   values:
     15m:
@@ -2135,7 +2135,7 @@
     885m:
 - date: '2015-08-06'
   center_lat: 55.4167
-  center_long: -161.8902
+  center_long: -161.8901
   direction: S
   values:
     15m:
@@ -2170,7 +2170,7 @@
     885m: 0.0105
 - date: '2015-08-06'
   center_lat: 55.4167
-  center_long: -161.8902
+  center_long: -161.8901
   direction: SE
   values:
     15m: 0.236
@@ -2205,7 +2205,7 @@
     885m: 0.0287
 - date: '2015-08-06'
   center_lat: 55.4167
-  center_long: -161.8902
+  center_long: -161.8901
   direction: SO
   values:
     15m: 0.3283
@@ -2346,7 +2346,7 @@
 - date: '2016-06-20'
   center_lat: 55.417
   center_long: -161.8905
-  direction: 'NO'
+  direction: NO
   values:
     15m: -0.0775
     45m: -0.0181
@@ -2626,7 +2626,7 @@
 - date: '2016-06-21'
   center_lat: 55.418
   center_long: -161.8912
-  direction: 'NO'
+  direction: NO
   values:
     15m: -0.1775
     45m: -0.1442
@@ -2906,7 +2906,7 @@
 - date: '2016-07-23'
   center_lat: 55.418
   center_long: -161.8912
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0953
     45m: 0.0838
@@ -3186,7 +3186,7 @@
 - date: '2016-08-08'
   center_lat: 55.4185
   center_long: -161.8936
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.2047
@@ -3431,7 +3431,7 @@
 - date: '2016-11-03'
   center_lat: 55.4186
   center_long: -161.8932
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m:
@@ -3711,7 +3711,7 @@
 - date: '2018-08-30'
   center_lat: 55.4158
   center_long: -161.8934
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.2811
@@ -3991,7 +3991,7 @@
 - date: '2019-08-16'
   center_lat: 55.4166
   center_long: -161.8862
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.1852
@@ -4271,7 +4271,7 @@
 - date: '2019-08-17'
   center_lat: 55.4164
   center_long: -161.8906
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.4249
     45m: 0.3934
@@ -4551,7 +4551,7 @@
 - date: '2019-11-05'
   center_lat: 55.4128
   center_long: -161.8951
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.014
@@ -4724,7 +4724,7 @@
     855m: -0.001
     885m: -0.001
 - date: '2021-02-11'
-  center_lat: 55.414
+  center_lat: 55.4141
   center_long: -161.8985
   direction: E
   values:
@@ -4759,7 +4759,7 @@
     855m: -0.0158
     885m: -0.0061
 - date: '2021-02-11'
-  center_lat: 55.414
+  center_lat: 55.4141
   center_long: -161.8985
   direction: N
   values:
@@ -4794,7 +4794,7 @@
     855m: -0.0021
     885m: -0.0039
 - date: '2021-02-11'
-  center_lat: 55.414
+  center_lat: 55.4141
   center_long: -161.8985
   direction: NE
   values:
@@ -4829,9 +4829,9 @@
     855m: -0.0001
     885m: 0.0024
 - date: '2021-02-11'
-  center_lat: 55.414
+  center_lat: 55.4141
   center_long: -161.8985
-  direction: 'NO'
+  direction: NO
   values:
     15m: -0.018
     45m: -0.0117
@@ -4864,7 +4864,7 @@
     855m: -0.0013
     885m: -0.0061
 - date: '2021-02-11'
-  center_lat: 55.414
+  center_lat: 55.4141
   center_long: -161.8985
   direction: O
   values:
@@ -4899,7 +4899,7 @@
     855m: -0.0064
     885m: -0.0087
 - date: '2021-02-11'
-  center_lat: 55.414
+  center_lat: 55.4141
   center_long: -161.8985
   direction: S
   values:
@@ -4934,7 +4934,7 @@
     855m:
     885m:
 - date: '2021-02-11'
-  center_lat: 55.414
+  center_lat: 55.4141
   center_long: -161.8985
   direction: SE
   values:
@@ -4969,7 +4969,7 @@
     855m: 0.0046
     885m:
 - date: '2021-02-11'
-  center_lat: 55.414
+  center_lat: 55.4141
   center_long: -161.8985
   direction: SO
   values:
@@ -5111,7 +5111,7 @@
 - date: '2022-08-16'
   center_lat: 55.4166
   center_long: -161.8886
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.0824
@@ -5285,7 +5285,7 @@
     885m: 0.0019
 - date: '2023-10-12'
   center_lat: 55.4149
-  center_long: -161.8966
+  center_long: -161.8967
   direction: E
   values:
     15m:
@@ -5320,7 +5320,7 @@
     885m: 0.002
 - date: '2023-10-12'
   center_lat: 55.4149
-  center_long: -161.8966
+  center_long: -161.8967
   direction: N
   values:
     15m:
@@ -5355,7 +5355,7 @@
     885m: -0.0005
 - date: '2023-10-12'
   center_lat: 55.4149
-  center_long: -161.8966
+  center_long: -161.8967
   direction: NE
   values:
     15m:
@@ -5390,8 +5390,8 @@
     885m: -0.0016
 - date: '2023-10-12'
   center_lat: 55.4149
-  center_long: -161.8966
-  direction: 'NO'
+  center_long: -161.8967
+  direction: NO
   values:
     15m:
     45m:
@@ -5425,7 +5425,7 @@
     885m: 0.0057
 - date: '2023-10-12'
   center_lat: 55.4149
-  center_long: -161.8966
+  center_long: -161.8967
   direction: O
   values:
     15m:
@@ -5460,7 +5460,7 @@
     885m:
 - date: '2023-10-12'
   center_lat: 55.4149
-  center_long: -161.8966
+  center_long: -161.8967
   direction: S
   values:
     15m:
@@ -5495,7 +5495,7 @@
     885m: -0.0069
 - date: '2023-10-12'
   center_lat: 55.4149
-  center_long: -161.8966
+  center_long: -161.8967
   direction: SE
   values:
     15m:
@@ -5530,7 +5530,7 @@
     885m: 0.0
 - date: '2023-10-12'
   center_lat: 55.4149
-  center_long: -161.8966
+  center_long: -161.8967
   direction: SO
   values:
     15m:
@@ -5776,7 +5776,7 @@
 - date: '2023-10-23'
   center_lat: 55.4178
   center_long: -161.8893
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0691
     45m:
@@ -5986,7 +5986,7 @@
 - date: '2025-07-15'
   center_lat: 55.4143
   center_long: -161.8907
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0168
     45m: 0.0068
@@ -6195,8 +6195,5 @@
     morph_secondary_vents: 2
     morph_note_code: 4
     gee_vs_gvp_offset_km: 0.209
-    pyvolcans_analogues: Manam (Papua New Guinea, total_analogy=0.988); Antuco (Chile,
-      total_analogy=0.987); Chikurachki (Russia, total_analogy=0.983); Ulawun (Papua
-      New Guinea, total_analogy=0.982); Llaima (Chile, total_analogy=0.981)
+    pyvolcans_analogues: Manam (Papua New Guinea, total_analogy=0.988); Antuco (Chile, total_analogy=0.987); Chikurachki (Russia, total_analogy=0.983); Ulawun (Papua New Guinea, total_analogy=0.982); Llaima (Chile, total_analogy=0.981)
     pyvolcans_analogue_vnums: 251020;357080;290360;252120;357110
-    notes:

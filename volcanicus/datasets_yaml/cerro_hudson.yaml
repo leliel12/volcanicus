@@ -106,7 +106,7 @@
 - date: '2005-07-12'
   center_lat: -45.8984
   center_long: -72.9692
-  direction: 'NO'
+  direction: NO
   values:
     15m: -0.0047
     45m: -0.0049
@@ -386,7 +386,7 @@
 - date: '2018-12-15'
   center_lat: -45.8964
   center_long: -72.9661
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.0074
@@ -595,8 +595,5 @@
     morph_secondary_vents: 71
     morph_note_code: 1
     gee_vs_gvp_offset_km: 0.188
-    pyvolcans_analogues: Lamington (Papua New Guinea, total_analogy=0.920); Tambora
-      (Indonesia, total_analogy=0.895); Westdahl (United States, total_analogy=0.893);
-      Vulcano (Italy, total_analogy=0.887); Santa Ana (El Salvador, total_analogy=0.885)
+    pyvolcans_analogues: Lamington (Papua New Guinea, total_analogy=0.920); Tambora (Indonesia, total_analogy=0.895); Westdahl (United States, total_analogy=0.893); Vulcano (Italy, total_analogy=0.887); Santa Ana (El Salvador, total_analogy=0.885)
     pyvolcans_analogue_vnums: 253010;264040;311340;211050;343020
-    notes:

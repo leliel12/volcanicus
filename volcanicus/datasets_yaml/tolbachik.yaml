@@ -456,7 +456,7 @@
 - date: '2015-11-03'
   center_lat: 55.8258
   center_long: 160.3324
-  direction: 'NO'
+  direction: NO
   values:
     15m: -0.0196
     45m: -0.0202
@@ -1226,7 +1226,7 @@
 - date: '2017-08-19'
   center_lat: 55.8251
   center_long: 160.3286
-  direction: 'NO'
+  direction: NO
   values:
     15m:
     45m: 0.0121
@@ -1926,7 +1926,7 @@
 - date: '2018-11-03'
   center_lat: 55.8301
   center_long: 160.3144
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0274
     45m:
@@ -2065,7 +2065,7 @@
     885m: 0.0036
 - date: '2019-02-23'
   center_lat: 55.8303
-  center_long: 160.3234
+  center_long: 160.3235
   direction: E
   values:
     15m: 0.0181
@@ -2100,7 +2100,7 @@
     885m: 0.0033
 - date: '2019-02-23'
   center_lat: 55.8303
-  center_long: 160.3234
+  center_long: 160.3235
   direction: N
   values:
     15m:
@@ -2135,7 +2135,7 @@
     885m:
 - date: '2019-02-23'
   center_lat: 55.8303
-  center_long: 160.3234
+  center_long: 160.3235
   direction: NE
   values:
     15m:
@@ -2170,7 +2170,7 @@
     885m: -0.0004
 - date: '2019-02-23'
   center_lat: 55.8303
-  center_long: 160.3234
+  center_long: 160.3235
   direction: S
   values:
     15m: 0.0253
@@ -2205,7 +2205,7 @@
     885m: 0.0003
 - date: '2019-02-23'
   center_lat: 55.8303
-  center_long: 160.3234
+  center_long: 160.3235
   direction: SE
   values:
     15m:
@@ -2240,7 +2240,7 @@
     885m: -0.0004
 - date: '2019-02-23'
   center_lat: 55.8303
-  center_long: 160.3234
+  center_long: 160.3235
   direction: SO
   values:
     15m:
@@ -2381,7 +2381,7 @@
 - date: '2020-02-01'
   center_lat: 55.8368
   center_long: 160.3165
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0095
     45m: 0.0086
@@ -2661,7 +2661,7 @@
 - date: '2020-02-10'
   center_lat: 55.8301
   center_long: 160.3144
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0023
     45m:
@@ -3045,7 +3045,7 @@
     885m:
 - date: '2021-03-16'
   center_lat: 55.8347
-  center_long: 160.3366
+  center_long: 160.3365
   direction: E
   values:
     15m: 0.0447
@@ -3080,7 +3080,7 @@
     885m: 0.0025
 - date: '2021-03-16'
   center_lat: 55.8347
-  center_long: 160.3366
+  center_long: 160.3365
   direction: N
   values:
     15m:
@@ -3115,7 +3115,7 @@
     885m:
 - date: '2021-03-16'
   center_lat: 55.8347
-  center_long: 160.3366
+  center_long: 160.3365
   direction: NE
   values:
     15m:
@@ -3150,8 +3150,8 @@
     885m: 0.0002
 - date: '2021-03-16'
   center_lat: 55.8347
-  center_long: 160.3366
-  direction: 'NO'
+  center_long: 160.3365
+  direction: NO
   values:
     15m: 0.032
     45m:
@@ -3185,7 +3185,7 @@
     885m:
 - date: '2021-03-16'
   center_lat: 55.8347
-  center_long: 160.3366
+  center_long: 160.3365
   direction: S
   values:
     15m:
@@ -3220,7 +3220,7 @@
     885m: -0.0019
 - date: '2021-03-16'
   center_lat: 55.8347
-  center_long: 160.3366
+  center_long: 160.3365
   direction: SE
   values:
     15m:
@@ -3255,7 +3255,7 @@
     885m: 0.0004
 - date: '2021-03-16'
   center_lat: 55.8347
-  center_long: 160.3366
+  center_long: 160.3365
   direction: SO
   values:
     15m:
@@ -3606,7 +3606,7 @@
 - date: '2023-02-17'
   center_lat: 55.8301
   center_long: 160.3144
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0242
     45m:
@@ -4516,7 +4516,7 @@
 - date: '2024-10-26'
   center_lat: 55.8304
   center_long: 160.3139
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0228
     45m:
@@ -4796,7 +4796,7 @@
 - date: '2025-02-06'
   center_lat: 55.8304
   center_long: 160.3139
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0168
     45m: 0.0167
@@ -5076,7 +5076,7 @@
 - date: '2025-03-02'
   center_lat: 55.8301
   center_long: 160.3144
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0225
     45m:
@@ -5626,7 +5626,7 @@
     morph_pc2: 0.7897
     morph_source: Grosse2014
     morph_height_km: 2.81
-    morph_half_width_km: 8.0
+    morph_half_width_km: 8
     morph_summit_basal_width_ratio: 0.303
     morph_crater_diameter_km: 1.69
     morph_crater_depth_km: 0.43
@@ -5635,8 +5635,5 @@
     morph_secondary_vents: 5
     morph_note_code: 4
     gee_vs_gvp_offset_km: 0.755
-    pyvolcans_analogues: Akita-Komagatake (Japan, total_analogy=0.977); Raung (Indonesia,
-      total_analogy=0.967); Soputan (Indonesia, total_analogy=0.962); Oshima-Oshima
-      (Japan, total_analogy=0.961); Guntur (Indonesia, total_analogy=0.959)
+    pyvolcans_analogues: Akita-Komagatake (Japan, total_analogy=0.977); Raung (Indonesia, total_analogy=0.967); Soputan (Indonesia, total_analogy=0.962); Oshima-Oshima (Japan, total_analogy=0.961); Guntur (Indonesia, total_analogy=0.959)
     pyvolcans_analogue_vnums: 283230;263340;266030;285010;263130
-    notes:

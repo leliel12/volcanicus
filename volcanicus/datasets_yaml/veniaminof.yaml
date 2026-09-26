@@ -106,7 +106,7 @@
 - date: '2000-02-04'
   center_lat: 56.1702
   center_long: -159.3728
-  direction: 'NO'
+  direction: NO
   values:
     15m: 0.0013
     45m: 0.0002
@@ -299,7 +299,7 @@
     activity_evidence: Eruption Observed
     activity_status: Historically active (eruption observed/recorded)
     thermal_regime_class: Direct magmatic - open-vent / lava-dominated
-    crater_lake_mentioned: 'No'
+    crater_lake_mentioned: No
     label_confidence: high
     thermal_proxy_set: P01
     morph_pc1: 0.8112
@@ -315,9 +315,5 @@
     morph_secondary_vents: 32
     morph_note_code: 1
     gee_vs_gvp_offset_km: 0.446
-    pyvolcans_analogues: Kirishimayama (Japan, total_analogy=0.958); Karkar (Papua
-      New Guinea, total_analogy=0.958); Krummel-Garbuna-Welcker (Papua New Guinea,
-      total_analogy=0.953); Gorely (Russia, total_analogy=0.952); Cosiguina (Nicaragua,
-      total_analogy=0.951)
+    pyvolcans_analogues: Kirishimayama (Japan, total_analogy=0.958); Karkar (Papua New Guinea, total_analogy=0.958); Krummel-Garbuna-Welcker (Papua New Guinea, total_analogy=0.953); Gorely (Russia, total_analogy=0.952); Cosiguina (Nicaragua, total_analogy=0.951)
     pyvolcans_analogue_vnums: 282090;251030;252070;300070;344010
-    notes:
