@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Kizimen",
+  "gvp_number_2026": 300230,
+  "gvp_number_2018": 300230,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Eastern Kamchatka Volcanic Arc",
+  "latitude": 55.1274,
+  "longitude": 160.3246,
+  "elevation_m_2018": 2334,
+  "elevation_m_2026": 2334.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2013 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 0.2271,
+  "morph_pc2": -1.3334,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.34,
+  "morph_half_width_km": 2.63,
+  "morph_summit_basal_width_ratio": 0.076,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.2,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.496,
+  "pyvolcans_analogues": [
+    {
+      "name": "Manam",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.965,
+      "vnum": 251020
+    },
+    {
+      "name": "Llaima",
+      "country": "Chile",
+      "total_analogy": 0.964,
+      "vnum": 357110
+    },
+    {
+      "name": "Chikurachki",
+      "country": "Russia",
+      "total_analogy": 0.962,
+      "vnum": 290360
+    },
+    {
+      "name": "Pavlof",
+      "country": "United States",
+      "total_analogy": 0.96,
+      "vnum": 312030
+    },
+    {
+      "name": "Galeras",
+      "country": "Colombia",
+      "total_analogy": 0.958,
+      "vnum": 351080
+    }
+  ]
+}

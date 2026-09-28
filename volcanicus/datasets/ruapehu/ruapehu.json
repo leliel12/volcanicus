@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Ruapehu",
+  "gvp_number_2026": 241100,
+  "gvp_number_2018": 241100,
+  "country": "New Zealand",
+  "gvp_region_group": "Tonga-Kermadec Volcanic Regions",
+  "gvp_volcanic_region": "Taupo Volcanic Arc",
+  "latitude": -39.283,
+  "longitude": 175.5674,
+  "elevation_m_2018": 2797,
+  "elevation_m_2026": 2797.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2007 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 0.8413,
+  "morph_pc2": 0.01,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.72,
+  "morph_half_width_km": 7.95,
+  "morph_summit_basal_width_ratio": 0.133,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.79,
+  "morph_circularity": 0.48,
+  "morph_secondary_vents": 10.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.402,
+  "pyvolcans_analogues": [
+    {
+      "name": "Midagahara",
+      "country": "Japan",
+      "total_analogy": 0.968,
+      "vnum": 283080
+    },
+    {
+      "name": "Akita-Yakeyama",
+      "country": "Japan",
+      "total_analogy": 0.966,
+      "vnum": 283260
+    },
+    {
+      "name": "Kusatsu-Shiranesan",
+      "country": "Japan",
+      "total_analogy": 0.966,
+      "vnum": 283120
+    },
+    {
+      "name": "Iwakisan",
+      "country": "Japan",
+      "total_analogy": 0.966,
+      "vnum": 283270
+    },
+    {
+      "name": "Salak",
+      "country": "Indonesia",
+      "total_analogy": 0.965,
+      "vnum": 263050
+    }
+  ]
+}

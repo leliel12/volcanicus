@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Raung",
+  "gvp_number_2026": 263340,
+  "gvp_number_2018": 263340,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Sunda Volcanic Arc",
+  "latitude": -8.1178,
+  "longitude": 114.0601,
+  "elevation_m_2018": 3260,
+  "elevation_m_2026": 3260.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2025 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Magmatic, unbuffered - explosive, no crater lake",
+  "crater_lake_mentioned": "No",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 0.5892,
+  "morph_pc2": 0.8021,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.25,
+  "morph_half_width_km": 7.95,
+  "morph_summit_basal_width_ratio": 0.307,
+  "morph_crater_diameter_km": 1.93,
+  "morph_crater_depth_km": 0.32,
+  "morph_ellipticity_index": 2.1,
+  "morph_circularity": null,
+  "morph_secondary_vents": 13.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.471,
+  "pyvolcans_analogues": [
+    {
+      "name": "Tongariro",
+      "country": "New Zealand",
+      "total_analogy": 0.98,
+      "vnum": 241080
+    },
+    {
+      "name": "Telica",
+      "country": "Nicaragua",
+      "total_analogy": 0.975,
+      "vnum": 344040
+    },
+    {
+      "name": "Oshima-Oshima",
+      "country": "Japan",
+      "total_analogy": 0.971,
+      "vnum": 285010
+    },
+    {
+      "name": "Kirishimayama",
+      "country": "Japan",
+      "total_analogy": 0.971,
+      "vnum": 282090
+    },
+    {
+      "name": "Guntur",
+      "country": "Indonesia",
+      "total_analogy": 0.968,
+      "vnum": 263130
+    }
+  ]
+}

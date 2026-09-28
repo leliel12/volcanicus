@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Long Island",
+  "gvp_number_2026": 251050,
+  "gvp_number_2018": 251050,
+  "country": "Papua New Guinea",
+  "gvp_region_group": "Southwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Bismarck Volcanic Arc",
+  "latitude": -5.3381,
+  "longitude": 147.1144,
+  "elevation_m_2018": 1280,
+  "elevation_m_2026": 1263.0,
+  "volcano_type_class": "Complex volcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1993 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": -0.3204,
+  "morph_pc2": 2.1451,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.27,
+  "morph_half_width_km": 11.35,
+  "morph_summit_basal_width_ratio": 0.525,
+  "morph_crater_diameter_km": 11.9,
+  "morph_crater_depth_km": 0.36,
+  "morph_ellipticity_index": 1.6,
+  "morph_circularity": 0.54,
+  "morph_secondary_vents": 17.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 2.833,
+  "pyvolcans_analogues": [
+    {
+      "name": "Ksudach",
+      "country": "Russia",
+      "total_analogy": 0.956,
+      "vnum": 300050
+    },
+    {
+      "name": "Maly Semyachik",
+      "country": "Russia",
+      "total_analogy": 0.941,
+      "vnum": 300140
+    },
+    {
+      "name": "Mashu",
+      "country": "Japan",
+      "total_analogy": 0.94,
+      "vnum": 285081
+    },
+    {
+      "name": "Crater Lake",
+      "country": "United States",
+      "total_analogy": 0.936,
+      "vnum": 322160
+    },
+    {
+      "name": "Karkar",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.935,
+      "vnum": 251030
+    }
+  ]
+}

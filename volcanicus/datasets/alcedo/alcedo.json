@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Alcedo",
+  "gvp_number_2026": 353040,
+  "gvp_number_2018": 353040,
+  "country": "Ecuador",
+  "gvp_region_group": "Eastern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Galapagos Hotspot Volcano Group",
+  "latitude": -0.4281,
+  "longitude": -91.1146,
+  "elevation_m_2018": 1130,
+  "elevation_m_2026": 1130.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Rift zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "1993 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P05",
+  "morph_pc1": 0.2733,
+  "morph_pc2": 1.3938,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.16,
+  "morph_half_width_km": 13.8,
+  "morph_summit_basal_width_ratio": 0.318,
+  "morph_crater_diameter_km": 7.57,
+  "morph_crater_depth_km": 0.32,
+  "morph_ellipticity_index": 1.3,
+  "morph_circularity": 0.57,
+  "morph_secondary_vents": 5.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.637,
+  "pyvolcans_analogues": [
+    {
+      "name": "Krafla",
+      "country": "Iceland",
+      "total_analogy": 0.96,
+      "vnum": 373080
+    },
+    {
+      "name": "Darwin",
+      "country": "Ecuador",
+      "total_analogy": 0.954,
+      "vnum": 353030
+    },
+    {
+      "name": "Socorro",
+      "country": "Mexico",
+      "total_analogy": 0.948,
+      "vnum": 341021
+    },
+    {
+      "name": "Negra, Sierra",
+      "country": "Ecuador",
+      "total_analogy": 0.933,
+      "vnum": 353050
+    },
+    {
+      "name": "Askja",
+      "country": "Iceland",
+      "total_analogy": 0.93,
+      "vnum": 373060
+    }
+  ]
+}

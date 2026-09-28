@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Hayli Gubbi",
+  "gvp_number_2026": 221091,
+  "gvp_number_2018": 221091,
+  "country": "Ethiopia",
+  "gvp_region_group": "Eastern Africa Volcanic Regions",
+  "gvp_volcanic_region": "Afar Rift Volcanic Province",
+  "latitude": 13.5086,
+  "longitude": 40.7192,
+  "elevation_m_2018": 493,
+  "elevation_m_2026": 493.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Rift zone / Intermediate crust (15-25 km)",
+  "last_known_eruption": "2025 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P04",
+  "morph_pc1": -1.9767,
+  "morph_pc2": 0.2208,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 0.32,
+  "morph_half_width_km": 2.53,
+  "morph_summit_basal_width_ratio": 0.425,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.45,
+  "morph_circularity": null,
+  "morph_secondary_vents": 3.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.435,
+  "pyvolcans_analogues": [
+    {
+      "name": "Nabro",
+      "country": "Eritrea",
+      "total_analogy": 0.595,
+      "vnum": 221101
+    },
+    {
+      "name": "Ma Alalta",
+      "country": "Ethiopia",
+      "total_analogy": 0.585,
+      "vnum": 221111
+    },
+    {
+      "name": "Dama Ali",
+      "country": "Ethiopia",
+      "total_analogy": 0.579,
+      "vnum": 221141
+    },
+    {
+      "name": "Adwa",
+      "country": "Ethiopia",
+      "total_analogy": 0.579,
+      "vnum": 221170
+    },
+    {
+      "name": "Alid",
+      "country": "Eritrea",
+      "total_analogy": 0.574,
+      "vnum": 221040
+    }
+  ]
+}

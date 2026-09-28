@@ -1,0 +1,69 @@
+{
+  "volcano_name": "St. Andrew Strait",
+  "gvp_number_2026": 250010,
+  "gvp_number_2018": 250010,
+  "country": "Papua New Guinea",
+  "gvp_region_group": "Southwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Bismarck Sea Volcanic Province",
+  "latitude": -2.374,
+  "longitude": 147.352,
+  "elevation_m_2018": 270,
+  "elevation_m_2026": 270.0,
+  "volcano_type_class": "Complex volcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "felsic (high-silica)",
+  "dominant_rock_type": "Rhyolite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "1957 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P14",
+  "morph_pc1": -1.6191,
+  "morph_pc2": -0.945,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 0.22,
+  "morph_half_width_km": 2.46,
+  "morph_summit_basal_width_ratio": 0.175,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.69,
+  "morph_circularity": null,
+  "morph_secondary_vents": 3.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.703,
+  "pyvolcans_analogues": [
+    {
+      "name": "Tofua",
+      "country": "Tonga",
+      "total_analogy": 0.931,
+      "vnum": 243060
+    },
+    {
+      "name": "Fonualei",
+      "country": "Tonga",
+      "total_analogy": 0.926,
+      "vnum": 243100
+    },
+    {
+      "name": "Izu-Torishima",
+      "country": "Japan",
+      "total_analogy": 0.917,
+      "vnum": 284090
+    },
+    {
+      "name": "Montagu Island",
+      "country": "United Kingdom",
+      "total_analogy": 0.908,
+      "vnum": 390081
+    },
+    {
+      "name": "Ketoi",
+      "country": "Russia",
+      "total_analogy": 0.906,
+      "vnum": 290200
+    }
+  ]
+}

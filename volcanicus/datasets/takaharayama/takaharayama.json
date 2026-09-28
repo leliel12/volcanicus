@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Takaharayama",
+  "gvp_number_2026": 283143,
+  "gvp_number_2018": 283143,
+  "country": "Japan",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Northeast Japan Volcanic Arc",
+  "latitude": 36.8959,
+  "longitude": 139.7789,
+  "elevation_m_2018": 1795,
+  "elevation_m_2026": 1795.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "4570 BCE",
+  "activity_evidence": "Eruption Dated",
+  "activity_status": "Holocene eruption radiometrically/tephrochronologically dated (pre-historical)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P09",
+  "morph_pc1": 0.5011,
+  "morph_pc2": 0.1793,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.44,
+  "morph_half_width_km": 7.35,
+  "morph_summit_basal_width_ratio": 0.187,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.46,
+  "morph_circularity": null,
+  "morph_secondary_vents": 23.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.486,
+  "pyvolcans_analogues": [
+    {
+      "name": "Romeral",
+      "country": "Colombia",
+      "total_analogy": 0.961,
+      "vnum": 351011
+    },
+    {
+      "name": "Spurr",
+      "country": "United States",
+      "total_analogy": 0.957,
+      "vnum": 313040
+    },
+    {
+      "name": "Myokosan",
+      "country": "Japan",
+      "total_analogy": 0.945,
+      "vnum": 283100
+    },
+    {
+      "name": "Barva",
+      "country": "Costa Rica",
+      "total_analogy": 0.943,
+      "vnum": 345050
+    },
+    {
+      "name": "Descabezado Grande",
+      "country": "Chile",
+      "total_analogy": 0.941,
+      "vnum": 357050
+    }
+  ]
+}

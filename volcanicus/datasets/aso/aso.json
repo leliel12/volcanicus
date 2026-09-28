@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Asosan",
+  "gvp_number_2026": 282110,
+  "gvp_number_2018": 282110,
+  "country": "Japan",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Nankai Volcanic Arc",
+  "latitude": 32.8848,
+  "longitude": 131.085,
+  "elevation_m_2018": 1592,
+  "elevation_m_2026": 1592.0,
+  "volcano_type_class": "Caldera",
+  "gvp_landform": "Caldera",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2021 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Mixed / uncertain",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 0.2857,
+  "morph_pc2": 2.29,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 0.8,
+  "morph_half_width_km": 30.5,
+  "morph_summit_basal_width_ratio": 0.344,
+  "morph_crater_diameter_km": 21.0,
+  "morph_crater_depth_km": 0.55,
+  "morph_ellipticity_index": null,
+  "morph_circularity": 0.42,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 0.011,
+  "pyvolcans_analogues": [
+    {
+      "name": "Akan",
+      "country": "Japan",
+      "total_analogy": 0.968,
+      "vnum": 285070
+    },
+    {
+      "name": "Shikotsu",
+      "country": "Japan",
+      "total_analogy": 0.965,
+      "vnum": 285040
+    },
+    {
+      "name": "Krasheninnikov",
+      "country": "Russia",
+      "total_analogy": 0.957,
+      "vnum": 300190
+    },
+    {
+      "name": "Medicine Lake",
+      "country": "United States",
+      "total_analogy": 0.954,
+      "vnum": 323020
+    },
+    {
+      "name": "Masaya",
+      "country": "Nicaragua",
+      "total_analogy": 0.954,
+      "vnum": 344100
+    }
+  ]
+}

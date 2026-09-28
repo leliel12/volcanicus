@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Sinabung",
+  "gvp_number_2026": 261080,
+  "gvp_number_2018": 261080,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Sunda Volcanic Arc",
+  "latitude": 3.1692,
+  "longitude": 98.3942,
+  "elevation_m_2018": 2460,
+  "elevation_m_2026": 2460.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2021 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 0.2653,
+  "morph_pc2": -1.2097,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.34,
+  "morph_half_width_km": 2.915,
+  "morph_summit_basal_width_ratio": 0.081,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.25,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.26,
+  "pyvolcans_analogues": [
+    {
+      "name": "Tungurahua",
+      "country": "Ecuador",
+      "total_analogy": 0.959,
+      "vnum": 352080
+    },
+    {
+      "name": "Rainier",
+      "country": "United States",
+      "total_analogy": 0.957,
+      "vnum": 321030
+    },
+    {
+      "name": "Cotopaxi",
+      "country": "Ecuador",
+      "total_analogy": 0.955,
+      "vnum": 352050
+    },
+    {
+      "name": "Ruiz, Nevado del",
+      "country": "Colombia",
+      "total_analogy": 0.953,
+      "vnum": 351020
+    },
+    {
+      "name": "Turrialba",
+      "country": "Costa Rica",
+      "total_analogy": 0.947,
+      "vnum": 345070
+    }
+  ]
+}

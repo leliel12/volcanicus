@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Midagahara",
+  "gvp_number_2026": 283080,
+  "gvp_number_2018": 283080,
+  "country": "Japan",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Nankai Volcanic Arc",
+  "latitude": 36.5698,
+  "longitude": 137.589,
+  "elevation_m_2018": 2621,
+  "elevation_m_2026": 2621.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1839 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P07",
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 0.161,
+  "pyvolcans_analogues": [
+    {
+      "name": "Akita-Yakeyama",
+      "country": "Japan",
+      "total_analogy": 0.984,
+      "vnum": 283260
+    },
+    {
+      "name": "Kurikomayama",
+      "country": "Japan",
+      "total_analogy": 0.982,
+      "vnum": 283210
+    },
+    {
+      "name": "Shiretoko-Iozan",
+      "country": "Japan",
+      "total_analogy": 0.975,
+      "vnum": 285090
+    },
+    {
+      "name": "Hakkodasan",
+      "country": "Japan",
+      "total_analogy": 0.973,
+      "vnum": 283280
+    },
+    {
+      "name": "Nikko-Shiranesan",
+      "country": "Japan",
+      "total_analogy": 0.972,
+      "vnum": 283140
+    }
+  ]
+}

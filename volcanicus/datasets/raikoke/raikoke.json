@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Raikoke",
+  "gvp_number_2026": 290250,
+  "gvp_number_2018": 290250,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 48.2904,
+  "longitude": 153.2562,
+  "elevation_m_2018": 551,
+  "elevation_m_2026": 551.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Intermediate crust (15-25 km)",
+  "last_known_eruption": "2019 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P06",
+  "morph_pc1": -2.6353,
+  "morph_pc2": 0.4335,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 0.51,
+  "morph_half_width_km": 1.09,
+  "morph_summit_basal_width_ratio": 0.653,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.27,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.492,
+  "pyvolcans_analogues": [
+    {
+      "name": "Pagan",
+      "country": "United States",
+      "total_analogy": 0.945,
+      "vnum": 284170
+    },
+    {
+      "name": "Alamagan",
+      "country": "United States",
+      "total_analogy": 0.942,
+      "vnum": 284180
+    },
+    {
+      "name": "Chachadake [Tiatia]",
+      "country": "Japan - administered by Russia",
+      "total_analogy": 0.941,
+      "vnum": 290030
+    },
+    {
+      "name": "Iya",
+      "country": "Indonesia",
+      "total_analogy": 0.935,
+      "vnum": 264110
+    },
+    {
+      "name": "Babuyan Claro",
+      "country": "Philippines",
+      "total_analogy": 0.935,
+      "vnum": 274030
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Bora-Bericcio",
+  "gvp_number_2026": 221250,
+  "gvp_number_2018": 221240,
+  "country": "Ethiopia",
+  "gvp_region_group": "Eastern Africa Volcanic Regions",
+  "gvp_volcanic_region": "Main Ethiopian Rift Volcanic Province",
+  "latitude": 8.2142,
+  "longitude": 39.0867,
+  "elevation_m_2018": 2267,
+  "elevation_m_2026": 2345.0,
+  "volcano_type_class": "Pyroclastic cone",
+  "gvp_landform": "Cluster",
+  "rock_affinity": "felsic (high-silica)",
+  "dominant_rock_type": "Rhyolite",
+  "tectonic_setting": "Rift zone / Continental crust (>25 km)",
+  "last_known_eruption": "1900 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P11",
+  "morph_pc1": -1.3527,
+  "morph_pc2": -0.3731,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 0.681,
+  "pyvolcans_analogues": [
+    {
+      "name": "Dofan",
+      "country": "Ethiopia",
+      "total_analogy": 0.579,
+      "vnum": 221180
+    },
+    {
+      "name": "Salton Buttes",
+      "country": "United States",
+      "total_analogy": 0.547,
+      "vnum": 323200
+    },
+    {
+      "name": "Yellowstone",
+      "country": "United States",
+      "total_analogy": 0.54,
+      "vnum": 325010
+    },
+    {
+      "name": "Alutu",
+      "country": "Ethiopia",
+      "total_analogy": 0.533,
+      "vnum": 221270
+    },
+    {
+      "name": "Tortuga, Isla",
+      "country": "Mexico",
+      "total_analogy": 0.532,
+      "vnum": 341011
+    }
+  ]
+}

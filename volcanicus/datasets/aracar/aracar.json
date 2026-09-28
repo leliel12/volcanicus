@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Aracar",
+  "gvp_number_2026": 355160,
+  "gvp_number_2018": 355160,
+  "country": "Argentina",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Central Andean Volcanic Arc",
+  "latitude": -24.2906,
+  "longitude": -67.7782,
+  "elevation_m_2018": 6095,
+  "elevation_m_2026": 6095.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "Unknown",
+  "activity_evidence": "Evidence Credible",
+  "activity_status": "Holocene activity inferred from credible geological evidence (undated)",
+  "thermal_regime_class": "Mixed / uncertain",
+  "crater_lake_mentioned": "No",
+  "label_confidence": "low",
+  "thermal_proxy_set": "P07",
+  "morph_pc1": 0.9438,
+  "morph_pc2": -0.4028,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.08,
+  "morph_half_width_km": 6.0,
+  "morph_summit_basal_width_ratio": 0.103,
+  "morph_crater_diameter_km": 1.24,
+  "morph_crater_depth_km": 0.13,
+  "morph_ellipticity_index": 1.59,
+  "morph_circularity": null,
+  "morph_secondary_vents": 3.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.491,
+  "pyvolcans_analogues": [
+    {
+      "name": "Seulawah Agam",
+      "country": "Indonesia",
+      "total_analogy": 0.795,
+      "vnum": 261020
+    },
+    {
+      "name": "Descabezado Grande",
+      "country": "Chile",
+      "total_analogy": 0.795,
+      "vnum": 357050
+    },
+    {
+      "name": "Kusatsu-Shiranesan",
+      "country": "Japan",
+      "total_analogy": 0.789,
+      "vnum": 283120
+    },
+    {
+      "name": "Yakedake",
+      "country": "Japan",
+      "total_analogy": 0.782,
+      "vnum": 283070
+    },
+    {
+      "name": "Hakusan",
+      "country": "Japan",
+      "total_analogy": 0.779,
+      "vnum": 283050
+    }
+  ]
+}

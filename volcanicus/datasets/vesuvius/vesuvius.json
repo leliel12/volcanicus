@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Vesuvius",
+  "gvp_number_2026": 211020,
+  "gvp_number_2018": 211020,
+  "country": "Italy",
+  "gvp_region_group": "European Volcanic Regions",
+  "gvp_volcanic_region": "Italian Peninsula Volcanic Provinces",
+  "latitude": 40.8173,
+  "longitude": 14.4292,
+  "elevation_m_2018": 1281,
+  "elevation_m_2026": 1281.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic-intermediate (alkaline)",
+  "dominant_rock_type": "Phono-tephrite /  Tephri-phonolite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1944 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P06",
+  "morph_pc1": -0.3863,
+  "morph_pc2": 0.3364,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.11,
+  "morph_half_width_km": 4.375,
+  "morph_summit_basal_width_ratio": 0.333,
+  "morph_crater_diameter_km": 0.5,
+  "morph_crater_depth_km": 0.265,
+  "morph_ellipticity_index": 1.22,
+  "morph_circularity": 0.67,
+  "morph_secondary_vents": 7.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.492,
+  "pyvolcans_analogues": [
+    {
+      "name": "Ischia",
+      "country": "Italy",
+      "total_analogy": 0.939,
+      "vnum": 211030
+    },
+    {
+      "name": "Westdahl",
+      "country": "United States",
+      "total_analogy": 0.905,
+      "vnum": 311340
+    },
+    {
+      "name": "Vulcano",
+      "country": "Italy",
+      "total_analogy": 0.9,
+      "vnum": 211050
+    },
+    {
+      "name": "Colo",
+      "country": "Indonesia",
+      "total_analogy": 0.898,
+      "vnum": 266010
+    },
+    {
+      "name": "Stromboli",
+      "country": "Italy",
+      "total_analogy": 0.888,
+      "vnum": 211040
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Sheveluch",
+  "gvp_number_2026": 300270,
+  "gvp_number_2018": 300270,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Eastern Kamchatka Volcanic Arc",
+  "latitude": 56.6479,
+  "longitude": 161.359,
+  "elevation_m_2018": 3283,
+  "elevation_m_2026": 3283.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 1.1045,
+  "morph_pc2": 0.5476,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.75,
+  "morph_half_width_km": 9.45,
+  "morph_summit_basal_width_ratio": 0.214,
+  "morph_crater_diameter_km": 2.25,
+  "morph_crater_depth_km": 0.5,
+  "morph_ellipticity_index": 2.39,
+  "morph_circularity": 0.27,
+  "morph_secondary_vents": 17.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.57,
+  "pyvolcans_analogues": [
+    {
+      "name": "Tolbachik",
+      "country": "Russia",
+      "total_analogy": 0.957,
+      "vnum": 300240
+    },
+    {
+      "name": "Raung",
+      "country": "Indonesia",
+      "total_analogy": 0.95,
+      "vnum": 263340
+    },
+    {
+      "name": "Iliamna",
+      "country": "United States",
+      "total_analogy": 0.949,
+      "vnum": 313020
+    },
+    {
+      "name": "Avachinsky",
+      "country": "Russia",
+      "total_analogy": 0.948,
+      "vnum": 300100
+    },
+    {
+      "name": "Oshima-Oshima",
+      "country": "Japan",
+      "total_analogy": 0.946,
+      "vnum": 285010
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Ijen",
+  "gvp_number_2026": 263350,
+  "gvp_number_2018": 263350,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Sunda Volcanic Arc",
+  "latitude": -8.0592,
+  "longitude": 114.2422,
+  "elevation_m_2018": 2769,
+  "elevation_m_2026": 2769.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1999 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 0.9505,
+  "morph_pc2": 1.9446,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 1.5,
+  "morph_half_width_km": 29.5,
+  "morph_summit_basal_width_ratio": 0.288,
+  "morph_crater_diameter_km": 17.0,
+  "morph_crater_depth_km": 0.57,
+  "morph_ellipticity_index": null,
+  "morph_circularity": 0.55,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 0.135,
+  "pyvolcans_analogues": [
+    {
+      "name": "Arjuno-Welirang",
+      "country": "Indonesia",
+      "total_analogy": 0.972,
+      "vnum": 263290
+    },
+    {
+      "name": "Salak",
+      "country": "Indonesia",
+      "total_analogy": 0.965,
+      "vnum": 263050
+    },
+    {
+      "name": "Ruapehu",
+      "country": "New Zealand",
+      "total_analogy": 0.965,
+      "vnum": 241100
+    },
+    {
+      "name": "Azumayama",
+      "country": "Japan",
+      "total_analogy": 0.961,
+      "vnum": 283180
+    },
+    {
+      "name": "Sumbing",
+      "country": "Indonesia",
+      "total_analogy": 0.96,
+      "vnum": 263220
+    }
+  ]
+}

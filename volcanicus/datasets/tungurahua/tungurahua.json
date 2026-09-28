@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Tungurahua",
+  "gvp_number_2026": 352080,
+  "gvp_number_2018": 352080,
+  "country": "Ecuador",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Northern Andean Volcanic Arc",
+  "latitude": -1.4645,
+  "longitude": -78.4384,
+  "elevation_m_2018": 5023,
+  "elevation_m_2026": 5023.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2016 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 1.4649,
+  "morph_pc2": -0.3137,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 3.26,
+  "morph_half_width_km": 7.15,
+  "morph_summit_basal_width_ratio": 0.085,
+  "morph_crater_diameter_km": 0.4,
+  "morph_crater_depth_km": 0.14,
+  "morph_ellipticity_index": 1.52,
+  "morph_circularity": 0.56,
+  "morph_secondary_vents": 6.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.487,
+  "pyvolcans_analogues": [
+    {
+      "name": "Rainier",
+      "country": "United States",
+      "total_analogy": 0.966,
+      "vnum": 321030
+    },
+    {
+      "name": "Galeras",
+      "country": "Colombia",
+      "total_analogy": 0.965,
+      "vnum": 351080
+    },
+    {
+      "name": "Sinabung",
+      "country": "Indonesia",
+      "total_analogy": 0.959,
+      "vnum": 261080
+    },
+    {
+      "name": "Kizimen",
+      "country": "Russia",
+      "total_analogy": 0.958,
+      "vnum": 300230
+    },
+    {
+      "name": "Llaima",
+      "country": "Chile",
+      "total_analogy": 0.95,
+      "vnum": 357110
+    }
+  ]
+}

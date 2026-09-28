@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Kanlaon",
+  "gvp_number_2026": 272020,
+  "gvp_number_2018": 272020,
+  "country": "Philippines",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Negros-Sulu Volcanic Arc",
+  "latitude": 10.4064,
+  "longitude": 123.133,
+  "elevation_m_2018": 2435,
+  "elevation_m_2026": 2422.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Mixed / uncertain",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 1.2128,
+  "morph_pc2": 0.1895,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.22,
+  "morph_half_width_km": 10.1,
+  "morph_summit_basal_width_ratio": 0.121,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.03,
+  "morph_circularity": null,
+  "morph_secondary_vents": 15.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.484,
+  "pyvolcans_analogues": [
+    {
+      "name": "Marapi",
+      "country": "Indonesia",
+      "total_analogy": 0.951,
+      "vnum": 261140
+    },
+    {
+      "name": "Azumayama",
+      "country": "Japan",
+      "total_analogy": 0.951,
+      "vnum": 283180
+    },
+    {
+      "name": "Kupreanof",
+      "country": "United States",
+      "total_analogy": 0.95,
+      "vnum": 312060
+    },
+    {
+      "name": "Sangeang Api",
+      "country": "Indonesia",
+      "total_analogy": 0.941,
+      "vnum": 264050
+    },
+    {
+      "name": "Ushkovsky",
+      "country": "Russia",
+      "total_analogy": 0.941,
+      "vnum": 300261
+    }
+  ]
+}

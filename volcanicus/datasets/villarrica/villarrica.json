@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Villarrica",
+  "gvp_number_2026": 357120,
+  "gvp_number_2018": 357120,
+  "country": "Chile",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -39.4201,
+  "longitude": -71.9394,
+  "elevation_m_2018": 2847,
+  "elevation_m_2026": 2847.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2025 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "No",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P16",
+  "morph_pc1": 0.819,
+  "morph_pc2": -1.0037,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.75,
+  "morph_half_width_km": 4.395,
+  "morph_summit_basal_width_ratio": 0.038,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.3,
+  "morph_circularity": null,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.808,
+  "pyvolcans_analogues": [
+    {
+      "name": "Slamet",
+      "country": "Indonesia",
+      "total_analogy": 0.972,
+      "vnum": 263180
+    },
+    {
+      "name": "Pavlof",
+      "country": "United States",
+      "total_analogy": 0.969,
+      "vnum": 312030
+    },
+    {
+      "name": "Llaima",
+      "country": "Chile",
+      "total_analogy": 0.969,
+      "vnum": 357110
+    },
+    {
+      "name": "Semeru",
+      "country": "Indonesia",
+      "total_analogy": 0.965,
+      "vnum": 263300
+    },
+    {
+      "name": "Hood",
+      "country": "United States",
+      "total_analogy": 0.965,
+      "vnum": 322010
+    }
+  ]
+}

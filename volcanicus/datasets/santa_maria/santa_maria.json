@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Santa Maria",
+  "gvp_number_2026": 342030,
+  "gvp_number_2018": 342030,
+  "country": "Guatemala",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Central America Volcanic Arc",
+  "latitude": 14.7553,
+  "longitude": -91.5514,
+  "elevation_m_2018": 3745,
+  "elevation_m_2026": 3745.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "felsic",
+  "dominant_rock_type": "Dacite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P13",
+  "morph_pc1": 1.1813,
+  "morph_pc2": -0.9364,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.68,
+  "morph_half_width_km": 4.56,
+  "morph_summit_basal_width_ratio": 0.045,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.27,
+  "morph_circularity": null,
+  "morph_secondary_vents": 4.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.2,
+  "pyvolcans_analogues": [
+    {
+      "name": "Acatenango",
+      "country": "Guatemala",
+      "total_analogy": 0.919,
+      "vnum": 342080
+    },
+    {
+      "name": "Baker",
+      "country": "United States",
+      "total_analogy": 0.91,
+      "vnum": 321010
+    },
+    {
+      "name": "Opala",
+      "country": "Russia",
+      "total_analogy": 0.909,
+      "vnum": 300080
+    },
+    {
+      "name": "Koryaksky",
+      "country": "Russia",
+      "total_analogy": 0.908,
+      "vnum": 300090
+    },
+    {
+      "name": "Tolima, Nevado del",
+      "country": "Colombia",
+      "total_analogy": 0.907,
+      "vnum": 351030
+    }
+  ]
+}

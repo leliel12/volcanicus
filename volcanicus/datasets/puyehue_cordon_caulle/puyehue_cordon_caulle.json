@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Puyehue-Cordon Caulle",
+  "gvp_number_2026": 357150,
+  "gvp_number_2018": 357150,
+  "country": "Chile",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -40.5952,
+  "longitude": -72.1183,
+  "elevation_m_2018": 2236,
+  "elevation_m_2026": 2236.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2012 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 1.0354,
+  "morph_pc2": 1.27,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 1.525,
+  "morph_half_width_km": 22.8,
+  "morph_summit_basal_width_ratio": 0.167,
+  "morph_crater_diameter_km": 7.6,
+  "morph_crater_depth_km": 0.1,
+  "morph_ellipticity_index": null,
+  "morph_circularity": 0.64,
+  "morph_secondary_vents": null,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.589,
+  "pyvolcans_analogues": [
+    {
+      "name": "Tangkoko-Duasudara",
+      "country": "Indonesia",
+      "total_analogy": 0.95,
+      "vnum": 266130
+    },
+    {
+      "name": "Kirishimayama",
+      "country": "Japan",
+      "total_analogy": 0.947,
+      "vnum": 282090
+    },
+    {
+      "name": "Gorely",
+      "country": "Russia",
+      "total_analogy": 0.944,
+      "vnum": 300070
+    },
+    {
+      "name": "Toya",
+      "country": "Japan",
+      "total_analogy": 0.94,
+      "vnum": 285030
+    },
+    {
+      "name": "Khangar",
+      "country": "Russia",
+      "total_analogy": 0.939,
+      "vnum": 300272
+    }
+  ]
+}

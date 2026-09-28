@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Kirishimayama",
+  "gvp_number_2026": 282090,
+  "gvp_number_2018": 282090,
+  "country": "Japan",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Ryukyu Volcanic Arc",
+  "latitude": 31.9378,
+  "longitude": 130.8599,
+  "elevation_m_2018": 1700,
+  "elevation_m_2026": 1700.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2025 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": -0.1422,
+  "morph_pc2": 1.7147,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.46,
+  "morph_half_width_km": 9.45,
+  "morph_summit_basal_width_ratio": 0.47,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.21,
+  "morph_circularity": null,
+  "morph_secondary_vents": 32.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.467,
+  "pyvolcans_analogues": [
+    {
+      "name": "Gorely",
+      "country": "Russia",
+      "total_analogy": 0.988,
+      "vnum": 300070
+    },
+    {
+      "name": "Tongariro",
+      "country": "New Zealand",
+      "total_analogy": 0.978,
+      "vnum": 241080
+    },
+    {
+      "name": "Asamayama",
+      "country": "Japan",
+      "total_analogy": 0.972,
+      "vnum": 283110
+    },
+    {
+      "name": "Raung",
+      "country": "Indonesia",
+      "total_analogy": 0.971,
+      "vnum": 263340
+    },
+    {
+      "name": "Telica",
+      "country": "Nicaragua",
+      "total_analogy": 0.97,
+      "vnum": 344040
+    }
+  ]
+}

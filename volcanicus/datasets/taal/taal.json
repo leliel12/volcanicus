@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Taal",
+  "gvp_number_2026": 273070,
+  "gvp_number_2018": 273070,
+  "country": "Philippines",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Luzon Volcanic Arc",
+  "latitude": 14.0151,
+  "longitude": 120.9996,
+  "elevation_m_2018": 311,
+  "elevation_m_2026": 311.0,
+  "volcano_type_class": "Caldera",
+  "gvp_landform": "Caldera",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Mixed / uncertain",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": -0.4328,
+  "morph_pc2": 2.4846,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 0.35,
+  "morph_half_width_km": 35.0,
+  "morph_summit_basal_width_ratio": 0.371,
+  "morph_crater_diameter_km": 26.0,
+  "morph_crater_depth_km": 0.5,
+  "morph_ellipticity_index": null,
+  "morph_circularity": 0.47,
+  "morph_secondary_vents": null,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.549,
+  "pyvolcans_analogues": [
+    {
+      "name": "Rabaul",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.979,
+      "vnum": 252140
+    },
+    {
+      "name": "Akan",
+      "country": "Japan",
+      "total_analogy": 0.959,
+      "vnum": 285070
+    },
+    {
+      "name": "Aira",
+      "country": "Japan",
+      "total_analogy": 0.954,
+      "vnum": 282080
+    },
+    {
+      "name": "Masaya",
+      "country": "Nicaragua",
+      "total_analogy": 0.949,
+      "vnum": 344100
+    },
+    {
+      "name": "Asosan",
+      "country": "Japan",
+      "total_analogy": 0.949,
+      "vnum": 282110
+    }
+  ]
+}

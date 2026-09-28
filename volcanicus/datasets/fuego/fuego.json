@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Fuego",
+  "gvp_number_2026": 342090,
+  "gvp_number_2018": 342090,
+  "country": "Guatemala",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Central America Volcanic Arc",
+  "latitude": 14.4744,
+  "longitude": -90.8807,
+  "elevation_m_2018": 3763,
+  "elevation_m_2026": 3799.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P16",
+  "morph_pc1": 1.2736,
+  "morph_pc2": -0.9008,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.72,
+  "morph_half_width_km": 5.0,
+  "morph_summit_basal_width_ratio": 0.033,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.99,
+  "morph_circularity": null,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.046,
+  "pyvolcans_analogues": [
+    {
+      "name": "Klyuchevskoy",
+      "country": "Russia",
+      "total_analogy": 0.971,
+      "vnum": 300260
+    },
+    {
+      "name": "Semeru",
+      "country": "Indonesia",
+      "total_analogy": 0.964,
+      "vnum": 263300
+    },
+    {
+      "name": "Osorno",
+      "country": "Chile",
+      "total_analogy": 0.955,
+      "vnum": 358010
+    },
+    {
+      "name": "Merbabu",
+      "country": "Indonesia",
+      "total_analogy": 0.954,
+      "vnum": 263240
+    },
+    {
+      "name": "Tacana",
+      "country": "Mexico-Guatemala",
+      "total_analogy": 0.951,
+      "vnum": 341130
+    }
+  ]
+}

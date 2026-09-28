@@ -1,0 +1,69 @@
+{
+  "volcano_name": "The Barrier",
+  "gvp_number_2026": 222030,
+  "gvp_number_2018": 222030,
+  "country": "Kenya",
+  "gvp_region_group": "Eastern Africa Volcanic Regions",
+  "gvp_volcanic_region": "Kenyan Rift Volcanic Province",
+  "latitude": 2.3245,
+  "longitude": 36.5659,
+  "elevation_m_2018": 1032,
+  "elevation_m_2026": 1032.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "felsic (alkaline)",
+  "dominant_rock_type": "Trachyte / Trachydacite",
+  "tectonic_setting": "Rift zone / Continental crust (>25 km)",
+  "last_known_eruption": "1921 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P11",
+  "morph_pc1": -0.1085,
+  "morph_pc2": 0.3456,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 0.6,
+  "morph_half_width_km": 9.11,
+  "morph_summit_basal_width_ratio": 0.177,
+  "morph_crater_diameter_km": 3.22,
+  "morph_crater_depth_km": 0.125,
+  "morph_ellipticity_index": 1.83,
+  "morph_circularity": 0.62,
+  "morph_secondary_vents": 24.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.677,
+  "pyvolcans_analogues": [
+    {
+      "name": "Kyejo",
+      "country": "Tanzania",
+      "total_analogy": 0.954,
+      "vnum": 222170
+    },
+    {
+      "name": "Longonot",
+      "country": "Kenya",
+      "total_analogy": 0.952,
+      "vnum": 222100
+    },
+    {
+      "name": "Emuruangogolak",
+      "country": "Kenya",
+      "total_analogy": 0.951,
+      "vnum": 222051
+    },
+    {
+      "name": "Pantelleria",
+      "country": "Italy",
+      "total_analogy": 0.914,
+      "vnum": 211071
+    },
+    {
+      "name": "Nyamuragira",
+      "country": "DR Congo",
+      "total_analogy": 0.914,
+      "vnum": 223020
+    }
+  ]
+}

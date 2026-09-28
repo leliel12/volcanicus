@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Cotopaxi",
+  "gvp_number_2026": 352050,
+  "gvp_number_2018": 352050,
+  "country": "Ecuador",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Northern Andean Volcanic Arc",
+  "latitude": -0.6727,
+  "longitude": -78.4359,
+  "elevation_m_2018": 5911,
+  "elevation_m_2026": 5911.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2023 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 0.9716,
+  "morph_pc2": -0.6063,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.13,
+  "morph_half_width_km": 5.4,
+  "morph_summit_basal_width_ratio": 0.081,
+  "morph_crater_diameter_km": 0.625,
+  "morph_crater_depth_km": 0.215,
+  "morph_ellipticity_index": 1.23,
+  "morph_circularity": 0.61,
+  "morph_secondary_vents": 6.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.478,
+  "pyvolcans_analogues": [
+    {
+      "name": "Chillan, Nevados de",
+      "country": "Chile",
+      "total_analogy": 0.96,
+      "vnum": 357070
+    },
+    {
+      "name": "Sinabung",
+      "country": "Indonesia",
+      "total_analogy": 0.955,
+      "vnum": 261080
+    },
+    {
+      "name": "Ruiz, Nevado del",
+      "country": "Colombia",
+      "total_analogy": 0.95,
+      "vnum": 351020
+    },
+    {
+      "name": "Guallatiri",
+      "country": "Chile",
+      "total_analogy": 0.945,
+      "vnum": 355020
+    },
+    {
+      "name": "Augustine",
+      "country": "United States",
+      "total_analogy": 0.944,
+      "vnum": 313010
+    }
+  ]
+}

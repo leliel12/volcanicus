@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Veniaminof",
+  "gvp_number_2026": 312070,
+  "gvp_number_2018": 312070,
+  "country": "United States",
+  "gvp_region_group": "North America Volcanic Regions",
+  "gvp_volcanic_region": "Aleutian Ridge Volcanic Arc",
+  "latitude": 56.1702,
+  "longitude": -159.3728,
+  "elevation_m_2018": 2507,
+  "elevation_m_2026": 2507.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2021 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "No",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 0.8112,
+  "morph_pc2": 1.5869,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.35,
+  "morph_half_width_km": 14.5,
+  "morph_summit_basal_width_ratio": 0.35,
+  "morph_crater_diameter_km": 8.8,
+  "morph_crater_depth_km": 0.35,
+  "morph_ellipticity_index": 1.88,
+  "morph_circularity": 0.6,
+  "morph_secondary_vents": 32.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.446,
+  "pyvolcans_analogues": [
+    {
+      "name": "Kirishimayama",
+      "country": "Japan",
+      "total_analogy": 0.958,
+      "vnum": 282090
+    },
+    {
+      "name": "Karkar",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.958,
+      "vnum": 251030
+    },
+    {
+      "name": "Krummel-Garbuna-Welcker",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.953,
+      "vnum": 252070
+    },
+    {
+      "name": "Gorely",
+      "country": "Russia",
+      "total_analogy": 0.952,
+      "vnum": 300070
+    },
+    {
+      "name": "Cosiguina",
+      "country": "Nicaragua",
+      "total_analogy": 0.951,
+      "vnum": 344010
+    }
+  ]
+}

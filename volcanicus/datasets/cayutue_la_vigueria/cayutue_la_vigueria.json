@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Cayutue-La Vigueria",
+  "gvp_number_2026": 358012,
+  "gvp_number_2018": 358012,
+  "country": "Chile",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -41.2517,
+  "longitude": -72.2578,
+  "elevation_m_2018": 506,
+  "elevation_m_2026": 506.0,
+  "volcano_type_class": "Volcanic field",
+  "gvp_landform": "Cluster",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "190 BCE",
+  "activity_evidence": "Eruption Dated",
+  "activity_status": "Holocene eruption radiometrically/tephrochronologically dated (pre-historical)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P06",
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 5.467,
+  "pyvolcans_analogues": [
+    {
+      "name": "Pali-Aike Volcanic Field",
+      "country": "Chile-Argentina",
+      "total_analogy": 0.788,
+      "vnum": 358080
+    },
+    {
+      "name": "Kaikohe-Bay of Islands",
+      "country": "New Zealand",
+      "total_analogy": 0.776,
+      "vnum": 241010
+    },
+    {
+      "name": "Davis Lake",
+      "country": "United States",
+      "total_analogy": 0.776,
+      "vnum": 322100
+    },
+    {
+      "name": "West Crater",
+      "country": "United States",
+      "total_analogy": 0.776,
+      "vnum": 321060
+    },
+    {
+      "name": "Sand Mountain Field",
+      "country": "United States",
+      "total_analogy": 0.776,
+      "vnum": 322040
+    }
+  ]
+}

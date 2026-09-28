@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Santa Ana",
+  "gvp_number_2026": 343020,
+  "gvp_number_2018": 343020,
+  "country": "El Salvador",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Central America Volcanic Arc",
+  "latitude": 13.8503,
+  "longitude": -89.629,
+  "elevation_m_2018": 2381,
+  "elevation_m_2026": 2381.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2005 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": -0.3426,
+  "morph_pc2": 0.021,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.3,
+  "morph_half_width_km": 3.385,
+  "morph_summit_basal_width_ratio": 0.319,
+  "morph_crater_diameter_km": 0.94,
+  "morph_crater_depth_km": 0.18,
+  "morph_ellipticity_index": 1.24,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.319,
+  "pyvolcans_analogues": [
+    {
+      "name": "Raung",
+      "country": "Indonesia",
+      "total_analogy": 0.961,
+      "vnum": 263340
+    },
+    {
+      "name": "Rinjani",
+      "country": "Indonesia",
+      "total_analogy": 0.954,
+      "vnum": 264030
+    },
+    {
+      "name": "Gorely",
+      "country": "Russia",
+      "total_analogy": 0.953,
+      "vnum": 300070
+    },
+    {
+      "name": "Kirishimayama",
+      "country": "Japan",
+      "total_analogy": 0.953,
+      "vnum": 282090
+    },
+    {
+      "name": "Pacaya",
+      "country": "Guatemala",
+      "total_analogy": 0.948,
+      "vnum": 342110
+    }
+  ]
+}

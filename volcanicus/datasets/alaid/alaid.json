@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Alaid",
+  "gvp_number_2026": 290390,
+  "gvp_number_2018": 290390,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 50.857,
+  "longitude": 155.5636,
+  "elevation_m_2018": 2285,
+  "elevation_m_2026": 2285.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2022 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P03",
+  "morph_pc1": 1.0973,
+  "morph_pc2": -0.294,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.29,
+  "morph_half_width_km": 6.8,
+  "morph_summit_basal_width_ratio": 0.1,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.24,
+  "morph_circularity": null,
+  "morph_secondary_vents": 4.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.456,
+  "pyvolcans_analogues": [
+    {
+      "name": "Irazu",
+      "country": "Costa Rica",
+      "total_analogy": 0.984,
+      "vnum": 345060
+    },
+    {
+      "name": "Ulawun",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.983,
+      "vnum": 252120
+    },
+    {
+      "name": "Langila",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.977,
+      "vnum": 252010
+    },
+    {
+      "name": "Concepcion",
+      "country": "Nicaragua",
+      "total_analogy": 0.977,
+      "vnum": 344120
+    },
+    {
+      "name": "Pavlof",
+      "country": "United States",
+      "total_analogy": 0.976,
+      "vnum": 312030
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Etna",
+  "gvp_number_2026": 211060,
+  "gvp_number_2018": 211060,
+  "country": "Italy",
+  "gvp_region_group": "European Volcanic Regions",
+  "gvp_volcanic_region": "Sicily Volcanic Province",
+  "latitude": 37.7442,
+  "longitude": 15.0107,
+  "elevation_m_2018": 3295,
+  "elevation_m_2026": 3357.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic (alkaline)",
+  "dominant_rock_type": "Trachybasalt / Tephrite Basanite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P16",
+  "morph_pc1": 1.8351,
+  "morph_pc2": -0.0572,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 3.08,
+  "morph_half_width_km": 12.05,
+  "morph_summit_basal_width_ratio": 0.029,
+  "morph_crater_diameter_km": 0.5,
+  "morph_crater_depth_km": 0.1,
+  "morph_ellipticity_index": 1.62,
+  "morph_circularity": 0.69,
+  "morph_secondary_vents": 16.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 1.112,
+  "pyvolcans_analogues": [
+    {
+      "name": "Sangeang Api",
+      "country": "Indonesia",
+      "total_analogy": 0.952,
+      "vnum": 264050
+    },
+    {
+      "name": "Sumaco",
+      "country": "Ecuador",
+      "total_analogy": 0.936,
+      "vnum": 352040
+    },
+    {
+      "name": "Stromboli",
+      "country": "Italy",
+      "total_analogy": 0.935,
+      "vnum": 211040
+    },
+    {
+      "name": "Cofre de Perote",
+      "country": "Mexico",
+      "total_analogy": 0.933,
+      "vnum": 341096
+    },
+    {
+      "name": "Lamongan",
+      "country": "Indonesia",
+      "total_analogy": 0.932,
+      "vnum": 263320
+    }
+  ]
+}

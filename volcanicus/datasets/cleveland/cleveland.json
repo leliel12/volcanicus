@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Cleveland",
+  "gvp_number_2026": 311240,
+  "gvp_number_2018": 311240,
+  "country": "United States",
+  "gvp_region_group": "North America Volcanic Regions",
+  "gvp_volcanic_region": "Aleutian Ridge Volcanic Arc",
+  "latitude": 52.8218,
+  "longitude": -169.9461,
+  "elevation_m_2018": 1730,
+  "elevation_m_2026": 1730.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Intermediate crust (15-25 km)",
+  "last_known_eruption": "2020 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 0.7154,
+  "morph_pc2": -1.1066,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.72,
+  "morph_half_width_km": 3.83,
+  "morph_summit_basal_width_ratio": 0.045,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.14,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.383,
+  "pyvolcans_analogues": [
+    {
+      "name": "Bagana",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.958,
+      "vnum": 255020
+    },
+    {
+      "name": "Little Sitkin",
+      "country": "United States",
+      "total_analogy": 0.955,
+      "vnum": 311050
+    },
+    {
+      "name": "Huila, Nevado del",
+      "country": "Colombia",
+      "total_analogy": 0.953,
+      "vnum": 351050
+    },
+    {
+      "name": "Ebulobo",
+      "country": "Indonesia",
+      "total_analogy": 0.953,
+      "vnum": 264100
+    },
+    {
+      "name": "Hood",
+      "country": "United States",
+      "total_analogy": 0.946,
+      "vnum": 322010
+    }
+  ]
+}

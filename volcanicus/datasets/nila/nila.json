@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Nila",
+  "gvp_number_2026": 265060,
+  "gvp_number_2018": 265060,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Inner Banda Volcanic Arc",
+  "latitude": -6.7285,
+  "longitude": 129.496,
+  "elevation_m_2018": 781,
+  "elevation_m_2026": 781.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "1968 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Mixed / uncertain",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "low",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": -0.297,
+  "morph_pc2": -1.3581,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 0.74,
+  "morph_half_width_km": 2.55,
+  "morph_summit_basal_width_ratio": 0.077,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.54,
+  "morph_circularity": null,
+  "morph_secondary_vents": 3.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.472,
+  "pyvolcans_analogues": [
+    {
+      "name": "Southern Thule",
+      "country": "United Kingdom",
+      "total_analogy": 0.976,
+      "vnum": 390070
+    },
+    {
+      "name": "Nakanoshima",
+      "country": "Japan",
+      "total_analogy": 0.963,
+      "vnum": 282040
+    },
+    {
+      "name": "Watt, Morne",
+      "country": "Dominica",
+      "total_analogy": 0.96,
+      "vnum": 360101
+    },
+    {
+      "name": "Saunders",
+      "country": "United Kingdom",
+      "total_analogy": 0.955,
+      "vnum": 390090
+    },
+    {
+      "name": "Yokoate-jima",
+      "country": "Japan",
+      "total_analogy": 0.951,
+      "vnum": 282021
+    }
+  ]
+}

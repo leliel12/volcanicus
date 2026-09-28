@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Tolbachik",
+  "gvp_number_2026": 300240,
+  "gvp_number_2018": 300240,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Eastern Kamchatka Volcanic Arc",
+  "latitude": 55.8301,
+  "longitude": 160.3144,
+  "elevation_m_2018": 3611,
+  "elevation_m_2026": 3611.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2013 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P16",
+  "morph_pc1": 0.7928,
+  "morph_pc2": 0.7897,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.81,
+  "morph_half_width_km": 8.0,
+  "morph_summit_basal_width_ratio": 0.303,
+  "morph_crater_diameter_km": 1.69,
+  "morph_crater_depth_km": 0.43,
+  "morph_ellipticity_index": 1.86,
+  "morph_circularity": null,
+  "morph_secondary_vents": 5.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.755,
+  "pyvolcans_analogues": [
+    {
+      "name": "Akita-Komagatake",
+      "country": "Japan",
+      "total_analogy": 0.977,
+      "vnum": 283230
+    },
+    {
+      "name": "Raung",
+      "country": "Indonesia",
+      "total_analogy": 0.967,
+      "vnum": 263340
+    },
+    {
+      "name": "Soputan",
+      "country": "Indonesia",
+      "total_analogy": 0.962,
+      "vnum": 266030
+    },
+    {
+      "name": "Oshima-Oshima",
+      "country": "Japan",
+      "total_analogy": 0.961,
+      "vnum": 285010
+    },
+    {
+      "name": "Guntur",
+      "country": "Indonesia",
+      "total_analogy": 0.959,
+      "vnum": 263130
+    }
+  ]
+}

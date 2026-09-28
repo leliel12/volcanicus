@@ -1,0 +1,69 @@
+{
+  "volcano_name": "San Cristobal",
+  "gvp_number_2026": 344020,
+  "gvp_number_2018": 344020,
+  "country": "Nicaragua",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Central America Volcanic Arc",
+  "latitude": 12.702,
+  "longitude": -86.9996,
+  "elevation_m_2018": 1745,
+  "elevation_m_2026": 1745.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2024 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P03",
+  "morph_pc1": -0.0424,
+  "morph_pc2": -0.8554,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.24,
+  "morph_half_width_km": 2.845,
+  "morph_summit_basal_width_ratio": 0.164,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.25,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.477,
+  "pyvolcans_analogues": [
+    {
+      "name": "Gede-Pangrango",
+      "country": "Indonesia",
+      "total_analogy": 0.98,
+      "vnum": 263060
+    },
+    {
+      "name": "Zhupanovsky",
+      "country": "Russia",
+      "total_analogy": 0.974,
+      "vnum": 300120
+    },
+    {
+      "name": "Ushkovsky",
+      "country": "Russia",
+      "total_analogy": 0.973,
+      "vnum": 300261
+    },
+    {
+      "name": "Cumbal",
+      "country": "Colombia",
+      "total_analogy": 0.973,
+      "vnum": 351100
+    },
+    {
+      "name": "Peuet Sague",
+      "country": "Indonesia",
+      "total_analogy": 0.972,
+      "vnum": 261030
+    }
+  ]
+}

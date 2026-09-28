@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Tupungatito",
+  "gvp_number_2026": 357010,
+  "gvp_number_2018": 357010,
+  "country": "Chile-Argentina",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -33.3889,
+  "longitude": -69.8269,
+  "elevation_m_2018": 5660,
+  "elevation_m_2026": 5660.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "K-Rich Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1987 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Mixed / uncertain",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "low",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 4.88,
+  "pyvolcans_analogues": [
+    {
+      "name": "Chiles-Cerro Negro",
+      "country": "Colombia-Ecuador",
+      "total_analogy": 0.989,
+      "vnum": 351110
+    },
+    {
+      "name": "Purace",
+      "country": "Colombia",
+      "total_analogy": 0.988,
+      "vnum": 351060
+    },
+    {
+      "name": "Sumbing",
+      "country": "Indonesia",
+      "total_analogy": 0.987,
+      "vnum": 261180
+    },
+    {
+      "name": "Mageik",
+      "country": "United States",
+      "total_analogy": 0.987,
+      "vnum": 312150
+    },
+    {
+      "name": "Lascar",
+      "country": "Chile",
+      "total_analogy": 0.982,
+      "vnum": 355100
+    }
+  ]
+}

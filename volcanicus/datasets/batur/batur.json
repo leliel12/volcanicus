@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Batur",
+  "gvp_number_2026": 264010,
+  "gvp_number_2018": 264010,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Sunda Volcanic Arc",
+  "latitude": -8.2438,
+  "longitude": 115.3749,
+  "elevation_m_2018": 1717,
+  "elevation_m_2026": 1711.0,
+  "volcano_type_class": "Caldera",
+  "gvp_landform": "Caldera",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2000 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Mixed / uncertain",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 1.0726,
+  "morph_pc2": 1.4844,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 1.45,
+  "morph_half_width_km": 25.25,
+  "morph_summit_basal_width_ratio": 0.208,
+  "morph_crater_diameter_km": 10.5,
+  "morph_crater_depth_km": 0.47,
+  "morph_ellipticity_index": null,
+  "morph_circularity": 0.56,
+  "morph_secondary_vents": null,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.483,
+  "pyvolcans_analogues": [
+    {
+      "name": "Barren Island",
+      "country": "India",
+      "total_analogy": 0.961,
+      "vnum": 260010
+    },
+    {
+      "name": "Tengger Caldera",
+      "country": "Indonesia",
+      "total_analogy": 0.954,
+      "vnum": 263310
+    },
+    {
+      "name": "Veniaminof",
+      "country": "United States",
+      "total_analogy": 0.95,
+      "vnum": 312070
+    },
+    {
+      "name": "Semisopochnoi",
+      "country": "United States",
+      "total_analogy": 0.941,
+      "vnum": 311060
+    },
+    {
+      "name": "Zitacuaro-Valle de Bravo",
+      "country": "Mexico",
+      "total_analogy": 0.935,
+      "vnum": 341061
+    }
+  ]
+}

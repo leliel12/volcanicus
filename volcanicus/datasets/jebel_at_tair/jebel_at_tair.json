@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Jebel at Tair",
+  "gvp_number_2026": 221010,
+  "gvp_number_2018": 221010,
+  "country": "Yemen",
+  "gvp_region_group": "Eastern Africa Volcanic Regions",
+  "gvp_volcanic_region": "Red Sea Rift Volcanic Province",
+  "latitude": 15.5391,
+  "longitude": 41.8346,
+  "elevation_m_2018": 244,
+  "elevation_m_2026": 244.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic (alkaline)",
+  "dominant_rock_type": "Trachybasalt / Tephrite Basanite",
+  "tectonic_setting": "Rift zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "2008 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P05",
+  "morph_pc1": -3.1524,
+  "morph_pc2": 0.4539,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 0.22,
+  "morph_half_width_km": 1.32,
+  "morph_summit_basal_width_ratio": 0.616,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.31,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 1.308,
+  "pyvolcans_analogues": [
+    {
+      "name": "Zubair Group",
+      "country": "Yemen",
+      "total_analogy": 0.992,
+      "vnum": 221020
+    },
+    {
+      "name": "Marchena",
+      "country": "Ecuador",
+      "total_analogy": 0.956,
+      "vnum": 353080
+    },
+    {
+      "name": "Fernandina",
+      "country": "Ecuador",
+      "total_analogy": 0.955,
+      "vnum": 353010
+    },
+    {
+      "name": "Wolf",
+      "country": "Ecuador",
+      "total_analogy": 0.947,
+      "vnum": 353020
+    },
+    {
+      "name": "Darwin",
+      "country": "Ecuador",
+      "total_analogy": 0.94,
+      "vnum": 353030
+    }
+  ]
+}

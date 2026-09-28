@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Sarychev Peak",
+  "gvp_number_2026": 290240,
+  "gvp_number_2018": 290240,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 48.0911,
+  "longitude": 153.198,
+  "elevation_m_2018": 1496,
+  "elevation_m_2026": 1496.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Intermediate crust (15-25 km)",
+  "last_known_eruption": "2021 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 0.42,
+  "morph_pc2": -1.0931,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.41,
+  "morph_half_width_km": 3.44,
+  "morph_summit_basal_width_ratio": 0.071,
+  "morph_crater_diameter_km": 0.25,
+  "morph_crater_depth_km": 0.15,
+  "morph_ellipticity_index": 1.51,
+  "morph_circularity": 0.7,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.179,
+  "pyvolcans_analogues": [
+    {
+      "name": "Lopevi",
+      "country": "Vanuatu",
+      "total_analogy": 0.972,
+      "vnum": 257050
+    },
+    {
+      "name": "Gareloi",
+      "country": "United States",
+      "total_analogy": 0.966,
+      "vnum": 311070
+    },
+    {
+      "name": "Iliboleng",
+      "country": "Indonesia",
+      "total_analogy": 0.964,
+      "vnum": 264220
+    },
+    {
+      "name": "Lewotobi",
+      "country": "Indonesia",
+      "total_analogy": 0.963,
+      "vnum": 264180
+    },
+    {
+      "name": "Bagana",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.963,
+      "vnum": 255020
+    }
+  ]
+}

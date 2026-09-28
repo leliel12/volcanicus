@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Pelee",
+  "gvp_number_2026": 360120,
+  "gvp_number_2018": 360120,
+  "country": "France",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Lesser Antilles Volcanic Arc",
+  "latitude": 14.8062,
+  "longitude": -61.1696,
+  "elevation_m_2018": 1394,
+  "elevation_m_2026": 1372.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "1932 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P09",
+  "morph_pc1": 0.6889,
+  "morph_pc2": -0.3953,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.37,
+  "morph_half_width_km": 6.6,
+  "morph_summit_basal_width_ratio": 0.084,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.96,
+  "morph_circularity": null,
+  "morph_secondary_vents": 14.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.497,
+  "pyvolcans_analogues": [
+    {
+      "name": "Soufriere Hills",
+      "country": "United Kingdom",
+      "total_analogy": 0.932,
+      "vnum": 360050
+    },
+    {
+      "name": "Quill, The",
+      "country": "Netherlands",
+      "total_analogy": 0.928,
+      "vnum": 360020
+    },
+    {
+      "name": "Teon",
+      "country": "Indonesia",
+      "total_analogy": 0.922,
+      "vnum": 265050
+    },
+    {
+      "name": "Liamuiga",
+      "country": "Saint Kitts and Nevis",
+      "total_analogy": 0.919,
+      "vnum": 360030
+    },
+    {
+      "name": "Hachijojima",
+      "country": "Japan",
+      "total_analogy": 0.915,
+      "vnum": 284050
+    }
+  ]
+}

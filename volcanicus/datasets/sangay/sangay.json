@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Sangay",
+  "gvp_number_2026": 352090,
+  "gvp_number_2018": 352090,
+  "country": "Ecuador",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Northern Andean Volcanic Arc",
+  "latitude": -2.0055,
+  "longitude": -78.3399,
+  "elevation_m_2018": 5286,
+  "elevation_m_2026": 5286.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 1.6111,
+  "morph_pc2": -0.6052,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 3.42,
+  "morph_half_width_km": 6.7,
+  "morph_summit_basal_width_ratio": 0.035,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.46,
+  "morph_circularity": null,
+  "morph_secondary_vents": 9.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.134,
+  "pyvolcans_analogues": [
+    {
+      "name": "Acatenango",
+      "country": "Guatemala",
+      "total_analogy": 0.959,
+      "vnum": 342080
+    },
+    {
+      "name": "Osorno",
+      "country": "Chile",
+      "total_analogy": 0.951,
+      "vnum": 358010
+    },
+    {
+      "name": "Garibaldi",
+      "country": "Canada",
+      "total_analogy": 0.947,
+      "vnum": 320200
+    },
+    {
+      "name": "Baker",
+      "country": "United States",
+      "total_analogy": 0.945,
+      "vnum": 321010
+    },
+    {
+      "name": "Tolima, Nevado del",
+      "country": "Colombia",
+      "total_analogy": 0.944,
+      "vnum": 351030
+    }
+  ]
+}

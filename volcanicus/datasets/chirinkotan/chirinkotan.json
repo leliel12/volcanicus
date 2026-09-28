@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Chirinkotan",
+  "gvp_number_2026": 290260,
+  "gvp_number_2018": 290260,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 48.9765,
+  "longitude": 153.481,
+  "elevation_m_2018": 724,
+  "elevation_m_2026": 724.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Intermediate crust (15-25 km)",
+  "last_known_eruption": "2022 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": -1.1938,
+  "morph_pc2": -1.1376,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 0.69,
+  "morph_half_width_km": 1.345,
+  "morph_summit_basal_width_ratio": 0.263,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.6,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.396,
+  "pyvolcans_analogues": [
+    {
+      "name": "Matthew Island",
+      "country": "France",
+      "total_analogy": 0.985,
+      "vnum": 258010
+    },
+    {
+      "name": "Berutarubesan [Berutarube]",
+      "country": "Japan - administered by Russia",
+      "total_analogy": 0.976,
+      "vnum": 290040
+    },
+    {
+      "name": "Sashiusudake [Baransky]",
+      "country": "Japan - administered by Russia",
+      "total_analogy": 0.976,
+      "vnum": 290080
+    },
+    {
+      "name": "Seguam",
+      "country": "United States",
+      "total_analogy": 0.974,
+      "vnum": 311180
+    },
+    {
+      "name": "Lewotobi",
+      "country": "Indonesia",
+      "total_analogy": 0.973,
+      "vnum": 264180
+    }
+  ]
+}

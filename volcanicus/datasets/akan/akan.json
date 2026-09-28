@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Akan",
+  "gvp_number_2026": 285070,
+  "gvp_number_2018": 285070,
+  "country": "Japan",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 43.377,
+  "longitude": 144.0108,
+  "elevation_m_2018": 1499,
+  "elevation_m_2026": 1499.0,
+  "volcano_type_class": "Caldera",
+  "gvp_landform": "Caldera",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 0.3618,
+  "morph_pc2": 2.0968,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 0.65,
+  "morph_half_width_km": 34.5,
+  "morph_summit_basal_width_ratio": 0.275,
+  "morph_crater_diameter_km": 19.0,
+  "morph_crater_depth_km": 0.4,
+  "morph_ellipticity_index": null,
+  "morph_circularity": 0.31,
+  "morph_secondary_vents": null,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 1.06,
+  "pyvolcans_analogues": [
+    {
+      "name": "Asosan",
+      "country": "Japan",
+      "total_analogy": 0.968,
+      "vnum": 282110
+    },
+    {
+      "name": "Taal",
+      "country": "Philippines",
+      "total_analogy": 0.959,
+      "vnum": 273070
+    },
+    {
+      "name": "Kuttara",
+      "country": "Japan",
+      "total_analogy": 0.954,
+      "vnum": 285034
+    },
+    {
+      "name": "Shikotsu",
+      "country": "Japan",
+      "total_analogy": 0.953,
+      "vnum": 285040
+    },
+    {
+      "name": "Krasheninnikov",
+      "country": "Russia",
+      "total_analogy": 0.949,
+      "vnum": 300190
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Nyiragongo",
+  "gvp_number_2026": 223030,
+  "gvp_number_2018": 223030,
+  "country": "DR Congo",
+  "gvp_region_group": "Eastern Africa Volcanic Regions",
+  "gvp_volcanic_region": "Albertine Rift Volcanic Province",
+  "latitude": -1.5212,
+  "longitude": 29.2501,
+  "elevation_m_2018": 3470,
+  "elevation_m_2026": 3470.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic (strongly undersaturated/alkaline)",
+  "dominant_rock_type": "Foidite",
+  "tectonic_setting": "Rift zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "No",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P12",
+  "morph_pc1": 0.5669,
+  "morph_pc2": -0.2552,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.68,
+  "morph_half_width_km": 5.45,
+  "morph_summit_basal_width_ratio": 0.156,
+  "morph_crater_diameter_km": 1.24,
+  "morph_crater_depth_km": 0.22,
+  "morph_ellipticity_index": 1.66,
+  "morph_circularity": 0.74,
+  "morph_secondary_vents": 11.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.134,
+  "pyvolcans_analogues": [
+    {
+      "name": "Fogo",
+      "country": "Cape Verde",
+      "total_analogy": 0.922,
+      "vnum": 384010
+    },
+    {
+      "name": "Lengai, Ol Doinyo",
+      "country": "Tanzania",
+      "total_analogy": 0.911,
+      "vnum": 222120
+    },
+    {
+      "name": "Cameroon",
+      "country": "Cameroon",
+      "total_analogy": 0.911,
+      "vnum": 224010
+    },
+    {
+      "name": "Erebus",
+      "country": "Antarctica",
+      "total_analogy": 0.903,
+      "vnum": 390020
+    },
+    {
+      "name": "South Island",
+      "country": "Kenya",
+      "total_analogy": 0.898,
+      "vnum": 222020
+    }
+  ]
+}

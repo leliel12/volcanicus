@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Wolf",
+  "gvp_number_2026": 353020,
+  "gvp_number_2018": 353020,
+  "country": "Ecuador",
+  "gvp_region_group": "Eastern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Galapagos Hotspot Volcano Group",
+  "latitude": 0.0155,
+  "longitude": -91.3526,
+  "elevation_m_2018": 1710,
+  "elevation_m_2026": 1710.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Rift zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "2022 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P05",
+  "morph_pc1": 0.5114,
+  "morph_pc2": 1.1344,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.7,
+  "morph_half_width_km": 11.05,
+  "morph_summit_basal_width_ratio": 0.309,
+  "morph_crater_diameter_km": 5.49,
+  "morph_crater_depth_km": 0.65,
+  "morph_ellipticity_index": 1.37,
+  "morph_circularity": 0.52,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.578,
+  "pyvolcans_analogues": [
+    {
+      "name": "Azul, Cerro",
+      "country": "Ecuador",
+      "total_analogy": 0.987,
+      "vnum": 353060
+    },
+    {
+      "name": "Fernandina",
+      "country": "Ecuador",
+      "total_analogy": 0.982,
+      "vnum": 353010
+    },
+    {
+      "name": "Theistareykir",
+      "country": "Iceland",
+      "total_analogy": 0.976,
+      "vnum": 373090
+    },
+    {
+      "name": "Darwin",
+      "country": "Ecuador",
+      "total_analogy": 0.968,
+      "vnum": 353030
+    },
+    {
+      "name": "Marchena",
+      "country": "Ecuador",
+      "total_analogy": 0.964,
+      "vnum": 353080
+    }
+  ]
+}

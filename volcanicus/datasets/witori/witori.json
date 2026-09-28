@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Witori",
+  "gvp_number_2026": 252080,
+  "gvp_number_2018": 252080,
+  "country": "Papua New Guinea",
+  "gvp_region_group": "Southwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Bismarck Volcanic Arc",
+  "latitude": -5.5755,
+  "longitude": 150.5161,
+  "elevation_m_2018": 724,
+  "elevation_m_2026": 724.0,
+  "volcano_type_class": "Caldera",
+  "gvp_landform": "Caldera",
+  "rock_affinity": "felsic",
+  "dominant_rock_type": "Dacite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2012 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P14",
+  "morph_pc1": -1.4035,
+  "morph_pc2": 1.1971,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 0.2,
+  "morph_half_width_km": 10.5,
+  "morph_summit_basal_width_ratio": 0.333,
+  "morph_crater_diameter_km": 7.0,
+  "morph_crater_depth_km": 0.15,
+  "morph_ellipticity_index": null,
+  "morph_circularity": 0.5,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 0.111,
+  "pyvolcans_analogues": [
+    {
+      "name": "Towada",
+      "country": "Japan",
+      "total_analogy": 0.939,
+      "vnum": 283271
+    },
+    {
+      "name": "Ksudach",
+      "country": "Russia",
+      "total_analogy": 0.932,
+      "vnum": 300050
+    },
+    {
+      "name": "Mashu",
+      "country": "Japan",
+      "total_analogy": 0.927,
+      "vnum": 285081
+    },
+    {
+      "name": "Akan",
+      "country": "Japan",
+      "total_analogy": 0.926,
+      "vnum": 285070
+    },
+    {
+      "name": "Ilopango",
+      "country": "El Salvador",
+      "total_analogy": 0.926,
+      "vnum": 343060
+    }
+  ]
+}

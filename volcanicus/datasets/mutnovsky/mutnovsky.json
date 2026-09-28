@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Mutnovsky",
+  "gvp_number_2026": 300060,
+  "gvp_number_2018": 300060,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 52.4476,
+  "longitude": 158.2003,
+  "elevation_m_2018": 2288,
+  "elevation_m_2026": 2288.0,
+  "volcano_type_class": "Complex volcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2000 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P03",
+  "morph_pc1": 0.3947,
+  "morph_pc2": 0.0117,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.98,
+  "morph_half_width_km": 4.755,
+  "morph_summit_basal_width_ratio": 0.244,
+  "morph_crater_diameter_km": 2.32,
+  "morph_crater_depth_km": 0.23,
+  "morph_ellipticity_index": 1.56,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.33,
+  "pyvolcans_analogues": [
+    {
+      "name": "Korovin",
+      "country": "United States",
+      "total_analogy": 0.976,
+      "vnum": 311161
+    },
+    {
+      "name": "Lokon-Empung",
+      "country": "Indonesia",
+      "total_analogy": 0.973,
+      "vnum": 266100
+    },
+    {
+      "name": "Kupreanof",
+      "country": "United States",
+      "total_analogy": 0.971,
+      "vnum": 312060
+    },
+    {
+      "name": "Ragang",
+      "country": "Philippines",
+      "total_analogy": 0.969,
+      "vnum": 271060
+    },
+    {
+      "name": "Zaozan",
+      "country": "Japan",
+      "total_analogy": 0.969,
+      "vnum": 283190
+    }
+  ]
+}

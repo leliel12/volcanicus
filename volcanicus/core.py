@@ -122,32 +122,10 @@ class Volcano:
 
     """
 
-    def __init__(self, df, name, metadata=None):
+    def __init__(self, name, df, metadata=None):
         self._dataframe = normalize_dataframe(df)
         self._name = name
         self._metadata = Bunch("metadata", metadata or {})
-
-    # ALTERNATIVE CONSTRUCTORS ================================================
-
-    @classmethod
-    def from_csv(cls, path, volcano_name):
-        """Build a :class:`Volcano` instance from a CSV file.
-
-        Parameters
-        ----------
-        path : str or pathlib.Path
-            Path to the CSV file with the measurements.
-        volcano_name : str
-            Name of the volcano.
-
-        Returns
-        -------
-        Volcano
-            A new instance built from the CSV contents.
-
-        """
-        df = pd.read_csv(Path(path))
-        return cls(df, volcano_name)
 
     # ACCESSORS (YES, WE USE CACHED PROPERTIES IS THE EASIEST WAY) ============
 
@@ -486,29 +464,3 @@ class Volcano:
             f"{rows}"
             "</table>"
         )
-
-
-# =============================================================================
-# IO
-# =============================================================================
-
-
-def read_csv(path, volcano_name):
-    """Build a :class:`Volcano` instance from a CSV file.
-
-    Thin module-level wrapper around :meth:`Volcano.from_csv`.
-
-    Parameters
-    ----------
-    path : str or pathlib.Path
-        Path to the CSV file with the measurements.
-    volcano_name : str
-        Name of the volcano.
-
-    Returns
-    -------
-    Volcano
-        A new instance built from the CSV contents.
-
-    """
-    return Volcano.from_csv(path, volcano_name)

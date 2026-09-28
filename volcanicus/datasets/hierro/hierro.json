@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Hierro",
+  "gvp_number_2026": 383020,
+  "gvp_number_2018": 383020,
+  "country": "Spain",
+  "gvp_region_group": "Northern Africa Volcanic Regions",
+  "gvp_volcanic_region": "Canary Volcanic Province",
+  "latitude": 27.7276,
+  "longitude": -18.0289,
+  "elevation_m_2018": 1500,
+  "elevation_m_2026": 1500.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "mafic (alkaline)",
+  "dominant_rock_type": "Trachybasalt / Tephrite Basanite",
+  "tectonic_setting": "Intraplate / Oceanic crust (< 15 km)",
+  "last_known_eruption": "2012 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P05",
+  "morph_pc1": -0.0749,
+  "morph_pc2": 1.5638,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.49,
+  "morph_half_width_km": 9.1,
+  "morph_summit_basal_width_ratio": 0.445,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 3.68,
+  "morph_circularity": null,
+  "morph_secondary_vents": 21.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.288,
+  "pyvolcans_analogues": [
+    {
+      "name": "McDonald Islands",
+      "country": "Australia",
+      "total_analogy": 0.938,
+      "vnum": 234011
+    },
+    {
+      "name": "Alayta",
+      "country": "Ethiopia",
+      "total_analogy": 0.935,
+      "vnum": 221112
+    },
+    {
+      "name": "Karthala",
+      "country": "Comoros",
+      "total_analogy": 0.934,
+      "vnum": 233010
+    },
+    {
+      "name": "La Palma",
+      "country": "Spain",
+      "total_analogy": 0.933,
+      "vnum": 383010
+    },
+    {
+      "name": "Fournaise, Piton de la",
+      "country": "France",
+      "total_analogy": 0.929,
+      "vnum": 233020
+    }
+  ]
+}

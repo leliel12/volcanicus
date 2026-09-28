@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Masaya",
+  "gvp_number_2026": 344100,
+  "gvp_number_2018": 344100,
+  "country": "Nicaragua",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Central America Volcanic Arc",
+  "latitude": 11.9867,
+  "longitude": -86.1655,
+  "elevation_m_2018": 635,
+  "elevation_m_2026": 594.0,
+  "volcano_type_class": "Caldera",
+  "gvp_landform": "Caldera",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "No",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P03",
+  "morph_pc1": -2.6378,
+  "morph_pc2": 1.3971,
+  "morph_source": "PikeClow1981",
+  "morph_height_km": 0.1,
+  "morph_half_width_km": 6.525,
+  "morph_summit_basal_width_ratio": 0.479,
+  "morph_crater_diameter_km": 6.25,
+  "morph_crater_depth_km": 0.1,
+  "morph_ellipticity_index": null,
+  "morph_circularity": 0.28,
+  "morph_secondary_vents": null,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.441,
+  "pyvolcans_analogues": [
+    {
+      "name": "Krakatau",
+      "country": "Indonesia",
+      "total_analogy": 0.968,
+      "vnum": 262000
+    },
+    {
+      "name": "Rabaul",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.957,
+      "vnum": 252140
+    },
+    {
+      "name": "Asosan",
+      "country": "Japan",
+      "total_analogy": 0.954,
+      "vnum": 282110
+    },
+    {
+      "name": "Krasheninnikov",
+      "country": "Russia",
+      "total_analogy": 0.95,
+      "vnum": 300190
+    },
+    {
+      "name": "West Crater",
+      "country": "United States",
+      "total_analogy": 0.95,
+      "vnum": 321060
+    }
+  ]
+}

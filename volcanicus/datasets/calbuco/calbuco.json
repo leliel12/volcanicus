@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Calbuco",
+  "gvp_number_2026": 358020,
+  "gvp_number_2018": 358020,
+  "country": "Chile",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -41.3261,
+  "longitude": -72.616,
+  "elevation_m_2018": 1974,
+  "elevation_m_2026": 1974.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2015 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 0.8107,
+  "morph_pc2": -0.4068,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.7,
+  "morph_half_width_km": 6.2,
+  "morph_summit_basal_width_ratio": 0.095,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.62,
+  "morph_circularity": null,
+  "morph_secondary_vents": 8.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.465,
+  "pyvolcans_analogues": [
+    {
+      "name": "Agung",
+      "country": "Indonesia",
+      "total_analogy": 0.964,
+      "vnum": 264020
+    },
+    {
+      "name": "Arenal",
+      "country": "Costa Rica",
+      "total_analogy": 0.961,
+      "vnum": 345033
+    },
+    {
+      "name": "Avachinsky",
+      "country": "Russia",
+      "total_analogy": 0.951,
+      "vnum": 300100
+    },
+    {
+      "name": "Iliamna",
+      "country": "United States",
+      "total_analogy": 0.95,
+      "vnum": 313020
+    },
+    {
+      "name": "Taranaki [Egmont]",
+      "country": "New Zealand",
+      "total_analogy": 0.945,
+      "vnum": 241030
+    }
+  ]
+}

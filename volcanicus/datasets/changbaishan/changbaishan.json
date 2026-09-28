@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Changbaishan",
+  "gvp_number_2026": 305060,
+  "gvp_number_2018": 305060,
+  "country": "China-North Korea",
+  "gvp_region_group": "Eastern Asia Volcanic Regions",
+  "gvp_volcanic_region": "Central East Asia Volcanic Province",
+  "latitude": 41.977,
+  "longitude": 128.0858,
+  "elevation_m_2018": 2744,
+  "elevation_m_2026": 2744.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "felsic (alkaline)",
+  "dominant_rock_type": "Trachyte / Trachydacite",
+  "tectonic_setting": "Intraplate / Continental crust (>25 km)",
+  "last_known_eruption": "1903 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P15",
+  "morph_pc1": 0.3172,
+  "morph_pc2": 0.8266,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.33,
+  "morph_half_width_km": 9.45,
+  "morph_summit_basal_width_ratio": 0.275,
+  "morph_crater_diameter_km": 5.2,
+  "morph_crater_depth_km": 0.4,
+  "morph_ellipticity_index": 2.0,
+  "morph_circularity": 0.59,
+  "morph_secondary_vents": 19.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.584,
+  "pyvolcans_analogues": [
+    {
+      "name": "Deception Island",
+      "country": "Antarctica",
+      "total_analogy": 0.87,
+      "vnum": 390030
+    },
+    {
+      "name": "Pantelleria",
+      "country": "Italy",
+      "total_analogy": 0.868,
+      "vnum": 211071
+    },
+    {
+      "name": "Quill, The",
+      "country": "Netherlands",
+      "total_analogy": 0.86,
+      "vnum": 360020
+    },
+    {
+      "name": "Rungwe",
+      "country": "Tanzania",
+      "total_analogy": 0.856,
+      "vnum": 222166
+    },
+    {
+      "name": "Meidob Volcanic Field",
+      "country": "Sudan",
+      "total_analogy": 0.851,
+      "vnum": 225050
+    }
+  ]
+}

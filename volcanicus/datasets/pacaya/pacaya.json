@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Pacaya",
+  "gvp_number_2026": 342110,
+  "gvp_number_2018": 342110,
+  "country": "Guatemala",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Central America Volcanic Arc",
+  "latitude": 14.3793,
+  "longitude": -90.5974,
+  "elevation_m_2018": 2569,
+  "elevation_m_2026": 2569.0,
+  "volcano_type_class": "Complex volcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2021 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P16",
+  "morph_pc1": -0.7899,
+  "morph_pc2": 0.333,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.21,
+  "morph_half_width_km": 2.83,
+  "morph_summit_basal_width_ratio": 0.426,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.5,
+  "morph_circularity": null,
+  "morph_secondary_vents": 4.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.49,
+  "pyvolcans_analogues": [
+    {
+      "name": "Alney-Chashakondzha",
+      "country": "Russia",
+      "total_analogy": 0.965,
+      "vnum": 300450
+    },
+    {
+      "name": "Tromen",
+      "country": "Argentina",
+      "total_analogy": 0.965,
+      "vnum": 357072
+    },
+    {
+      "name": "Redoubt",
+      "country": "United States",
+      "total_analogy": 0.964,
+      "vnum": 313030
+    },
+    {
+      "name": "Trident",
+      "country": "United States",
+      "total_analogy": 0.959,
+      "vnum": 312160
+    },
+    {
+      "name": "Soputan",
+      "country": "Indonesia",
+      "total_analogy": 0.957,
+      "vnum": 266030
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Soufriere Hills",
+  "gvp_number_2026": 360050,
+  "gvp_number_2018": 360050,
+  "country": "United Kingdom",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Lesser Antilles Volcanic Arc",
+  "latitude": 16.7169,
+  "longitude": -62.1832,
+  "elevation_m_2018": 915,
+  "elevation_m_2026": 915.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "2013 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": -0.3292,
+  "morph_pc2": -0.6561,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 0.88,
+  "morph_half_width_km": 3.19,
+  "morph_summit_basal_width_ratio": 0.183,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.43,
+  "morph_circularity": null,
+  "morph_secondary_vents": 5.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.485,
+  "pyvolcans_analogues": [
+    {
+      "name": "Teon",
+      "country": "Indonesia",
+      "total_analogy": 0.943,
+      "vnum": 265050
+    },
+    {
+      "name": "Ruang",
+      "country": "Indonesia",
+      "total_analogy": 0.938,
+      "vnum": 267010
+    },
+    {
+      "name": "Hachijojima",
+      "country": "Japan",
+      "total_analogy": 0.934,
+      "vnum": 284050
+    },
+    {
+      "name": "Pelee",
+      "country": "France",
+      "total_analogy": 0.932,
+      "vnum": 360120
+    },
+    {
+      "name": "Prevo Peak",
+      "country": "Russia",
+      "total_analogy": 0.924,
+      "vnum": 290190
+    }
+  ]
+}

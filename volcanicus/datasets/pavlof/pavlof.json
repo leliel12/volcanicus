@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Pavlof",
+  "gvp_number_2026": 312030,
+  "gvp_number_2018": 312030,
+  "country": "United States",
+  "gvp_region_group": "North America Volcanic Regions",
+  "gvp_volcanic_region": "Aleutian Ridge Volcanic Arc",
+  "latitude": 55.418,
+  "longitude": -161.8912,
+  "elevation_m_2018": 2493,
+  "elevation_m_2026": 2493.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2022 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": 0.3616,
+  "morph_pc2": -1.2438,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.55,
+  "morph_half_width_km": 2.79,
+  "morph_summit_basal_width_ratio": 0.083,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.75,
+  "morph_circularity": null,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.209,
+  "pyvolcans_analogues": [
+    {
+      "name": "Manam",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.988,
+      "vnum": 251020
+    },
+    {
+      "name": "Antuco",
+      "country": "Chile",
+      "total_analogy": 0.987,
+      "vnum": 357080
+    },
+    {
+      "name": "Chikurachki",
+      "country": "Russia",
+      "total_analogy": 0.983,
+      "vnum": 290360
+    },
+    {
+      "name": "Ulawun",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.982,
+      "vnum": 252120
+    },
+    {
+      "name": "Llaima",
+      "country": "Chile",
+      "total_analogy": 0.981,
+      "vnum": 357110
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Sangeang Api",
+  "gvp_number_2026": 264050,
+  "gvp_number_2018": 264050,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Sunda Volcanic Arc",
+  "latitude": -8.1975,
+  "longitude": 119.071,
+  "elevation_m_2018": 1949,
+  "elevation_m_2026": 1912.0,
+  "volcano_type_class": "Complex volcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic (alkaline)",
+  "dominant_rock_type": "Trachybasalt / Tephrite Basanite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2022 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Magmatic, unbuffered - explosive, no crater lake",
+  "crater_lake_mentioned": "No",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P03",
+  "morph_pc1": 0.6049,
+  "morph_pc2": 0.1814,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.91,
+  "morph_half_width_km": 6.5,
+  "morph_summit_basal_width_ratio": 0.214,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.02,
+  "morph_circularity": null,
+  "morph_secondary_vents": 4.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.299,
+  "pyvolcans_analogues": [
+    {
+      "name": "Marapi",
+      "country": "Indonesia",
+      "total_analogy": 0.956,
+      "vnum": 261140
+    },
+    {
+      "name": "Lamongan",
+      "country": "Indonesia",
+      "total_analogy": 0.954,
+      "vnum": 263320
+    },
+    {
+      "name": "Etna",
+      "country": "Italy",
+      "total_analogy": 0.952,
+      "vnum": 211060
+    },
+    {
+      "name": "Stromboli",
+      "country": "Italy",
+      "total_analogy": 0.946,
+      "vnum": 211040
+    },
+    {
+      "name": "San Martin",
+      "country": "Mexico",
+      "total_analogy": 0.944,
+      "vnum": 341110
+    }
+  ]
+}

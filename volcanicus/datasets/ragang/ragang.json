@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Ragang",
+  "gvp_number_2026": 271060,
+  "gvp_number_2018": 271060,
+  "country": "Philippines",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Mindanao Volcanic Province",
+  "latitude": 7.6889,
+  "longitude": 124.5089,
+  "elevation_m_2018": 2815,
+  "elevation_m_2026": 2790.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1916 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": null,
+  "thermal_proxy_set": "P21",
+  "morph_pc1": 0.4787,
+  "morph_pc2": 0.5781,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.77,
+  "morph_half_width_km": 7.65,
+  "morph_summit_basal_width_ratio": 0.266,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.36,
+  "morph_circularity": null,
+  "morph_secondary_vents": 27.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.314,
+  "pyvolcans_analogues": [
+    {
+      "name": "Guntur",
+      "country": "Indonesia",
+      "total_analogy": 0.986,
+      "vnum": 263130
+    },
+    {
+      "name": "Ushkovsky",
+      "country": "Russia",
+      "total_analogy": 0.984,
+      "vnum": 300261
+    },
+    {
+      "name": "Makaturing",
+      "country": "Philippines",
+      "total_analogy": 0.983,
+      "vnum": 271040
+    },
+    {
+      "name": "Karpinsky Group",
+      "country": "Russia",
+      "total_analogy": 0.979,
+      "vnum": 290350
+    },
+    {
+      "name": "Bam",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.978,
+      "vnum": 251010
+    }
+  ]
+}

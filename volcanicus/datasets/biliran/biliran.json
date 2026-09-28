@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Biliran",
+  "gvp_number_2026": 272080,
+  "gvp_number_2018": 272080,
+  "country": "Philippines",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Eastern Philippine Volcanic Arc",
+  "latitude": 11.5178,
+  "longitude": 124.5364,
+  "elevation_m_2018": 1301,
+  "elevation_m_2026": 1301.0,
+  "volcano_type_class": "Complex volcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1939 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P09",
+  "morph_pc1": 0.0076,
+  "morph_pc2": 0.8492,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 0.598,
+  "pyvolcans_analogues": [
+    {
+      "name": "Ambang",
+      "country": "Indonesia",
+      "total_analogy": 0.983,
+      "vnum": 266020
+    },
+    {
+      "name": "Tangkubanparahu",
+      "country": "Indonesia",
+      "total_analogy": 0.977,
+      "vnum": 263090
+    },
+    {
+      "name": "Kupreanof",
+      "country": "United States",
+      "total_analogy": 0.968,
+      "vnum": 312060
+    },
+    {
+      "name": "Pilas, Las",
+      "country": "Nicaragua",
+      "total_analogy": 0.967,
+      "vnum": 344080
+    },
+    {
+      "name": "Telica",
+      "country": "Nicaragua",
+      "total_analogy": 0.964,
+      "vnum": 344040
+    }
+  ]
+}

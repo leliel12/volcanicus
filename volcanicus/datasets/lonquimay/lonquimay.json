@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Lonquimay",
+  "gvp_number_2026": 357100,
+  "gvp_number_2018": 357100,
+  "country": "Chile",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -38.3755,
+  "longitude": -71.5825,
+  "elevation_m_2018": 2832,
+  "elevation_m_2026": 2832.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1990 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 0.0659,
+  "morph_pc2": -0.7189,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.32,
+  "morph_half_width_km": 3.225,
+  "morph_summit_basal_width_ratio": 0.167,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.4,
+  "morph_circularity": null,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.495,
+  "pyvolcans_analogues": [
+    {
+      "name": "Koshelev",
+      "country": "Russia",
+      "total_analogy": 0.984,
+      "vnum": 300020
+    },
+    {
+      "name": "Alney-Chashakondzha",
+      "country": "Russia",
+      "total_analogy": 0.972,
+      "vnum": 300450
+    },
+    {
+      "name": "Reventador",
+      "country": "Ecuador",
+      "total_analogy": 0.97,
+      "vnum": 352010
+    },
+    {
+      "name": "Izalco",
+      "country": "El Salvador",
+      "total_analogy": 0.965,
+      "vnum": 343030
+    },
+    {
+      "name": "Three Sisters",
+      "country": "United States",
+      "total_analogy": 0.96,
+      "vnum": 322070
+    }
+  ]
+}

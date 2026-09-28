@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Kambalny",
+  "gvp_number_2026": 300010,
+  "gvp_number_2018": 300010,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 51.3019,
+  "longitude": 156.8738,
+  "elevation_m_2018": 2116,
+  "elevation_m_2026": 2116.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2017 CE",
+  "activity_evidence": "Eruption Dated",
+  "activity_status": "Holocene eruption radiometrically/tephrochronologically dated (pre-historical)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P03",
+  "morph_pc1": 0.8222,
+  "morph_pc2": -0.8582,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.76,
+  "morph_half_width_km": 4.755,
+  "morph_summit_basal_width_ratio": 0.053,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.76,
+  "morph_circularity": null,
+  "morph_secondary_vents": 4.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.463,
+  "pyvolcans_analogues": [
+    {
+      "name": "Lawu",
+      "country": "Indonesia",
+      "total_analogy": 0.957,
+      "vnum": 263260
+    },
+    {
+      "name": "Corcovado",
+      "country": "Chile",
+      "total_analogy": 0.957,
+      "vnum": 358050
+    },
+    {
+      "name": "Fourpeaked",
+      "country": "United States",
+      "total_analogy": 0.954,
+      "vnum": 312260
+    },
+    {
+      "name": "Cereme",
+      "country": "Indonesia",
+      "total_analogy": 0.953,
+      "vnum": 263170
+    },
+    {
+      "name": "Sundoro",
+      "country": "Indonesia",
+      "total_analogy": 0.952,
+      "vnum": 263210
+    }
+  ]
+}

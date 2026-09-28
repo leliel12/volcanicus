@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Dukono",
+  "gvp_number_2026": 268010,
+  "gvp_number_2018": 268010,
+  "country": "Indonesia",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Halmahera Volcanic Arc",
+  "latitude": 1.699,
+  "longitude": 127.8827,
+  "elevation_m_2018": 1229,
+  "elevation_m_2026": 1273.0,
+  "volcano_type_class": "Complex volcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P02",
+  "morph_pc1": -0.1035,
+  "morph_pc2": 1.1623,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.2,
+  "morph_half_width_km": 8.4,
+  "morph_summit_basal_width_ratio": 0.374,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.53,
+  "morph_circularity": null,
+  "morph_secondary_vents": 52.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.49,
+  "pyvolcans_analogues": [
+    {
+      "name": "Montagu Island",
+      "country": "United Kingdom",
+      "total_analogy": 0.927,
+      "vnum": 390081
+    },
+    {
+      "name": "Miyakejima",
+      "country": "Japan",
+      "total_analogy": 0.926,
+      "vnum": 284040
+    },
+    {
+      "name": "Makian",
+      "country": "Indonesia",
+      "total_analogy": 0.922,
+      "vnum": 268070
+    },
+    {
+      "name": "Akutan",
+      "country": "United States",
+      "total_analogy": 0.921,
+      "vnum": 311320
+    },
+    {
+      "name": "Tofua",
+      "country": "Tonga",
+      "total_analogy": 0.921,
+      "vnum": 243060
+    }
+  ]
+}

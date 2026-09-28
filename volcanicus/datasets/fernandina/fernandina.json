@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Fernandina",
+  "gvp_number_2026": 353010,
+  "gvp_number_2018": 353010,
+  "country": "Ecuador",
+  "gvp_region_group": "Eastern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Galapagos Hotspot Volcano Group",
+  "latitude": -0.3715,
+  "longitude": -91.5369,
+  "elevation_m_2018": 1476,
+  "elevation_m_2026": 1476.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Rift zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "2024 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Direct magmatic - open-vent / lava-dominated",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P05",
+  "morph_pc1": 0.259,
+  "morph_pc2": 1.258,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.43,
+  "morph_half_width_km": 10.75,
+  "morph_summit_basal_width_ratio": 0.342,
+  "morph_crater_diameter_km": 5.74,
+  "morph_crater_depth_km": 0.83,
+  "morph_ellipticity_index": 1.29,
+  "morph_circularity": 0.42,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 1.466,
+  "pyvolcans_analogues": [
+    {
+      "name": "Wolf",
+      "country": "Ecuador",
+      "total_analogy": 0.982,
+      "vnum": 353020
+    },
+    {
+      "name": "Marchena",
+      "country": "Ecuador",
+      "total_analogy": 0.974,
+      "vnum": 353080
+    },
+    {
+      "name": "Azul, Cerro",
+      "country": "Ecuador",
+      "total_analogy": 0.972,
+      "vnum": 353060
+    },
+    {
+      "name": "Theistareykir",
+      "country": "Iceland",
+      "total_analogy": 0.962,
+      "vnum": 373090
+    },
+    {
+      "name": "Darwin",
+      "country": "Ecuador",
+      "total_analogy": 0.961,
+      "vnum": 353030
+    }
+  ]
+}

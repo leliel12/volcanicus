@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Santa Isabel",
+  "gvp_number_2026": 224004,
+  "gvp_number_2018": 224004,
+  "country": "Equatorial Guinea",
+  "gvp_region_group": "Northern Africa Volcanic Regions",
+  "gvp_volcanic_region": "Western Africa Volcanic Province",
+  "latitude": 3.5851,
+  "longitude": 8.7608,
+  "elevation_m_2018": 3007,
+  "elevation_m_2026": 2999.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Intraplate / Continental crust (>25 km)",
+  "last_known_eruption": "1923 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P20",
+  "morph_pc1": 1.5622,
+  "morph_pc2": 1.0887,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.99,
+  "morph_half_width_km": 18.1,
+  "morph_summit_basal_width_ratio": 0.193,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.13,
+  "morph_circularity": null,
+  "morph_secondary_vents": 39.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": 0.349,
+  "pyvolcans_analogues": [
+    {
+      "name": "Hudson Mountains",
+      "country": "Antarctica",
+      "total_analogy": 0.597,
+      "vnum": 390028
+    },
+    {
+      "name": "San Joaquin",
+      "country": "Equatorial Guinea",
+      "total_analogy": 0.584,
+      "vnum": 224003
+    },
+    {
+      "name": "Tralihue",
+      "country": "Argentina",
+      "total_analogy": 0.573,
+      "vnum": 357101
+    },
+    {
+      "name": "Bridgeman Island",
+      "country": "Antarctica",
+      "total_analogy": 0.573,
+      "vnum": 390040
+    },
+    {
+      "name": "Popa (Burma",
+      "country": "Myanmar)",
+      "total_analogy": 0.565,
+      "vnum": 275080
+    }
+  ]
+}

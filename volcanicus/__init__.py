@@ -17,7 +17,7 @@ deformation/residual measurements."""
 
 from . import datasets
 from .accessors import PlotAccessor, StatsAccessor
-from .core import Volcano, normalize_dataframe, read_csv
+from .core import Volcano, normalize_dataframe
 
 # =============================================================================
 # CONSTANTS
@@ -26,7 +26,6 @@ from .core import Volcano, normalize_dataframe, read_csv
 __all__ = [
     "Volcano",
     "normalize_dataframe",
-    "read_csv",
     "PlotAccessor",
     "StatsAccessor",
     "datasets",

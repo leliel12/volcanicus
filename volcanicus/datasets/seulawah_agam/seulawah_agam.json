@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Seulawah Agam",
+  "gvp_number_2026": 261020,
+  "gvp_number_2018": 261020,
+  "country": "Indonesia",
+  "gvp_region_group": null,
+  "gvp_volcanic_region": null,
+  "latitude": 5.4527,
+  "longitude": 95.6589,
+  "elevation_m_2018": 1810,
+  "elevation_m_2026": null,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": null,
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1839 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P09",
+  "morph_pc1": 0.1333,
+  "morph_pc2": -0.4809,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.42,
+  "morph_half_width_km": 3.695,
+  "morph_summit_basal_width_ratio": 0.19,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 1.7,
+  "morph_circularity": null,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": 4.0,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Yakedake",
+      "country": "Japan",
+      "total_analogy": 0.986,
+      "vnum": 283070
+    },
+    {
+      "name": "Kusatsu-Shiranesan",
+      "country": "Japan",
+      "total_analogy": 0.978,
+      "vnum": 283120
+    },
+    {
+      "name": "Fourpeaked",
+      "country": "United States",
+      "total_analogy": 0.978,
+      "vnum": 312260
+    },
+    {
+      "name": "Tandikat-Singgalang",
+      "country": "Indonesia",
+      "total_analogy": 0.972,
+      "vnum": 261150
+    },
+    {
+      "name": "Descabezado Grande",
+      "country": "Chile",
+      "total_analogy": 0.971,
+      "vnum": 357050
+    }
+  ]
+}

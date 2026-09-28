@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Maly Semyachik",
+  "gvp_number_2026": 300140,
+  "gvp_number_2018": 300140,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Eastern Kamchatka Volcanic Arc",
+  "latitude": 54.1199,
+  "longitude": 159.6593,
+  "elevation_m_2018": 1527,
+  "elevation_m_2026": 1527.0,
+  "volcano_type_class": "Caldera",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1952 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P03",
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": 1.933,
+  "pyvolcans_analogues": [
+    {
+      "name": "Ata",
+      "country": "Japan",
+      "total_analogy": 0.957,
+      "vnum": 282070
+    },
+    {
+      "name": "Krasheninnikov",
+      "country": "Russia",
+      "total_analogy": 0.957,
+      "vnum": 300190
+    },
+    {
+      "name": "Barren Island",
+      "country": "India",
+      "total_analogy": 0.95,
+      "vnum": 260010
+    },
+    {
+      "name": "Medicine Lake",
+      "country": "United States",
+      "total_analogy": 0.949,
+      "vnum": 323020
+    },
+    {
+      "name": "Newberry",
+      "country": "United States",
+      "total_analogy": 0.945,
+      "vnum": 322110
+    }
+  ]
+}

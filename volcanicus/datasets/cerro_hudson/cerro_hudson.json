@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Cerro Hudson",
+  "gvp_number_2026": 358057,
+  "gvp_number_2018": 358057,
+  "country": "Chile",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -45.8984,
+  "longitude": -72.9692,
+  "elevation_m_2018": 1905,
+  "elevation_m_2026": 1905.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "mafic",
+  "dominant_rock_type": "Basalt / Picro-Basalt",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2011 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": "P03",
+  "morph_pc1": 0.0596,
+  "morph_pc2": 2.0159,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 1.77,
+  "morph_half_width_km": 11.55,
+  "morph_summit_basal_width_ratio": 0.493,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 2.28,
+  "morph_circularity": null,
+  "morph_secondary_vents": 71.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.188,
+  "pyvolcans_analogues": [
+    {
+      "name": "Lamington",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.92,
+      "vnum": 253010
+    },
+    {
+      "name": "Tambora",
+      "country": "Indonesia",
+      "total_analogy": 0.895,
+      "vnum": 264040
+    },
+    {
+      "name": "Westdahl",
+      "country": "United States",
+      "total_analogy": 0.893,
+      "vnum": 311340
+    },
+    {
+      "name": "Vulcano",
+      "country": "Italy",
+      "total_analogy": 0.887,
+      "vnum": 211050
+    },
+    {
+      "name": "Santa Ana",
+      "country": "El Salvador",
+      "total_analogy": 0.885,
+      "vnum": 343020
+    }
+  ]
+}

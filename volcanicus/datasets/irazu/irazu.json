@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Irazu",
+  "gvp_number_2026": 345060,
+  "gvp_number_2018": 345060,
+  "country": "Costa Rica",
+  "gvp_region_group": "Middle America-Caribbean Volcanic Regions",
+  "gvp_volcanic_region": "Central America Volcanic Arc",
+  "latitude": 9.9827,
+  "longitude": -83.8514,
+  "elevation_m_2018": 3432,
+  "elevation_m_2026": 3436.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1977 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Hydrothermal - crater-lake / hydrothermally buffered",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "high",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 1.8332,
+  "morph_pc2": 0.199,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 3.17,
+  "morph_half_width_km": 13.55,
+  "morph_summit_basal_width_ratio": 0.06,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 3.57,
+  "morph_circularity": null,
+  "morph_secondary_vents": 45.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 0.417,
+  "pyvolcans_analogues": [
+    {
+      "name": "Ulawun",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.986,
+      "vnum": 252120
+    },
+    {
+      "name": "Alaid",
+      "country": "Russia",
+      "total_analogy": 0.984,
+      "vnum": 290390
+    },
+    {
+      "name": "Pavlof",
+      "country": "United States",
+      "total_analogy": 0.979,
+      "vnum": 312030
+    },
+    {
+      "name": "Langila",
+      "country": "Papua New Guinea",
+      "total_analogy": 0.978,
+      "vnum": 252010
+    },
+    {
+      "name": "Zhupanovsky",
+      "country": "Russia",
+      "total_analogy": 0.977,
+      "vnum": 300120
+    }
+  ]
+}

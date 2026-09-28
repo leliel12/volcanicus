@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Planchon-Peteroa",
+  "gvp_number_2026": 357040,
+  "gvp_number_2018": 357040,
+  "country": "Chile",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -35.2405,
+  "longitude": -70.5706,
+  "elevation_m_2018": 3977,
+  "elevation_m_2026": 3977.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2025 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Mixed / uncertain",
+  "crater_lake_mentioned": "Yes",
+  "label_confidence": "moderate",
+  "thermal_proxy_set": "P01",
+  "morph_pc1": 0.7919,
+  "morph_pc2": 0.8122,
+  "morph_source": "Grosse2014",
+  "morph_height_km": 2.72,
+  "morph_half_width_km": 8.3,
+  "morph_summit_basal_width_ratio": 0.3,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": 3.4,
+  "morph_circularity": null,
+  "morph_secondary_vents": 21.0,
+  "morph_note_code": 1.0,
+  "gee_vs_gvp_offset_km": 1.96,
+  "pyvolcans_analogues": [
+    {
+      "name": "Kusatsu-Shiranesan",
+      "country": "Japan",
+      "total_analogy": 0.969,
+      "vnum": 283120
+    },
+    {
+      "name": "San Cristobal",
+      "country": "Nicaragua",
+      "total_analogy": 0.967,
+      "vnum": 344020
+    },
+    {
+      "name": "Azul, Cerro",
+      "country": "Chile",
+      "total_analogy": 0.965,
+      "vnum": 357060
+    },
+    {
+      "name": "Sabancaya",
+      "country": "Peru",
+      "total_analogy": 0.965,
+      "vnum": 354006
+    },
+    {
+      "name": "Lautaro",
+      "country": "Chile",
+      "total_analogy": 0.962,
+      "vnum": 358060
+    }
+  ]
+}
