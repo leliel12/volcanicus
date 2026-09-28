@@ -101,8 +101,8 @@ class Volcano:
     metadata : dict, optional
         Free-form annotations about this instance: the volcano's descriptive
         metadata for the bundled datasets (country, coordinates, GVP
-        classification, morphology, ...; see ``about_metadata.md``), plus
-        processing annotations such as whether it was imputed. Stored as a
+        classification, morphology, ...), plus processing annotations such
+        as whether it was imputed. Stored as a
         read-only :class:`~volcanicus.utils.Bunch`; defaults to an empty one.
 
     Attributes

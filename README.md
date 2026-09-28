@@ -41,8 +41,7 @@ pip install -r requirements_dev.txt
 
 Volcanicus ships 186 example datasets, loadable by name. Each one carries
 the volcano's descriptive metadata (GVP identification, location,
-classification, morphology, analogues; see
-[about_metadata.md](about_metadata.md)):
+classification, morphology and PyVOLCANS analogues):
 
 ```python
 from volcanicus import datasets
