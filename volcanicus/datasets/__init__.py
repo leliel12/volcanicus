@@ -9,7 +9,13 @@
 # =============================================================================
 
 """The :mod:`volcanicus.datasets` module includes utilities to load \
-bundled example :class:`~volcanicus.core.Volcano` datasets."""
+bundled example :class:`~volcanicus.core.Volcano` datasets.
+
+Each dataset lives in its own directory, ``<name>/``, holding the
+measurements (``<name>.csv``) and the volcano's descriptive metadata
+(``<name>.json``).
+
+"""
 
 # =============================================================================
 # IMPORTS
@@ -43,6 +49,7 @@ def available() -> list[str]:
     -------
     list of str
         Names accepted by :func:`load`, sorted alphabetically.
+
     """
     return sorted(
         p.parts[-2]
@@ -58,21 +65,28 @@ def load(volcano_name):
     ----------
     volcano_name : str
         Name of the bundled volcano to load (see :func:`available` for the
-        valid values). Matched case-sensitively against the CSV file name.
+        valid values). Matched case-sensitively against the dataset
+        directory name.
 
     Returns
     -------
     Volcano
-        A new instance built from the bundled CSV contents.
+        A new instance built from the bundled ``<name>.csv`` measurements,
+        with the contents of ``<name>.json`` as its
+        :attr:`~volcanicus.core.Volcano.metadata`.
+
+    Raises
+    ------
+    ValueError
+        If ``volcano_name`` is not a bundled dataset.
 
     """
     data_path = _PATH / volcano_name / f"{volcano_name}.csv"
     metadata_path = _PATH / volcano_name / f"{volcano_name}.json"
     if not data_path.exists():
-        raise ValueError(f"Unknown volcano {volcano_name!r}. ")
+        raise ValueError(f"Unknown volcano {volcano_name!r}")
+
     data = pd.read_csv(data_path)
     metadata = json.loads(metadata_path.read_text())
 
     return Volcano(name=volcano_name, df=data, metadata=metadata)
-
-

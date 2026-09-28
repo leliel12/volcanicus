@@ -5,9 +5,12 @@ recursive-include volcanicus *.py
 recursive-include volcanicus *.csv
 recursive-include volcanicus *.json
 
+global-exclude *-checkpoint.*
+
 exclude tox.ini
 exclude .header-template
 exclude requirements_dev.txt
+exclude metadata.csv
 
 recursive-exclude tests *
 recursive-exclude docs *

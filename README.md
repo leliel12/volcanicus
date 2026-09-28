@@ -37,40 +37,59 @@ pip install -r requirements_dev.txt
 
 ## 🚀 Usage
 
-```python
-from volcanicus import Volcano, read_csv
-
-volcano = read_csv("measurements.csv", volcano_name="Copahue")
-
-# normalized, read-only copy of the measurements
-volcano.to_dataframe()
-
-# mean residual per distance bin, per direction
-volcano.radial_profile()
-
-# residual vs. distance, one line per direction, with an aggregate median line
-volcano.plot.radial_profile()
-
-# how the missing values are spread across directions (default) or
-# dates: a DataFrame with `total`/`n_missing`/`proportion` columns and
-# a trailing "TOTAL" row
-volcano.describe()
-volcano.describe(by="date")
-
-# fill the gaps; the new instance records what was done in its metadata
-imputed = volcano.impute()
-imputed.metadata.imputed  # True  (`.m` is a shorthand for `.metadata`)
-```
-
 ### Bundled datasets
 
-Volcanicus ships ~200 example datasets, loadable by name:
+Volcanicus ships 186 example datasets, loadable by name. Each one carries
+the volcano's descriptive metadata (GVP identification, location,
+classification, morphology, analogues; see
+[about_metadata.md](about_metadata.md)):
 
 ```python
 from volcanicus import datasets
 
-datasets.available()  # ["agung", "aira", "akan", "alaid", ..., "zubair group"]
+datasets.available()  # ["agung", "aira", "akan", "alaid", ..., "zubair_group"]
 etna = datasets.load("etna")
+
+etna.metadata.country       # "Italy"
+etna.m.latitude, etna.m.longitude  # `.m` is a shorthand for `.metadata`
+```
+
+### Working with a `Volcano`
+
+```python
+# normalized, read-only copy of the measurements
+etna.to_dataframe()
+
+# mean residual per distance bin, per direction
+etna.radial_profile()
+
+# residual vs. distance, one line per direction, with an aggregate median line
+etna.plot.radial_profile()
+
+# how the missing values are spread across directions (default) or
+# dates: a DataFrame with `total`/`n_missing`/`proportion` columns and
+# a trailing "TOTAL" row
+etna.describe()
+etna.describe(by="date")
+
+# fill the gaps; the new instance keeps the original metadata and
+# records what was done
+imputed = etna.impute()
+imputed.m.imputed  # True
+```
+
+### Your own measurements
+
+Build a `Volcano` directly from a `DataFrame` with a `date` column,
+`center_lat`/`center_long`, a `direction` column and one column per distance
+bin:
+
+```python
+import pandas as pd
+from volcanicus import Volcano
+
+df = pd.read_csv("measurements.csv")
+volcano = Volcano("copahue", df, metadata={"country": "Argentina"})
 ```
 
 ## 📓 Tutorials

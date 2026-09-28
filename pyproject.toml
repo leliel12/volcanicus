@@ -3,6 +3,13 @@ line-length = 79
 target-version = ["py311", "py312", "py313", "py314"]
 
 
+[tool.check-manifest]
+ignore = [
+    "notebooks/**",
+    "res/**",
+]
+
+
 [tool.pytest.ini_options]
 testpaths = [
     "tests",

@@ -21,8 +21,6 @@ exposed to the outside through read-only properties.
 # IMPORTS
 # =============================================================================
 
-from pathlib import Path
-
 import methodtools
 
 import pandas as pd
@@ -94,16 +92,18 @@ class Volcano:
 
     Parameters
     ----------
-    dataframe : pandas.DataFrame
-        Raw measurements, with one row per date/direction and one column per
-        distance bin. A normalized copy is stored internally; the original
-        DataFrame passed in is not modified.
     name : str
         Name of the volcano.
+    df : pandas.DataFrame
+        Raw measurements, with one row per date/direction and one column per
+        distance bin. Normalized in place (see :func:`normalize_dataframe`)
+        and stored internally.
     metadata : dict, optional
-        Free-form annotations about this instance (e.g. whether it was
-        imputed). Stored as a read-only :class:`~volcanicus.utils.Bunch`;
-        defaults to an empty one.
+        Free-form annotations about this instance: the volcano's descriptive
+        metadata for the bundled datasets (country, coordinates, GVP
+        classification, morphology, ...; see ``about_metadata.md``), plus
+        processing annotations such as whether it was imputed. Stored as a
+        read-only :class:`~volcanicus.utils.Bunch`; defaults to an empty one.
 
     Attributes
     ----------
@@ -116,7 +116,7 @@ class Volcano:
     has_missing : bool
         Whether any distance-bin measurement is missing.
     metadata : Bunch
-        Free-form annotations about this instance.
+        Descriptive metadata and processing annotations of this instance.
     m : Bunch
         Shorthand alias of ``metadata``.
 
@@ -421,7 +421,7 @@ class Volcano:
             "imputed": True,
             "impute_fallback_to_mean": fallback_to_mean,
         }
-        return Volcano(df, self._name, metadata=metadata)
+        return Volcano(self._name, df, metadata=metadata)
 
     # MAGIC ===================================================================
 
@@ -440,7 +440,7 @@ class Volcano:
         }
 
     def __repr__(self):
-        """x.__repr__() <==> repr(x)"""
+        """x.__repr__() <==> repr(x)."""
         f = self._summary_fields()
         return (
             f"Volcano(name={f['name']!r}, dates={f['dates']}, "
