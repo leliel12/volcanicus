@@ -98,6 +98,9 @@ volcano = Volcano("copahue", df, metadata={"country": "Argentina"})
   missing-value reporting and imputation.
 - [notebooks/comparison.ipynb](notebooks/comparison.ipynb) — compares
   several bundled volcanoes side by side (and overlaid).
+- [notebooks/scenes.ipynb](notebooks/scenes.ipynb) — reshapes measurements
+  into one scene per date (`to_scenes()`) and collapses directions
+  (`reduce_directions()`, `scenes_median`, `scenes_max`).
 
 ## 📜 License
 
