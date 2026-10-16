@@ -91,6 +91,35 @@ df = pd.read_csv("measurements.csv")
 volcano = Volcano("copahue", df, metadata={"country": "Argentina"})
 ```
 
+## 🔭 Views of the data
+
+The raw data is a long table: one row per **date × direction** and one
+column per **distance** (8 directions, 30 bins from 15 to 885 m). Volcanicus
+offers five *views* of it; each one changes the unit of analysis and answers
+a different question.
+
+```
+raw data ──► scenes ──► descriptors
+    │           │
+    └──► rays   └──► anomalies ──► episodes
+```
+
+| View | Unit | Answers | Main API |
+|---|---|---|---|
+| **Scene** | one date (8 directions × 30 distances) | What did the volcano look like that day? | `to_scenes()`, `reduce_directions()`, `plot.scene()` |
+| **Descriptors** | one scene condensed into 5 numbers | How hot, how far-reaching, and towards where? | `scenes_descriptors()`, `plot.polar()`, `plot.azimuth_rose()` |
+| **Ray** | one direction of one date | Is something happening in a single direction? | `rays_descriptors()`, `flag_rays()`, `mask_rays()`, `plot.rays_rose()` |
+| **Anomaly** | one scene against the volcano's usual state | Is this unusual *for this volcano*? | `scenes_baseline()`, `scenes_anomaly()`, `plot.baseline()` |
+| **Episode** | a run of consecutive anomalous scenes | When was there unusual activity, for how long, how intense? | `scenes_anomaly_score()`, `episodes()`, `plot.episodes()` |
+
+A typical flow:
+
+```python
+v = datasets.load("kadovar").mask_rays()  # 1. mask corrupted rays
+v.scenes_descriptors()                    # 2. what happened on each date
+v.episodes().query("n_scenes >= 2")       # 3. when there were events
+```
+
 ## 📓 Tutorials
 
 - [notebooks/tutorial.ipynb](notebooks/tutorial.ipynb) — full `Volcano` API
