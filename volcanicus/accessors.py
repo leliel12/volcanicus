@@ -489,6 +489,70 @@ class PlotAccessor(AccessorABC):
             ax.figure.colorbar(image, ax=ax, label=what.capitalize())
         return ax
 
+    def episodes(
+        self,
+        threshold=3.0,
+        max_gap=90,
+        how="median",
+        min_scenes=10,
+        min_episode_scenes=1,
+        ax=None,
+    ):
+        """Plot the anomaly score over time, with the episodes shaded.
+
+        Draws :meth:`Volcano.scenes_anomaly_score`, a dashed line at
+        ``threshold`` and a shaded band over every episode
+        (:meth:`Volcano.episodes`). A single-scene episode has no
+        duration, so its band is widened to 16 days (one satellite
+        revisit) to stay visible.
+
+        Parameters
+        ----------
+        threshold, max_gap, how, min_scenes
+            Passed on to :meth:`Volcano.episodes`.
+        min_episode_scenes : int, default 1
+            Only shade episodes with at least this many scenes. Single-scene
+            episodes are mostly chance crossings of the threshold, so ``2``
+            is a sensible choice to show only the solid ones.
+        ax : matplotlib.axes.Axes, optional
+            Axes to draw on. A new figure and axes are created if not given.
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            The axes the plot was drawn on.
+
+        """
+        score = self._volcano.scenes_anomaly_score(how, min_scenes)
+        episodes = self._volcano.episodes(threshold, max_gap, how, min_scenes)
+        episodes = episodes[episodes["n_scenes"] >= min_episode_scenes]
+
+        ax = plt.gca() if ax is None else ax
+        score.plot(ax=ax, marker=".", linewidth=0.5, color="gray")
+        ax.axhline(
+            threshold,
+            color="red",
+            linestyle="--",
+            linewidth=1,
+            label="Threshold",
+        )
+        # One revisit as a minimum width, so single scenes show up.
+        min_width = np.timedelta64(16, "D")
+        for i, episode in enumerate(episodes.itertuples()):
+            ax.axvspan(
+                episode.start,
+                max(episode.end, episode.start + min_width),
+                color="orange",
+                alpha=0.4,
+                label="Episode" if i == 0 else None,
+            )
+
+        ax.set_xlabel("Date")
+        ax.set_ylabel("Anomaly score")
+        ax.set_title(f"{self._volcano.name}: anomaly score and episodes")
+        ax.legend()
+        return ax
+
 
 class StatsAccessor(AccessorABC):
     """Calculate basic statistics of the volcano measurements \
