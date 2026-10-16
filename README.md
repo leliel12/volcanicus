@@ -110,6 +110,9 @@ volcano = Volcano("copahue", df, metadata={"country": "Argentina"})
 - [notebooks/anomalies.ipynb](notebooks/anomalies.ipynb) — measures every
   scene against the volcano's usual state (`scenes_baseline()`,
   `scenes_anomaly()`), making scenes comparable across volcanoes.
+- [notebooks/episodes.ipynb](notebooks/episodes.ipynb) — finds periods of
+  unusual activity as runs of anomalous scenes (`scenes_anomaly_score()`,
+  `episodes()`).
 
 ## 📜 License
 
