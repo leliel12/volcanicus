@@ -107,6 +107,9 @@ volcano = Volcano("copahue", df, metadata={"country": "Argentina"})
 - [notebooks/rays.ipynb](notebooks/rays.ipynb) — describes every direction
   of every scene (`rays_descriptors()`), residual saturation, and flagging
   and masking corrupted rays (`flag_rays()`, `mask_rays()`).
+- [notebooks/anomalies.ipynb](notebooks/anomalies.ipynb) — measures every
+  scene against the volcano's usual state (`scenes_baseline()`,
+  `scenes_anomaly()`), making scenes comparable across volcanoes.
 
 ## 📜 License
 
