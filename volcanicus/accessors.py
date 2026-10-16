@@ -677,6 +677,68 @@ class PlotAccessor(AccessorABC):
         ax.set_title(f"{self._volcano.name}: {what}")
         return ax
 
+    #: Reductions :meth:`rays_rose` accepts for its ``how`` parameter.
+    _RAYS_ROSE_HOW = ("median", "mean", "max", "min")
+
+    def rays_rose(self, column="peak", how="median", ax=None, **kwargs):
+        """Plot a ray descriptor per direction, over every date, on a compass.
+
+        One bar per direction, as long as ``column`` of
+        :meth:`Volcano.rays_descriptors` reduced over every date with
+        ``how``: with the defaults, the typical (median) peak of each
+        direction, i.e. which side of the vent usually runs hotter. Unlike
+        :meth:`azimuth_rose`, which shows where the heat goes when one side
+        dominates, this shows the typical state of every direction.
+
+        Parameters
+        ----------
+        column : str, default "peak"
+            Ray descriptor to plot (a column of
+            :meth:`Volcano.rays_descriptors`).
+        how : str, default "median"
+            Reduction over dates: ``"median"``, ``"mean"``, ``"max"`` or
+            ``"min"``.
+        ax : matplotlib.axes.Axes, optional
+            Polar axes to draw on (``projection="polar"``). New ones are
+            created if not given.
+        **kwargs
+            Forwarded to ``ax.bar``, on top of this method's default
+            ``width`` (40° per bar).
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            The axes the plot was drawn on.
+
+        Raises
+        ------
+        ValueError
+            If ``column`` is not a ray descriptor, ``how`` is not a
+            supported reduction, or ``ax`` is not a polar axes.
+
+        """
+        rays = self._volcano.rays_descriptors()
+        if column not in rays.columns:
+            raise ValueError(
+                f"'column' must be one of {tuple(rays.columns)}, "
+                f"found {column!r}"
+            )
+        if how not in self._RAYS_ROSE_HOW:
+            raise ValueError(
+                f"'how' must be one of {self._RAYS_ROSE_HOW}, found {how!r}"
+            )
+        ax = _polar_axes(ax)
+
+        by_direction = rays[column].groupby(level="direction", sort=False)
+        values = getattr(by_direction, how)().reindex(DIRECTION_ORDER)
+
+        kwargs.setdefault("width", np.radians(40))
+        bearings = np.radians(45.0 * np.arange(len(DIRECTION_ORDER)))
+        ax.bar(bearings, values.to_numpy(dtype=float), **kwargs)
+        _as_compass(ax)
+        ax.set_title(f"{self._volcano.name}: {how} ray {column} by direction")
+        return ax
+
 
 class StatsAccessor(AccessorABC):
     """Calculate basic statistics of the volcano measurements \
