@@ -35,6 +35,7 @@ from .constants import (
     GROUPBY_WHITELIST,
     NON_DISTANCE_COLUMNS,
     REDUCE_DIRECTIONS_WHITELIST,
+    SATURATION_LEVEL,
 )
 from .utils import Bunch
 
@@ -89,6 +90,72 @@ def normalize_dataframe(df):
     # renumber them so the index is a clean 0..n-1 range.
     df.reset_index(drop=True, inplace=True)
     return df
+
+
+def _distance_radii(distance_columns):
+    """Numeric radius (m) of every distance bin, from names like ``"15m"``."""
+    return np.array([float(c.removesuffix("m")) for c in distance_columns])
+
+
+def _sector_area(radii):
+    """Area (m²) of every bin's annular sector: 1/8 of ``2 * pi * r * dr``."""
+    return 2 * np.pi * radii * np.gradient(radii) / len(DIRECTION_ORDER)
+
+
+def _fill_rays(rays, radii):
+    """Fill the gaps of every ray (last axis) by linear interpolation.
+
+    Returns two filled copies: ``filled`` also holds the nearest value past
+    the first/last known bin (for integrals, where leaving the edges out
+    would undercount), while ``interior`` leaves those edges as ``NaN`` (for
+    the profile's shape, which shouldn't be extrapolated). Rays with no data
+    at all stay ``NaN`` in both.
+    """
+    filled = rays.copy()
+    interior = rays.copy()
+    for ray, inner in zip(
+        filled.reshape(-1, len(radii)), interior.reshape(-1, len(radii))
+    ):
+        known = ~np.isnan(ray)
+        if known.any() and not known.all():
+            ray[:] = np.interp(radii, radii[known], ray[known])
+            first, last = np.flatnonzero(known)[[0, -1]]
+            span = slice(first, last + 1)
+            inner[span] = ray[span]
+    return filled, interior
+
+
+def _peak_and_efold(profiles, radii):
+    """Peak and e-folding length of every profile (row) in a 2-D array.
+
+    The e-folding length is the distance from the peak to where the profile
+    first drops to ``peak / e``, linearly interpolated between bins; ``NaN``
+    when the peak isn't positive or the profile never drops that far.
+    """
+    peak = np.full(len(profiles), np.nan)
+    efold_length = np.full(len(profiles), np.nan)
+    for i, profile in enumerate(profiles):
+        if np.isnan(profile).all():
+            continue
+        top = np.nanargmax(profile)
+        peak[i] = profile[top]
+        if peak[i] <= 0:
+            continue
+        threshold = peak[i] / np.e
+        below = np.flatnonzero(profile[top:] <= threshold)
+        if below.size:
+            j = top + below[0]
+            # j > top always (the peak itself is above threshold), so
+            # interpolate the crossing between bins j - 1 and j.
+            fraction = (profile[j - 1] - threshold) / (
+                profile[j - 1] - profile[j]
+            )
+            efold_length[i] = (
+                radii[j - 1]
+                + fraction * (radii[j] - radii[j - 1])
+                - radii[top]
+            )
+    return peak, efold_length
 
 
 # =============================================================================
@@ -416,11 +483,14 @@ class Volcano:
           bin weighted by the area of its annular sector
           (``2 * pi * r * dr / 8``), in residual x m². A missing direction
           is skipped and the rest are scaled up to the full disk.
-        - ``anisotropy``: how concentrated the positive residual is in one
-          direction, in ``[0, 1]``: ``0`` spreads evenly around the vent,
-          ``1`` sits entirely in a single direction. It's the length of the
-          vector sum of the 8 directions (each weighted by its positive
-          residual integral) over the sum of their lengths.
+        - ``anisotropy``: how concentrated the heat is in one direction, in
+          ``[0, 1]``: ``0`` spreads evenly around the vent, ``1`` sits
+          entirely in a single direction. It's the length of the vector sum
+          of the 8 directions, each as long as its ray's positive ``peak``
+          (see :meth:`rays_descriptors`), over the sum of their lengths.
+          Using the ray peaks keeps it about the near field: weighting by
+          area instead would let the far field, which covers most of the
+          disk, decide the direction.
         - ``azimuth``: direction of that vector sum, in degrees clockwise
           from north (``N`` is 0, ``E`` is 90, ``S`` is 180, ``O`` is 270).
           ``NaN`` when no direction dominates (``anisotropy`` is 0).
@@ -445,35 +515,16 @@ class Volcano:
             ``efold_length``, ``integrated``, ``anisotropy`` and
             ``azimuth``.
 
+        See Also
+        --------
+        rays_descriptors : The same kind of descriptors, per direction.
+
         """
         scenes = self.to_scenes()
         cube = self.to_scenes(as_array=True)
-        n_dates, n_directions, _ = cube.shape
-
-        # Distance bins are named like "15m"; their numeric radius drives
-        # both the interpolation and the area weights.
-        radii = np.array(
-            [
-                float(c.removesuffix("m"))
-                for c in scenes.columns.unique("distance")
-            ]
-        )
-
-        # Fill the gaps of every (date, direction) ray. np.interp holds the
-        # nearest value past the edges (`filled`, for the integrals); the
-        # profile shape keeps those edges as NaN (`interior`). Rays with no
-        # data at all stay NaN in both.
-        filled = cube.copy()
-        interior = cube.copy()
-        for ray, inner in zip(
-            filled.reshape(-1, len(radii)), interior.reshape(-1, len(radii))
-        ):
-            known = ~np.isnan(ray)
-            if known.any() and not known.all():
-                ray[:] = np.interp(radii, radii[known], ray[known])
-                first, last = np.flatnonzero(known)[[0, -1]]
-                span = slice(first, last + 1)
-                inner[span] = ray[span]
+        n_dates, n_directions, n_distances = cube.shape
+        radii = _distance_radii(scenes.columns.unique("distance"))
+        filled, interior = _fill_rays(cube, radii)
         missing_direction = np.isnan(cube).all(axis=2)
 
         # peak & efold_length: shape of the typical (median) profile.
@@ -482,44 +533,20 @@ class Volcano:
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", RuntimeWarning)
             median_profile = np.nanmedian(interior, axis=1)
-        peak = np.full(n_dates, np.nan)
-        efold_length = np.full(n_dates, np.nan)
-        for i, profile in enumerate(median_profile):
-            if np.isnan(profile).all():
-                continue
-            top = np.nanargmax(profile)
-            peak[i] = profile[top]
-            if peak[i] <= 0:
-                continue
-            threshold = peak[i] / np.e
-            below = np.flatnonzero(profile[top:] <= threshold)
-            if below.size:
-                j = top + below[0]
-                # j > top always (the peak itself is above threshold), so
-                # interpolate the crossing between bins j - 1 and j.
-                fraction = (profile[j - 1] - threshold) / (
-                    profile[j - 1] - profile[j]
-                )
-                efold_length[i] = (
-                    radii[j - 1]
-                    + fraction * (radii[j] - radii[j - 1])
-                    - radii[top]
-                )
-
-        # Area of each bin's annular sector: one eighth of 2*pi*r*dr.
-        sector_area = 2 * np.pi * radii * np.gradient(radii) / n_directions
+        peak, efold_length = _peak_and_efold(median_profile, radii)
 
         # integrated: per-direction integrals; a missing direction is
         # skipped and the mean of the others stands in for it.
-        direction_integral = (filled * sector_area).sum(axis=2)
+        direction_integral = (filled * _sector_area(radii)).sum(axis=2)
         direction_integral[missing_direction] = np.nan
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", RuntimeWarning)
             integrated = np.nanmean(direction_integral, axis=1) * n_directions
 
-        # anisotropy & azimuth: vector sum of the positive residual per
-        # direction, each pointing along its compass bearing.
-        positive = (np.clip(filled, 0, None) * sector_area).sum(axis=2)
+        # anisotropy & azimuth: vector sum of every ray's positive peak,
+        # each pointing along its compass bearing.
+        ray_peak, _ = _peak_and_efold(interior.reshape(-1, n_distances), radii)
+        positive = np.clip(ray_peak.reshape(n_dates, n_directions), 0, None)
         bearings = np.radians(45.0 * np.arange(n_directions))
         east = (positive * np.sin(bearings)).sum(axis=1)
         north = (positive * np.cos(bearings)).sum(axis=1)
@@ -530,7 +557,7 @@ class Volcano:
         # sum; snap those to 0 so they don't fake a bearing.
         anisotropy[np.isclose(anisotropy, 0, atol=1e-9)] = 0
         azimuth = np.degrees(np.arctan2(east, north)) % 360
-        undefined = missing_direction.any(axis=1) | (total == 0)
+        undefined = missing_direction.any(axis=1) | ~(total > 0)
         anisotropy[undefined] = np.nan
         azimuth[undefined | (anisotropy == 0)] = np.nan
 
@@ -544,6 +571,147 @@ class Volcano:
             },
             index=scenes.index,
         )
+
+    def rays_descriptors(self):
+        """Summarize every ray (one direction of one scene).
+
+        A ray is the radial profile of a single date/direction: one row of
+        the source data. Describing rays one by one, instead of whole
+        scenes, tells where around the vent things happen, and isolates
+        problems that only affect one direction.
+
+        - ``peak``: maximum residual along the ray.
+        - ``efold_length``: distance (m) from the peak over which the ray
+          decays to ``peak / e``; defined exactly as in
+          :meth:`scenes_descriptors`.
+        - ``integrated``: residual integrated over the ray's annular
+          sector (``2 * pi * r * dr / 8`` per bin), in residual x m². The
+          8 rays of a scene add up to its ``integrated``.
+        - ``n_saturated``: number of bins at the saturation level
+          (:data:`~volcanicus.constants.SATURATION_LEVEL`). Residuals are
+          capped there, so a saturated ray's ``peak`` underestimates the
+          real anomaly.
+        - ``max_abs``: largest absolute residual along the ray, on the raw
+          values (see :meth:`flag_rays`).
+
+        Gaps are handled as in :meth:`scenes_descriptors`. Rays missing from
+        the data appear with every descriptor ``NaN`` (``n_saturated`` 0),
+        so the result always holds 8 rays per scene.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Indexed by ``(date, direction)``, directions in
+            :data:`~volcanicus.constants.DIRECTION_ORDER`, with the columns
+            ``peak``, ``efold_length``, ``integrated``, ``n_saturated`` and
+            ``max_abs``.
+
+        """
+        scenes = self.to_scenes()
+        cube = self.to_scenes(as_array=True)
+        n_distances = cube.shape[2]
+        radii = _distance_radii(scenes.columns.unique("distance"))
+        filled, interior = _fill_rays(cube, radii)
+
+        rays = cube.reshape(-1, n_distances)
+        peak, efold_length = _peak_and_efold(
+            interior.reshape(-1, n_distances), radii
+        )
+        integrated = (
+            filled.reshape(-1, n_distances) * _sector_area(radii)
+        ).sum(axis=1)
+        missing = np.isnan(rays).all(axis=1)
+        integrated[missing] = np.nan
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)
+            max_abs = np.nanmax(np.abs(rays), axis=1)
+
+        index = pd.MultiIndex.from_product(
+            [scenes.index, DIRECTION_ORDER], names=["date", "direction"]
+        )
+        return pd.DataFrame(
+            {
+                "peak": peak,
+                "efold_length": efold_length,
+                "integrated": integrated,
+                "n_saturated": (rays == SATURATION_LEVEL).sum(axis=1),
+                "max_abs": max_abs,
+            },
+            index=index,
+        )
+
+    def flag_rays(self, limit=2.0):
+        """Flag rays holding a residual too large to be a real measurement.
+
+        Residuals saturate at
+        :data:`~volcanicus.constants.SATURATION_LEVEL` (``1.0``), yet a
+        handful of rays in the bundled data reach tens or thousands. These
+        come in runs along a single direction while the rest of the scene
+        looks ordinary, which points to a processing artifact rather than
+        to the volcano. The default ``limit`` of twice the saturation level
+        keeps the values that only slightly overshoot it.
+
+        Parameters
+        ----------
+        limit : float, default 2.0
+            A ray is flagged when any of its residuals is larger than this
+            in absolute value.
+
+        Returns
+        -------
+        pandas.Series
+            Boolean, indexed by ``(date, direction)`` like
+            :meth:`rays_descriptors`; ``True`` for a flagged ray.
+
+        See Also
+        --------
+        mask_rays : Drop the flagged rays' values.
+
+        """
+        flags = self.rays_descriptors()["max_abs"] > limit
+        flags.name = "flagged"
+        return flags
+
+    def mask_rays(self, limit=2.0):
+        """Blank out every ray :meth:`flag_rays` flags.
+
+        Every distance bin of a flagged ray becomes ``NaN``, so it's
+        treated like any other missing ray afterwards (skipped by the
+        reductions, fillable by :meth:`impute`). The whole ray goes, not
+        only the offending values: the bins next to an absurd value are
+        rarely trustworthy (in Kadovar a single artifact spans 4 bins).
+
+        Parameters
+        ----------
+        limit : float, default 2.0
+            Passed on to :meth:`flag_rays`.
+
+        Returns
+        -------
+        Volcano
+            A new instance with the flagged rays masked. Its metadata
+            records the ``mask_limit`` used and how many rays it masked
+            (``masked_rays``).
+
+        """
+        flags = self.flag_rays(limit)
+        flagged = flags[flags].index
+
+        df = self._dataframe.copy()
+        distance_columns = [
+            c for c in df.columns if c not in NON_DISTANCE_COLUMNS
+        ]
+        rows = pd.MultiIndex.from_frame(
+            df[["date", "direction"]].astype({"direction": str})
+        ).isin(flagged)
+        df.loc[rows, distance_columns] = np.nan
+
+        metadata = {
+            **self._metadata,
+            "masked_rays": int(rows.sum()),
+            "mask_limit": limit,
+        }
+        return Volcano(self._name, df, metadata=metadata)
 
     def radial_profile(self):
         """Average the measurements over dates, per direction.

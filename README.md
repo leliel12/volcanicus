@@ -104,6 +104,9 @@ volcano = Volcano("copahue", df, metadata={"country": "Argentina"})
 - [notebooks/scene_descriptors.ipynb](notebooks/scene_descriptors.ipynb) —
   condenses every scene into five descriptors (`scenes_descriptors()`),
   with caveats on corrupted values (the Kadovar case) and far-field weight.
+- [notebooks/rays.ipynb](notebooks/rays.ipynb) — describes every direction
+  of every scene (`rays_descriptors()`), residual saturation, and flagging
+  and masking corrupted rays (`flag_rays()`, `mask_rays()`).
 
 ## 📜 License
 

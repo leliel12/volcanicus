@@ -45,3 +45,8 @@ REDUCE_DIRECTIONS_WHITELIST = (
     "sum",
     "var",
 )
+
+#: Level at which positive residuals saturate: the bundled data caps them at
+#: exactly ``1.0`` (thousands of values sit right there, only a handful just
+#: below), so a residual at this level means "at least this hot".
+SATURATION_LEVEL = 1.0
