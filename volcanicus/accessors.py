@@ -15,11 +15,18 @@
 # IMPORTS
 # =============================================================================
 
+import matplotlib.colors as mcolors
+import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
+
+import numpy as np
+
+import pandas as pd
 
 import seaborn as sns
 
 from .constants import (
+    DIRECTION_ORDER,
     GROUPBY_WHITELIST,
     NON_DISTANCE_COLUMNS as _NON_DISTANCE_COLUMNS,
 )
@@ -286,6 +293,100 @@ class PlotAccessor(AccessorABC):
         ax.set_ylabel("Residual")
         ax.set_title(f"{self._volcano.name}: residual vs. date by direction")
         ax.tick_params(axis="x", rotation=45)
+        return ax
+
+    def polar(
+        self, ax=None, dates=None, cmap="viridis", colorbar=True, **kwargs
+    ):
+        """Plot every date as a polygon on a compass, colored by date.
+
+        Each date becomes a closed polygon with one vertex per direction:
+        the vertex's angle is the direction's compass bearing (north up,
+        clockwise) and its radius the residual of that date/direction
+        averaged over every distance bin (:meth:`Volcano.temporal_profile`).
+        A round polygon means the residual is even around the vent; a
+        lopsided one points towards where it's higher.
+
+        Residuals can be negative, so the radial axis starts at the lowest
+        value instead of 0; a dashed circle marks the zero residual. A
+        direction missing on a date leaves a gap in that date's polygon.
+
+        Parameters
+        ----------
+        ax : matplotlib.axes.Axes, optional
+            Polar axes to draw on (``projection="polar"``). New ones are
+            created if not given.
+        dates : list-like, optional
+            Dates to plot. Defaults to every date.
+        cmap : str or matplotlib.colors.Colormap, default "viridis"
+            Colormap mapping each polygon's date to its color.
+        colorbar : bool, default True
+            Whether to add a colorbar labeling the dates.
+        **kwargs
+            Forwarded to every polygon's ``ax.plot`` call, on top of this
+            method's defaults (``linewidth=1``, ``alpha=0.6``).
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            The axes the plot was drawn on.
+
+        Raises
+        ------
+        ValueError
+            If ``ax`` is not a polar axes.
+
+        """
+        kwargs.setdefault("linewidth", 1)
+        kwargs.setdefault("alpha", 0.6)
+
+        if ax is None:
+            ax = plt.subplot(projection="polar")
+        elif ax.name != "polar":
+            raise ValueError(
+                "'ax' must be a polar axes (projection='polar'), "
+                f"found {ax.name!r}"
+            )
+
+        # One row per date, one column per direction, in compass order (the
+        # pivot inside temporal_profile sorts them alphabetically).
+        profile = self._volcano.temporal_profile().reindex(
+            columns=list(DIRECTION_ORDER)
+        )
+        if dates is not None:
+            profile = profile.loc[pd.to_datetime(dates)]
+
+        # Repeat the first direction at the end so every polygon closes.
+        bearings = np.radians(45.0 * np.arange(len(DIRECTION_ORDER) + 1))
+        closed = np.column_stack([profile, profile.iloc[:, 0]])
+
+        cmap = plt.get_cmap(cmap)
+        when = mdates.date2num(profile.index)
+        norm = mcolors.Normalize(when.min(), when.max())
+        for date_num, radii in zip(when, closed):
+            ax.plot(bearings, radii, color=cmap(norm(date_num)), **kwargs)
+
+        # Zero residual as a reference: the radial axis starts at the
+        # lowest residual, so the center isn't 0.
+        full_circle = np.linspace(0, 2 * np.pi, 100)
+        ax.plot(full_circle, np.zeros_like(full_circle), "k--", linewidth=1)
+
+        ax.set_theta_zero_location("N")
+        ax.set_theta_direction(-1)  # clockwise, like a compass
+        ax.set_xticks(bearings[:-1], DIRECTION_ORDER)
+        ax.set_title(f"{self._volcano.name}: residual by direction and date")
+
+        if colorbar:
+            mappable = plt.cm.ScalarMappable(norm=norm, cmap=cmap)
+            cbar = ax.figure.colorbar(mappable, ax=ax, pad=0.1)
+            # Concise labels adapt to the span: years for decades of
+            # data, months/days for a handful of nearby dates.
+            locator = mdates.AutoDateLocator()
+            cbar.ax.yaxis.set_major_locator(locator)
+            cbar.ax.yaxis.set_major_formatter(
+                mdates.ConciseDateFormatter(locator)
+            )
+            cbar.set_label("Date")
         return ax
 
 

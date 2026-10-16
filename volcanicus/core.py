@@ -21,7 +21,11 @@ exposed to the outside through read-only properties.
 # IMPORTS
 # =============================================================================
 
+import warnings
+
 import methodtools
+
+import numpy as np
 
 import pandas as pd
 
@@ -391,6 +395,155 @@ class Volcano:
 
         """
         return self.reduce_directions("max")
+
+    def scenes_descriptors(self):
+        """Summarize every scene with a few interpretable descriptors.
+
+        Each scene (see :meth:`to_scenes`) holds 8 directions x every
+        distance bin; this condenses it into five numbers that are
+        comparable across dates and volcanoes:
+
+        - ``peak``: maximum of the median (across directions) radial
+          profile.
+        - ``efold_length``: distance (m) from the peak over which that
+          median profile decays to ``peak / e``, the crossing linearly
+          interpolated between bins. Measured from the peak (not from the
+          vent) so it doesn't depend on which inner bins a scene happens to
+          have: for an exponential decay it's the decay length whatever
+          the first bin is. ``NaN`` if the peak isn't positive or the
+          profile never drops that far within the measured distances.
+        - ``integrated``: the residual integrated over the whole disk, each
+          bin weighted by the area of its annular sector
+          (``2 * pi * r * dr / 8``), in residual x m². A missing direction
+          is skipped and the rest are scaled up to the full disk.
+        - ``anisotropy``: how concentrated the positive residual is in one
+          direction, in ``[0, 1]``: ``0`` spreads evenly around the vent,
+          ``1`` sits entirely in a single direction. It's the length of the
+          vector sum of the 8 directions (each weighted by its positive
+          residual integral) over the sum of their lengths.
+        - ``azimuth``: direction of that vector sum, in degrees clockwise
+          from north (``N`` is 0, ``E`` is 90, ``S`` is 180, ``O`` is 270).
+          ``NaN`` when no direction dominates (``anisotropy`` is 0).
+
+        ``anisotropy`` and ``azimuth`` need all 8 directions, so they're
+        ``NaN`` for a scene with a direction missing entirely (see
+        :meth:`impute` to fill those first).
+
+        Gaps along a direction are filled by linear interpolation over
+        distance before computing anything; otherwise a bin missing in some
+        scenes and not in others would make descriptors incomparable
+        between scenes. For the integrals, the edges also take the nearest
+        available bin (the innermost one is often missing, and leaving it
+        out would undercount). ``peak`` and ``efold_length`` don't
+        extrapolate, so a scene missing its innermost bin peaks at the
+        first bin it has.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Indexed by ``date``, with the columns ``peak``,
+            ``efold_length``, ``integrated``, ``anisotropy`` and
+            ``azimuth``.
+
+        """
+        scenes = self.to_scenes()
+        cube = self.to_scenes(as_array=True)
+        n_dates, n_directions, _ = cube.shape
+
+        # Distance bins are named like "15m"; their numeric radius drives
+        # both the interpolation and the area weights.
+        radii = np.array(
+            [
+                float(c.removesuffix("m"))
+                for c in scenes.columns.unique("distance")
+            ]
+        )
+
+        # Fill the gaps of every (date, direction) ray. np.interp holds the
+        # nearest value past the edges (`filled`, for the integrals); the
+        # profile shape keeps those edges as NaN (`interior`). Rays with no
+        # data at all stay NaN in both.
+        filled = cube.copy()
+        interior = cube.copy()
+        for ray, inner in zip(
+            filled.reshape(-1, len(radii)), interior.reshape(-1, len(radii))
+        ):
+            known = ~np.isnan(ray)
+            if known.any() and not known.all():
+                ray[:] = np.interp(radii, radii[known], ray[known])
+                first, last = np.flatnonzero(known)[[0, -1]]
+                span = slice(first, last + 1)
+                inner[span] = ray[span]
+        missing_direction = np.isnan(cube).all(axis=2)
+
+        # peak & efold_length: shape of the typical (median) profile.
+        # A bin with no data in any direction is an expected NaN, not
+        # something to warn about.
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)
+            median_profile = np.nanmedian(interior, axis=1)
+        peak = np.full(n_dates, np.nan)
+        efold_length = np.full(n_dates, np.nan)
+        for i, profile in enumerate(median_profile):
+            if np.isnan(profile).all():
+                continue
+            top = np.nanargmax(profile)
+            peak[i] = profile[top]
+            if peak[i] <= 0:
+                continue
+            threshold = peak[i] / np.e
+            below = np.flatnonzero(profile[top:] <= threshold)
+            if below.size:
+                j = top + below[0]
+                # j > top always (the peak itself is above threshold), so
+                # interpolate the crossing between bins j - 1 and j.
+                fraction = (profile[j - 1] - threshold) / (
+                    profile[j - 1] - profile[j]
+                )
+                efold_length[i] = (
+                    radii[j - 1]
+                    + fraction * (radii[j] - radii[j - 1])
+                    - radii[top]
+                )
+
+        # Area of each bin's annular sector: one eighth of 2*pi*r*dr.
+        sector_area = 2 * np.pi * radii * np.gradient(radii) / n_directions
+
+        # integrated: per-direction integrals; a missing direction is
+        # skipped and the mean of the others stands in for it.
+        direction_integral = (filled * sector_area).sum(axis=2)
+        direction_integral[missing_direction] = np.nan
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)
+            integrated = np.nanmean(direction_integral, axis=1) * n_directions
+
+        # anisotropy & azimuth: vector sum of the positive residual per
+        # direction, each pointing along its compass bearing.
+        positive = (np.clip(filled, 0, None) * sector_area).sum(axis=2)
+        bearings = np.radians(45.0 * np.arange(n_directions))
+        east = (positive * np.sin(bearings)).sum(axis=1)
+        north = (positive * np.cos(bearings)).sum(axis=1)
+        total = positive.sum(axis=1)
+        with np.errstate(all="ignore"):
+            anisotropy = np.hypot(east, north) / total
+        # A perfectly even scene leaves floating-point crumbs in the vector
+        # sum; snap those to 0 so they don't fake a bearing.
+        anisotropy[np.isclose(anisotropy, 0, atol=1e-9)] = 0
+        azimuth = np.degrees(np.arctan2(east, north)) % 360
+        undefined = missing_direction.any(axis=1) | (total == 0)
+        anisotropy[undefined] = np.nan
+        azimuth[undefined | (anisotropy == 0)] = np.nan
+
+        return pd.DataFrame(
+            {
+                "peak": peak,
+                "efold_length": efold_length,
+                "integrated": integrated,
+                "anisotropy": anisotropy,
+                "azimuth": azimuth,
+            },
+            index=scenes.index,
+        )
 
     def radial_profile(self):
         """Average the measurements over dates, per direction.

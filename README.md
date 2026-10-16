@@ -101,6 +101,9 @@ volcano = Volcano("copahue", df, metadata={"country": "Argentina"})
 - [notebooks/scenes.ipynb](notebooks/scenes.ipynb) — reshapes measurements
   into one scene per date (`to_scenes()`) and collapses directions
   (`reduce_directions()`, `scenes_median`, `scenes_max`).
+- [notebooks/scene_descriptors.ipynb](notebooks/scene_descriptors.ipynb) —
+  condenses every scene into five descriptors (`scenes_descriptors()`),
+  with caveats on corrupted values (the Kadovar case) and far-field weight.
 
 ## 📜 License
 
