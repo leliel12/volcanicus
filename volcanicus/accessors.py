@@ -33,6 +33,31 @@ from .constants import (
 from .utils import AccessorABC
 
 # =============================================================================
+# FUNCTIONS
+# =============================================================================
+
+
+def _polar_axes(ax):
+    """Return ``ax`` if it's polar (new polar axes if None), else raise."""
+    if ax is None:
+        return plt.subplot(projection="polar")
+    if ax.name != "polar":
+        raise ValueError(
+            "'ax' must be a polar axes (projection='polar'), "
+            f"found {ax.name!r}"
+        )
+    return ax
+
+
+def _as_compass(ax):
+    """Lay out polar axes as a compass: north up, clockwise, labeled."""
+    ax.set_theta_zero_location("N")
+    ax.set_theta_direction(-1)  # clockwise, like a compass
+    bearings = np.radians(45.0 * np.arange(len(DIRECTION_ORDER)))
+    ax.set_xticks(bearings, DIRECTION_ORDER)
+
+
+# =============================================================================
 # CLASSES
 # =============================================================================
 
@@ -340,13 +365,7 @@ class PlotAccessor(AccessorABC):
         kwargs.setdefault("linewidth", 1)
         kwargs.setdefault("alpha", 0.6)
 
-        if ax is None:
-            ax = plt.subplot(projection="polar")
-        elif ax.name != "polar":
-            raise ValueError(
-                "'ax' must be a polar axes (projection='polar'), "
-                f"found {ax.name!r}"
-            )
+        ax = _polar_axes(ax)
 
         # One row per date, one column per direction, in compass order (the
         # pivot inside temporal_profile sorts them alphabetically).
@@ -371,9 +390,7 @@ class PlotAccessor(AccessorABC):
         full_circle = np.linspace(0, 2 * np.pi, 100)
         ax.plot(full_circle, np.zeros_like(full_circle), "k--", linewidth=1)
 
-        ax.set_theta_zero_location("N")
-        ax.set_theta_direction(-1)  # clockwise, like a compass
-        ax.set_xticks(bearings[:-1], DIRECTION_ORDER)
+        _as_compass(ax)
         ax.set_title(f"{self._volcano.name}: residual by direction and date")
 
         if colorbar:
@@ -387,6 +404,89 @@ class PlotAccessor(AccessorABC):
                 mdates.ConciseDateFormatter(locator)
             )
             cbar.set_label("Date")
+        return ax
+
+    def scene(self, date, anomaly=False, ax=None, colorbar=True, **kwargs):
+        """Plot one scene as an image: directions x distance bins.
+
+        Every row is a direction (in
+        :data:`~volcanicus.constants.DIRECTION_ORDER`) and every column a
+        distance bin, colored by the residual
+        (:meth:`Volcano.to_scenes`) or, with ``anomaly=True``, by its
+        z-score against the volcano's baseline
+        (:meth:`Volcano.scenes_anomaly`). Missing cells stay blank.
+
+        Parameters
+        ----------
+        date : str or datetime-like
+            Date of the scene to plot.
+        anomaly : bool, default False
+            Whether to plot anomalies instead of raw residuals. They get a
+            diverging colormap (``"RdBu_r"``) centered on 0, so red is
+            hotter than usual and blue colder. The color range is
+            symmetric and clipped at the 95th percentile of ``|z|`` (at
+            least 3), so a few extreme cells don't wash out the rest.
+        ax : matplotlib.axes.Axes, optional
+            Axes to draw on. A new figure and axes are created if not given.
+        colorbar : bool, default True
+            Whether to add a colorbar.
+        **kwargs
+            Forwarded to ``ax.imshow``, on top of this method's defaults
+            (``aspect="auto"``; for anomalies also ``cmap="RdBu_r"`` and
+            ``vmin``/``vmax`` symmetric around 0).
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            The axes the plot was drawn on.
+
+        Raises
+        ------
+        KeyError
+            If the volcano has no scene on ``date``.
+
+        """
+        date = pd.Timestamp(date)
+        scenes = (
+            self._volcano.scenes_anomaly()
+            if anomaly
+            else self._volcano.to_scenes()
+        )
+        if date not in scenes.index:
+            raise KeyError(f"No scene on {date:%Y-%m-%d}")
+
+        # to_scenes() columns run direction-major in DIRECTION_ORDER, so a
+        # row reshapes straight into the (direction, distance) grid.
+        distances = list(scenes.columns.unique("distance"))
+        grid = (
+            scenes.loc[date]
+            .to_numpy(dtype=float)
+            .reshape(len(DIRECTION_ORDER), len(distances))
+        )
+
+        kwargs.setdefault("aspect", "auto")
+        if anomaly:
+            # Symmetric limits keep 0 (the usual value) at the neutral
+            # color of the diverging map; the floor of 3 keeps an ordinary
+            # scene from looking alarming.
+            finite = np.abs(grid[np.isfinite(grid)])
+            limit = max(3.0, np.percentile(finite, 95)) if finite.size else 3.0
+            kwargs.setdefault("cmap", "RdBu_r")
+            kwargs.setdefault("vmin", -limit)
+            kwargs.setdefault("vmax", limit)
+
+        ax = plt.gca() if ax is None else ax
+        image = ax.imshow(grid, **kwargs)
+        ax.set_yticks(range(len(DIRECTION_ORDER)), DIRECTION_ORDER)
+        step = max(1, len(distances) // 6)
+        ax.set_xticks(range(0, len(distances), step), distances[::step])
+        ax.set_xlabel("Distance")
+        ax.set_ylabel("Direction")
+        what = "anomaly (z)" if anomaly else "residual"
+        ax.set_title(f"{self._volcano.name}: {what} on {date:%Y-%m-%d}")
+
+        if colorbar:
+            ax.figure.colorbar(image, ax=ax, label=what.capitalize())
         return ax
 
 
