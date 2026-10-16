@@ -32,3 +32,16 @@ DIRECTION_ORDER = ("N", "NE", "E", "SE", "S", "SO", "O", "NO")
 #: :meth:`~volcanicus.core.Volcano.describe` (its ``by`` parameter) and
 #: :class:`~volcanicus.accessors.StatsAccessor` (its ``groupby`` parameter).
 GROUPBY_WHITELIST = ("date", "direction")
+
+#: Reductions :meth:`~volcanicus.core.Volcano.reduce_directions` accepts for
+#: its ``how`` parameter.
+REDUCE_DIRECTIONS_WHITELIST = (
+    "count",
+    "max",
+    "mean",
+    "median",
+    "min",
+    "std",
+    "sum",
+    "var",
+)

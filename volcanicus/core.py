@@ -26,7 +26,12 @@ import methodtools
 import pandas as pd
 
 from .accessors import PlotAccessor, StatsAccessor
-from .constants import DIRECTION_ORDER, GROUPBY_WHITELIST, NON_DISTANCE_COLUMNS
+from .constants import (
+    DIRECTION_ORDER,
+    GROUPBY_WHITELIST,
+    NON_DISTANCE_COLUMNS,
+    REDUCE_DIRECTIONS_WHITELIST,
+)
 from .utils import Bunch
 
 # =============================================================================
@@ -246,15 +251,47 @@ class Volcano:
             axis 1 follows ``DIRECTION_ORDER`` and axis 2 the distance bins
             in their original (increasing) order.
 
+        Raises
+        ------
+        ValueError
+            If the data can't be laid out as a grid of scenes: a direction
+            not in ``DIRECTION_ORDER`` (it would be silently dropped), a
+            date that failed to parse (``NaT``) or a repeated
+            date/direction pair.
+
         """
+        df = self._dataframe
+
+        # The grid below is reindexed to DIRECTION_ORDER, which would
+        # silently turn a misspelled direction into NaN; fail loudly instead.
+        unknown = set(df["direction"].astype(str)) - set(DIRECTION_ORDER)
+        if unknown:
+            raise ValueError(
+                f"Unknown direction(s) {sorted(unknown)}; "
+                f"expected values in {DIRECTION_ORDER}"
+            )
+        # normalize_dataframe coerces unparseable dates to NaT, which would
+        # otherwise end up as a scene with no date.
+        if df["date"].isna().any():
+            raise ValueError(
+                f"{df['date'].isna().sum()} row(s) have an invalid date (NaT)"
+            )
+        duplicated = df.duplicated(["date", "direction"])
+        if duplicated.any():
+            pairs = df.loc[duplicated, ["date", "direction"]]
+            raise ValueError(
+                "Repeated date/direction pair(s): "
+                f"{list(pairs.itertuples(index=False, name=None))}"
+            )
+
         distance_columns = [
-            c for c in self._dataframe.columns if c not in NON_DISTANCE_COLUMNS
+            c for c in df.columns if c not in NON_DISTANCE_COLUMNS
         ]
         # (date, direction) -> one row; then direction moves from the rows
         # into the columns, next to the distance bins.
-        wide = self._dataframe.set_index(["date", "direction"])[
-            distance_columns
-        ].unstack("direction")
+        wide = df.set_index(["date", "direction"])[distance_columns].unstack(
+            "direction"
+        )
 
         # unstack leaves (distance, direction) columns in arbitrary order and
         # only for the directions present; force the full, canonical grid so
@@ -264,9 +301,7 @@ class Volcano:
             names=["direction", "distance"],
         )
         scenes = (
-            wide.swaplevel(axis=1)
-            .reindex(columns=full_columns)
-            .sort_index()
+            wide.swaplevel(axis=1).reindex(columns=full_columns).sort_index()
         )
 
         if as_array:
@@ -274,18 +309,6 @@ class Volcano:
                 len(scenes), len(DIRECTION_ORDER), len(distance_columns)
             )
         return scenes
-
-    #: Reductions :meth:`reduce_directions` accepts for its ``how`` parameter.
-    _REDUCE_DIRECTIONS_WHITELIST = (
-        "count",
-        "max",
-        "mean",
-        "median",
-        "min",
-        "std",
-        "sum",
-        "var",
-    )
 
     def reduce_directions(self, how="median"):
         """Collapse the directions of every scene into a single profile.
@@ -321,9 +344,9 @@ class Volcano:
         scenes_max : Shorthand for ``reduce_directions("max")``.
 
         """
-        if how not in self._REDUCE_DIRECTIONS_WHITELIST:
+        if how not in REDUCE_DIRECTIONS_WHITELIST:
             raise ValueError(
-                f"'how' must be one of {self._REDUCE_DIRECTIONS_WHITELIST}, "
+                f"'how' must be one of {REDUCE_DIRECTIONS_WHITELIST}, "
                 f"found {how!r}"
             )
         # Transpose so every (direction, distance) pair is a row, then group
@@ -617,4 +640,3 @@ class Volcano:
             f"{rows}"
             "</table>"
         )
-

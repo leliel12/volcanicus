@@ -10,7 +10,6 @@ global-exclude *-checkpoint.*
 exclude tox.ini
 exclude .header-template
 exclude requirements_dev.txt
-exclude metadata.csv
+recursive-exclude misc *
 
-recursive-exclude tests *
 recursive-exclude docs *
