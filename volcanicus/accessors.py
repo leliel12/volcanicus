@@ -49,6 +49,33 @@ def _polar_axes(ax):
     return ax
 
 
+def _draw_grid(ax, row, title, label, colorbar, **kwargs):
+    """Draw a scene-shaped row (``(direction, distance)`` index) as an image.
+
+    The row's index must run direction-major in
+    :data:`~volcanicus.constants.DIRECTION_ORDER`, as the columns of
+    :meth:`~volcanicus.core.Volcano.to_scenes` do, so it reshapes straight
+    into the (direction, distance) grid.
+    """
+    distances = list(row.index.unique("distance"))
+    grid = row.to_numpy(dtype=float).reshape(
+        len(DIRECTION_ORDER), len(distances)
+    )
+
+    kwargs.setdefault("aspect", "auto")
+    ax = plt.gca() if ax is None else ax
+    image = ax.imshow(grid, **kwargs)
+    ax.set_yticks(range(len(DIRECTION_ORDER)), DIRECTION_ORDER)
+    step = max(1, len(distances) // 6)
+    ax.set_xticks(range(0, len(distances), step), distances[::step])
+    ax.set_xlabel("Distance")
+    ax.set_ylabel("Direction")
+    ax.set_title(title)
+    if colorbar:
+        ax.figure.colorbar(image, ax=ax, label=label)
+    return ax
+
+
 def _as_compass(ax):
     """Lay out polar axes as a compass: north up, clockwise, labeled."""
     ax.set_theta_zero_location("N")
@@ -455,39 +482,77 @@ class PlotAccessor(AccessorABC):
         if date not in scenes.index:
             raise KeyError(f"No scene on {date:%Y-%m-%d}")
 
-        # to_scenes() columns run direction-major in DIRECTION_ORDER, so a
-        # row reshapes straight into the (direction, distance) grid.
-        distances = list(scenes.columns.unique("distance"))
-        grid = (
-            scenes.loc[date]
-            .to_numpy(dtype=float)
-            .reshape(len(DIRECTION_ORDER), len(distances))
-        )
-
-        kwargs.setdefault("aspect", "auto")
+        row = scenes.loc[date]
         if anomaly:
             # Symmetric limits keep 0 (the usual value) at the neutral
             # color of the diverging map; the floor of 3 keeps an ordinary
             # scene from looking alarming.
-            finite = np.abs(grid[np.isfinite(grid)])
+            values = row.to_numpy(dtype=float)
+            finite = np.abs(values[np.isfinite(values)])
             limit = max(3.0, np.percentile(finite, 95)) if finite.size else 3.0
             kwargs.setdefault("cmap", "RdBu_r")
             kwargs.setdefault("vmin", -limit)
             kwargs.setdefault("vmax", limit)
 
-        ax = plt.gca() if ax is None else ax
-        image = ax.imshow(grid, **kwargs)
-        ax.set_yticks(range(len(DIRECTION_ORDER)), DIRECTION_ORDER)
-        step = max(1, len(distances) // 6)
-        ax.set_xticks(range(0, len(distances), step), distances[::step])
-        ax.set_xlabel("Distance")
-        ax.set_ylabel("Direction")
         what = "anomaly (z)" if anomaly else "residual"
-        ax.set_title(f"{self._volcano.name}: {what} on {date:%Y-%m-%d}")
+        return _draw_grid(
+            ax,
+            row,
+            f"{self._volcano.name}: {what} on {date:%Y-%m-%d}",
+            what.capitalize(),
+            colorbar,
+            **kwargs,
+        )
 
-        if colorbar:
-            ax.figure.colorbar(image, ax=ax, label=what.capitalize())
-        return ax
+    def baseline(
+        self, stat="center", min_scenes=10, ax=None, colorbar=True, **kwargs
+    ):
+        """Plot the volcano's baseline as a directions x distance image.
+
+        Same layout as :meth:`scene`, for one of the two rows of
+        :meth:`Volcano.scenes_baseline`: every cell's usual value
+        (``"center"``, the median over every scene) or its usual spread
+        (``"scale"``, ``1.4826 * MAD``). Cells without a baseline (too few
+        scenes, or never varying) stay blank.
+
+        Parameters
+        ----------
+        stat : {"center", "scale"}, default "center"
+            Which row of the baseline to plot.
+        min_scenes : int, default 10
+            Passed on to :meth:`Volcano.scenes_baseline`.
+        ax : matplotlib.axes.Axes, optional
+            Axes to draw on. A new figure and axes are created if not given.
+        colorbar : bool, default True
+            Whether to add a colorbar.
+        **kwargs
+            Forwarded to ``ax.imshow``, on top of ``aspect="auto"``.
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            The axes the plot was drawn on.
+
+        Raises
+        ------
+        ValueError
+            If ``stat`` is not ``"center"`` or ``"scale"``.
+
+        """
+        labels = {"center": "Center (median)", "scale": "Scale (1.4826 x MAD)"}
+        if stat not in labels:
+            raise ValueError(
+                f"'stat' must be one of {tuple(labels)}, found {stat!r}"
+            )
+        row = self._volcano.scenes_baseline(min_scenes).loc[stat]
+        return _draw_grid(
+            ax,
+            row,
+            f"{self._volcano.name}: baseline {stat}",
+            labels[stat],
+            colorbar,
+            **kwargs,
+        )
 
     def episodes(
         self,
