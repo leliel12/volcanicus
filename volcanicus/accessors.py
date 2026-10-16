@@ -553,6 +553,65 @@ class PlotAccessor(AccessorABC):
         ax.legend()
         return ax
 
+    def azimuth_rose(self, bins=16, weighted=True, ax=None, **kwargs):
+        """Plot where the heat points, over every scene, as a compass rose.
+
+        A histogram of the scenes' ``azimuth``
+        (:meth:`Volcano.scenes_descriptors`) on a compass (north up,
+        clockwise). By default every scene is weighted by its
+        ``anisotropy``, so scenes where the heat is spread evenly (and the
+        azimuth means little) barely count, and the rose shows where the
+        heat goes when one side dominates. Scenes without an azimuth are
+        left out.
+
+        Parameters
+        ----------
+        bins : int, default 16
+            Number of sectors, centered on the bearings: with 16, every
+            sector spans 22.5° and the 8 compass directions fall at the
+            center of every other one.
+        weighted : bool, default True
+            Whether to weight every scene by its ``anisotropy``. If False,
+            the rose just counts scenes.
+        ax : matplotlib.axes.Axes, optional
+            Polar axes to draw on (``projection="polar"``). New ones are
+            created if not given.
+        **kwargs
+            Forwarded to ``ax.bar``.
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            The axes the plot was drawn on.
+
+        Raises
+        ------
+        ValueError
+            If ``ax`` is not a polar axes.
+
+        """
+        ax = _polar_axes(ax)
+        descriptors = self._volcano.scenes_descriptors().dropna(
+            subset=["azimuth"]
+        )
+
+        # Shift by half a sector so sectors are centered on the bearings
+        # (e.g. N spans -11.25° to 11.25° with 16 bins).
+        width = 360.0 / bins
+        shifted = (descriptors["azimuth"] + width / 2) % 360
+        weights = descriptors["anisotropy"] if weighted else None
+        counts, edges = np.histogram(
+            shifted, bins=bins, range=(0, 360), weights=weights
+        )
+
+        ax.bar(
+            np.radians(edges[:-1]), counts, width=np.radians(width), **kwargs
+        )
+        _as_compass(ax)
+        what = "anisotropy-weighted azimuth" if weighted else "azimuth"
+        ax.set_title(f"{self._volcano.name}: {what}")
+        return ax
+
 
 class StatsAccessor(AccessorABC):
     """Calculate basic statistics of the volcano measurements \
