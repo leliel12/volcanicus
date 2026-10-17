@@ -130,24 +130,24 @@ v.episodes().query("n_scenes >= 2")       # 3. when there were events
 
 ## 📓 Tutorials
 
-- [notebooks/tutorial.ipynb](notebooks/tutorial.ipynb) — full `Volcano` API
+- [tutorials/00_quickstart.ipynb](tutorials/00_quickstart.ipynb) — full `Volcano` API
   walkthrough: loading datasets, plotting, the `.stats` accessor,
   missing-value reporting and imputation.
-- [notebooks/comparison.ipynb](notebooks/comparison.ipynb) — compares
+- [tutorials/01_comparison.ipynb](tutorials/01_comparison.ipynb) — compares
   several bundled volcanoes side by side (and overlaid).
-- [notebooks/scenes.ipynb](notebooks/scenes.ipynb) — reshapes measurements
+- [tutorials/02_scenes.ipynb](tutorials/02_scenes.ipynb) — reshapes measurements
   into one scene per date (`to_scenes()`) and collapses directions
   (`reduce_directions()`, `scenes_median`, `scenes_max`).
-- [notebooks/scene_descriptors.ipynb](notebooks/scene_descriptors.ipynb) —
+- [tutorials/03_scene_descriptors.ipynb](tutorials/03_scene_descriptors.ipynb) —
   condenses every scene into five descriptors (`scenes_descriptors()`),
   with caveats on corrupted values (the Kadovar case) and far-field weight.
-- [notebooks/rays.ipynb](notebooks/rays.ipynb) — describes every direction
+- [tutorials/04_rays.ipynb](tutorials/04_rays.ipynb) — describes every direction
   of every scene (`rays_descriptors()`), residual saturation, and flagging
   and masking corrupted rays (`flag_rays()`, `mask_rays()`).
-- [notebooks/anomalies.ipynb](notebooks/anomalies.ipynb) — measures every
+- [tutorials/05_anomalies.ipynb](tutorials/05_anomalies.ipynb) — measures every
   scene against the volcano's usual state (`scenes_baseline()`,
   `scenes_anomaly()`), making scenes comparable across volcanoes.
-- [notebooks/episodes.ipynb](notebooks/episodes.ipynb) — finds periods of
+- [tutorials/06_episodes.ipynb](tutorials/06_episodes.ipynb) — finds periods of
   unusual activity as runs of anomalous scenes (`scenes_anomaly_score()`,
   `episodes()`).
 

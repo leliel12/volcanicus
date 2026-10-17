@@ -1183,10 +1183,10 @@ class Volcano:
     def _repr_html_(self):
         """Rich HTML repr, used by Jupyter/IPython instead of __repr__."""
         f = self._summary_fields()
+        latlon = f"({self._gvp_lat:.2f}, {self._gvp_lon:.2f})"
         rows = "".join(
-            f"<tr><td>{label}</td><td>{f[key]}</td></tr>"
+            f"<tr><th>{label.title()}</th><td>{f[key]}</td></tr>"
             for label, key in [
-                ("GVP (lat, lon)", "gvp"),
                 ("dates", "dates"),
                 ("missing", "missing"),
                 ("registers", "registers"),
@@ -1194,7 +1194,11 @@ class Volcano:
         )
         return (
             "<table>"
-            f"<caption>🌋 <b>{f['name']}</b></caption>"
+            '<caption style="white-space: nowrap;">'
+            f"🌋 <b>{f['name']}</b> {latlon}"
+            "</caption>"
+            "<tbody>"
             f"{rows}"
+            "</tbody>"
             "</table>"
         )
