@@ -15,11 +15,11 @@
 # IMPORTS
 # =============================================================================
 
-from .constants import (
+from .base import AccessorABC
+from ..constants import (
     GROUPBY_WHITELIST,
     NON_DISTANCE_COLUMNS as _NON_DISTANCE_COLUMNS,
 )
-from .utils import AccessorABC
 
 # =============================================================================
 # CLASSES

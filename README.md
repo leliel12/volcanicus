@@ -104,7 +104,9 @@ volcano = Volcano(
 The raw data is a long table: one row per **date × direction** and one
 column per **distance** (8 directions, 30 bins from 15 to 885 m). Volcanicus
 offers five *views* of it; each one changes the unit of analysis and answers
-a different question.
+a different question. Every view is an accessor on the `Volcano`
+(`v.scenes`, `v.descriptors`, `v.rays`, `v.anomalies`, `v.episodes`), and
+calling it runs its main method: `v.rays()` is `v.rays.descriptors()`.
 
 ```
 raw data ──► scenes ──► descriptors
@@ -114,17 +116,17 @@ raw data ──► scenes ──► descriptors
 
 | View | Unit | Answers | Main API |
 |---|---|---|---|
-| **Scene** | one date (8 directions × 30 distances) | What did the volcano look like that day? | `to_scenes()`, `reduce_directions()`, `plot.scene()` |
-| **Descriptors** | one scene condensed into 5 numbers | How hot, how far-reaching, and towards where? | `scenes_descriptors()`, `plot.polar()`, `plot.azimuth_rose()`, `plot.centers_map()` |
-| **Ray** | one direction of one date | Is something happening in a single direction? | `rays_descriptors()`, `flag_rays()`, `mask_rays()`, `plot.rays_rose()` |
-| **Anomaly** | one scene against the volcano's usual state | Is this unusual *for this volcano*? | `scenes_baseline()`, `scenes_anomaly()`, `plot.baseline()` |
-| **Episode** | a run of consecutive anomalous scenes | When was there unusual activity, for how long, how intense? | `scenes_anomaly_score()`, `episodes()`, `plot.episodes()` |
+| **Scene** | one date (8 directions × 30 distances) | What did the volcano look like that day? | `scenes()`, `scenes.reduce()`, `plot.scene()` |
+| **Descriptors** | one scene condensed into 5 numbers | How hot, how far-reaching, and towards where? | `descriptors()`, `plot.polar()`, `plot.azimuth_rose()`, `plot.centers_map()` |
+| **Ray** | one direction of one date | Is something happening in a single direction? | `rays()`, `rays.flag()`, `rays.mask()`, `plot.rays_rose()` |
+| **Anomaly** | one scene against the volcano's usual state | Is this unusual *for this volcano*? | `anomalies.baseline()`, `anomalies()`, `plot.baseline()` |
+| **Episode** | a run of consecutive anomalous scenes | When was there unusual activity, for how long, how intense? | `episodes.score()`, `episodes()`, `plot.episodes()` |
 
 A typical flow:
 
 ```python
-v = datasets.load("kadovar").mask_rays()  # 1. mask corrupted rays
-v.scenes_descriptors()                    # 2. what happened on each date
+v = datasets.load("kadovar").rays.mask()  # 1. mask corrupted rays
+v.descriptors()                           # 2. what happened on each date
 v.episodes().query("n_scenes >= 2")       # 3. when there were events
 ```
 
@@ -136,19 +138,19 @@ v.episodes().query("n_scenes >= 2")       # 3. when there were events
 - [tutorials/01_comparison.ipynb](tutorials/01_comparison.ipynb) — compares
   several bundled volcanoes side by side (and overlaid).
 - [tutorials/02_scenes.ipynb](tutorials/02_scenes.ipynb) — reshapes measurements
-  into one scene per date (`to_scenes()`) and collapses directions
-  (`reduce_directions()`, `scenes_median`, `scenes_max`).
+  into one scene per date (`scenes()`) and collapses directions
+  (`scenes.reduce()`, `scenes.median()`, `scenes.max()`).
 - [tutorials/03_scene_descriptors.ipynb](tutorials/03_scene_descriptors.ipynb) —
-  condenses every scene into five descriptors (`scenes_descriptors()`),
+  condenses every scene into five descriptors (`descriptors()`),
   with caveats on corrupted values (the Kadovar case) and far-field weight.
 - [tutorials/04_rays.ipynb](tutorials/04_rays.ipynb) — describes every direction
-  of every scene (`rays_descriptors()`), residual saturation, and flagging
-  and masking corrupted rays (`flag_rays()`, `mask_rays()`).
+  of every scene (`rays()`), residual saturation, and flagging
+  and masking corrupted rays (`rays.flag()`, `rays.mask()`).
 - [tutorials/05_anomalies.ipynb](tutorials/05_anomalies.ipynb) — measures every
-  scene against the volcano's usual state (`scenes_baseline()`,
-  `scenes_anomaly()`), making scenes comparable across volcanoes.
+  scene against the volcano's usual state (`anomalies.baseline()`,
+  `anomalies()`), making scenes comparable across volcanoes.
 - [tutorials/06_episodes.ipynb](tutorials/06_episodes.ipynb) — finds periods of
-  unusual activity as runs of anomalous scenes (`scenes_anomaly_score()`,
+  unusual activity as runs of anomalous scenes (`episodes.score()`,
   `episodes()`).
 
 ## 📜 License

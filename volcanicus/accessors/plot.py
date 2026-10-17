@@ -28,12 +28,12 @@ from scipy.stats import gaussian_kde
 
 import seaborn as sns
 
-from .constants import (
+from .base import AccessorABC
+from ..constants import (
     DIRECTION_ORDER,
     METERS_PER_DEGREE,
     NON_DISTANCE_COLUMNS as _NON_DISTANCE_COLUMNS,
 )
-from .utils import AccessorABC
 
 # =============================================================================
 # FUNCTIONS
@@ -57,8 +57,8 @@ def _draw_grid(ax, row, title, label, colorbar, **kwargs):
 
     The row's index must run direction-major in
     :data:`~volcanicus.constants.DIRECTION_ORDER`, as the columns of
-    :meth:`~volcanicus.core.Volcano.to_scenes` do, so it reshapes straight
-    into the (direction, distance) grid.
+    :meth:`~volcanicus.accessors.scenes.ScenesAccessor.grid` do, so it reshapes
+    straight into the (direction, distance) grid.
     """
     distances = list(row.index.unique("distance"))
     grid = row.to_numpy(dtype=float).reshape(
@@ -442,9 +442,9 @@ class PlotAccessor(AccessorABC):
         Every row is a direction (in
         :data:`~volcanicus.constants.DIRECTION_ORDER`) and every column a
         distance bin, colored by the residual
-        (:meth:`Volcano.to_scenes`) or, with ``anomaly=True``, by its
+        (:meth:`ScenesAccessor.grid`) or, with ``anomaly=True``, by its
         z-score against the volcano's baseline
-        (:meth:`Volcano.scenes_anomaly`). Missing cells stay blank.
+        (:meth:`AnomaliesAccessor.zscores`). Missing cells stay blank.
 
         Parameters
         ----------
@@ -478,9 +478,9 @@ class PlotAccessor(AccessorABC):
         """
         date = pd.Timestamp(date)
         scenes = (
-            self._volcano.scenes_anomaly()
+            self._volcano.anomalies.zscores()
             if anomaly
-            else self._volcano.to_scenes()
+            else self._volcano.scenes.grid()
         )
         if date not in scenes.index:
             raise KeyError(f"No scene on {date:%Y-%m-%d}")
@@ -513,7 +513,7 @@ class PlotAccessor(AccessorABC):
         """Plot the volcano's baseline as a directions x distance image.
 
         Same layout as :meth:`scene`, for one of the two rows of
-        :meth:`Volcano.scenes_baseline`: every cell's usual value
+        :meth:`AnomaliesAccessor.baseline`: every cell's usual value
         (``"center"``, the median over every scene) or its usual spread
         (``"scale"``, ``1.4826 * MAD``). Cells without a baseline (too few
         scenes, or never varying) stay blank.
@@ -523,7 +523,7 @@ class PlotAccessor(AccessorABC):
         stat : {"center", "scale"}, default "center"
             Which row of the baseline to plot.
         min_scenes : int, default 10
-            Passed on to :meth:`Volcano.scenes_baseline`.
+            Passed on to :meth:`AnomaliesAccessor.baseline`.
         ax : matplotlib.axes.Axes, optional
             Axes to draw on. A new figure and axes are created if not given.
         colorbar : bool, default True
@@ -547,7 +547,7 @@ class PlotAccessor(AccessorABC):
             raise ValueError(
                 f"'stat' must be one of {tuple(labels)}, found {stat!r}"
             )
-        row = self._volcano.scenes_baseline(min_scenes).loc[stat]
+        row = self._volcano.anomalies.baseline(min_scenes).loc[stat]
         return _draw_grid(
             ax,
             row,
@@ -568,16 +568,16 @@ class PlotAccessor(AccessorABC):
     ):
         """Plot the anomaly score over time, with the episodes shaded.
 
-        Draws :meth:`Volcano.scenes_anomaly_score`, a dashed line at
+        Draws :meth:`EpisodesAccessor.score`, a dashed line at
         ``threshold`` and a shaded band over every episode
-        (:meth:`Volcano.episodes`). A single-scene episode has no
+        (:meth:`EpisodesAccessor.find`). A single-scene episode has no
         duration, so its band is widened to 16 days (one satellite
         revisit) to stay visible.
 
         Parameters
         ----------
         threshold, max_gap, how, min_scenes
-            Passed on to :meth:`Volcano.episodes`.
+            Passed on to :meth:`EpisodesAccessor.find`.
         min_episode_scenes : int, default 1
             Only shade episodes with at least this many scenes. Single-scene
             episodes are mostly chance crossings of the threshold, so ``2``
@@ -591,8 +591,10 @@ class PlotAccessor(AccessorABC):
             The axes the plot was drawn on.
 
         """
-        score = self._volcano.scenes_anomaly_score(how, min_scenes)
-        episodes = self._volcano.episodes(threshold, max_gap, how, min_scenes)
+        score = self._volcano.episodes.score(how, min_scenes)
+        episodes = self._volcano.episodes.find(
+            threshold, max_gap, how, min_scenes
+        )
         episodes = episodes[episodes["n_scenes"] >= min_episode_scenes]
 
         ax = plt.gca() if ax is None else ax
@@ -625,7 +627,7 @@ class PlotAccessor(AccessorABC):
         """Plot where the heat points, over every scene, as a compass rose.
 
         A histogram of the scenes' ``azimuth``
-        (:meth:`Volcano.scenes_descriptors`) on a compass (north up,
+        (:meth:`DescriptorsAccessor.table`) on a compass (north up,
         clockwise). By default every scene is weighted by its
         ``anisotropy``, so scenes where the heat is spread evenly (and the
         azimuth means little) barely count, and the rose shows where the
@@ -659,7 +661,7 @@ class PlotAccessor(AccessorABC):
 
         """
         ax = _polar_axes(ax)
-        descriptors = self._volcano.scenes_descriptors().dropna(
+        descriptors = self._volcano.descriptors.table().dropna(
             subset=["azimuth"]
         )
 
@@ -687,7 +689,7 @@ class PlotAccessor(AccessorABC):
         """Plot a ray descriptor per direction, over every date, on a compass.
 
         One bar per direction, as long as ``column`` of
-        :meth:`Volcano.rays_descriptors` reduced over every date with
+        :meth:`RaysAccessor.descriptors` reduced over every date with
         ``how``: with the defaults, the typical (median) peak of each
         direction, i.e. which side of the vent usually runs hotter. Unlike
         :meth:`azimuth_rose`, which shows where the heat goes when one side
@@ -697,7 +699,7 @@ class PlotAccessor(AccessorABC):
         ----------
         column : str, default "peak"
             Ray descriptor to plot (a column of
-            :meth:`Volcano.rays_descriptors`).
+            :meth:`RaysAccessor.descriptors`).
         how : str, default "median"
             Reduction over dates: ``"median"``, ``"mean"``, ``"max"`` or
             ``"min"``.
@@ -720,7 +722,7 @@ class PlotAccessor(AccessorABC):
             supported reduction, or ``ax`` is not a polar axes.
 
         """
-        rays = self._volcano.rays_descriptors()
+        rays = self._volcano.rays.descriptors()
         if column not in rays.columns:
             raise ValueError(
                 f"'column' must be one of {tuple(rays.columns)}, "
@@ -769,7 +771,7 @@ class PlotAccessor(AccessorABC):
         is the bearing from it and the radius the distance, in meters.
 
         The background is the scenes' ``temperature``
-        (:meth:`Volcano.scenes_descriptors`) smoothed in space: every
+        (:meth:`DescriptorsAccessor.table`) smoothed in space: every
         location gets the mean of the nearby centers, weighted by a Gaussian
         kernel as wide as a KDE of the centers (Scott's rule). It is only
         drawn over the densest region holding 95% of the centers, so it
@@ -780,8 +782,9 @@ class PlotAccessor(AccessorABC):
         Parameters
         ----------
         temperature : str, default "peak"
-            Scene descriptor (a column of :meth:`Volcano.scenes_descriptors`)
-            that gives every center its temperature.
+            Scene descriptor (a column of
+            :meth:`DescriptorsAccessor.table`) that gives every center its
+            temperature.
         fill : bool, default True
             Whether to color the background with the smoothed temperature.
         centers : bool, default True
@@ -854,7 +857,7 @@ class PlotAccessor(AccessorABC):
             to_xy(by_date["center_lat"], by_date["center_long"])
         )
         temp = (
-            self._volcano.scenes_descriptors()[temperature]
+            self._volcano.descriptors.table()[temperature]
             .reindex(by_date.index)
             .to_numpy(dtype=float)
         )

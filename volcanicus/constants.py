@@ -11,9 +11,8 @@
 """Constants shared across the :mod:`volcanicus` package.
 
 Centralized here (instead of living next to their main user) so
-:mod:`volcanicus.core`, :mod:`volcanicus.plot_acc` and
-:mod:`volcanicus.stats_acc` can all import them without running into a
-circular import.
+:mod:`volcanicus.core` and the :mod:`volcanicus.accessors` can all import
+them without running into a circular import.
 
 """
 
@@ -31,11 +30,12 @@ DIRECTION_ORDER = ("N", "NE", "E", "SE", "S", "SO", "O", "NO")
 
 #: Columns that measurements can be grouped by: shared by
 #: :meth:`~volcanicus.core.Volcano.describe` (its ``by`` parameter) and
-#: :class:`~volcanicus.stats_acc.StatsAccessor` (its ``groupby`` parameter).
+#: :class:`~volcanicus.accessors.stats.StatsAccessor` (its ``groupby``
+#: parameter).
 GROUPBY_WHITELIST = ("date", "direction")
 
-#: Reductions :meth:`~volcanicus.core.Volcano.reduce_directions` accepts for
-#: its ``how`` parameter.
+#: Reductions :meth:`~volcanicus.accessors.scenes.ScenesAccessor.reduce`
+#: accepts for its ``how`` parameter.
 REDUCE_DIRECTIONS_WHITELIST = (
     "count",
     "max",

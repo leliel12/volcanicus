@@ -21,23 +21,24 @@ exposed to the outside through read-only properties.
 # IMPORTS
 # =============================================================================
 
-import warnings
-
 import methodtools
-
-import numpy as np
 
 import pandas as pd
 
+from .accessors import (
+    AnomaliesAccessor,
+    DescriptorsAccessor,
+    EpisodesAccessor,
+    PlotAccessor,
+    RaysAccessor,
+    ScenesAccessor,
+    StatsAccessor,
+)
 from .constants import (
     DIRECTION_ORDER,
     GROUPBY_WHITELIST,
     NON_DISTANCE_COLUMNS,
-    REDUCE_DIRECTIONS_WHITELIST,
-    SATURATION_LEVEL,
 )
-from .plot_acc import PlotAccessor
-from .stats_acc import StatsAccessor
 from .utils import Bunch
 
 # =============================================================================
@@ -93,72 +94,6 @@ def normalize_dataframe(df):
     return df
 
 
-def _distance_radii(distance_columns):
-    """Numeric radius (m) of every distance bin, from names like ``"15m"``."""
-    return np.array([float(c.removesuffix("m")) for c in distance_columns])
-
-
-def _sector_area(radii):
-    """Area (m²) of every bin's annular sector: 1/8 of ``2 * pi * r * dr``."""
-    return 2 * np.pi * radii * np.gradient(radii) / len(DIRECTION_ORDER)
-
-
-def _fill_rays(rays, radii):
-    """Fill the gaps of every ray (last axis) by linear interpolation.
-
-    Returns two filled copies: ``filled`` also holds the nearest value past
-    the first/last known bin (for integrals, where leaving the edges out
-    would undercount), while ``interior`` leaves those edges as ``NaN`` (for
-    the profile's shape, which shouldn't be extrapolated). Rays with no data
-    at all stay ``NaN`` in both.
-    """
-    filled = rays.copy()
-    interior = rays.copy()
-    for ray, inner in zip(
-        filled.reshape(-1, len(radii)), interior.reshape(-1, len(radii))
-    ):
-        known = ~np.isnan(ray)
-        if known.any() and not known.all():
-            ray[:] = np.interp(radii, radii[known], ray[known])
-            first, last = np.flatnonzero(known)[[0, -1]]
-            span = slice(first, last + 1)
-            inner[span] = ray[span]
-    return filled, interior
-
-
-def _peak_and_efold(profiles, radii):
-    """Peak and e-folding length of every profile (row) in a 2-D array.
-
-    The e-folding length is the distance from the peak to where the profile
-    first drops to ``peak / e``, linearly interpolated between bins; ``NaN``
-    when the peak isn't positive or the profile never drops that far.
-    """
-    peak = np.full(len(profiles), np.nan)
-    efold_length = np.full(len(profiles), np.nan)
-    for i, profile in enumerate(profiles):
-        if np.isnan(profile).all():
-            continue
-        top = np.nanargmax(profile)
-        peak[i] = profile[top]
-        if peak[i] <= 0:
-            continue
-        threshold = peak[i] / np.e
-        below = np.flatnonzero(profile[top:] <= threshold)
-        if below.size:
-            j = top + below[0]
-            # j > top always (the peak itself is above threshold), so
-            # interpolate the crossing between bins j - 1 and j.
-            fraction = (profile[j - 1] - threshold) / (
-                profile[j - 1] - profile[j]
-            )
-            efold_length[i] = (
-                radii[j - 1]
-                + fraction * (radii[j] - radii[j - 1])
-                - radii[top]
-            )
-    return peak, efold_length
-
-
 # =============================================================================
 # CLASSES
 # =============================================================================
@@ -197,6 +132,20 @@ class Volcano:
         Plotting accessor, created lazily on first access.
     stats : StatsAccessor
         Statistics accessor, created lazily on first access.
+    scenes : ScenesAccessor
+        Scene view (one row per date), created lazily on first access.
+    descriptors : DescriptorsAccessor
+        Descriptors view (every scene condensed into five numbers), created
+        lazily on first access.
+    rays : RaysAccessor
+        Ray view (one direction of one date), created lazily on first
+        access.
+    anomalies : AnomaliesAccessor
+        Anomaly view (every scene against the volcano's usual state),
+        created lazily on first access.
+    episodes : EpisodesAccessor
+        Episode view (runs of anomalous scenes), created lazily on first
+        access.
     has_missing : bool
         Whether any distance-bin measurement is missing.
     metadata : Bunch
@@ -249,6 +198,73 @@ class Volcano:
 
         """
         return StatsAccessor(self)
+
+    # VIEWS ===================================================================
+
+    @methodtools.lru_cache(maxsize=None)
+    @property
+    def scenes(self):
+        """Scene view of this instance.
+
+        Returns
+        -------
+        ScenesAccessor
+            Created on first access and reused on subsequent accesses.
+
+        """
+        return ScenesAccessor(self)
+
+    @methodtools.lru_cache(maxsize=None)
+    @property
+    def descriptors(self):
+        """Descriptors view of this instance.
+
+        Returns
+        -------
+        DescriptorsAccessor
+            Created on first access and reused on subsequent accesses.
+
+        """
+        return DescriptorsAccessor(self)
+
+    @methodtools.lru_cache(maxsize=None)
+    @property
+    def rays(self):
+        """Ray view of this instance.
+
+        Returns
+        -------
+        RaysAccessor
+            Created on first access and reused on subsequent accesses.
+
+        """
+        return RaysAccessor(self)
+
+    @methodtools.lru_cache(maxsize=None)
+    @property
+    def anomalies(self):
+        """Anomaly view of this instance.
+
+        Returns
+        -------
+        AnomaliesAccessor
+            Created on first access and reused on subsequent accesses.
+
+        """
+        return AnomaliesAccessor(self)
+
+    @methodtools.lru_cache(maxsize=None)
+    @property
+    def episodes(self):
+        """Episode view of this instance.
+
+        Returns
+        -------
+        EpisodesAccessor
+            Created on first access and reused on subsequent accesses.
+
+        """
+        return EpisodesAccessor(self)
 
     # PROPERTIES ==============================================================
 
@@ -332,614 +348,6 @@ class Volcano:
 
         """
         return self._dataframe.copy()
-
-    def to_scenes(self, as_array=False):
-        """Reshape the measurements into one scene (date) per row.
-
-        The source DataFrame is "long" on direction (one row per
-        date/direction). A scene is everything observed on a single date:
-        a grid of every direction x every distance bin. Each scene becomes a
-        single row, which is the natural sample unit for a model.
-
-        The grid is always complete: directions follow
-        :data:`~volcanicus.constants.DIRECTION_ORDER` and any date/direction
-        pair absent from the source data is filled with ``NaN``, so every
-        scene has exactly the same shape (and the same columns) no matter
-        the volcano.
-
-        Parameters
-        ----------
-        as_array : bool, default False
-            If False, return a DataFrame. If True, return the same values as
-            a 3-D ``numpy.ndarray`` of shape
-            ``(n_dates, n_directions, n_distances)``.
-
-        Returns
-        -------
-        pandas.DataFrame or numpy.ndarray
-            DataFrame indexed by ``date``, with two-level columns
-            ``(direction, distance)``; or its values as a cube (see
-            ``as_array``). In the cube, axis 0 follows the sorted dates,
-            axis 1 follows ``DIRECTION_ORDER`` and axis 2 the distance bins
-            in their original (increasing) order.
-
-        Raises
-        ------
-        ValueError
-            If the data can't be laid out as a grid of scenes: a direction
-            not in ``DIRECTION_ORDER`` (it would be silently dropped), a
-            date that failed to parse (``NaT``) or a repeated
-            date/direction pair.
-
-        """
-        df = self._dataframe
-
-        # The grid below is reindexed to DIRECTION_ORDER, which would
-        # silently turn a misspelled direction into NaN; fail loudly instead.
-        unknown = set(df["direction"].astype(str)) - set(DIRECTION_ORDER)
-        if unknown:
-            raise ValueError(
-                f"Unknown direction(s) {sorted(unknown)}; "
-                f"expected values in {DIRECTION_ORDER}"
-            )
-        # normalize_dataframe coerces unparseable dates to NaT, which would
-        # otherwise end up as a scene with no date.
-        if df["date"].isna().any():
-            raise ValueError(
-                f"{df['date'].isna().sum()} row(s) have an invalid date (NaT)"
-            )
-        duplicated = df.duplicated(["date", "direction"])
-        if duplicated.any():
-            pairs = df.loc[duplicated, ["date", "direction"]]
-            raise ValueError(
-                "Repeated date/direction pair(s): "
-                f"{list(pairs.itertuples(index=False, name=None))}"
-            )
-
-        distance_columns = [
-            c for c in df.columns if c not in NON_DISTANCE_COLUMNS
-        ]
-        # (date, direction) -> one row; then direction moves from the rows
-        # into the columns, next to the distance bins.
-        wide = df.set_index(["date", "direction"])[distance_columns].unstack(
-            "direction"
-        )
-
-        # unstack leaves (distance, direction) columns in arbitrary order and
-        # only for the directions present; force the full, canonical grid so
-        # every volcano yields identically shaped scenes.
-        full_columns = pd.MultiIndex.from_product(
-            [DIRECTION_ORDER, distance_columns],
-            names=["direction", "distance"],
-        )
-        scenes = (
-            wide.swaplevel(axis=1).reindex(columns=full_columns).sort_index()
-        )
-
-        if as_array:
-            return scenes.to_numpy(dtype=float).reshape(
-                len(scenes), len(DIRECTION_ORDER), len(distance_columns)
-            )
-        return scenes
-
-    def reduce_directions(self, how="median"):
-        """Collapse the directions of every scene into a single profile.
-
-        Each scene (see :meth:`to_scenes`) holds 8 directions x every
-        distance bin; this reduces the 8 directions at each distance with
-        ``how``, leaving one radial profile per date.
-
-        ``NaN`` values are skipped while reducing, so a missing direction
-        doesn't spoil the others; a distance bin where every direction is
-        missing stays ``NaN``.
-
-        Parameters
-        ----------
-        how : str, default "median"
-            Reduction to apply across directions: one of ``"count"``,
-            ``"max"``, ``"mean"``, ``"median"``, ``"min"``, ``"std"``,
-            ``"sum"`` or ``"var"``.
-
-        Returns
-        -------
-        pandas.DataFrame
-            Indexed by ``date``, with one column per distance bin.
-
-        Raises
-        ------
-        ValueError
-            If ``how`` is not a supported reduction.
-
-        See Also
-        --------
-        scenes_median : Shorthand for ``reduce_directions("median")``.
-        scenes_max : Shorthand for ``reduce_directions("max")``.
-
-        """
-        if how not in REDUCE_DIRECTIONS_WHITELIST:
-            raise ValueError(
-                f"'how' must be one of {REDUCE_DIRECTIONS_WHITELIST}, "
-                f"found {how!r}"
-            )
-        # Transpose so every (direction, distance) pair is a row, then group
-        # those rows by distance: each group holds the 8 directions to reduce.
-        by_distance = self.to_scenes().T.groupby(level="distance", sort=False)
-        reduced = getattr(by_distance, how)().T
-        reduced.columns.name = "distance"
-        return reduced
-
-    @property
-    def scenes_median(self):
-        """Typical radial profile of every scene: median across directions.
-
-        Returns
-        -------
-        pandas.DataFrame
-            Indexed by ``date``, with one column per distance bin. Using the
-            median (not the mean) keeps a single anomalous direction from
-            dragging the profile.
-
-        See Also
-        --------
-        to_scenes : The full, per-direction scenes this is reduced from.
-        scenes_max : Hottest direction of every scene.
-
-        """
-        return self.reduce_directions("median")
-
-    @property
-    def scenes_max(self):
-        """Hottest direction of every scene: maximum across directions.
-
-        Returns
-        -------
-        pandas.DataFrame
-            Indexed by ``date``, with one column per distance bin.
-
-        See Also
-        --------
-        to_scenes : The full, per-direction scenes this is reduced from.
-        scenes_median : Typical (median) profile of every scene.
-
-        """
-        return self.reduce_directions("max")
-
-    def scenes_descriptors(self):
-        """Summarize every scene with a few interpretable descriptors.
-
-        Each scene (see :meth:`to_scenes`) holds 8 directions x every
-        distance bin; this condenses it into five numbers that are
-        comparable across dates and volcanoes:
-
-        - ``peak``: maximum of the median (across directions) radial
-          profile.
-        - ``efold_length``: distance (m) from the peak over which that
-          median profile decays to ``peak / e``, the crossing linearly
-          interpolated between bins. Measured from the peak (not from the
-          vent) so it doesn't depend on which inner bins a scene happens to
-          have: for an exponential decay it's the decay length whatever
-          the first bin is. ``NaN`` if the peak isn't positive or the
-          profile never drops that far within the measured distances.
-        - ``integrated``: the residual integrated over the whole disk, each
-          bin weighted by the area of its annular sector
-          (``2 * pi * r * dr / 8``), in residual x m². A missing direction
-          is skipped and the rest are scaled up to the full disk.
-        - ``anisotropy``: how concentrated the heat is in one direction, in
-          ``[0, 1]``: ``0`` spreads evenly around the vent, ``1`` sits
-          entirely in a single direction. It's the length of the vector sum
-          of the 8 directions, each as long as its ray's positive ``peak``
-          (see :meth:`rays_descriptors`), over the sum of their lengths.
-          Using the ray peaks keeps it about the near field: weighting by
-          area instead would let the far field, which covers most of the
-          disk, decide the direction.
-        - ``azimuth``: direction of that vector sum, in degrees clockwise
-          from north (``N`` is 0, ``E`` is 90, ``S`` is 180, ``O`` is 270).
-          ``NaN`` when no direction dominates (``anisotropy`` is 0).
-
-        ``anisotropy`` and ``azimuth`` need all 8 directions, so they're
-        ``NaN`` for a scene with a direction missing entirely (see
-        :meth:`impute` to fill those first).
-
-        Gaps along a direction are filled by linear interpolation over
-        distance before computing anything; otherwise a bin missing in some
-        scenes and not in others would make descriptors incomparable
-        between scenes. For the integrals, the edges also take the nearest
-        available bin (the innermost one is often missing, and leaving it
-        out would undercount). ``peak`` and ``efold_length`` don't
-        extrapolate, so a scene missing its innermost bin peaks at the
-        first bin it has.
-
-        Returns
-        -------
-        pandas.DataFrame
-            Indexed by ``date``, with the columns ``peak``,
-            ``efold_length``, ``integrated``, ``anisotropy`` and
-            ``azimuth``.
-
-        See Also
-        --------
-        rays_descriptors : The same kind of descriptors, per direction.
-
-        """
-        scenes = self.to_scenes()
-        cube = self.to_scenes(as_array=True)
-        n_dates, n_directions, n_distances = cube.shape
-        radii = _distance_radii(scenes.columns.unique("distance"))
-        filled, interior = _fill_rays(cube, radii)
-        missing_direction = np.isnan(cube).all(axis=2)
-
-        # peak & efold_length: shape of the typical (median) profile.
-        # A bin with no data in any direction is an expected NaN, not
-        # something to warn about.
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore", RuntimeWarning)
-            median_profile = np.nanmedian(interior, axis=1)
-        peak, efold_length = _peak_and_efold(median_profile, radii)
-
-        # integrated: per-direction integrals; a missing direction is
-        # skipped and the mean of the others stands in for it.
-        direction_integral = (filled * _sector_area(radii)).sum(axis=2)
-        direction_integral[missing_direction] = np.nan
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore", RuntimeWarning)
-            integrated = np.nanmean(direction_integral, axis=1) * n_directions
-
-        # anisotropy & azimuth: vector sum of every ray's positive peak,
-        # each pointing along its compass bearing.
-        ray_peak, _ = _peak_and_efold(interior.reshape(-1, n_distances), radii)
-        positive = np.clip(ray_peak.reshape(n_dates, n_directions), 0, None)
-        bearings = np.radians(45.0 * np.arange(n_directions))
-        east = (positive * np.sin(bearings)).sum(axis=1)
-        north = (positive * np.cos(bearings)).sum(axis=1)
-        total = positive.sum(axis=1)
-        with np.errstate(all="ignore"):
-            anisotropy = np.hypot(east, north) / total
-        # A perfectly even scene leaves floating-point crumbs in the vector
-        # sum; snap those to 0 so they don't fake a bearing.
-        anisotropy[np.isclose(anisotropy, 0, atol=1e-9)] = 0
-        azimuth = np.degrees(np.arctan2(east, north)) % 360
-        undefined = missing_direction.any(axis=1) | ~(total > 0)
-        anisotropy[undefined] = np.nan
-        azimuth[undefined | (anisotropy == 0)] = np.nan
-
-        return pd.DataFrame(
-            {
-                "peak": peak,
-                "efold_length": efold_length,
-                "integrated": integrated,
-                "anisotropy": anisotropy,
-                "azimuth": azimuth,
-            },
-            index=scenes.index,
-        )
-
-    def rays_descriptors(self):
-        """Summarize every ray (one direction of one scene).
-
-        A ray is the radial profile of a single date/direction: one row of
-        the source data. Describing rays one by one, instead of whole
-        scenes, tells where around the vent things happen, and isolates
-        problems that only affect one direction.
-
-        - ``peak``: maximum residual along the ray.
-        - ``efold_length``: distance (m) from the peak over which the ray
-          decays to ``peak / e``; defined exactly as in
-          :meth:`scenes_descriptors`.
-        - ``integrated``: residual integrated over the ray's annular
-          sector (``2 * pi * r * dr / 8`` per bin), in residual x m². The
-          8 rays of a scene add up to its ``integrated``.
-        - ``n_saturated``: number of bins at the saturation level
-          (:data:`~volcanicus.constants.SATURATION_LEVEL`). Residuals are
-          capped there, so a saturated ray's ``peak`` underestimates the
-          real anomaly.
-        - ``max_abs``: largest absolute residual along the ray, on the raw
-          values (see :meth:`flag_rays`).
-
-        Gaps are handled as in :meth:`scenes_descriptors`. Rays missing from
-        the data appear with every descriptor ``NaN`` (``n_saturated`` 0),
-        so the result always holds 8 rays per scene.
-
-        Returns
-        -------
-        pandas.DataFrame
-            Indexed by ``(date, direction)``, directions in
-            :data:`~volcanicus.constants.DIRECTION_ORDER`, with the columns
-            ``peak``, ``efold_length``, ``integrated``, ``n_saturated`` and
-            ``max_abs``.
-
-        """
-        scenes = self.to_scenes()
-        cube = self.to_scenes(as_array=True)
-        n_distances = cube.shape[2]
-        radii = _distance_radii(scenes.columns.unique("distance"))
-        filled, interior = _fill_rays(cube, radii)
-
-        rays = cube.reshape(-1, n_distances)
-        peak, efold_length = _peak_and_efold(
-            interior.reshape(-1, n_distances), radii
-        )
-        integrated = (
-            filled.reshape(-1, n_distances) * _sector_area(radii)
-        ).sum(axis=1)
-        missing = np.isnan(rays).all(axis=1)
-        integrated[missing] = np.nan
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore", RuntimeWarning)
-            max_abs = np.nanmax(np.abs(rays), axis=1)
-
-        index = pd.MultiIndex.from_product(
-            [scenes.index, DIRECTION_ORDER], names=["date", "direction"]
-        )
-        return pd.DataFrame(
-            {
-                "peak": peak,
-                "efold_length": efold_length,
-                "integrated": integrated,
-                "n_saturated": (rays == SATURATION_LEVEL).sum(axis=1),
-                "max_abs": max_abs,
-            },
-            index=index,
-        )
-
-    def flag_rays(self, limit=2.0):
-        """Flag rays holding a residual too large to be a real measurement.
-
-        Residuals saturate at
-        :data:`~volcanicus.constants.SATURATION_LEVEL` (``1.0``), yet a
-        handful of rays in the bundled data reach tens or thousands. These
-        come in runs along a single direction while the rest of the scene
-        looks ordinary, which points to a processing artifact rather than
-        to the volcano. The default ``limit`` of twice the saturation level
-        keeps the values that only slightly overshoot it.
-
-        Parameters
-        ----------
-        limit : float, default 2.0
-            A ray is flagged when any of its residuals is larger than this
-            in absolute value.
-
-        Returns
-        -------
-        pandas.Series
-            Boolean, indexed by ``(date, direction)`` like
-            :meth:`rays_descriptors`; ``True`` for a flagged ray.
-
-        See Also
-        --------
-        mask_rays : Drop the flagged rays' values.
-
-        """
-        flags = self.rays_descriptors()["max_abs"] > limit
-        flags.name = "flagged"
-        return flags
-
-    def mask_rays(self, limit=2.0):
-        """Blank out every ray :meth:`flag_rays` flags.
-
-        Every distance bin of a flagged ray becomes ``NaN``, so it's
-        treated like any other missing ray afterwards (skipped by the
-        reductions, fillable by :meth:`impute`). The whole ray goes, not
-        only the offending values: the bins next to an absurd value are
-        rarely trustworthy (in Kadovar a single artifact spans 4 bins).
-
-        Parameters
-        ----------
-        limit : float, default 2.0
-            Passed on to :meth:`flag_rays`.
-
-        Returns
-        -------
-        Volcano
-            A new instance with the flagged rays masked. Its metadata
-            records the ``mask_limit`` used and how many rays it masked
-            (``masked_rays``).
-
-        """
-        flags = self.flag_rays(limit)
-        flagged = flags[flags].index
-
-        df = self._dataframe.copy()
-        distance_columns = [
-            c for c in df.columns if c not in NON_DISTANCE_COLUMNS
-        ]
-        rows = pd.MultiIndex.from_frame(
-            df[["date", "direction"]].astype({"direction": str})
-        ).isin(flagged)
-        df.loc[rows, distance_columns] = np.nan
-
-        metadata = {
-            **self._metadata,
-            "masked_rays": int(rows.sum()),
-            "mask_limit": limit,
-        }
-        return Volcano(
-            self._name,
-            df,
-            gvp_lat=self._gvp_lat,
-            gvp_lon=self._gvp_lon,
-            metadata=metadata,
-        )
-
-    def scenes_baseline(self, min_scenes=10):
-        """Typical value and spread of every cell of the scenes.
-
-        For every ``(direction, distance)`` cell, over every scene of this
-        volcano: the median (``center``) and a robust spread (``scale``,
-        ``1.4826 * MAD``, which matches the standard deviation for normally
-        distributed data). Each cell gets its own baseline because each
-        direction can sit on a different background (e.g. a slope facing
-        the sun, or the sea).
-
-        This is the volcano's *usual* state, not necessarily a quiet one:
-        for a volcano active in most of its scenes, "usual" means active,
-        and the anomalies (see :meth:`scenes_anomaly`) measure departures
-        from that. Run :meth:`mask_rays` first so corrupted rays don't
-        leak into it.
-
-        Parameters
-        ----------
-        min_scenes : int, default 10
-            Cells with fewer non-missing scenes than this get a ``NaN``
-            baseline: a median and MAD over a handful of values aren't
-            meaningful.
-
-        Returns
-        -------
-        pandas.DataFrame
-            Two rows, ``center`` and ``scale``, with the same two-level
-            ``(direction, distance)`` columns as :meth:`to_scenes`. A cell
-            whose values never vary (MAD of 0, e.g. always saturated) has a
-            ``NaN`` scale.
-
-        """
-        scenes = self.to_scenes()
-        center = scenes.median()
-        scale = 1.4826 * (scenes - center).abs().median()
-
-        too_few = scenes.count() < min_scenes
-        center[too_few] = np.nan
-        scale[too_few | (scale == 0)] = np.nan
-        return pd.DataFrame({"center": center, "scale": scale}).T
-
-    def scenes_anomaly(self, min_scenes=10):
-        """Every scene as robust z-scores against the volcano's baseline.
-
-        Each cell becomes ``(value - center) / scale``, with ``center`` and
-        ``scale`` from :meth:`scenes_baseline`: how many "typical
-        deviations" it sits above (positive) or below (negative) the
-        volcano's usual value for that direction and distance. Unlike raw
-        residuals, these are comparable across volcanoes with very
-        different backgrounds.
-
-        Parameters
-        ----------
-        min_scenes : int, default 10
-            Passed on to :meth:`scenes_baseline`.
-
-        Returns
-        -------
-        pandas.DataFrame
-            Same shape, index and columns as :meth:`to_scenes`. ``NaN``
-            where the value is missing or the cell has no baseline.
-
-        """
-        baseline = self.scenes_baseline(min_scenes)
-        return (self.to_scenes() - baseline.loc["center"]) / baseline.loc[
-            "scale"
-        ]
-
-    #: Reductions :meth:`scenes_anomaly_score` accepts for its ``how``.
-    _ANOMALY_SCORE_HOW = ("median", "mean", "max")
-
-    def scenes_anomaly_score(self, how="median", min_scenes=10):
-        """How anomalous every scene is, as a single number.
-
-        The scene's anomalies (:meth:`scenes_anomaly`) are reduced across
-        the 8 directions with ``how``, leaving one profile of z-scores per
-        scene; the score is that profile's maximum over distance. With the
-        default ``"median"``, a score of ``z`` means at least half the
-        directions sit ``z`` usual deviations above normal at some
-        distance: robust to a single odd ray, but blind to heat that goes
-        only one way (e.g. a lava flow down one flank); ``"max"`` catches
-        that, at the cost of more false alarms.
-
-        Parameters
-        ----------
-        how : str, default "median"
-            Reduction across directions: ``"median"``, ``"mean"`` or
-            ``"max"``.
-        min_scenes : int, default 10
-            Passed on to :meth:`scenes_baseline`.
-
-        Returns
-        -------
-        pandas.Series
-            Indexed by ``date``. ``NaN`` for a scene with no anomaly at
-            all (e.g. every cell lacks a baseline).
-
-        Raises
-        ------
-        ValueError
-            If ``how`` is not a supported reduction.
-
-        """
-        if how not in self._ANOMALY_SCORE_HOW:
-            raise ValueError(
-                f"'how' must be one of {self._ANOMALY_SCORE_HOW}, "
-                f"found {how!r}"
-            )
-        anomaly = self.scenes_anomaly(min_scenes)
-        by_distance = anomaly.T.groupby(level="distance", sort=False)
-        score = getattr(by_distance, how)().T.max(axis=1)
-        score.name = "score"
-        return score
-
-    def episodes(self, threshold=3.0, max_gap=90, how="median", min_scenes=10):
-        """Find periods of unusual activity: runs of anomalous scenes.
-
-        A scene is anomalous when its :meth:`scenes_anomaly_score` exceeds
-        ``threshold``. An episode is a run of consecutive anomalous scenes:
-        it ends at the first scene that isn't anomalous, or when two
-        anomalous scenes are more than ``max_gap`` days apart with nothing
-        observed in between (there's no telling what happened in such a
-        gap). Scenes without a score are treated as not observed.
-
-        Parameters
-        ----------
-        threshold : float, default 3.0
-            Score a scene must exceed to count as anomalous.
-        max_gap : int, default 90
-            Longest gap, in days, allowed between two scenes of the same
-            episode. The default leaves room for a few missed passes of a
-            satellite revisiting every 16 days.
-        how : str, default "median"
-            Passed on to :meth:`scenes_anomaly_score`.
-        min_scenes : int, default 10
-            Passed on to :meth:`scenes_baseline`.
-
-        Returns
-        -------
-        pandas.DataFrame
-            One row per episode, in chronological order, with the columns
-            ``start`` and ``end`` (first and last anomalous scene),
-            ``duration_days`` (``0`` for a single scene), ``n_scenes``,
-            ``peak_date`` and ``peak_score`` (the highest score).
-
-        """
-        score = self.scenes_anomaly_score(how, min_scenes).dropna()
-        anomalous = score > threshold
-
-        # A new episode starts at every anomalous scene whose predecessor
-        # isn't anomalous or is too far back in time.
-        gap_days = score.index.to_series().diff().dt.days
-        starts = anomalous & (
-            ~anomalous.shift(1, fill_value=False) | (gap_days > max_gap)
-        )
-        episode_id = starts.cumsum()[anomalous]
-
-        rows = []
-        for _, members in score[anomalous].groupby(episode_id):
-            rows.append(
-                {
-                    "start": members.index[0],
-                    "end": members.index[-1],
-                    "duration_days": (
-                        members.index[-1] - members.index[0]
-                    ).days,
-                    "n_scenes": len(members),
-                    "peak_date": members.idxmax(),
-                    "peak_score": members.max(),
-                }
-            )
-        columns = [
-            "start",
-            "end",
-            "duration_days",
-            "n_scenes",
-            "peak_date",
-            "peak_score",
-        ]
-        return pd.DataFrame(rows, columns=columns)
 
     def radial_profile(self):
         """Average the measurements over dates, per direction.
