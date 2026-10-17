@@ -11,8 +11,9 @@
 """Constants shared across the :mod:`volcanicus` package.
 
 Centralized here (instead of living next to their main user) so
-:mod:`volcanicus.core` and :mod:`volcanicus.accessors` can both import them
-without running into a circular import.
+:mod:`volcanicus.core`, :mod:`volcanicus.plot_acc` and
+:mod:`volcanicus.stats_acc` can all import them without running into a
+circular import.
 
 """
 
@@ -30,7 +31,7 @@ DIRECTION_ORDER = ("N", "NE", "E", "SE", "S", "SO", "O", "NO")
 
 #: Columns that measurements can be grouped by: shared by
 #: :meth:`~volcanicus.core.Volcano.describe` (its ``by`` parameter) and
-#: :class:`~volcanicus.accessors.StatsAccessor` (its ``groupby`` parameter).
+#: :class:`~volcanicus.stats_acc.StatsAccessor` (its ``groupby`` parameter).
 GROUPBY_WHITELIST = ("date", "direction")
 
 #: Reductions :meth:`~volcanicus.core.Volcano.reduce_directions` accepts for
@@ -50,3 +51,7 @@ REDUCE_DIRECTIONS_WHITELIST = (
 #: exactly ``1.0`` (thousands of values sit right there, only a handful just
 #: below), so a residual at this level means "at least this hot".
 SATURATION_LEVEL = 1.0
+
+#: Meters per degree of latitude (and of longitude at the equator). Enough
+#: to place a volcano's centers, a few hundred meters apart, on a flat earth.
+METERS_PER_DEGREE = 111_320.0

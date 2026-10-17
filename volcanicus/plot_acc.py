@@ -8,8 +8,8 @@
 # DOCS
 # =============================================================================
 
-"""Accessors for :class:`~volcanicus.core.Volcano` instances (e.g. \
-``volcano.plot``)."""
+"""Plotting accessor for :class:`~volcanicus.core.Volcano` instances \
+(``volcano.plot``)."""
 
 # =============================================================================
 # IMPORTS
@@ -18,16 +18,19 @@
 import matplotlib.colors as mcolors
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
 import numpy as np
 
 import pandas as pd
 
+from scipy.stats import gaussian_kde
+
 import seaborn as sns
 
 from .constants import (
     DIRECTION_ORDER,
-    GROUPBY_WHITELIST,
+    METERS_PER_DEGREE,
     NON_DISTANCE_COLUMNS as _NON_DISTANCE_COLUMNS,
 )
 from .utils import AccessorABC
@@ -739,94 +742,244 @@ class PlotAccessor(AccessorABC):
         ax.set_title(f"{self._volcano.name}: {how} ray {column} by direction")
         return ax
 
+    #: Share of the centers the fill of :meth:`centers_map` covers.
+    _CENTERS_MAP_SUPPORT = 0.95
 
-class StatsAccessor(AccessorABC):
-    """Calculate basic statistics of the volcano measurements \
-    (used as ``volcano.stats``).
+    def centers_map(
+        self,
+        temperature="peak",
+        fill=True,
+        centers=True,
+        spread=True,
+        reference=True,
+        cmap="hot",
+        vmin=None,
+        vmax=None,
+        center=None,
+        color="k",
+        colorbar=True,
+        legend=True,
+        ax=None,
+    ):
+        """Map every date's center around their centroid, with its temperature.
 
-    Kind of statistic to produce:
+        Every date has a center (``center_lat``/``center_long``), the focus
+        the measurements are taken around. The map is a compass (north up,
+        clockwise) whose origin is the centroid of every center: the angle
+        is the bearing from it and the radius the distance, in meters.
 
-    - 'cov' : Compute pairwise covariance of distance-bin columns,
-      excluding NA/null values.
-    - 'describe' : Generate descriptive statistics.
-    - 'kurtosis' : Return unbiased kurtosis over requested axis.
-    - 'max' : Return the maximum of the values over the requested axis.
-    - 'mean' : Return the mean of the values over the requested axis.
-    - 'median' : Return the median of the values over the requested
-      axis.
-    - 'min' : Return the minimum of the values over the requested axis.
-    - 'pct_change' : Percentage change between the current and a prior
-      element.
-    - 'quantile' : Return values at the given quantile over requested
-      axis.
-    - 'sem' : Return unbiased standard error of the mean over requested
-      axis.
-    - 'skew' : Return unbiased skew over requested axis.
-    - 'std' : Return sample standard deviation over requested axis.
-    - 'var' : Return unbiased variance over requested axis.
+        The background is the scenes' ``temperature``
+        (:meth:`Volcano.scenes_descriptors`) smoothed in space: every
+        location gets the mean of the nearby centers, weighted by a Gaussian
+        kernel as wide as a KDE of the centers (Scott's rule). It is only
+        drawn over the densest region holding 95% of the centers, so it
+        doesn't extrapolate where there are none. The fill and the spread
+        ellipse are left out when the centers don't span a plane (fewer than
+        three dates, or all of them on a line).
 
-    Every statistic is computed per group: the mandatory first parameter
-    ``groupby`` (either ``"date"`` or ``"direction"``) selects which column
-    to group the measurements by before the underlying pandas method is
-    applied.
+        Parameters
+        ----------
+        temperature : str, default "peak"
+            Scene descriptor (a column of :meth:`Volcano.scenes_descriptors`)
+            that gives every center its temperature.
+        fill : bool, default True
+            Whether to color the background with the smoothed temperature.
+        centers : bool, default True
+            Whether to draw every center as a dot, colored by its
+            temperature on the same scale as the fill: a dot standing out
+            from its background is a scene hotter (or colder) than its
+            neighbors.
+        spread : bool, default True
+            Whether to draw the dashed 1-sigma ellipse of the centers.
+        reference : bool, default True
+            Whether to mark the volcano's GVP location
+            (:attr:`Volcano.gvp_lat`, :attr:`Volcano.gvp_lon`) with a star.
+        cmap : str or matplotlib.colors.Colormap, default "hot"
+            Colormap of the temperature. Values beyond ``vmin``/``vmax`` get
+            the end colors.
+        vmin, vmax : float, optional
+            Temperatures at the ends of the colormap. Default to the 2nd and
+            98th percentile of the temperature, so a few extreme scenes don't
+            wash out the rest. Fix them (e.g. ``0`` and ``1`` for ``peak``)
+            to compare several volcanoes on the same scale.
+        center : float, optional
+            Temperature at the middle of the colormap, as in
+            :func:`seaborn.heatmap`: each half of the colormap stretches to
+            cover its side, so the colors are no longer linear across
+            ``center``. Must lie strictly between ``vmin`` and ``vmax``.
+        color : color, default "k"
+            Color of the spread ellipse and the GVP star.
+        colorbar : bool, default True
+            Whether to add a colorbar of the temperature.
+        legend : bool, default True
+            Whether to add a legend of the centers, ellipse and star.
+        ax : matplotlib.axes.Axes, optional
+            Polar axes to draw on (``projection="polar"``). New ones are
+            created if not given.
 
-    Parameters
-    ----------
-    volcano : Volcano
-        The :class:`~volcanicus.core.Volcano` instance this accessor belongs
-        to.
+        Returns
+        -------
+        matplotlib.axes.Axes
+            The axes the plot was drawn on.
 
-    """
+        Raises
+        ------
+        ValueError
+            If ``ax`` is not a polar axes, or ``center`` is not strictly
+            between ``vmin`` and ``vmax``.
+        KeyError
+            If ``temperature`` is not a scene descriptor.
 
-    # The list of methods that can be accessed of the subjacent dataframe.
-    _DF_WHITELIST = (
-        "cov",
-        "describe",
-        "kurtosis",
-        "max",
-        "mean",
-        "median",
-        "min",
-        "pct_change",
-        "quantile",
-        "sem",
-        "skew",
-        "std",
-        "var",
-    )
-    _default_kind = "describe"
+        """
+        ax = _polar_axes(ax)
 
-    def __init__(self, volcano):
-        self._volcano = volcano
-
-    def _grouped(self, groupby):
-        """Distance-bin columns of the volcano's DataFrame, grouped."""
-        # Reject anything but "date"/"direction" up front, before doing any
-        # work, so every stat method gets the same clear error for free.
-        if groupby not in GROUPBY_WHITELIST:
-            raise ValueError(
-                f"'groupby' must be one of {GROUPBY_WHITELIST}, "
-                f"found {groupby!r}"
-            )
+        # One center per date (every direction of a date shares it), as
+        # east/north offsets in meters from their centroid; a degree of
+        # longitude shrinks with the cosine of the latitude.
         df = self._volcano.to_dataframe()
-        distance_columns = [
-            c for c in df.columns if c not in _NON_DISTANCE_COLUMNS
-        ]
-        # Pre-select the distance columns so callers' pandas method calls
-        # (mean, describe, ...) never see date/direction/lat/long.
-        return df.groupby(groupby, observed=True)[distance_columns]
+        by_date = df.groupby("date")[["center_lat", "center_long"]].first()
+        lat0, lon0 = by_date.mean()
 
-    def __getattr__(self, a):
-        """x.__getattr__(a) <==> x.a <==> getattr(x, "a")."""
-        if a not in self._DF_WHITELIST:
-            raise AttributeError(a)
+        def to_xy(lat, lon):
+            north = (lat - lat0) * METERS_PER_DEGREE
+            east = (lon - lon0) * METERS_PER_DEGREE * np.cos(np.radians(lat0))
+            return np.asarray(east), np.asarray(north)
 
-        def method(groupby, **kwargs):
-            grouped = self._grouped(groupby)
-            return grouped.apply(lambda g: getattr(g, a)(**kwargs))
+        def to_polar(east, north):
+            # (east, north), not (north, east): bearings start at north
+            # and grow towards east.
+            return np.arctan2(east, north), np.hypot(east, north)
 
-        return method
+        points = np.vstack(
+            to_xy(by_date["center_lat"], by_date["center_long"])
+        )
+        temp = (
+            self._volcano.scenes_descriptors()[temperature]
+            .reindex(by_date.index)
+            .to_numpy(dtype=float)
+        )
+        low, high = np.nanpercentile(temp, [2, 98])
+        vmin = low if vmin is None else vmin
+        vmax = high if vmax is None else vmax
+        norm = (
+            mcolors.Normalize(vmin, vmax)
+            if center is None
+            else mcolors.TwoSlopeNorm(center, vmin, vmax)
+        )
 
-    def __dir__(self):
-        """x.__dir__() <==> dir(x)."""
-        return super().__dir__() + list(self._DF_WHITELIST)
+        # A percentile, not the farthest center, so a few strays don't
+        # shrink the rest to the middle.
+        rmax = 1.3 * np.percentile(to_polar(*points)[1], 95)
+
+        # The fill and the ellipse need the centers to span both axes;
+        # a volcano with one or two dates (or all centers on a line)
+        # gets neither.
+        two_dimensional = (
+            len(temp) > 2 and np.linalg.matrix_rank(np.cov(points)) == 2
+        )
+
+        # Whatever is drawn first (fill or dots) feeds the colorbar.
+        mappable = None
+        if fill and two_dimensional:
+            kde = gaussian_kde(points)
+
+            # Polar grid, as east/north locations.
+            theta, radius = np.meshgrid(
+                np.linspace(0, 2 * np.pi, 181), np.linspace(0, rmax, 120)
+            )
+            grid = np.vstack(
+                [
+                    (radius * np.sin(theta)).ravel(),
+                    (radius * np.cos(theta)).ravel(),
+                ]
+            )
+
+            # Kernel-weighted mean of the known temperatures at every grid
+            # node (Nadaraya-Watson), with the KDE's kernel.
+            known = np.isfinite(temp)
+            diff = grid[:, :, None] - points[:, None, known]
+            inv = np.linalg.inv(kde.covariance)
+            kernel = np.exp(
+                -0.5 * np.einsum("imn,ij,jmn->mn", diff, inv, diff)
+            )
+            field = kernel @ temp[known] / kernel.sum(axis=1)
+
+            # Clipped to the color range (no blank cells beyond it), and
+            # blanked outside the densest region holding the support share
+            # of the centers: its edge is the density that share of the
+            # centers reaches.
+            edge = np.quantile(kde(points), 1 - self._CENTERS_MAP_SUPPORT)
+            field = np.where(
+                kde(grid) >= edge, field.clip(norm.vmin, norm.vmax), np.nan
+            )
+            mappable = ax.contourf(
+                theta,
+                radius,
+                field.reshape(theta.shape),
+                levels=MaxNLocator(10).tick_values(norm.vmin, norm.vmax),
+                cmap=cmap,
+                norm=norm,
+            )
+
+        if centers:
+            dots = ax.scatter(
+                *to_polar(*points),
+                c=temp,
+                cmap=cmap,
+                norm=norm,
+                s=18,
+                edgecolors="k",  # visible over a fill of its own color
+                linewidths=0.5,
+                label=f"Centers (n={len(temp)})",
+            )
+            mappable = dots if mappable is None else mappable
+
+        if spread and two_dimensional:
+            # A unit circle stretched along the principal axes of the
+            # centers by the standard deviation along each.
+            values, vectors = np.linalg.eigh(np.cov(points))
+            t = np.linspace(0, 2 * np.pi, 200)
+            circle = np.vstack([np.cos(t), np.sin(t)])
+            ellipse = vectors @ (np.sqrt(values)[:, None] * circle)
+            ax.plot(
+                *to_polar(*ellipse),
+                color=color,
+                linestyle="--",
+                label=r"1$\sigma$ spread",
+            )
+
+        if reference:
+            gvp = to_xy(self._volcano.gvp_lat, self._volcano.gvp_lon)
+            ax.scatter(
+                *to_polar(*gvp),
+                marker="*",
+                s=260,
+                c=color,
+                edgecolors="white",  # the star often lands on dark fill
+                zorder=3,
+                label="GVP location",
+            )
+
+        if colorbar and mappable is not None:
+            # Not the ground's temperature: a dot is its own scene's, the
+            # fill the mean of the scenes centered nearby.
+            ax.figure.colorbar(
+                mappable,
+                ax=ax,
+                pad=0.1,
+                shrink=0.8,
+                label=f"{temperature} of the scenes centered here",
+            )
+
+        _as_compass(ax)
+        if rmax > 0:  # a single center leaves nothing to scale to
+            ax.set_ylim(0, rmax)
+        ax.set_rlabel_position(22.5)  # between N and NE, off the compass
+        ax.set_title(
+            f"{self._volcano.name}: centers around their centroid (m)"
+        )
+        if legend:
+            ax.legend(
+                loc="lower left", bbox_to_anchor=(-0.25, -0.2), frameon=False
+            )
+        return ax
