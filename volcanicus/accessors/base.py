@@ -20,24 +20,21 @@ import abc
 # ACESSOR ABC
 # =============================================================================
 
-# This constans are used to mark a class attribute as abstract, and prevet an
-# instantiaiton of a class
+# Marks a class attribute as abstract: subclasses that don't override it
+# can't be created (see AccessorABC.__init_subclass__).
 _ABSTRACT = property(abc.abstractmethod(lambda: ...))
 
 
 class AccessorABC(abc.ABC):
     """Generalization of the accessor idea for use in volcanicus.
 
-    Instances of this class are callable and accept as the first
-    parameter 'kind' the name of a method to be executed followed by all the
-    all the parameters of this method.
+    Instances are callable: the first parameter, ``kind``, names the public
+    method to run, and every other argument is passed on to it. Without a
+    ``kind`` (or when the first argument isn't a string) the method named by
+    the class attribute ``_default_kind`` runs instead, so
+    ``volcano.episodes(3.0)`` is ``volcano.episodes.find(3.0)``.
 
-    If 'kind' is None, the method defined in the class variable
-    '_default_kind_kind' is used.
-
-    The last two considerations are that 'kind', cannot be a private method and
-    that all subclasses of the method and that all AccessorABC subclasses have
-    to redefine '_default_kind'.
+    Every subclass must define ``_default_kind``.
 
     """
 
@@ -49,15 +46,20 @@ class AccessorABC(abc.ABC):
         if cls._default_kind is _ABSTRACT:
             raise TypeError(f"{cls!r} must define a _default_kind")
 
-    def __call__(self, kind=None, **kwargs):
+    def __call__(self, kind=None, *args, **kwargs):
         """x.__call__() <==> x()."""
-        kind = self._default_kind if kind is None else kind
+        if kind is None:
+            kind = self._default_kind
+        elif not isinstance(kind, str):
+            # Not a method name: the first argument of the default method.
+            args = (kind, *args)
+            kind = self._default_kind
 
         if kind.startswith("_"):
-            raise ValueError(f"invalid kind name '{kind}'")
+            raise ValueError(f"Invalid kind name '{kind}'")
 
         method = getattr(self, kind, None)
         if not callable(method):
             raise ValueError(f"Invalid kind name '{kind}'")
 
-        return method(**kwargs)
+        return method(*args, **kwargs)

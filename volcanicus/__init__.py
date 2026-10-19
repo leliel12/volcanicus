@@ -15,10 +15,8 @@ deformation/residual measurements."""
 # IMPORTS
 # =============================================================================
 
-from . import datasets
+from . import accessors, datasets
 from .core import Volcano, normalize_dataframe
-from .plot_acc import PlotAccessor
-from .stats_acc import StatsAccessor
 
 # =============================================================================
 # CONSTANTS
@@ -27,7 +25,6 @@ from .stats_acc import StatsAccessor
 __all__ = [
     "Volcano",
     "normalize_dataframe",
-    "PlotAccessor",
-    "StatsAccessor",
+    "accessors",
     "datasets",
 ]
