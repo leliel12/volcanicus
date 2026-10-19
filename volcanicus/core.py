@@ -29,7 +29,6 @@ import numpy as np
 
 import pandas as pd
 
-from .accessors import PlotAccessor, StatsAccessor
 from .constants import (
     DIRECTION_ORDER,
     GROUPBY_WHITELIST,
@@ -37,6 +36,8 @@ from .constants import (
     REDUCE_DIRECTIONS_WHITELIST,
     SATURATION_LEVEL,
 )
+from .plot_acc import PlotAccessor
+from .stats_acc import StatsAccessor
 from .utils import Bunch
 
 # =============================================================================
@@ -174,6 +175,11 @@ class Volcano:
         Raw measurements, with one row per date/direction and one column per
         distance bin. Normalized in place (see :func:`normalize_dataframe`)
         and stored internally.
+    gvp_lat, gvp_lon : float
+        Latitude and longitude, in decimal degrees, of the volcano as
+        cataloged by the Smithsonian's Global Volcanism Program (GVP). They
+        anchor the measured centers (``center_lat``/``center_long``) to the
+        volcano's reference location.
     metadata : dict, optional
         Free-form annotations about this instance: the volcano's descriptive
         metadata for the bundled datasets (country, coordinates, GVP
@@ -185,6 +191,8 @@ class Volcano:
     ----------
     name : str
         Name of the volcano.
+    gvp_lat, gvp_lon : float
+        GVP reference latitude and longitude of the volcano.
     plot : PlotAccessor
         Plotting accessor, created lazily on first access.
     stats : StatsAccessor
@@ -198,9 +206,20 @@ class Volcano:
 
     """
 
-    def __init__(self, name, df, metadata=None):
+    def __init__(self, name, df, gvp_lat, gvp_lon, metadata=None):
+        gvp_lat, gvp_lon = float(gvp_lat), float(gvp_lon)
+        if not -90.0 <= gvp_lat <= 90.0:
+            raise ValueError(
+                f"'gvp_lat' must be within [-90, 90], found {gvp_lat}"
+            )
+        if not -180.0 <= gvp_lon <= 180.0:
+            raise ValueError(
+                f"'gvp_lon' must be within [-180, 180], found {gvp_lon}"
+            )
         self._dataframe = normalize_dataframe(df)
         self._name = name
+        self._gvp_lat = gvp_lat
+        self._gvp_lon = gvp_lon
         self._metadata = Bunch("metadata", metadata or {})
 
     # ACCESSORS (YES, WE USE CACHED PROPERTIES IS THE EASIEST WAY) ============
@@ -243,6 +262,28 @@ class Volcano:
 
         """
         return self._name
+
+    @property
+    def gvp_lat(self):
+        """GVP reference latitude of the volcano, in decimal degrees.
+
+        Returns
+        -------
+        float
+
+        """
+        return self._gvp_lat
+
+    @property
+    def gvp_lon(self):
+        """GVP reference longitude of the volcano, in decimal degrees.
+
+        Returns
+        -------
+        float
+
+        """
+        return self._gvp_lon
 
     @property
     def has_missing(self):
@@ -711,7 +752,13 @@ class Volcano:
             "masked_rays": int(rows.sum()),
             "mask_limit": limit,
         }
-        return Volcano(self._name, df, metadata=metadata)
+        return Volcano(
+            self._name,
+            df,
+            gvp_lat=self._gvp_lat,
+            gvp_lon=self._gvp_lon,
+            metadata=metadata,
+        )
 
     def scenes_baseline(self, min_scenes=10):
         """Typical value and spread of every cell of the scenes.
@@ -1099,7 +1146,13 @@ class Volcano:
             "imputed": True,
             "impute_fallback_to_mean": fallback_to_mean,
         }
-        return Volcano(self._name, df, metadata=metadata)
+        return Volcano(
+            self._name,
+            df,
+            gvp_lat=self._gvp_lat,
+            gvp_lon=self._gvp_lon,
+            metadata=metadata,
+        )
 
     # MAGIC ===================================================================
 
@@ -1110,6 +1163,7 @@ class Volcano:
         ]
         return {
             "name": self._name.title(),
+            "gvp": f"({self._gvp_lat:.4f}, {self._gvp_lon:.4f})",
             "dates": self._dataframe["date"].nunique(),
             "missing": int(
                 self._dataframe[distance_columns].isna().sum().sum()
@@ -1121,15 +1175,17 @@ class Volcano:
         """x.__repr__() <==> repr(x)."""
         f = self._summary_fields()
         return (
-            f"Volcano(name={f['name']!r}, dates={f['dates']}, "
-            f"missing={f['missing']}, registers={f['registers']})"
+            f"Volcano(name={f['name']!r}, gvp={f['gvp']}, "
+            f"dates={f['dates']}, missing={f['missing']}, "
+            f"registers={f['registers']})"
         )
 
     def _repr_html_(self):
         """Rich HTML repr, used by Jupyter/IPython instead of __repr__."""
         f = self._summary_fields()
+        latlon = f"({self._gvp_lat:.2f}, {self._gvp_lon:.2f})"
         rows = "".join(
-            f"<tr><td>{label}</td><td>{f[key]}</td></tr>"
+            f"<tr><th>{label.title()}</th><td>{f[key]}</td></tr>"
             for label, key in [
                 ("dates", "dates"),
                 ("missing", "missing"),
@@ -1138,7 +1194,11 @@ class Volcano:
         )
         return (
             "<table>"
-            f"<caption>🌋 <b>{f['name']}</b></caption>"
+            '<caption style="white-space: nowrap;">'
+            f"🌋 <b>{f['name']}</b> {latlon}"
+            "</caption>"
+            "<tbody>"
             f"{rows}"
+            "</tbody>"
             "</table>"
         )

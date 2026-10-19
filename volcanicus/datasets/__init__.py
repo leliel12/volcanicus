@@ -72,8 +72,10 @@ def load(volcano_name):
     -------
     Volcano
         A new instance built from the bundled ``<name>.csv`` measurements,
-        with the contents of ``<name>.json`` as its
-        :attr:`~volcanicus.core.Volcano.metadata`.
+        with the ``latitude``/``longitude`` of ``<name>.json`` as its GVP
+        reference location (:attr:`~volcanicus.core.Volcano.gvp_lat`,
+        :attr:`~volcanicus.core.Volcano.gvp_lon`) and the rest of the file
+        as its :attr:`~volcanicus.core.Volcano.metadata`.
 
     Raises
     ------
@@ -88,5 +90,13 @@ def load(volcano_name):
 
     data = pd.read_csv(data_path)
     metadata = json.loads(metadata_path.read_text())
+    gvp_lat = metadata.pop("latitude")
+    gvp_lon = metadata.pop("longitude")
 
-    return Volcano(name=volcano_name, df=data, metadata=metadata)
+    return Volcano(
+        name=volcano_name,
+        df=data,
+        gvp_lat=gvp_lat,
+        gvp_lon=gvp_lon,
+        metadata=metadata,
+    )

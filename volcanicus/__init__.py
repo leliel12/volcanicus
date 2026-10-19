@@ -16,8 +16,9 @@ deformation/residual measurements."""
 # =============================================================================
 
 from . import datasets
-from .accessors import PlotAccessor, StatsAccessor
 from .core import Volcano, normalize_dataframe
+from .plot_acc import PlotAccessor
+from .stats_acc import StatsAccessor
 
 # =============================================================================
 # CONSTANTS
