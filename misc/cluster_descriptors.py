@@ -16,7 +16,7 @@ COLUMNS = ["peak", "efold_length", "integrated", "anisotropy"]  # azimuth is cir
 # 1. One row per volcano: median and IQR of each descriptor over its scenes.
 rows = {}
 for name in datasets.available():
-    d = datasets.load(name).mask_rays().scenes_descriptors()[COLUMNS].dropna()
+    d = datasets.load(name).rays.mask().descriptors.table()[COLUMNS].dropna()
     if len(d) >= 10:
         q1, med, q3 = d.quantile([0.25, 0.5, 0.75]).to_numpy()
         rows[name] = np.r_[med, q3 - q1]
