@@ -129,10 +129,12 @@ class Volcano:
         volcano with no such per-pixel source, e.g. one loaded from a plain
         CSV.
     pixel_source, fusion_params : optional
-        Internal: the path `df` was pivoted from and the fusion parameters
-        used, kept so :meth:`pixels` and :meth:`to_band` can re-read and
-        re-pivot it. Only set (by :func:`~volcanicus.datasets.fetch`) when
-        `band` is not ``None``.
+        Internal: the parquet `df` was pivoted from and the fusion
+        parameters used to do it, carried forward by code that builds a
+        new instance from this one (e.g. :meth:`impute`) for provenance.
+        Not otherwise read back by this class: :meth:`to_band` re-fetches
+        by `name` instead of using them directly. Only set (by
+        :func:`~volcanicus.datasets.fetch`) when `band` is not ``None``.
 
     Attributes
     ----------
@@ -346,7 +348,6 @@ class Volcano:
         See Also
         --------
         to_band : Switch to a different band.
-        pixels : Read the per-pixel measurements this band was built from.
 
         """
         return self._band
@@ -399,11 +400,38 @@ class Volcano:
         """
         return self._dataframe.copy()
 
-
     def to_band(self, band, **kwargs):
+        """Fetch a different band of this same (bundled) volcano.
+
+        A thin wrapper around :func:`~volcanicus.datasets.fetch`: it
+        re-fetches ``self.name`` by name with `band` instead of re-pivoting
+        anything already held by this instance, so it only works where
+        :func:`~volcanicus.datasets.fetch` itself does — currently, only a
+        volcano backed by a per-pixel parquet (:attr:`band` is not
+        ``None``); see its docstring for which bundled volcanoes qualify.
+        Since it re-fetches from scratch, the result reflects the bundled
+        dataset as it is on disk, not anything particular to this
+        instance: metadata recorded by, e.g., :meth:`impute` is not
+        carried over.
+
+        Parameters
+        ----------
+        band : str
+            One of :data:`~volcanicus.constants.BANDS`.
+        **kwargs
+            Forwarded to :func:`~volcanicus.datasets.fetch` (its
+            ``lst_saturation_k``, ``fusion_center``, ``fusion_scale``).
+
+        Returns
+        -------
+        Volcano
+            A new instance, as returned by
+            :func:`~volcanicus.datasets.fetch`.
+
+        """
         from . import datasets
-        other_band_volcano = datasets.fetch(self._name, band=band, **kwargs)
-        return other_band_volcano
+
+        return datasets.fetch(self._name, band=band, **kwargs)
 
     def radial_profile(self):
         """Average the measurements over dates, per direction.

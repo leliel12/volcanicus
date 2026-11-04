@@ -39,59 +39,60 @@ pip install -r requirements_dev.txt
 
 ### Bundled datasets
 
-Volcanicus ships 186 example datasets, loadable by name. Each one carries
-the volcano's descriptive metadata (GVP identification, location,
-classification, morphology and PyVOLCANS analogues):
+Volcanicus bundles ~186 example volcanoes' worth of data, but
+`datasets.fetch` currently only works for the ones with a per-pixel
+parquet — right now, just `"erta_ale"`. The rest still only have the old,
+pre-pivoted CSV, which `fetch` doesn't read yet. Each one still carries
+its descriptive metadata (GVP identification, location, classification,
+morphology and PyVOLCANS analogues):
 
 ```python
 from volcanicus import datasets
 
-datasets.available()  # ["agung", "aira", "akan", "alaid", ..., "zubair_group"]
-etna = datasets.fetch("etna")
+datasets.available()  # ["erta_ale"], for now
+erta = datasets.fetch("erta_ale")  # band="fused" by default
 
-etna.gvp_lat, etna.gvp_lon  # (37.7442, 15.0107), GVP reference location
-etna.metadata.country       # "Italy"
-etna.m.volcano_type_class   # `.m` is a shorthand for `.metadata`
+erta.gvp_lat, erta.gvp_lon  # (13.6033, 40.6633), GVP reference location
+erta.metadata.country       # "Ethiopia"
+erta.m.volcano_type_class   # "Shield volcano" (`.m` is a shorthand for `.metadata`)
 ```
 
 `fetch` is named that way because, right now, it is entirely local — but a
-future version may fetch some datasets remotely instead. One bundled
-volcano (`erta_ale`) comes from a per-pixel parquet instead of the usual
-CSV, so it can be pivoted into any of several *bands* instead of a single
-fixed table:
+future version may fetch some datasets remotely instead. Being backed by a
+per-pixel parquet also means `erta_ale` can be pivoted into any of several
+*bands* instead of a single fixed table:
 
 ```python
-erta = datasets.fetch("erta_ale")                 # band="fused" by default
-erta.band                                         # "fused"
-erta.to_band("tir").band                          # "tir" — same pixels, re-pivoted
-erta.pixels()                                      # the per-pixel measurements themselves
-datasets.fetch("erta_ale", band="swir1")          # or ask for a band upfront
+erta.band                                  # "fused"
+erta.to_band("tir").band                   # "tir" — re-fetched, same volcano, different band
+datasets.fetch("erta_ale", band="swir1")   # or ask for a band upfront
 ```
 
-A volcano with no per-pixel source (every other bundled dataset) has
-`band is None`, and `pixels()`/`to_band()` raise.
+A volcano with no per-pixel source has `band is None` (not reachable via
+`fetch` today, but true of one built directly with `Volcano(...)`, see
+below).
 
 ### Working with a `Volcano`
 
 ```python
 # normalized, read-only copy of the measurements
-etna.to_dataframe()
+erta.to_dataframe()
 
 # mean residual per distance bin, per direction
-etna.radial_profile()
+erta.radial_profile()
 
 # residual vs. distance, one line per direction, with an aggregate median line
-etna.plot.radial_profile()
+erta.plot.radial_profile()
 
 # how the missing values are spread across directions (default) or
 # dates: a DataFrame with `total`/`n_missing`/`proportion` columns and
 # a trailing "TOTAL" row
-etna.describe()
-etna.describe(by="date")
+erta.describe()
+erta.describe(by="date")
 
-# fill the gaps; the new instance keeps the original metadata and
-# records what was done
-imputed = etna.impute()
+# fill the gaps; the new instance keeps the original metadata (and band,
+# if any) and records what was done
+imputed = erta.impute()
 imputed.m.imputed  # True
 ```
 
@@ -142,12 +143,26 @@ raw data ──► scenes ──► descriptors
 A typical flow:
 
 ```python
-v = datasets.fetch("kadovar").rays.mask()  # 1. mask corrupted rays
-v.descriptors()                           # 2. what happened on each date
-v.episodes().query("n_scenes >= 2")       # 3. when there were events
+v = erta.to_band("tir").rays.mask()   # 1. mask corrupted rays
+v.descriptors()                       # 2. what happened on each date
+v.episodes().query("n_scenes >= 2")   # 3. when there were events
 ```
 
+`rays.flag()`/`rays.mask()` (and the `1.0` saturation level they compare
+against) were calibrated against the old, normalized-residual CSVs.
+`"tir"`/`"swir1"`/`"swir2"` are on that same normalized scale, so they
+behave the same way; `"lst"` (Kelvin) and `"fused"` (Watts, `erta`'s
+default band) are not, so `flag()` flags nearly every ray there instead of
+the handful of real artifacts it's meant to catch.
+
 ## 📓 Tutorials
+
+> **Note:** written against `datasets.fetch`'s older, CSV-backed volcanoes
+> (`etna`, `kadovar`, ...). With `fetch` currently limited to `erta_ale`
+> (see [Bundled datasets](#bundled-datasets)), these won't run as-is until
+> they're updated — the `Volcano` API and views themselves (`.scenes`,
+> `.rays`, ...) are otherwise unaffected, by this or by which band a
+> `Volcano` carries.
 
 - [tutorials/00_quickstart.ipynb](tutorials/00_quickstart.ipynb) — full `Volcano` API
   walkthrough: loading datasets, plotting, the `.stats` accessor,

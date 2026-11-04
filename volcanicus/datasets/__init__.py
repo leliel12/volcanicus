@@ -12,22 +12,22 @@
 bundled example :class:`~volcanicus.core.Volcano` datasets.
 
 Each dataset lives in its own directory, ``<name>/``, holding the volcano's
-descriptive metadata (``<name>.json``) and its measurements, either as
-``<name>.csv`` (one row per date/direction, the old format every bundled
-volcano except Erta Ale still uses) or ``<name>.parquet`` (one row per pixel
-and scene; :func:`fetch` pivots it into the same shape, for whichever
-`band` is asked for).
+descriptive metadata (``<name>.json``) and its measurements. Most bundled
+volcanoes only have the old, pre-pivoted ``<name>.csv`` (one row per
+date/direction); :func:`fetch` doesn't read that format. It only works for
+a volcano with a ``<name>.parquet`` instead (one row per pixel and scene;
+currently just Erta Ale — see :func:`available`), which it pivots into the
+same shape, for whichever `band` is asked for.
 
 Turning a per-pixel parquet into those wide ring tables is the ``pivot``
 stage of ``volcanicus_pipeline_v12.py``, rewritten here to start from an
 already processed parquet (as in ``erta_ale.parquet``) and to return
 DataFrames instead of writing CSV files. It lives in this module (rather
-than importing :class:`~volcanicus.core.Volcano` from a separate one) to
-dodge the circular import that would otherwise cause:
-:mod:`~volcanicus.core` needs it too, for
-:meth:`~volcanicus.core.Volcano.pixels` and
+than in a separate one that would import :class:`~volcanicus.core.Volcano`)
+to dodge the circular import that would otherwise cause:
+:mod:`~volcanicus.core` needs :func:`fetch` too, for
 :meth:`~volcanicus.core.Volcano.to_band`, and gets it with a *lazy* import
-inside those two methods instead.
+(``from . import datasets`` inside the method) instead.
 
 Every table has the same layout as the old CSVs: one row per
 ``(date, direction)`` with the columns ``date, center_lat, center_long,
@@ -491,6 +491,10 @@ def _band_table(
 def available() -> list[str]:
     """List the volcano names bundled with :mod:`volcanicus.datasets`.
 
+    :func:`fetch` currently only works for a volcano backed by a per-pixel
+    parquet, so, for now, this is a much shorter list than every directory
+    under :mod:`volcanicus.datasets` (most still only have the old CSV).
+
     Returns
     -------
     list of str
@@ -499,7 +503,7 @@ def available() -> list[str]:
     """
     names = {
         p.parts[-2]
-        for p in (*_PATH.glob("*/*.csv"), *_PATH.glob("*/*.parquet"))
+        for p in _PATH.glob("*/*.parquet")
         if not p.parts[-2].startswith(".")
     }
     return sorted(names)
@@ -518,6 +522,11 @@ def fetch(
     Everything is read from the local package today; the name anticipates
     datasets that, in the future, are fetched remotely instead.
 
+    Only works for a volcano backed by a per-pixel parquet (see
+    :func:`available` for which ones currently qualify — right now, just
+    ``"erta_ale"``); every other bundled volcano still only has the old,
+    pre-pivoted CSV, which this function does not read.
+
     Parameters
     ----------
     volcano_name : str
@@ -525,14 +534,11 @@ def fetch(
         valid values). Matched case-sensitively against the dataset
         directory name.
     band : str, default "fused"
-        For a volcano backed by a per-pixel parquet (currently only
-        ``"erta_ale"``), which of :data:`~volcanicus.constants.BANDS` to
-        pivot it into. Ignored for a volcano backed by a plain CSV, which
-        has no bands to choose from.
+        Which of :data:`~volcanicus.constants.BANDS` to pivot the
+        per-pixel parquet into.
     lst_saturation_k, fusion_center, fusion_scale
         Forwarded to the fusion that builds the ``"fused"`` band (see
-        :func:`_fuse_tir_swir`); ignored for every other `band`, and for a
-        CSV-backed volcano.
+        :func:`_fuse_tir_swir`); ignored for every other `band`.
 
     Returns
     -------
@@ -541,34 +547,31 @@ def fetch(
         ``latitude``/``longitude`` of ``<name>.json`` as its GVP reference
         location (:attr:`~volcanicus.core.Volcano.gvp_lat`,
         :attr:`~volcanicus.core.Volcano.gvp_lon`), the rest of the file as
-        its :attr:`~volcanicus.core.Volcano.metadata`, and, for a
-        parquet-backed volcano, :attr:`~volcanicus.core.Volcano.band` set
-        to `band` (``None`` otherwise).
+        its :attr:`~volcanicus.core.Volcano.metadata`, and
+        :attr:`~volcanicus.core.Volcano.band` set to `band`.
 
     Raises
     ------
     ValueError
-        If ``volcano_name`` is not a bundled dataset, or `band` is not one
-        of :data:`~volcanicus.constants.BANDS`.
+        If ``volcano_name`` is not a bundled dataset, has no per-pixel
+        parquet, or has no metadata file; or if `band` is not one of
+        :data:`~volcanicus.constants.BANDS`.
 
     """
     if band not in BANDS:
         raise ValueError(f"'band' must be one of {BANDS}, found {band!r}")
 
     dir_path = _PATH / volcano_name
-    
     if not dir_path.exists():
-        raise ValueError(f"Unknow volcan  {volcano_name!r}")
-    
+        raise ValueError(f"Unknown volcano {volcano_name!r}")
+
     parquet_path = dir_path / f"{volcano_name}.parquet"
     if not parquet_path.exists():
-        raise ValueError(f"No data for  {volcano_name!r}")
-    
+        raise ValueError(f"No per-pixel data for {volcano_name!r}")
+
     metadata_path = dir_path / f"{volcano_name}.json"
     if not metadata_path.exists():
-        raise ValueError(f"No metadata for  {volcano_name!r}")
-   
-
+        raise ValueError(f"No metadata for {volcano_name!r}")
 
     metadata = json.loads(metadata_path.read_text())
     gvp_lat = metadata.pop("latitude")
