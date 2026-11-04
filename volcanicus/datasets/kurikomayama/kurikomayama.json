@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Kurikomayama",
+  "gvp_number_2026": 283210,
+  "gvp_number_2018": 283210.0,
+  "country": "Japan",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Northeast Japan Volcanic Arc",
+  "latitude": 38.961,
+  "longitude": 140.788,
+  "elevation_m_2018": 1627.0,
+  "elevation_m_2026": null,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1950 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.34,
+  "morph_half_width_km": 6.35,
+  "morph_summit_basal_width_ratio": 0.086,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 13.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Midagahara",
+      "country": "Japan",
+      "total_analogy": 0.982,
+      "vnum": 283080
+    },
+    {
+      "name": "Perbakti-Gagak",
+      "country": "Indonesia",
+      "total_analogy": 0.979,
+      "vnum": 263040
+    },
+    {
+      "name": "Tinguiririca",
+      "country": "Chile",
+      "total_analogy": 0.979,
+      "vnum": 357030
+    },
+    {
+      "name": "Shiretoko-Iozan",
+      "country": "Japan",
+      "total_analogy": 0.975,
+      "vnum": 285090
+    },
+    {
+      "name": "Akita-Yakeyama",
+      "country": "Japan",
+      "total_analogy": 0.97,
+      "vnum": 283260
+    }
+  ]
+}

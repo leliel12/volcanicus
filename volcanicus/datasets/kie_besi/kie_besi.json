@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Kie Besi",
+  "gvp_number_2026": 268070,
+  "gvp_number_2018": 268070.0,
+  "country": "Indonesia",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Halmahera Volcanic Arc",
+  "latitude": 0.32,
+  "longitude": 127.4,
+  "elevation_m_2018": 1357.0,
+  "elevation_m_2026": 1357.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "1988 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.34,
+  "morph_half_width_km": 5.1,
+  "morph_summit_basal_width_ratio": 0.199,
+  "morph_crater_diameter_km": 2.03,
+  "morph_crater_depth_km": 0.32,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Kuchinoerabujima",
+      "country": "Japan",
+      "total_analogy": 0.966,
+      "vnum": 282050
+    },
+    {
+      "name": "Miyakejima",
+      "country": "Japan",
+      "total_analogy": 0.965,
+      "vnum": 284040
+    },
+    {
+      "name": "Awu",
+      "country": "Indonesia",
+      "total_analogy": 0.958,
+      "vnum": 267040
+    },
+    {
+      "name": "Hachijojima",
+      "country": "Japan",
+      "total_analogy": 0.948,
+      "vnum": 284050
+    },
+    {
+      "name": "Chachadake [Tiatia]",
+      "country": "Japan - administered by Russia",
+      "total_analogy": 0.941,
+      "vnum": 290030
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Ranakah",
+  "gvp_number_2026": 264071,
+  "gvp_number_2018": 264071.0,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Sunda Volcanic Arc",
+  "latitude": -8.637,
+  "longitude": 120.5302,
+  "elevation_m_2018": 2350.0,
+  "elevation_m_2026": 2288.0,
+  "volcano_type_class": "Lava dome",
+  "gvp_landform": "Cluster",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1991 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Bezymianny",
+      "country": "Russia",
+      "total_analogy": 0.786,
+      "vnum": 300250
+    },
+    {
+      "name": "Yufu-Tsurumi",
+      "country": "Japan",
+      "total_analogy": 0.781,
+      "vnum": 282130
+    },
+    {
+      "name": "Tolima, Nevado del",
+      "country": "Colombia",
+      "total_analogy": 0.779,
+      "vnum": 351030
+    },
+    {
+      "name": "Methana",
+      "country": "Greece",
+      "total_analogy": 0.778,
+      "vnum": 212020
+    },
+    {
+      "name": "Tungurahua",
+      "country": "Ecuador",
+      "total_analogy": 0.778,
+      "vnum": 352080
+    }
+  ]
+}

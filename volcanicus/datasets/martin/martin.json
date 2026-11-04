@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Martin",
+  "gvp_number_2026": 312140,
+  "gvp_number_2018": 312140.0,
+  "country": "United States",
+  "gvp_region_group": "North America Volcanic Regions",
+  "gvp_volcanic_region": "Alaska Peninsula Volcanic Arc",
+  "latitude": 58.172,
+  "longitude": -155.361,
+  "elevation_m_2018": 1863.0,
+  "elevation_m_2026": 1863.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "felsic",
+  "dominant_rock_type": "Dacite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1953 CE",
+  "activity_evidence": "Eruption Dated",
+  "activity_status": "Holocene eruption radiometrically/tephrochronologically dated (pre-historical)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Leonard Range",
+      "country": "Philippines",
+      "total_analogy": 0.794,
+      "vnum": 271031
+    },
+    {
+      "name": "Romeral",
+      "country": "Colombia",
+      "total_analogy": 0.794,
+      "vnum": 351011
+    },
+    {
+      "name": "Chachimbiro",
+      "country": "Ecuador",
+      "total_analogy": 0.794,
+      "vnum": 352002
+    },
+    {
+      "name": "Tupungatito",
+      "country": "Chile-Argentina",
+      "total_analogy": 0.792,
+      "vnum": 357010
+    },
+    {
+      "name": "Singkut",
+      "country": "Indonesia",
+      "total_analogy": 0.792,
+      "vnum": 261070
+    }
+  ]
+}

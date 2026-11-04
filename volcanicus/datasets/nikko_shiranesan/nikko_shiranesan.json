@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Nikko-Shiranesan",
+  "gvp_number_2026": 283140,
+  "gvp_number_2018": 283140.0,
+  "country": "Japan",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Northeast Japan Volcanic Arc",
+  "latitude": 36.799,
+  "longitude": 139.376,
+  "elevation_m_2018": 2578.0,
+  "elevation_m_2026": 2578.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1952 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.24,
+  "morph_half_width_km": 3.285,
+  "morph_summit_basal_width_ratio": 0.342,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 10.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Shiretoko-Iozan",
+      "country": "Japan",
+      "total_analogy": 0.979,
+      "vnum": 285090
+    },
+    {
+      "name": "Akita-Yakeyama",
+      "country": "Japan",
+      "total_analogy": 0.973,
+      "vnum": 283260
+    },
+    {
+      "name": "Dempo",
+      "country": "Indonesia",
+      "total_analogy": 0.973,
+      "vnum": 261230
+    },
+    {
+      "name": "Hakkodasan",
+      "country": "Japan",
+      "total_analogy": 0.972,
+      "vnum": 283280
+    },
+    {
+      "name": "Midagahara",
+      "country": "Japan",
+      "total_analogy": 0.972,
+      "vnum": 283080
+    }
+  ]
+}

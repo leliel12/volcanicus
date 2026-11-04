@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Burney, Monte",
+  "gvp_number_2026": 358070,
+  "gvp_number_2018": 358070.0,
+  "country": "Chile",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Austral Andean Volcanic Arc",
+  "latitude": -52.33,
+  "longitude": -73.4,
+  "elevation_m_2018": 1758.0,
+  "elevation_m_2026": 1758.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1910 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.35,
+  "morph_half_width_km": 4.96,
+  "morph_summit_basal_width_ratio": 0.072,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 13.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Hayes",
+      "country": "United States",
+      "total_analogy": 0.948,
+      "vnum": 313050
+    },
+    {
+      "name": "Aguilera",
+      "country": "Chile",
+      "total_analogy": 0.948,
+      "vnum": 358062
+    },
+    {
+      "name": "Yucamane",
+      "country": "Peru",
+      "total_analogy": 0.946,
+      "vnum": 354050
+    },
+    {
+      "name": "Zheltovsky",
+      "country": "Russia",
+      "total_analogy": 0.943,
+      "vnum": 300040
+    },
+    {
+      "name": "Romeral",
+      "country": "Colombia",
+      "total_analogy": 0.942,
+      "vnum": 351011
+    }
+  ]
+}

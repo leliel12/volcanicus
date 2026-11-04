@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Gamalama",
+  "gvp_number_2026": 268060,
+  "gvp_number_2018": 268060.0,
+  "country": "Indonesia",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Halmahera Volcanic Arc",
+  "latitude": 0.81,
+  "longitude": 127.3322,
+  "elevation_m_2018": 1715.0,
+  "elevation_m_2026": 1714.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "2018 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.7,
+  "morph_half_width_km": 5.4,
+  "morph_summit_basal_width_ratio": 0.074,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Milna",
+      "country": "Russia",
+      "total_analogy": 0.967,
+      "vnum": 290161
+    },
+    {
+      "name": "Karangetang",
+      "country": "Indonesia",
+      "total_analogy": 0.961,
+      "vnum": 267020
+    },
+    {
+      "name": "Gamkonora",
+      "country": "Indonesia",
+      "total_analogy": 0.956,
+      "vnum": 268040
+    },
+    {
+      "name": "Yokoate-jima",
+      "country": "Japan",
+      "total_analogy": 0.947,
+      "vnum": 282021
+    },
+    {
+      "name": "Candlemas Island",
+      "country": "United Kingdom",
+      "total_analogy": 0.946,
+      "vnum": 390100
+    }
+  ]
+}

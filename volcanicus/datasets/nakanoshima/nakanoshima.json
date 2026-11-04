@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Nakanoshima",
+  "gvp_number_2026": 282040,
+  "gvp_number_2018": 282040.0,
+  "country": "Japan",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Ryukyu Volcanic Arc",
+  "latitude": 29.859,
+  "longitude": 129.857,
+  "elevation_m_2018": 979.0,
+  "elevation_m_2026": 979.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "1914 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 0.94,
+  "morph_half_width_km": 2.52,
+  "morph_summit_basal_width_ratio": 0.145,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Southern Thule",
+      "country": "United Kingdom",
+      "total_analogy": 0.98,
+      "vnum": 390070
+    },
+    {
+      "name": "Nila",
+      "country": "Indonesia",
+      "total_analogy": 0.963,
+      "vnum": 265060
+    },
+    {
+      "name": "Camiguin de Babuyanes",
+      "country": "Philippines",
+      "total_analogy": 0.947,
+      "vnum": 274010
+    },
+    {
+      "name": "Kurikomayama",
+      "country": "Japan",
+      "total_analogy": 0.938,
+      "vnum": 283210
+    },
+    {
+      "name": "Perbakti-Gagak",
+      "country": "Indonesia",
+      "total_analogy": 0.93,
+      "vnum": 263040
+    }
+  ]
+}

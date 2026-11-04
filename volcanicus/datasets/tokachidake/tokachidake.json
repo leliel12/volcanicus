@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Tokachidake",
+  "gvp_number_2026": 285050,
+  "gvp_number_2018": 285050.0,
+  "country": "Japan",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 43.418,
+  "longitude": 142.686,
+  "elevation_m_2018": 2077.0,
+  "elevation_m_2026": 2077.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2004 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": null,
+  "morph_half_width_km": null,
+  "morph_summit_basal_width_ratio": null,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": null,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Korovin",
+      "country": "United States",
+      "total_analogy": 0.98,
+      "vnum": 311161
+    },
+    {
+      "name": "Iwatesan",
+      "country": "Japan",
+      "total_analogy": 0.974,
+      "vnum": 283240
+    },
+    {
+      "name": "Zaozan",
+      "country": "Japan",
+      "total_analogy": 0.972,
+      "vnum": 283190
+    },
+    {
+      "name": "Lokon-Empung",
+      "country": "Indonesia",
+      "total_analogy": 0.97,
+      "vnum": 266100
+    },
+    {
+      "name": "Nasudake",
+      "country": "Japan",
+      "total_analogy": 0.966,
+      "vnum": 283150
+    }
+  ]
+}

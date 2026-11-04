@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Rasshua",
+  "gvp_number_2026": 290220,
+  "gvp_number_2018": 290220.0,
+  "country": "Russia",
+  "gvp_region_group": "Northwestern Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Kuril Volcanic Arc",
+  "latitude": 47.77,
+  "longitude": 153.02,
+  "elevation_m_2018": 956.0,
+  "elevation_m_2026": 956.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "1957 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 0.93,
+  "morph_half_width_km": 3.225,
+  "morph_summit_basal_width_ratio": 0.477,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 3.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Kuchinoerabujima",
+      "country": "Japan",
+      "total_analogy": 0.956,
+      "vnum": 282050
+    },
+    {
+      "name": "Tofua",
+      "country": "Tonga",
+      "total_analogy": 0.95,
+      "vnum": 243060
+    },
+    {
+      "name": "Awu",
+      "country": "Indonesia",
+      "total_analogy": 0.947,
+      "vnum": 267040
+    },
+    {
+      "name": "Ushishur",
+      "country": "Russia",
+      "total_analogy": 0.945,
+      "vnum": 290210
+    },
+    {
+      "name": "Io-Torishima",
+      "country": "Japan",
+      "total_analogy": 0.943,
+      "vnum": 282020
+    }
+  ]
+}

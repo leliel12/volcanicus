@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Maipo",
+  "gvp_number_2026": 357021,
+  "gvp_number_2018": 357021.0,
+  "country": "Chile-Argentina",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Southern Andean Volcanic Arc",
+  "latitude": -34.164,
+  "longitude": -69.832,
+  "elevation_m_2018": 5323.0,
+  "elevation_m_2026": 5323.0,
+  "volcano_type_class": "Caldera",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate (alkaline)",
+  "dominant_rock_type": "Trachyandesite / Basaltic Trachyandesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1912 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.74,
+  "morph_half_width_km": 3.935,
+  "morph_summit_basal_width_ratio": 0.068,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Merbabu",
+      "country": "Indonesia",
+      "total_analogy": 0.96,
+      "vnum": 263240
+    },
+    {
+      "name": "Llullaillaco",
+      "country": "Chile-Argentina",
+      "total_analogy": 0.958,
+      "vnum": 355110
+    },
+    {
+      "name": "Slamet",
+      "country": "Indonesia",
+      "total_analogy": 0.953,
+      "vnum": 263180
+    },
+    {
+      "name": "Shishaldin",
+      "country": "United States",
+      "total_analogy": 0.952,
+      "vnum": 311360
+    },
+    {
+      "name": "Villarrica",
+      "country": "Chile",
+      "total_analogy": 0.946,
+      "vnum": 357120
+    }
+  ]
+}

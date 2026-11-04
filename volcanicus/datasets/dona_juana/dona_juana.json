@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Dona Juana",
+  "gvp_number_2026": 351070,
+  "gvp_number_2018": 351070.0,
+  "country": "Colombia",
+  "gvp_region_group": "South America Volcanic Regions",
+  "gvp_volcanic_region": "Northern Andean Volcanic Arc",
+  "latitude": 1.5,
+  "longitude": -76.936,
+  "elevation_m_2018": 4137.0,
+  "elevation_m_2026": 4137.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1906 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.03,
+  "morph_half_width_km": 2.255,
+  "morph_summit_basal_width_ratio": 0.225,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 3.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Romeral",
+      "country": "Colombia",
+      "total_analogy": 0.947,
+      "vnum": 351011
+    },
+    {
+      "name": "Parker",
+      "country": "Philippines",
+      "total_analogy": 0.944,
+      "vnum": 271011
+    },
+    {
+      "name": "Spurr",
+      "country": "United States",
+      "total_analogy": 0.942,
+      "vnum": 313040
+    },
+    {
+      "name": "Rausudake",
+      "country": "Japan",
+      "total_analogy": 0.932,
+      "vnum": 285082
+    },
+    {
+      "name": "Azufral",
+      "country": "Colombia",
+      "total_analogy": 0.931,
+      "vnum": 351090
+    }
+  ]
+}

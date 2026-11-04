@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Fourpeaked",
+  "gvp_number_2026": 312260,
+  "gvp_number_2018": 312260.0,
+  "country": "United States",
+  "gvp_region_group": "North America Volcanic Regions",
+  "gvp_volcanic_region": "Alaska Peninsula Volcanic Arc",
+  "latitude": 58.77,
+  "longitude": -153.672,
+  "elevation_m_2018": 2105.0,
+  "elevation_m_2026": 2105.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "2006 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.53,
+  "morph_half_width_km": 3.405,
+  "morph_summit_basal_width_ratio": 0.122,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 2.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Tandikat-Singgalang",
+      "country": "Indonesia",
+      "total_analogy": 0.979,
+      "vnum": 261150
+    },
+    {
+      "name": "Seulawah Agam",
+      "country": "Indonesia",
+      "total_analogy": 0.978,
+      "vnum": 261020
+    },
+    {
+      "name": "Kerinci",
+      "country": "Indonesia",
+      "total_analogy": 0.972,
+      "vnum": 261170
+    },
+    {
+      "name": "Azumayama",
+      "country": "Japan",
+      "total_analogy": 0.967,
+      "vnum": 283180
+    },
+    {
+      "name": "Yakedake",
+      "country": "Japan",
+      "total_analogy": 0.963,
+      "vnum": 283070
+    }
+  ]
+}

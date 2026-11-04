@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Ciremai",
+  "gvp_number_2026": 263170,
+  "gvp_number_2018": 263170.0,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Sunda Volcanic Arc",
+  "latitude": -6.895,
+  "longitude": 108.408,
+  "elevation_m_2018": 3078.0,
+  "elevation_m_2026": 3039.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1951 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 2.6,
+  "morph_half_width_km": 7.1,
+  "morph_summit_basal_width_ratio": 0.085,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 6.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Fuss Peak",
+      "country": "Russia",
+      "total_analogy": 0.986,
+      "vnum": 290340
+    },
+    {
+      "name": "Lawu",
+      "country": "Indonesia",
+      "total_analogy": 0.972,
+      "vnum": 263260
+    },
+    {
+      "name": "Corcovado",
+      "country": "Chile",
+      "total_analogy": 0.972,
+      "vnum": 358050
+    },
+    {
+      "name": "Kerinci",
+      "country": "Indonesia",
+      "total_analogy": 0.97,
+      "vnum": 261170
+    },
+    {
+      "name": "Huila, Nevado del",
+      "country": "Colombia",
+      "total_analogy": 0.969,
+      "vnum": 351050
+    }
+  ]
+}

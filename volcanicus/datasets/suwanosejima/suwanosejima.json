@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Suwanosejima",
+  "gvp_number_2026": 282030,
+  "gvp_number_2018": 282030.0,
+  "country": "Japan",
+  "gvp_region_group": "Western Pacific Volcanic Regions",
+  "gvp_volcanic_region": "Ryukyu Volcanic Arc",
+  "latitude": 29.638,
+  "longitude": 129.714,
+  "elevation_m_2018": 796.0,
+  "elevation_m_2026": 796.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Oceanic crust (< 15 km)",
+  "last_known_eruption": "2026 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 0.76,
+  "morph_half_width_km": 2.97,
+  "morph_summit_basal_width_ratio": 0.079,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 8.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Yokoate-jima",
+      "country": "Japan",
+      "total_analogy": 0.981,
+      "vnum": 282021
+    },
+    {
+      "name": "Serua",
+      "country": "Indonesia",
+      "total_analogy": 0.973,
+      "vnum": 265070
+    },
+    {
+      "name": "Bristol Island",
+      "country": "United Kingdom",
+      "total_analogy": 0.972,
+      "vnum": 390080
+    },
+    {
+      "name": "Milna",
+      "country": "Russia",
+      "total_analogy": 0.971,
+      "vnum": 290161
+    },
+    {
+      "name": "Teon",
+      "country": "Indonesia",
+      "total_analogy": 0.969,
+      "vnum": 265050
+    }
+  ]
+}

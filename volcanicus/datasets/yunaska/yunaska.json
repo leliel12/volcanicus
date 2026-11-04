@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Yunaska",
+  "gvp_number_2026": 311210,
+  "gvp_number_2018": 311210.0,
+  "country": "United States",
+  "gvp_region_group": "North America Volcanic Regions",
+  "gvp_volcanic_region": "Aleutian Ridge Volcanic Arc",
+  "latitude": 52.6394,
+  "longitude": -170.6317,
+  "elevation_m_2018": 550.0,
+  "elevation_m_2026": 550.0,
+  "volcano_type_class": "Shield volcano",
+  "gvp_landform": "Shield",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Intermediate crust (15-25 km)",
+  "last_known_eruption": "1937 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 0.53,
+  "morph_half_width_km": 3.61,
+  "morph_summit_basal_width_ratio": 0.481,
+  "morph_crater_diameter_km": 3.47,
+  "morph_crater_depth_km": 0.15,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 0.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Ambrym",
+      "country": "Vanuatu",
+      "total_analogy": 0.984,
+      "vnum": 257040
+    },
+    {
+      "name": "Kuwae",
+      "country": "Vanuatu",
+      "total_analogy": 0.972,
+      "vnum": 257070
+    },
+    {
+      "name": "Tomariyama [Golovnin]",
+      "country": "Japan - administered by Russia",
+      "total_analogy": 0.966,
+      "vnum": 290010
+    },
+    {
+      "name": "Nemo Peak",
+      "country": "Russia",
+      "total_analogy": 0.965,
+      "vnum": 290320
+    },
+    {
+      "name": "Gaua",
+      "country": "Vanuatu",
+      "total_analogy": 0.956,
+      "vnum": 257020
+    }
+  ]
+}

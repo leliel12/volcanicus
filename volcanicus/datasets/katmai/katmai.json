@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Katmai",
+  "gvp_number_2026": 312170,
+  "gvp_number_2018": 312170.0,
+  "country": "United States",
+  "gvp_region_group": "North America Volcanic Regions",
+  "gvp_volcanic_region": "Alaska Peninsula Volcanic Arc",
+  "latitude": 58.279,
+  "longitude": -154.9533,
+  "elevation_m_2018": 2047.0,
+  "elevation_m_2026": 2047.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1912 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 0.8,
+  "morph_half_width_km": 2.995,
+  "morph_summit_basal_width_ratio": 0.589,
+  "morph_crater_diameter_km": 3.53,
+  "morph_crater_depth_km": 0.44,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 6.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Newberry",
+      "country": "United States",
+      "total_analogy": 0.939,
+      "vnum": 322110
+    },
+    {
+      "name": "Nisyros",
+      "country": "Greece",
+      "total_analogy": 0.935,
+      "vnum": 212050
+    },
+    {
+      "name": "Medicine Lake",
+      "country": "United States",
+      "total_analogy": 0.932,
+      "vnum": 323020
+    },
+    {
+      "name": "Bolshoi-Kekuknaysky",
+      "country": "Russia",
+      "total_analogy": 0.929,
+      "vnum": 300360
+    },
+    {
+      "name": "Kuttara",
+      "country": "Japan",
+      "total_analogy": 0.925,
+      "vnum": 285034
+    }
+  ]
+}

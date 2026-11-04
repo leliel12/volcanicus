@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Lassen Volcanic Center",
+  "gvp_number_2026": 323080,
+  "gvp_number_2018": 323080.0,
+  "country": "United States",
+  "gvp_region_group": "North America Volcanic Regions",
+  "gvp_volcanic_region": "High Cascades Volcanic Arc",
+  "latitude": 40.492,
+  "longitude": -121.508,
+  "elevation_m_2018": 3187.0,
+  "elevation_m_2026": 3187.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1917 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.06,
+  "morph_half_width_km": 1.895,
+  "morph_summit_basal_width_ratio": 0.144,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 3.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Guagua Pichincha",
+      "country": "Ecuador",
+      "total_analogy": 0.941,
+      "vnum": 352020
+    },
+    {
+      "name": "Tungurahua",
+      "country": "Ecuador",
+      "total_analogy": 0.94,
+      "vnum": 352080
+    },
+    {
+      "name": "Sinabung",
+      "country": "Indonesia",
+      "total_analogy": 0.938,
+      "vnum": 261080
+    },
+    {
+      "name": "Hakusan",
+      "country": "Japan",
+      "total_analogy": 0.938,
+      "vnum": 283050
+    },
+    {
+      "name": "Guallatiri",
+      "country": "Chile",
+      "total_analogy": 0.937,
+      "vnum": 355020
+    }
+  ]
+}

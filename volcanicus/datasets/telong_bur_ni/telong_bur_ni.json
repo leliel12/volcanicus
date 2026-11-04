@@ -1,0 +1,69 @@
+{
+  "volcano_name": "Telong, Bur ni",
+  "gvp_number_2026": 261050,
+  "gvp_number_2018": 261050.0,
+  "country": "Indonesia",
+  "gvp_region_group": "Sunda-Banda Volcanic Regions",
+  "gvp_volcanic_region": "Sunda Volcanic Arc",
+  "latitude": 4.769,
+  "longitude": 96.821,
+  "elevation_m_2018": 2617.0,
+  "elevation_m_2026": 2617.0,
+  "volcano_type_class": "Stratovolcano",
+  "gvp_landform": "Composite",
+  "rock_affinity": "intermediate",
+  "dominant_rock_type": "Andesite / Basaltic Andesite",
+  "tectonic_setting": "Subduction zone / Continental crust (>25 km)",
+  "last_known_eruption": "1937 CE",
+  "activity_evidence": "Eruption Observed",
+  "activity_status": "Historically active (eruption observed/recorded)",
+  "thermal_regime_class": "Not classified",
+  "crater_lake_mentioned": "Unknown",
+  "label_confidence": "pending",
+  "thermal_proxy_set": null,
+  "morph_pc1": null,
+  "morph_pc2": null,
+  "morph_source": null,
+  "morph_height_km": 1.93,
+  "morph_half_width_km": 8.75,
+  "morph_summit_basal_width_ratio": 0.177,
+  "morph_crater_diameter_km": null,
+  "morph_crater_depth_km": null,
+  "morph_ellipticity_index": null,
+  "morph_circularity": null,
+  "morph_secondary_vents": 35.0,
+  "morph_note_code": null,
+  "gee_vs_gvp_offset_km": null,
+  "pyvolcans_analogues": [
+    {
+      "name": "Talang",
+      "country": "Indonesia",
+      "total_analogy": 0.989,
+      "vnum": 261160
+    },
+    {
+      "name": "Sumbing",
+      "country": "Indonesia",
+      "total_analogy": 0.988,
+      "vnum": 261180
+    },
+    {
+      "name": "Ushkovsky",
+      "country": "Russia",
+      "total_analogy": 0.983,
+      "vnum": 300261
+    },
+    {
+      "name": "Cumbal",
+      "country": "Colombia",
+      "total_analogy": 0.983,
+      "vnum": 351100
+    },
+    {
+      "name": "Dempo",
+      "country": "Indonesia",
+      "total_analogy": 0.982,
+      "vnum": 261230
+    }
+  ]
+}
