@@ -122,19 +122,19 @@ class Volcano:
         classification, morphology, ...), plus processing annotations such
         as whether it was imputed. Stored as a
         read-only :class:`~volcanicus.utils.Bunch`; defaults to an empty one.
-    band : str, optional
-        One of :data:`~volcanicus.constants.BANDS`, if `df` is a table built
-        from one band of a per-pixel parquet (see
-        :func:`~volcanicus.datasets.fetch`); ``None`` (the default) for a
-        volcano with no such per-pixel source, e.g. one loaded from a plain
-        CSV.
-    pixel_source, fusion_params : optional
+    band : str
+        One of :data:`~volcanicus.constants.BANDS`: which band `df` was
+        pivoted into (see :func:`~volcanicus.datasets.fetch`, the usual
+        way to get one). Required, never ``None`` — volcanicus only deals
+        in bundled, parquet-backed datasets, all of which have one.
+    data_path, fusion_params : optional
         Internal: the parquet `df` was pivoted from and the fusion
         parameters used to do it, carried forward by code that builds a
         new instance from this one (e.g. :meth:`impute`) for provenance.
         Not otherwise read back by this class: :meth:`to_band` re-fetches
-        by `name` instead of using them directly. Only set (by
-        :func:`~volcanicus.datasets.fetch`) when `band` is not ``None``.
+        by `name` instead of using them directly. `fusion_params` is
+        stored as a read-only :class:`~volcanicus.utils.Bunch`, like
+        `metadata`; defaults to an empty one.
 
     Attributes
     ----------
@@ -142,9 +142,12 @@ class Volcano:
         Name of the volcano.
     gvp_lat, gvp_lon : float
         GVP reference latitude and longitude of the volcano.
-    band : str or None
-        Per-pixel band this instance's measurements were built from, or
-        ``None`` if it has no per-pixel source.
+    band : str
+        Per-pixel band this instance's measurements were built from.
+    data_path : path-like or None
+        Parquet `df` was pivoted from, if any.
+    fusion_params : Bunch
+        Fusion parameters `df` was pivoted with, if any.
     plot : PlotAccessor
         Plotting accessor, created lazily on first access.
     stats : StatsAccessor
@@ -179,8 +182,9 @@ class Volcano:
         gvp_lat,
         gvp_lon,
         metadata=None,
-        band=None,
-        pixel_source=None,
+        *,
+        band,
+        data_path=None,
         fusion_params=None,
     ):
         gvp_lat, gvp_lon = float(gvp_lat), float(gvp_lon)
@@ -192,7 +196,7 @@ class Volcano:
             raise ValueError(
                 f"'gvp_lon' must be within [-180, 180], found {gvp_lon}"
             )
-        if band is not None and band not in BANDS:
+        if band not in BANDS:
             raise ValueError(f"'band' must be one of {BANDS}, found {band!r}")
         self._dataframe = normalize_dataframe(df)
         self._name = name
@@ -200,8 +204,10 @@ class Volcano:
         self._gvp_lon = gvp_lon
         self._metadata = Bunch("metadata", metadata or {})
         self._band = band
-        self._pixel_source = pixel_source
-        self._fusion_params = fusion_params or {}
+        self._data_path = data_path
+        self._fusion_params = Bunch(
+            "fusion_params", dict(fusion_params) if fusion_params else {}
+        )
 
     # ACCESSORS (YES, WE USE CACHED PROPERTIES IS THE EASIEST WAY) ============
 
@@ -339,11 +345,8 @@ class Volcano:
 
         Returns
         -------
-        str or None
-            One of :data:`~volcanicus.constants.BANDS`, for a volcano
-            fetched (via :func:`~volcanicus.datasets.fetch`) from a
-            per-pixel parquet, or ``None`` for one with no such per-pixel
-            source (e.g. one loaded from a plain CSV).
+        str
+            One of :data:`~volcanicus.constants.BANDS`.
 
         See Also
         --------
@@ -351,6 +354,36 @@ class Volcano:
 
         """
         return self._band
+
+    @property
+    def data_path(self):
+        """Parquet `df` was pivoted from, if any.
+
+        Internal provenance, carried forward by code that builds a new
+        instance from this one (e.g. :meth:`impute`); not otherwise used
+        by this class (:meth:`to_band` re-fetches by :attr:`name` instead).
+
+        Returns
+        -------
+        path-like or None
+
+        """
+        return self._data_path
+
+    @property
+    def fusion_params(self):
+        """Fusion parameters `df` was pivoted with, if any.
+
+        Internal provenance, like :attr:`data_path`.
+
+        Returns
+        -------
+        Bunch
+            Read-only mapping; empty if `df` wasn't built with a fusion
+            (e.g. any band but ``"fused"``).
+
+        """
+        return self._fusion_params
 
     @property
     def has_missing(self):
@@ -406,11 +439,10 @@ class Volcano:
         A thin wrapper around :func:`~volcanicus.datasets.fetch`: it
         re-fetches ``self.name`` by name with `band` instead of re-pivoting
         anything already held by this instance, so it only works where
-        :func:`~volcanicus.datasets.fetch` itself does — currently, only a
-        volcano backed by a per-pixel parquet (:attr:`band` is not
-        ``None``); see its docstring for which bundled volcanoes qualify.
-        Since it re-fetches from scratch, the result reflects the bundled
-        dataset as it is on disk, not anything particular to this
+        :func:`~volcanicus.datasets.fetch` itself does — currently, only
+        ``"erta_ale"``; see its docstring for which bundled volcanoes
+        qualify. Since it re-fetches from scratch, the result reflects the
+        bundled dataset as it is on disk, not anything particular to this
         instance: metadata recorded by, e.g., :meth:`impute` is not
         carried over.
 
@@ -646,7 +678,7 @@ class Volcano:
             gvp_lon=self._gvp_lon,
             metadata=metadata,
             band=self._band,
-            pixel_source=self._pixel_source,
+            data_path=self._data_path,
             fusion_params=self._fusion_params,
         )
 

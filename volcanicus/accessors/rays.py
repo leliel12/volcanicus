@@ -209,6 +209,6 @@ class RaysAccessor(AccessorABC):
             gvp_lon=volcano.gvp_lon,
             metadata=metadata,
             band=volcano.band,
-            pixel_source=volcano._pixel_source,
-            fusion_params=volcano._fusion_params,
+            data_path=volcano.data_path,
+            fusion_params=volcano.fusion_params,
         )
