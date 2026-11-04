@@ -44,7 +44,7 @@ rng = np.random.default_rng(0)
 rows = {}
 for name in datasets.available():
     # Igual que v1: enmascarar rays corruptos antes de nada.
-    v = datasets.load(name).rays.mask()
+    v = datasets.fetch(name).rays.mask()
     d = v.descriptors.table()[COLUMNS]
 
     # NUEVO: integral de campo cercano. Misma cuenta que `integrated` en la
@@ -165,7 +165,7 @@ print(features.groupby("cluster").median().round(3).T)
 # Validación externa contra la clasificación térmica de los metadatos
 # (parcial: 66 volcanes están "Not classified").
 features["thermal_regime_class"] = [
-    datasets.load(n).m.thermal_regime_class for n in features.index
+    datasets.fetch(n).m.thermal_regime_class for n in features.index
 ]
 print(pd.crosstab(features.thermal_regime_class, features.cluster))
 

@@ -4,6 +4,7 @@ include README.md
 recursive-include volcanicus *.py
 recursive-include volcanicus *.csv
 recursive-include volcanicus *.json
+recursive-include volcanicus *.parquet
 
 global-exclude *-checkpoint.*
 

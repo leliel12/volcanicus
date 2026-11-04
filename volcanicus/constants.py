@@ -55,3 +55,8 @@ SATURATION_LEVEL = 1.0
 #: Meters per degree of latitude (and of longitude at the equator). Enough
 #: to place a volcano's centers, a few hundred meters apart, on a flat earth.
 METERS_PER_DEGREE = 111_320.0
+
+#: Per-pixel bands a parquet-backed dataset can be fetched or transformed
+#: as; shared by :func:`~volcanicus.datasets.fetch` (its ``band`` parameter)
+#: and :meth:`~volcanicus.core.Volcano.to_band`.
+BANDS = ("tir", "lst", "swir1", "swir2", "fused")

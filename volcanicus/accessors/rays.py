@@ -200,12 +200,6 @@ class RaysAccessor(AccessorABC):
             "masked_rays": int(rows.sum()),
             "mask_limit": limit,
         }
-        # type(volcano) instead of importing Volcano, which imports this
-        # module.
-        return type(volcano)(
-            volcano.name,
-            df,
-            gvp_lat=volcano.gvp_lat,
-            gvp_lon=volcano.gvp_lon,
-            metadata=metadata,
-        )
+        # volcano._with() instead of importing Volcano, which imports this
+        # module; it also keeps volcano's band/pixel source, if any.
+        return volcano._with(df, metadata)

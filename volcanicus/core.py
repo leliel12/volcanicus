@@ -35,6 +35,7 @@ from .accessors import (
     StatsAccessor,
 )
 from .constants import (
+    BANDS,
     DIRECTION_ORDER,
     GROUPBY_WHITELIST,
     NON_DISTANCE_COLUMNS,
@@ -121,6 +122,17 @@ class Volcano:
         classification, morphology, ...), plus processing annotations such
         as whether it was imputed. Stored as a
         read-only :class:`~volcanicus.utils.Bunch`; defaults to an empty one.
+    band : str, optional
+        One of :data:`~volcanicus.constants.BANDS`, if `df` is a table built
+        from one band of a per-pixel parquet (see
+        :func:`~volcanicus.datasets.fetch`); ``None`` (the default) for a
+        volcano with no such per-pixel source, e.g. one loaded from a plain
+        CSV.
+    pixel_source, fusion_params : optional
+        Internal: the path `df` was pivoted from and the fusion parameters
+        used, kept so :meth:`pixels` and :meth:`to_band` can re-read and
+        re-pivot it. Only set (by :func:`~volcanicus.datasets.fetch`) when
+        `band` is not ``None``.
 
     Attributes
     ----------
@@ -128,6 +140,9 @@ class Volcano:
         Name of the volcano.
     gvp_lat, gvp_lon : float
         GVP reference latitude and longitude of the volcano.
+    band : str or None
+        Per-pixel band this instance's measurements were built from, or
+        ``None`` if it has no per-pixel source.
     plot : PlotAccessor
         Plotting accessor, created lazily on first access.
     stats : StatsAccessor
@@ -155,7 +170,17 @@ class Volcano:
 
     """
 
-    def __init__(self, name, df, gvp_lat, gvp_lon, metadata=None):
+    def __init__(
+        self,
+        name,
+        df,
+        gvp_lat,
+        gvp_lon,
+        metadata=None,
+        band=None,
+        pixel_source=None,
+        fusion_params=None,
+    ):
         gvp_lat, gvp_lon = float(gvp_lat), float(gvp_lon)
         if not -90.0 <= gvp_lat <= 90.0:
             raise ValueError(
@@ -165,11 +190,16 @@ class Volcano:
             raise ValueError(
                 f"'gvp_lon' must be within [-180, 180], found {gvp_lon}"
             )
+        if band is not None and band not in BANDS:
+            raise ValueError(f"'band' must be one of {BANDS}, found {band!r}")
         self._dataframe = normalize_dataframe(df)
         self._name = name
         self._gvp_lat = gvp_lat
         self._gvp_lon = gvp_lon
         self._metadata = Bunch("metadata", metadata or {})
+        self._band = band
+        self._pixel_source = pixel_source
+        self._fusion_params = fusion_params or {}
 
     # ACCESSORS (YES, WE USE CACHED PROPERTIES IS THE EASIEST WAY) ============
 
@@ -302,6 +332,26 @@ class Volcano:
         return self._gvp_lon
 
     @property
+    def band(self):
+        """Per-pixel band this instance's measurements were built from.
+
+        Returns
+        -------
+        str or None
+            One of :data:`~volcanicus.constants.BANDS`, for a volcano
+            fetched (via :func:`~volcanicus.datasets.fetch`) from a
+            per-pixel parquet, or ``None`` for one with no such per-pixel
+            source (e.g. one loaded from a plain CSV).
+
+        See Also
+        --------
+        to_band : Switch to a different band.
+        pixels : Read the per-pixel measurements this band was built from.
+
+        """
+        return self._band
+
+    @property
     def has_missing(self):
         """Whether any distance-bin measurement is missing (``NaN``).
 
@@ -348,6 +398,111 @@ class Volcano:
 
         """
         return self._dataframe.copy()
+
+    def _with(self, df, metadata):
+        """New instance with the same name/GVP/band/pixel source, but \
+        different measurements and metadata.
+
+        For code that transforms a volcano's measurements (:meth:`impute`,
+        :meth:`~volcanicus.accessors.rays.RaysAccessor.mask`) without
+        having to import :class:`Volcano` itself (and risk a circular
+        import from modules :class:`Volcano` already imports, like
+        :mod:`~volcanicus.accessors`).
+
+        """
+        return Volcano(
+            self._name,
+            df,
+            gvp_lat=self._gvp_lat,
+            gvp_lon=self._gvp_lon,
+            metadata=metadata,
+            band=self._band,
+            pixel_source=self._pixel_source,
+            fusion_params=self._fusion_params,
+        )
+
+    def pixels(self):
+        """Per-pixel measurements this instance's table was built from.
+
+        Only available when :attr:`band` is not ``None``; re-reads the
+        source parquet on every call rather than keeping ~280k rows per
+        instance in memory.
+
+        Returns
+        -------
+        pandas.DataFrame
+            One row per pixel and scene, restricted to the profile radius
+            and with the ``ring``/``direction`` columns already assigned
+            (the same binning :meth:`to_band` and
+            :func:`~volcanicus.datasets.fetch` use to build the
+            distance-bin tables).
+
+        Raises
+        ------
+        ValueError
+            If this instance has no per-pixel source (:attr:`band` is
+            ``None``).
+
+        """
+        if self._pixel_source is None:
+            raise ValueError(
+                f"{self._name!r} has no per-pixel source to read pixels "
+                "from"
+            )
+        # Lazy: volcanicus.datasets imports Volcano, so importing it back
+        # at module level here would be circular.
+        from .datasets import _read_binned_pixels
+
+        return _read_binned_pixels(self._pixel_source)
+
+    def to_band(self, band):
+        """Rebuild this volcano from a different band of the same pixels.
+
+        Re-reads the source parquet and re-pivots it for `band`, using the
+        same fusion parameters (if any) this instance was fetched with.
+
+        Parameters
+        ----------
+        band : str
+            One of :data:`~volcanicus.constants.BANDS`.
+
+        Returns
+        -------
+        Volcano
+            A new instance with `band`'s table; same name, GVP
+            coordinates, metadata and per-pixel source as this one.
+
+        Raises
+        ------
+        ValueError
+            If this instance has no per-pixel source (:attr:`band` is
+            ``None``), or `band` is not one of
+            :data:`~volcanicus.constants.BANDS`.
+
+        """
+        if self._pixel_source is None:
+            raise ValueError(
+                f"{self._name!r} has no per-pixel source to switch bands"
+            )
+        if band not in BANDS:
+            raise ValueError(f"'band' must be one of {BANDS}, found {band!r}")
+
+        # Lazy: volcanicus.datasets imports Volcano, so importing it back
+        # at module level here would be circular.
+        from .datasets import _band_table, _read_binned_pixels
+
+        binned_pixels = _read_binned_pixels(self._pixel_source)
+        table = _band_table(binned_pixels, band, **self._fusion_params)
+        return Volcano(
+            self._name,
+            table,
+            gvp_lat=self._gvp_lat,
+            gvp_lon=self._gvp_lon,
+            metadata=dict(self._metadata),
+            band=band,
+            pixel_source=self._pixel_source,
+            fusion_params=self._fusion_params,
+        )
 
     def radial_profile(self):
         """Average the measurements over dates, per direction.
@@ -554,13 +709,7 @@ class Volcano:
             "imputed": True,
             "impute_fallback_to_mean": fallback_to_mean,
         }
-        return Volcano(
-            self._name,
-            df,
-            gvp_lat=self._gvp_lat,
-            gvp_lon=self._gvp_lon,
-            metadata=metadata,
-        )
+        return self._with(df, metadata)
 
     # MAGIC ===================================================================
 
@@ -572,6 +721,7 @@ class Volcano:
         return {
             "name": self._name.title(),
             "gvp": f"({self._gvp_lat:.4f}, {self._gvp_lon:.4f})",
+            "band": self._band,
             "dates": self._dataframe["date"].nunique(),
             "missing": int(
                 self._dataframe[distance_columns].isna().sum().sum()
@@ -584,8 +734,8 @@ class Volcano:
         f = self._summary_fields()
         return (
             f"Volcano(name={f['name']!r}, gvp={f['gvp']}, "
-            f"dates={f['dates']}, missing={f['missing']}, "
-            f"registers={f['registers']})"
+            f"band={f['band']!r}, dates={f['dates']}, "
+            f"missing={f['missing']}, registers={f['registers']})"
         )
 
     def _repr_html_(self):
@@ -595,6 +745,7 @@ class Volcano:
         rows = "".join(
             f"<tr><th>{label.title()}</th><td>{f[key]}</td></tr>"
             for label, key in [
+                ("band", "band"),
                 ("dates", "dates"),
                 ("missing", "missing"),
                 ("registers", "registers"),

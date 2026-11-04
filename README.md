@@ -47,12 +47,29 @@ classification, morphology and PyVOLCANS analogues):
 from volcanicus import datasets
 
 datasets.available()  # ["agung", "aira", "akan", "alaid", ..., "zubair_group"]
-etna = datasets.load("etna")
+etna = datasets.fetch("etna")
 
 etna.gvp_lat, etna.gvp_lon  # (37.7442, 15.0107), GVP reference location
 etna.metadata.country       # "Italy"
 etna.m.volcano_type_class   # `.m` is a shorthand for `.metadata`
 ```
+
+`fetch` is named that way because, right now, it is entirely local — but a
+future version may fetch some datasets remotely instead. One bundled
+volcano (`erta_ale`) comes from a per-pixel parquet instead of the usual
+CSV, so it can be pivoted into any of several *bands* instead of a single
+fixed table:
+
+```python
+erta = datasets.fetch("erta_ale")                 # band="fused" by default
+erta.band                                         # "fused"
+erta.to_band("tir").band                          # "tir" — same pixels, re-pivoted
+erta.pixels()                                      # the per-pixel measurements themselves
+datasets.fetch("erta_ale", band="swir1")          # or ask for a band upfront
+```
+
+A volcano with no per-pixel source (every other bundled dataset) has
+`band is None`, and `pixels()`/`to_band()` raise.
 
 ### Working with a `Volcano`
 
@@ -125,7 +142,7 @@ raw data ──► scenes ──► descriptors
 A typical flow:
 
 ```python
-v = datasets.load("kadovar").rays.mask()  # 1. mask corrupted rays
+v = datasets.fetch("kadovar").rays.mask()  # 1. mask corrupted rays
 v.descriptors()                           # 2. what happened on each date
 v.episodes().query("n_scenes >= 2")       # 3. when there were events
 ```
