@@ -399,110 +399,11 @@ class Volcano:
         """
         return self._dataframe.copy()
 
-    def _with(self, df, metadata):
-        """New instance with the same name/GVP/band/pixel source, but \
-        different measurements and metadata.
 
-        For code that transforms a volcano's measurements (:meth:`impute`,
-        :meth:`~volcanicus.accessors.rays.RaysAccessor.mask`) without
-        having to import :class:`Volcano` itself (and risk a circular
-        import from modules :class:`Volcano` already imports, like
-        :mod:`~volcanicus.accessors`).
-
-        """
-        return Volcano(
-            self._name,
-            df,
-            gvp_lat=self._gvp_lat,
-            gvp_lon=self._gvp_lon,
-            metadata=metadata,
-            band=self._band,
-            pixel_source=self._pixel_source,
-            fusion_params=self._fusion_params,
-        )
-
-    def pixels(self):
-        """Per-pixel measurements this instance's table was built from.
-
-        Only available when :attr:`band` is not ``None``; re-reads the
-        source parquet on every call rather than keeping ~280k rows per
-        instance in memory.
-
-        Returns
-        -------
-        pandas.DataFrame
-            One row per pixel and scene, restricted to the profile radius
-            and with the ``ring``/``direction`` columns already assigned
-            (the same binning :meth:`to_band` and
-            :func:`~volcanicus.datasets.fetch` use to build the
-            distance-bin tables).
-
-        Raises
-        ------
-        ValueError
-            If this instance has no per-pixel source (:attr:`band` is
-            ``None``).
-
-        """
-        if self._pixel_source is None:
-            raise ValueError(
-                f"{self._name!r} has no per-pixel source to read pixels "
-                "from"
-            )
-        # Lazy: volcanicus.datasets imports Volcano, so importing it back
-        # at module level here would be circular.
-        from .datasets import _read_binned_pixels
-
-        return _read_binned_pixels(self._pixel_source)
-
-    def to_band(self, band):
-        """Rebuild this volcano from a different band of the same pixels.
-
-        Re-reads the source parquet and re-pivots it for `band`, using the
-        same fusion parameters (if any) this instance was fetched with.
-
-        Parameters
-        ----------
-        band : str
-            One of :data:`~volcanicus.constants.BANDS`.
-
-        Returns
-        -------
-        Volcano
-            A new instance with `band`'s table; same name, GVP
-            coordinates, metadata and per-pixel source as this one.
-
-        Raises
-        ------
-        ValueError
-            If this instance has no per-pixel source (:attr:`band` is
-            ``None``), or `band` is not one of
-            :data:`~volcanicus.constants.BANDS`.
-
-        """
-        if self._pixel_source is None:
-            raise ValueError(
-                f"{self._name!r} has no per-pixel source to switch bands"
-            )
-        if band not in BANDS:
-            raise ValueError(f"'band' must be one of {BANDS}, found {band!r}")
-
-        # Lazy: volcanicus.datasets imports Volcano, so importing it back
-        # at module level here would be circular.
-        from .datasets import _band_table, _read_binned_pixels
-
-        binned_pixels = _read_binned_pixels(self._pixel_source)
-        table = _band_table(binned_pixels, band, **self._fusion_params)
-        return Volcano(
-            self._name,
-            table,
-            gvp_lat=self._gvp_lat,
-            gvp_lon=self._gvp_lon,
-            metadata=dict(self._metadata),
-            band=band,
-            pixel_source=self._pixel_source,
-            fusion_params=self._fusion_params,
-        )
+    def to_band(self, band, **kwargs):
+        from . import datasets
+        other_band_volcano = datasets.fetch(self._name, band=band, **kwargs)
+        return other_band_volcano
 
     def radial_profile(self):
         """Average the measurements over dates, per direction.
@@ -709,7 +610,19 @@ class Volcano:
             "imputed": True,
             "impute_fallback_to_mean": fallback_to_mean,
         }
-        return self._with(df, metadata)
+
+        ivolcano = Volcano(
+            self._name,
+            df,
+            gvp_lat=self._gvp_lat,
+            gvp_lon=self._gvp_lon,
+            metadata=metadata,
+            band=self._band,
+            pixel_source=self._pixel_source,
+            fusion_params=self._fusion_params,
+        )
+
+        return ivolcano
 
     # MAGIC ===================================================================
 
